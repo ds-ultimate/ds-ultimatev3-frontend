@@ -1,0 +1,14 @@
+
+.MuiModal-root.hover {
+  bottom: auto !important;
+  right: auto !important;
+}
+
+.MuiModal-root.hover .MuiBackdrop-invisible {
+  display: none !important;
+}
+
+.MuiModal-root.hover .MuiPopover-paper {
+  max-width: calc(100vh - 32px) !important;
+  max-height: calc(100vh - 32px) !important;
+}
