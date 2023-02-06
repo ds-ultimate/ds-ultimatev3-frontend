@@ -61,7 +61,7 @@ if($worldArg !== null) {
 
   $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.noWorld');
 }
-$retArray[] = self::navDropdown(title: 'ui.server.tools', subelements: $tools);
+$retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
  */
 
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
@@ -77,7 +77,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
           .then(data => {
             if(mounted) {
               const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
-              setServerWorlds(data
+              setServerWorlds(data.worlds
                   .filter(d => d.active != null)
                   .sort((w1, w2) => typeSort(w2) - typeSort(w1))
               )
@@ -90,24 +90,25 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   }, [serverCode])
 
   const allMenu: Array<JSX.Element> = []
-  //TODO switch base path if we are inside a tool / ...
-  let basePath = WORLD
-
-  const serverWorldsNav = serverWorlds.map(w => {
-    return (
-        <DropdownItem key={"serverWorldsNav_" + w.server + w.name} to={formatRoute(basePath, {server: w.server, world: w.name})}>
-          {WorldDisplayName(w)}
-        </DropdownItem>
-    )
-  })
-
   allMenu.push(<DropdownItem key={"toIndex"} to={formatRoute(INDEX)}>DS-Ultimate</DropdownItem>)
+
   if(serverCode !== undefined) {
     allMenu.push(
         <DropdownItem key={"toOverview"} to={formatRoute(SERVER, {server: serverCode})}>
           {t('title.worldOverview')}
         </DropdownItem>
     )
+
+    //TODO switch base path if we are inside a tool / ...
+    let basePath = WORLD
+    const serverWorldsNav = serverWorlds.map(w => {
+      return (
+          <DropdownItem key={"serverWorldsNav_" + w.server + w.name} to={formatRoute(basePath, {server: w.server, world: w.name})}>
+            <WorldDisplayName world={w} />
+          </DropdownItem>
+      )
+    })
+
     allMenu.push(<Dropdown key={"serverWorldsDropdown"} root={<div>{t("server.worlds")}</div>} hover={true}>
       {serverWorldsNav}
     </Dropdown>)

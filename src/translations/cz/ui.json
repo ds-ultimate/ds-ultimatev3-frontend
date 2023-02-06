@@ -1,0 +1,44 @@
+{
+  "archive": "Archiv",
+  "conquer": {
+    "all": "Dobytí",
+    "daily": "Aktuálně dobyté vesnice"
+  },
+  "index": {
+    "help": "Chcete-li používat většinu funkcí webu, musíte si vybrat server a svět."
+  },
+  "language": "Jazyk",
+  "nav": {
+    "current": "Aktuální",
+    "history": "Historie"
+  },
+  "server": {
+    "choose": "Vyber svůj server",
+    "code": "Server",
+    "dsLink": "Odkaz na server",
+    "ranking": "Statistika",
+    "show": "Zvolit",
+    "tools": "Nástroje",
+    "worlds": "Světy"
+  },
+  "showMoreWorlds": "Zobrazit více světů",
+  "table": {
+    "ally": "Kmen",
+    "player": "Hráč",
+    "village": "Vesnice",
+    "world": "Svět"
+  },
+  "table-title": {
+    "normalWorlds": "Normální svět",
+    "specialWorlds": "Speciální světy"
+  },
+  "title": {
+    "worldOverview": "Přehled světů"
+  },
+  "world": {
+    "casual": "Casual",
+    "classic": "Classic",
+    "speed": "Rychlost",
+    "world": "Svět"
+  }
+}

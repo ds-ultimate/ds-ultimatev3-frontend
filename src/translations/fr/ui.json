@@ -1,0 +1,44 @@
+{
+  "archive": "",
+  "conquer": {
+    "all": "",
+    "daily": ""
+  },
+  "index": {
+    "help": ""
+  },
+  "language": "",
+  "nav": {
+    "current": "",
+    "history": ""
+  },
+  "server": {
+    "choose": "",
+    "code": "",
+    "dsLink": "",
+    "ranking": "",
+    "show": "",
+    "tools": "",
+    "worlds": ""
+  },
+  "showMoreWorlds": "",
+  "table": {
+    "ally": "",
+    "player": "",
+    "village": "",
+    "world": ""
+  },
+  "table-title": {
+    "normalWorlds": "",
+    "specialWorlds": ""
+  },
+  "title": {
+    "worldOverview": ""
+  },
+  "world": {
+    "casual": "",
+    "classic": "",
+    "speed": "",
+    "world": ""
+  }
+}

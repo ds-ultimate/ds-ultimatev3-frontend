@@ -1,10 +1,44 @@
 {
-  "world": {
-    "world": "Welt",
-    "casual": "Casual"
+  "archive": "Archiv",
+  "conquer": {
+    "all": "Adelungen",
+    "daily": "Adelsrangliste Täglich"
+  },
+  "index": {
+    "help": "Um die meisten Funktionen der Seite nutzen zu können, musst du einen Server und eine Welt auswählen."
+  },
+  "language": "Sprache",
+  "nav": {
+    "current": "Aktuell",
+    "history": "Verlauf"
   },
   "server": {
-    "tools": "Tools"
+    "choose": "Wähle deinen Server aus",
+    "code": "Code",
+    "dsLink": "Die Stämme Link",
+    "ranking": "Rangliste",
+    "show": "Auswählen",
+    "tools": "Tools",
+    "worlds": "Welten"
   },
-  "language": "Sprache"
+  "showMoreWorlds": "mehr Welten anzeigen",
+  "table": {
+    "ally": "Stamm",
+    "player": "Spieler",
+    "village": "Dorf",
+    "world": "Welt"
+  },
+  "table-title": {
+    "normalWorlds": "Normale Welten",
+    "specialWorlds": "Spezial Welten"
+  },
+  "title": {
+    "worldOverview": "Weltenübersicht"
+  },
+  "world": {
+    "casual": "Casual",
+    "classic": "Classic",
+    "speed": "Speed",
+    "world": "Welt"
+  }
 }

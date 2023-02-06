@@ -1,10 +1,44 @@
 {
-  "world": {
-    "world": "World",
-    "casual": "Casual"
+  "archive": "archive",
+  "conquer": {
+    "all": "Conquers",
+    "daily": "Conquer ranking daily"
+  },
+  "index": {
+    "help": "In order to use most of the functions of this site you need to choose a server and a world."
+  },
+  "language": "Language",
+  "nav": {
+    "current": "Current",
+    "history": "History"
   },
   "server": {
-    "tools": "Tools"
+    "choose": "Choose your server",
+    "code": "code",
+    "dsLink": "Tribal Wars link",
+    "ranking": "Ranking",
+    "show": "Choose",
+    "tools": "Tools",
+    "worlds": "worlds"
   },
-  "language": "Language"
+  "showMoreWorlds": "show more worlds",
+  "table": {
+    "ally": "tribe",
+    "player": "player",
+    "village": "village",
+    "world": "world"
+  },
+  "table-title": {
+    "normalWorlds": "normal worlds",
+    "specialWorlds": "Special worlds"
+  },
+  "title": {
+    "worldOverview": "World overview"
+  },
+  "world": {
+    "casual": "casual",
+    "classic": "classic",
+    "speed": "speed",
+    "world": "world"
+  }
 }

@@ -18,6 +18,7 @@ import trans_en_ui from "./translations/en/ui.json"
 //TODO: automatic exception reporting
 //TODO: workflow for compile & upload
 
+// noinspection JSIgnoredPromiseFromCall
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
   lng: 'en',                              // language to use

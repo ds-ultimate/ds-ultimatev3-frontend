@@ -1,0 +1,72 @@
+{
+    "auth": {
+        "throttle": "Trop de tentatives de connexion. Veuillez r\u00e9essayer dans: secondes secondes.",
+        "failed": "Cette combinaison d'informations d'identification est introuvable dans notre base de donn\u00e9es."
+    },
+    "chart": {
+        "label": {
+            "defBash": "Points de d\u00e9fenseur",
+            "gesBash": "global",
+            "offBash": "Points d'attaquant",
+            "points": "Points",
+            "rank": "rang",
+            "village": "villages",
+            "supBash": "Points de supporters"
+        },
+        "titel": {
+            "defBash": "Des ennemis vaincus comme d\u00e9fenseurs",
+            "gesBash": "Combat vaincu",
+            "offBash": "Des ennemis vaincus comme attaquants",
+            "points": "points",
+            "rank": "rang",
+            "village": "villages",
+            "supBash": "Ennemis vaincus en tant que partisans"
+        },
+        "who": {
+            "ally": "coffre",
+            "player": "joueur",
+            "village": "village"
+        }
+    },
+    "pagination": {
+        "Weiter": "plus >>",
+        "Zur\u00fcck": "<< dos"
+    },
+    "global": {
+        "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9.",
+        "All rights reserved.": "Tous droits r\u00e9serv\u00e9s.",
+        "Before proceeding, please check your email for a verification link.": "Veuillez d'abord confirmer votre adresse e-mail.",
+        "Error": "erreur",
+        "Forbidden": "inadmissible",
+        "Forgot Your Password?": "Mot de passe oubli\u00e9",
+        "Go Home": "Accueil",
+        "Hello!": "Bonjour",
+        "If you did not create an account, no further action is required.": "Si vous n'avez pas demand\u00e9 de compte, aucune autre action n'est n\u00e9cessaire.",
+        "If you did not receive the email": "Si vous n'avez pas re\u00e7u d'e-mail",
+        "If you did not request a password reset, no further action is required.": "Si vous n'avez pas demand\u00e9 de r\u00e9initialisation de mot de passe, aucune action suppl\u00e9mentaire n'est requise.",
+        "If you\u2019re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Si vous ne parvenez pas \u00e0 appuyer sur le bouton \": actionText\", veuillez ajouter l'adresse suivante \u00e0 votre navigateur: [: actionURL] (: actionURL)",
+        "Oh no": "Oh nein",
+        "Page Expired": "Page expir\u00e9e",
+        "Page Not Found": "Page non trouv\u00e9e",
+        "Please click the button below to verify your email address.": "Cliquez sur le bouton pour confirmer votre adresse e-mail.",
+        "Regards": "Sinc\u00e8rement",
+        "Reset Password Notification": "R\u00e9initialiser la notification de mot de passe",
+        "Service Unavailable": "Service non disponible",
+        "Sorry, the page you are looking for could not be found.": "D\u00e9sol\u00e9, la page n'a pas \u00e9t\u00e9 trouv\u00e9e.",
+        "Sorry, we are doing some maintenance. Please check back soon.": "D\u00e9sol\u00e9, nous travaillons sur notre site web. Veuillez r\u00e9essayer plus tard.",
+        "Sorry, you are forbidden from accessing this page.": "D\u00e9sol\u00e9, vous n'avez pas le droit de visiter cette page.",
+        "Sorry, you are making too many requests to our servers.": "D\u00e9sol\u00e9, vous faites actuellement trop de demandes sur notre serveur.",
+        "Sorry, you are not authorized to access this page.": "D\u00e9sol\u00e9, vous n'avez pas le droit de visiter cette page.",
+        "Sorry, your session has expired. Please refresh and try again.": "D\u00e9sol\u00e9, votre session a expir\u00e9. Veuillez recharger la page et r\u00e9essayer.",
+        "This password reset link will expire in :count minutes.": "Ce lien de r\u00e9initialisation de mot de passe expirera dans :count quelques minutes.",
+        "Too Many Requests": "Trop de demandes",
+        "Unauthorized": "non autoris\u00e9",
+        "Verify Email Address": "Confirmer l'adresse email",
+        "Verify Your Email Address": "Confirmez votre adresse email",
+        "Whoops!": "Ups",
+        "Whoops, something went wrong on our servers.": "Ups, quelque chose a mal tourn\u00e9",
+        "You are receiving this email because we received a password reset request for your account.": "Vous avez re\u00e7u cet email car nous avons re\u00e7u une demande de r\u00e9initialisation de votre mot de passe.",
+        "click here to request another": "Cliquez ici pour en demander un nouveau.",
+        "hi": "salut"
+    }
+}

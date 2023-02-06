@@ -17,6 +17,7 @@ enum EventType {
 export default function Dropdown({children, root, ...props}: {key?: string, children: Array<JSX.Element> | JSX.Element,
     root: JSX.Element, anchorVert?: aVType, anchorHoriz?: aHType, transformVert?: aVType, transformHoriz?: aHType,
     hover?: boolean}) {
+  // eslint-disable-next-line
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [isOpen, setOpen] = React.useState<boolean>(false)
   const [isForceOpen, setForceOpen] = React.useState<boolean>(false)

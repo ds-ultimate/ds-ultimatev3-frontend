@@ -1,0 +1,1121 @@
+{
+    "Captcha": {
+        "task": {
+            "rect": "Click the rectangle",
+            "circle": "Click the circle",
+            "triangle": "Click the triangle"
+        },
+        "loadingFailed": "Could not load the captcha"
+    },
+    "admin": {
+        "applog": "Logfiles",
+        "bugreport": {
+            "comment": {
+                "create": "Create a comment",
+                "title": "Comments",
+                "update": "Edit comment"
+            },
+            "created_at": "created",
+            "filter": {
+                "all": "all",
+                "new": "new"
+            },
+            "new": "new bugreport",
+            "seen": "Viewed by",
+            "status": "State",
+            "statusSelect": {
+                "close": "Closed",
+                "inprogress": "in progress",
+                "open": "open",
+                "resolved": "resolved"
+            },
+            "title": "Bugreports"
+        },
+        "bugreports": {
+            "show": "Show bugreport",
+            "update": "edit bugreport"
+        },
+        "changelogs": {
+            "buffer": "Script output",
+            "color": "Color",
+            "content": "Content",
+            "create": "new changelog",
+            "created": "created at",
+            "form_title": "title",
+            "icon": "Icon",
+            "id": "ID",
+            "show": "show changelog",
+            "title": "changelogs",
+            "update": "edit changelog",
+            "url": "link to github",
+            "version": "version"
+        },
+        "news": {
+            "content": "Content",
+            "create": "new news",
+            "id": "ID",
+            "show": "show news",
+            "title": "News",
+            "titleCreate": "create news",
+            "update": "edit news",
+            "updated_at": "Last change"
+        },
+        "roles": {
+            "create": "new role",
+            "form_title": "title",
+            "permissions": "permissions",
+            "show": "show role",
+            "title": "role administration",
+            "titleCreate": "create role",
+            "update": "edit role"
+        },
+        "server": {
+            "active": "updates active",
+            "code": "Code",
+            "create": "create server",
+            "flag": "flag",
+            "id": "ID",
+            "show": "show server",
+            "title": "sever overview",
+            "titleCreate": "create server",
+            "update": "edit server",
+            "url": "Update url",
+            "speed_active": "speed-worlds active",
+            "classic_active": "classic-worlds active"
+        },
+        "serverManagement": {
+            "title": "Update settings"
+        },
+        "userManagement": {
+            "title": "Access privileges"
+        },
+        "users": {
+            "title": "User overview",
+            "email": "E-Mail",
+            "name": "Username",
+            "roles": "Roles",
+            "email_verified_at": "Verified at",
+            "create": "Create User",
+            "password": "password",
+            "show": "show user",
+            "titleCreate": "Create user",
+            "update": "Edit user",
+            "verified": "E-Mail address is verified"
+        },
+        "worlds": {
+            "active": "Updates active",
+            "ally_count": "Allies",
+            "clean": "last clean",
+            "config": "world settings",
+            "create": "Manually create a new World",
+            "id": "ID",
+            "name": "Name",
+            "player_count": "Player",
+            "server": "Server",
+            "show": "Show world",
+            "title": "World overview",
+            "titleCreate": "Create a world",
+            "units": "Unit configuration",
+            "update": "last update",
+            "url": "update url",
+            "village_count": "Villages",
+            "display_name": "display name"
+        },
+        "dashboard": {
+            "attackplanner": "attack planner",
+            "attacks": "attacks",
+            "bugreports": "New bugreports",
+            "connections": "Connections",
+            "maps": "Maps",
+            "users": "Users",
+            "title": "Dashboard"
+        },
+        "cacheStats": {
+            "hitrate": "Hitrate",
+            "hits": "Hits",
+            "maps": "world maps",
+            "num": "amount",
+            "pictures": "diagrams",
+            "signatures": "signatures",
+            "size": "size",
+            "title": "cache statistics"
+        },
+        "speedWorlds": {
+            "title": "speed worlds",
+            "url": "url",
+            "create": "create a new special world",
+            "id": "id",
+            "instance": "instance",
+            "name": "name",
+            "plannedEnd": "planned end",
+            "plannedStart": "planned start",
+            "server": "server",
+            "started": "active",
+            "flag": "Country",
+            "active": "active",
+            "show": "show special world",
+            "titleCreate": "create a new special world",
+            "update": "edit special world",
+            "display_name": "display name"
+        }
+    },
+    "auth": {
+        "failed": "These credentials do not match our records.",
+        "throttle": "Too many login attempts. Please try again in :seconds seconds."
+    },
+    "chart": {
+        "who": {
+            "ally": "Ally",
+            "player": "Player",
+            "village": "Village"
+        },
+        "label": {
+            "defBash": "Defender points",
+            "gesBash": "Total",
+            "offBash": "Attacker points",
+            "points": "Points",
+            "rank": "Rank",
+            "village": "Villages",
+            "supBash": "Supporter points"
+        },
+        "titel": {
+            "defBash": "Opponents defeated as defender",
+            "gesBash": "Opponents defeated as total",
+            "offBash": "Opponents defeated as attacker",
+            "points": "Points",
+            "rank": "Rank",
+            "village": "Villages",
+            "supBash": "Opponents defeated as supporter"
+        }
+    },
+    "datatable": {
+        "oPaginate_sNext": "Next",
+        "sInfoEmpty": "Showing 0 to 0 of 0 entries",
+        "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+        "sEmptyTable": "No data available in table",
+        "sInfoFiltered": "(filtered from _MAX_ total entries)",
+        "sLengthMenu": "Show _MENU_ entries",
+        "sLoadingRecords": "Loading...",
+        "sProcessing": "Processing...",
+        "sSearch": "Search:",
+        "sZeroRecords": "No matching records found",
+        "oPaginate_sFirst": "First",
+        "oPaginate_sLast": "Last",
+        "oPaginate_sPrevious": "Previous",
+        "oAria_sSortAscending": ": activate to sort column ascending",
+        "oAria_sSortDescending": ": activate to sort column descending",
+        "sInfoThousands": ","
+    },
+    "datepicker": {
+        "Apr": "Apr",
+        "April": "April",
+        "Aug": "Aug",
+        "August": "August",
+        "Clear": "Clear",
+        "Dec": "Dec",
+        "December": "December",
+        "Feb": "Feb",
+        "February": "February",
+        "Fr": "Fr",
+        "Fri": "Fri",
+        "Friday": "Friday",
+        "Jan": "Jan",
+        "January": "January",
+        "Jul": "Jul",
+        "July": "July",
+        "Jun": "Jun",
+        "June": "June",
+        "Mar": "Mar",
+        "March": "March",
+        "May": "May",
+        "Mo": "Mo",
+        "Mon": "Mon",
+        "Monday": "Monday",
+        "Nov": "Nov",
+        "November": "November",
+        "Oct": "Oct",
+        "October": "October",
+        "Sa": "Sa",
+        "Sat": "Sat",
+        "Saturday": "Saturday",
+        "Sep": "Sep",
+        "September": "September",
+        "Su": "Su",
+        "Sun": "Sun",
+        "Sunday": "Sunday",
+        "Th": "Th",
+        "Thu": "Thu",
+        "Thursday": "Thursday",
+        "Today": "Today",
+        "Tu": "Tu",
+        "Tue": "Tue",
+        "Tuesday": "Tuesday",
+        "We": "We",
+        "Wed": "Wed",
+        "Wednesday": "Wednesday",
+        "months": "Months"
+    },
+    "global": {
+        "A fresh verification link has been sent to your email address.": "A new validation link was sent",
+        "All rights reserved.": "All rights reserved.",
+        "Before proceeding, please check your email for a verification link.": "Before proceeding, please check your email for a verification link.",
+        "Error": "Error",
+        "Forbidden": "Forbidden",
+        "Forgot Your Password?": "Forgot Your Password?",
+        "Go Home": "Go home",
+        "Hello!": "Hello",
+        "If you did not create an account, no further action is required.": "If you did not create an account, no further action is required.",
+        "If you\u2019re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "If you\u2019re having trouble clicking the \":actionText\" button, copy and paste the URL below into your web browser: [:actionURL](:actionURL)",
+        "If you did not request a password reset, no further action is required.": "If you did not request a password reset, no further action is required.",
+        "If you did not receive the email": "If you did not receive the email",
+        "hi": "hi",
+        "click here to request another": "click here to request another",
+        "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
+        "Oh no": "Oh no",
+        "Page Expired": "Page expired",
+        "Page Not Found": "Page not found",
+        "Please click the button below to verify your email address.": "Please clickthe button below to verify you email adress",
+        "Regards": "Regards",
+        "Reset Password Notification": "Reset password notification",
+        "Service Unavailable": "Service unavailable",
+        "Sorry, the page you are looking for could not be found.": "Sorry, the page you're looking for could not be found",
+        "Sorry, we are doing some maintenance. Please check back soon.": "Sorry, we are doing some maintenance. Please check back soon.",
+        "Sorry, you are forbidden from accessing this page.": "Sorry, you are forbidden from accessing this page.",
+        "Sorry, you are making too many requests to our servers.": "Sorry, you are making too many requests to our servers.",
+        "Sorry, you are not authorized to access this page.": "Sorry, you are not authorized to access this page.",
+        "Sorry, your session has expired. Please refresh and try again.": "Sorry, your session has expired. Please refresh and try again.",
+        "This password reset link will expire in :count minutes.": "This password reset link will expire in :count minutes.",
+        "Too Many Requests": "To many requests",
+        "Unauthorized": "Unauthorized",
+        "Verify Email Address": "Verify email adress",
+        "Verify Your Email Address": "Verify your Email adress",
+        "Whoops!": "Whoops!",
+        "Whoops, something went wrong on our servers.": "Whoops, something went wrong on our servers."
+    },
+    "pagination": {
+        "Zur\u00fcck": "&laquo; Previous",
+        "Weiter": "Next &raquo;"
+    },
+    "passwords": {
+        "password": "Passwords must be at least eight characters and match the confirmation.",
+        "reset": "Your password has been reset!",
+        "sent": "We have e-mailed your password reset link!",
+        "token": "This password reset token is invalid.",
+        "user": "We can't find a user with that e-mail address."
+    },
+    "tool": {
+        "distCalc": {
+            "startVillage": "Origin village",
+            "targetVillage": "Target village",
+            "days": "Day(s)",
+            "title": "Distance Calculator"
+        },
+        "attackPlanner": {
+            "attack": "Attack",
+            "conquest": "Conquest",
+            "defensive": "Defensive",
+            "fake": "Fake",
+            "fakeSupport": "Fake Support",
+            "fastSupport": "Fast Support",
+            "offensive": "Offensive",
+            "standSupport": "Long-term Support (LTS)",
+            "support": "Support",
+            "title": "attack planner",
+            "type_helper": "Attacktype",
+            "wallbreaker": "Wallbreaker",
+            "type": "Type",
+            "startVillage": "Start village",
+            "startVillage_helper": "Coordinates of the starting village",
+            "arrivalTime": "Arrival time",
+            "attackStart_village": "Attacking villages",
+            "attackTarget_village": "Target villages",
+            "attackTotal": "Attacks Total",
+            "attacker": "Attacker",
+            "countdown": "Countdown",
+            "date": "Date",
+            "date_helper": "Arrival day of the attack",
+            "defender": "Defender",
+            "editLink": "Edit Link",
+            "editLink_helper": "Everybody with this link can edit the Attakplanner. Be careful!",
+            "export": {
+                "BB": {
+                    "default": {
+                        "body": "[u][size=12][b]%TITLE%[\/b][\/size][\/u]\n\n[b]Attackplan[\/b]\nAttackcount: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[\/**]\n%ROW%\n[\/table]\n\n[size=8]Created at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[\/url][\/size]",
+                        "row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[\/*]"
+                    }
+                },
+                "IGM": {
+                    "default": {
+                        "row": "%TYPE% by [b]%ATTACKER%[\/b] from %SOURCE% with %UNIT% at [b]%DEFENDER%[\/b]  on %TARGET% starts on [color=#ff0e0e]%SEND%[\/color] and arrives on [color=#2eb92e]%ARRIVE%[\/color] (%PLACE%)",
+                        "body": "[b]%TITLE%[\/b]\n\n%ROW%\n\nCreated at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[\/url]"
+                    }
+                }
+            },
+            "export_helper": "Export for the Workbench",
+            "import": "Import",
+            "importExport": "Import\/Export",
+            "import_helper": "Import attacks from your Workbench",
+            "links": "Links for sharing",
+            "sendTime": "Send time",
+            "showLink": "View Link",
+            "showLink_helper": "This Links gives only show access to the attack planner",
+            "statistics": "Statistics",
+            "targetVillage": "Target village",
+            "targetVillage_helper": "Coordinates of the destination village",
+            "time": "TIme",
+            "time_helper": "Arrival time of the attack",
+            "unit_helper": "Slowest unit",
+            "errorKoord": "Start- and Targetvillage must not be the same",
+            "exportBB": "Export Forum",
+            "exportBBDesc": "Export for the Forum",
+            "exportIGM": "Export IGM",
+            "exportIGMDesc": "Export for IGM without Images",
+            "exportWB": "Export DSWorkbench",
+            "exportWBDesc": "Export for DSWorkbench",
+            "show": "Show attackplann",
+            "audioTiming": "The alarm starts %S% s before the timer decays.",
+            "destroyError": "The attack plan could not be deleted. If you consider this to be an error please contact the team (using Discord or via report problem on the bottom of the site).",
+            "destroySuccess": "Attack plan successfully deleted",
+            "fastSwitch": "own attack plans",
+            "withoutTitle": "This attack planner has no title and is therefor used when pressing \"attack planner\". In order to create a new attack planner you need to give this one a title",
+            "errorKoordTitle": "Village coordinates",
+            "errorUnitCount": "number is too large",
+            "multieditSuccess": "All attacks were processed successfully",
+            "multieditSuccessTitle": "Multiedit",
+            "storeError": "Creation of the attack did not work",
+            "storeErrorTitle": "Error",
+            "storeSuccess": "Attack was successfully created",
+            "storeSuccessTitle": "Successful",
+            "updateError": "The processing could not be carried out",
+            "updateErrorTitle": "Error",
+            "updateSuccessTitle": "Successful",
+            "updateSuccess": "The processing was carried out successfully",
+            "attackCount": "No attacks were selected for editing",
+            "attackCountTitle": "Attack selection",
+            "multiedit": "Multiedit",
+            "tips": "Tips",
+            "warnSending": "Using the Send-Troops button is done on your own risk. If you encounter any problems please tell the DS-Ultimate team (via Discord or Report Problem)",
+            "deleteOutdated": "delete expired attacks",
+            "deleteAll": "delete all attacks",
+            "confirm": {
+                "clear": "all attacks will be deleted",
+                "massDelete": "The selected attacks will be deleted"
+            },
+            "errorKoordEmpty": "Start- and Targetvillage must not be empty",
+            "uvMode": "Sitter-Mode",
+            "uvModeDesc": "The Send-Troops URL will be genereated in the way it is needed for a sitter account",
+            "hints": {
+                "selectMultiple": {
+                    "desc": "Multiple attacks can be selected by using <div class=\"badge badge-primary h3\">ctrl<\/div> [<div class=\"badge badge-primary\">\u2318<\/div>] and <div class=\"badge badge-primary\"><i class=\"fas fa-arrow-up\"><\/i><\/div>",
+                    "title": "Select multiple attacks"
+                },
+                "workbenchImport": {
+                    "desc": "Go into the attacks overview and copy all attack that should be imported with <span class=\"truncate\"><div class=\"badge badge-primary\">ctrl<\/div> + <div class=\"badge badge-primary\">c<\/div><\/span> <span class=\"truncate\">[<div class=\"badge badge-primary\">\u2318<\/div> + <div class=\"badge badge-primary\">c<\/div>]<\/span>. Afterwards use the import input field inside the tab Import\/Export <span class=\"truncate\"><div class=\"badge badge-primary\">ctrl<\/div> + <div class=\"badge badge-primary\">v<\/div><\/span> <span class=\"truncate\">[<div class=\"badge badge-primary\">\u2318<\/div> + <div class=\"badge badge-primary\">v<\/div>]<\/span>.",
+                    "title": "Importing attacks from DS-Workbench"
+                }
+            },
+            "arrivetimeToSoon": "The arrivetime is prior to 1970",
+            "errorTitle": "Error",
+            "arrivetimeToLate": "The arrivetime is to far in the future",
+            "sendtimeToSoon": "The sendtime is prior to 1970",
+            "sendtimeToLate": "The sendtime is to far in the future",
+            "villageNotExist": "The village doesn\\'t exist",
+            "villageNotExistStart": "The start village doesn't exist",
+            "villageNotExistTarget": "The target village doesn't exist",
+            "importWBSuccess": "Import successful",
+            "importWBSuccessTitle": "Workbench data has been imported successfully",
+            "wbImportWrongData": "Incorrect input data found. Maybe wrong format?",
+            "type_support_boost": "support boost",
+            "type_tribe_boost": "friendship skill",
+            "icons": {
+                "ballBlue": "blue dot",
+                "ballGreen": "green dot",
+                "ballGrey": "grey dot",
+                "ballRed": "red dot",
+                "ballYellow": "yellow dot",
+                "devArcher": "defense against archer",
+                "devCav": "defense against cavalry",
+                "moveIn": "green arrow left",
+                "moveOut": "red arrow right",
+                "wbAdd": "add",
+                "wbAlly": "defense against infantry",
+                "wbCheckbox": "checked checkbox",
+                "wbDie": "dice",
+                "wbEye": "eye",
+                "wbEyeForbidden": "crossed out eye",
+                "wbRemove": "red x",
+                "wbWarning": "warning"
+            },
+            "otherUnits": "other units",
+            "iconsTitle": "Icons",
+            "deleteSent": "delete already sent attacks"
+        },
+        "map": {
+            "allySelectPlaceholder": "Select an ally",
+            "playerSelectPlaceholder": "Select a player",
+            "copy": "Copy",
+            "edit": "Edit Markers",
+            "editLink": "Edit Link",
+            "editLinkDesc": "Everybody with this link can edit the Map. Be careful!",
+            "links": "Links for sharing the map",
+            "settings": "Generation settings",
+            "showLink": "View Link",
+            "showLinkDesc": "This Links gives only show access to the Map",
+            "title": "World Map",
+            "defaultBarbarian": "Default colour for Barbarian villages that are not marked",
+            "defaultPlayer": "Default colour for Player villages that are not marked",
+            "showBarbarian": "Show barbarian villages",
+            "showPlayer": "Show player villages",
+            "defaultBackground": "Background colour",
+            "center": "Center of created map",
+            "zoom": "Zoom",
+            "ally": "Mark an ally",
+            "player": "Mark a player",
+            "village": "Mark a village",
+            "forumLink": "Forum Link",
+            "forumLinkDesc": "Use these BB-Codes to show this map to other players in forums",
+            "showAllText": "all markers",
+            "deleteDrawing": "delete drawing",
+            "drawing": "drawing",
+            "drawer": {
+                "general": {
+                    "addDrawer": "Add Drawer",
+                    "deleteCanvas": "Delete this canvas",
+                    "deleteCanvasConfirm": "Are you sure want to delete this canvas?",
+                    "eraser": "Eraser",
+                    "freeDrawing": "Free drawing mode",
+                    "insert": "Insert",
+                    "insertDrawer": "Insert Drawer",
+                    "simpleEraser": "SimpleWhiteEraser"
+                },
+                "canvas": {
+                    "size": "Size (px)",
+                    "position": "Position",
+                    "inline": "Inline",
+                    "left": "Left",
+                    "center": "Center",
+                    "right": "Right",
+                    "floating": "Floating",
+                    "canvasProp": "Canvas properties",
+                    "background": "Background",
+                    "cancel": "Cancel",
+                    "save": "Save",
+                    "transparent": "transparent"
+                },
+                "fullscreen": {
+                    "enter": "Enter fullscreen mode",
+                    "exit": "Exit fullscreen mode"
+                },
+                "shape": {
+                    "bringForward": "Bring forward",
+                    "bringBackwards": "Send backwards",
+                    "bringFront": "Bring to front",
+                    "bringBack": "Send to back",
+                    "duplicate": "Duplicate",
+                    "remove": "Remove"
+                },
+                "brush": {
+                    "size": "Size"
+                },
+                "color": {
+                    "fill": "Fill:",
+                    "transparent": "Transparent"
+                },
+                "border": {
+                    "border": "Border:",
+                    "none": "None"
+                },
+                "arrow": {
+                    "drawSingle": "Draw an arrow",
+                    "drawTwo": "Draw a two-sided arrow",
+                    "tooltip": "Lines and arrows"
+                },
+                "circle": {
+                    "tooltip": "Draw a circle"
+                },
+                "line": {
+                    "tooltip": "Draw a line"
+                },
+                "rect": {
+                    "tooltip": "Draw a rectangle"
+                },
+                "triangle": {
+                    "tooltip": "Draw a triangle"
+                },
+                "polygon": {
+                    "tooltip": "Draw a Polygon",
+                    "stop": "Stop drawing a polygon (esc)",
+                    "newLine": "Click to start a new line"
+                },
+                "text": {
+                    "tooltip": "Draw a text",
+                    "font": "Font:",
+                    "newText": "Click to place a text"
+                },
+                "moveable": {
+                    "moveCanvas": "Move canvas"
+                },
+                "base": {
+                    "tooltip": "Click to start drawing a"
+                }
+            },
+            "show": "Show map",
+            "markerFactor": "Village spacing",
+            "showText": "Add marker",
+            "highlight": "Highlight this",
+            "highlightAll": "Highlight all",
+            "showContinentNumbers": "Show continent numbers",
+            "destroyError": "The map could not be deleted. If you consider this to be an error please contact the team (using Discord or via report problem on the bottom of the site).",
+            "destroySuccess": "Map successfully deleted",
+            "fastSwitch": "own maps",
+            "withoutTitle": "This map has no title and is therefor used when pressing \"world map\". In order to create a new map you need to give this one a title",
+            "autoUpdate": "Automatic updates",
+            "autoUpdateHelp": "With this enabled the map will always be generated from the current data. When deactivated the map will be generated once and this generated image will be served.",
+            "cached": "This Map uses a cached Image, thus the automatic saving is disabled. Any changes will regenerate it from current data. The title can be changed without altering the map",
+            "legend": "Legend",
+            "drawingErr": "There is an error in the drawings\nPlease close and open the Drawing area\nIf that problem persists please create a bug-report",
+            "autoZoom": "automatic zoom",
+            "resetDefault": "reset"
+        },
+        "pointCalc": {
+            "title": "Points Calculator"
+        },
+        "tableGenerator": {
+            "playerByAlly": "All players of a tribe",
+            "villageByAlly": "All villages of a tribe",
+            "villageByPlayer": "All villages of a player",
+            "title": "Tables generator",
+            "maxSing": "The forum accepts max. 1000 the sign \"[\".<br>The output was therefore divided into several tables",
+            "villageAndPlayerByAlly": "All villages of a tribe including the players"
+        },
+        "accMgrDB": {
+            "table": {
+                "creator": "Creator",
+                "name": "Name",
+                "rating": "Rating",
+                "type": "World type"
+            },
+            "title": "Building template database",
+            "title_edit": "Edit template",
+            "title_show": "Show template",
+            "public": "Show publically",
+            "remAddit": "remove excess buildings",
+            "remChurch": "ignore church",
+            "remFirstChurch": "ignore first church",
+            "remWT": "ignore watchtower",
+            "save_success": "Template saved successfully",
+            "name_def": "Template",
+            "name": "Name",
+            "import_label": "Import from DS",
+            "import": "Import",
+            "export": "Export",
+            "export_success": "The template has been copied to clipboard",
+            "err": {
+                "unknown_building": "The template contains an unknown building. Please contact the developers",
+                "name_not_found": "The template seems to be to short. If you consider this as a bug please contact the developers",
+                "paylod_len": "The template seems to be to short. If you consider this as a bug please contact the developers"
+            },
+            "building": "Building",
+            "leaveMessage": "The template has not been saved jet. Discard?",
+            "level": "level",
+            "points": "points",
+            "copy": "Copy",
+            "showLink": "View Link",
+            "showLinkDesc": "This Links gives show access to the template",
+            "save_error": "The template could not be saved. Are there any buildings?",
+            "filter": {
+                "church": "may contain a church",
+                "statue": "may contain a statue",
+                "watchtower": "may contain a watchtower"
+            },
+            "errors": {
+                "aboveMaxLevel": "building level too high!",
+                "farmLow": "farm full!",
+                "storageLow": "storage too small!"
+            }
+        },
+        "animHistMap": {
+            "editLink": "Edit Link",
+            "editLinkDesc": "Everybody with this link can edit the animated Map. Be careful!",
+            "download": {
+                "gif": "Download gif",
+                "mp4": "Download mp4",
+                "zip": "Download zip"
+            },
+            "edit": "Edit Markers",
+            "fastSwitch": "Own animated maps",
+            "legend": "Legend",
+            "links": "Links for sharing",
+            "render": {
+                "finished": "finished",
+                "image": "rendering image {numImage} of {totalImage}",
+                "mp4": "creating mp4",
+                "queue": "in queue",
+                "zip": "creating zip",
+                "gifAdd": "creating gif (reading: {numImage} von {totalImage})",
+                "gifWrite": "creating gif (writing: {numImage} von {totalImage})"
+            },
+            "renderNow": "create now!",
+            "rerun": "create again",
+            "settings": "Generation settings",
+            "showLink": "View link",
+            "showLinkDesc": "This links gives show access to the animated map",
+            "title": "Animate map",
+            "withoutTitle": "This animated map has no title and is therefor used when pressing \"animated world map\". In order to create a new animated map you need to give this one a title",
+            "destroyError": "The animated map could not be deleted. If you consider this to be an error please contact the team (using Discord or via report problem on the bottom of the site).",
+            "destroySuccess": "Animated map successfully deleted",
+            "renderedDestroyError": "The rendered animated map could not be deleted. If you consider this to be an error please contact the team (using Discord or via report problem on the bottom of the site).",
+            "renderedDestroySuccess": "Rendered animated map successfully deleted",
+            "preview": "preview"
+        },
+        "attackplaner": {
+            "notes": "notes"
+        },
+        "greatSiegeCalc": {
+            "title": "Great siege calculator"
+        }
+    },
+    "ui": {
+        "world": {},
+        "table": {
+            "allyChanges": "tribe changes",
+            "avgPlayer": "Points per player",
+            "avgVillage": "Points per village",
+            "bashDeff": "defender",
+            "bashGes": "total",
+            "bashOff": "Attacker",
+            "bashStats": "Opponents defeated",
+            "conquer": "conquers",
+            "continent": "continent",
+            "coordinates": "coordinates",
+            "date": "date",
+            "id": "ID",
+            "members": "members",
+            "name": "name",
+            "new": "new",
+            "old": "old",
+            "owner": "owner",
+            "playerName": "player name",
+            "points": "points",
+            "rank": "rank",
+            "tag": "tag",
+            "villageName": "village name",
+            "villages": "villages",
+            "bashPointsRatio": "K\/P-Rate",
+            "bonusType": "Bonus",
+            "bashSup": "supporter",
+            "supDeff": "support",
+            "allyKillsPercent": "Kills\/Ally",
+            "playerPointPercent": "Kills\/Points",
+            "possibleChanges": "Possible buildings",
+            "time": "Time",
+            "bashAllS": "OD",
+            "bashAttS": "ODA",
+            "bashDefS": "ODD"
+        },
+        "allyChanges": {
+            "all": "Tribe Changes",
+            "new": "Tribe accessions",
+            "old": "Tribe exits"
+        },
+        "conquer": {
+            "lost": "Loose",
+            "won": "Gain",
+            "allyOwn": "Internal \/ Own-Conquers",
+            "playerOwn": "Own conquers",
+            "highlight": {
+                "all": "all",
+                "barbarian": "barbarian",
+                "deleted": "deletions",
+                "internal": "internal",
+                "loose": "looses",
+                "self": "self",
+                "win": "gains",
+                "total": "total"
+            }
+        },
+        "player": {
+            "barbarian": "barbarian",
+            "deleted": "deleted",
+            "discordNotification": {
+                "addFollow": "Discordnotifications for conquers"
+            }
+        },
+        "server": {
+            "title": "server"
+        },
+        "tabletitel": {
+            "bashStats": "Opponents defeated",
+            "general": "General",
+            "info": "Information",
+            "overview": "Overview",
+            "player": "player",
+            "top10": "Top 10",
+            "villages": "Villages",
+            "casualWorlds": "Casual worlds",
+            "classicWorlds": "Classic worlds",
+            "speedWorlds": "Speed worlds",
+            "history": "Build history",
+            "allys": "tribe",
+            "allyRanking": "tribe ranking",
+            "playerHist": "player history"
+        },
+        "titel": {
+            "search": "Search",
+            "searchResults": "Search results",
+            "village": "Village",
+            "overview": "Overview",
+            "ally": "Tribe",
+            "player": "Player",
+            "searchLimited": "Only the first $limit entries are displayed because your search yielded too many results",
+            "settings": "Settings"
+        },
+        "footer": {
+            "loadTimeUnit": "sec.",
+            "lastUpdate": "Last update",
+            "loadTime": "Load time"
+        },
+        "ally": {
+            "noAlly": "without tribe",
+            "deleted": "deleted"
+        },
+        "news": {
+            "title": "News"
+        },
+        "unit": {
+            "archer": "Archer",
+            "axe": "Axe",
+            "catapult": "Catapult",
+            "heavy": "Heavy Cavalry",
+            "knight": "Paladin",
+            "light": "Light Cavalry",
+            "marcher": "Mounted Archer",
+            "ram": "Ram",
+            "snob": "Nobleman",
+            "spear": "Spear",
+            "spy": "Scout",
+            "sword": "Sword"
+        },
+        "villageNotExist": "Village not exist",
+        "nav": {
+            "stats": "Stats",
+            "map": "Map",
+            "toggle": "Toggle",
+            "disabled": {
+                "missingConfig": "This feature is not available for the selected world",
+                "noWorld": "In order to use this feature you must select a world"
+            },
+            "tops": "Top values"
+        },
+        "ingame": {
+            "guest": "Ingame (Guest access)",
+            "normal": "Ingame (User access)"
+        },
+        "old": {
+            "defBash": "Old Defender",
+            "gesBash": "Old Total",
+            "member_count": "Old Members",
+            "offBash": "Old Attacker",
+            "player_points": "Old Points per Player",
+            "points": "Old Points",
+            "rank": "Old Rank",
+            "village_count": "Old Villages",
+            "village_points": "Old Point per player",
+            "nodata": "no data",
+            "supBash": "Old Supporter"
+        },
+        "own": {
+            "attackplanner": "Own attacklists",
+            "maps": "Own maps",
+            "animatedMap": "Own animated Maps",
+            "renderedAnimatedMap": "Own rendered animated maps"
+        },
+        "noTitle": "No title",
+        "siteNotFound": "Site not found",
+        "notAllowed": "Forbidden",
+        "notAllowedDesc": "You are not allowed to view this Page",
+        "personalSettings": {
+            "title": "Settings",
+            "profile": "Profile",
+            "account": "Account",
+            "connection": "Connection",
+            "birthday": "Birthday",
+            "skype": "Skype name",
+            "discord": "Discord name",
+            "connectionVerified": "The connection is confirmed",
+            "connectionDestroy": "The connection is dissolved",
+            "connectionTooEarly": "Wait for the next update of the world",
+            "connectionError": "The connection could not be confirmed, please check if the village name is set correctly",
+            "connectionSuccess": "The connection is confirmed successfully",
+            "saveSettingsSuccess": "The changes have been successfully applied",
+            "connectionNiceTroll": "<img src=\"https:\/\/www.kotzendes-einhorn.de\/blog\/wp-content\/uploads\/2014\/02\/Troll-face.png\" height=\"200\" width=\"200\">",
+            "discordShow": "Show Discord name",
+            "skypeShow": "Show Skype name",
+            "deleteImage": "Delete Image",
+            "uploadeImage": "Uploade Image",
+            "workInProgress": "Currently not possible",
+            "noPassword": "A password must be set before you disconnect",
+            "map": "map template",
+            "account_help": "Here you can connect to other accounts.\n<br>\nIf you have connected an account, you can also use it to log in.\n<br>\nIf you connect to <b> Discord <\/b>, you have the option to use our Discord Bot.\n<br>\nThere will be more features on the page that will include the bot.",
+            "connection_help": "Here you can verify your tribal account.\n(This verification is only possible per world)\n<br>\nTo do that you have to enter the world with the player name and add it to the list.\n<br>\nOnce the connection is in the list, DS-Ultimate generates a random string.\n<br>\nThis string must then be set as the village name.\n<br>\nIt is not specified which village you have to give the name to, but it must belong to the added player. After the next update of the world you can have the connection confirmed."
+        },
+        "follow": {
+            "attackplanner": "Follows attacklists",
+            "map": "Follows maps"
+        },
+        "buildings": {
+            "barracks": "barracks",
+            "church": "church",
+            "farm": "farm",
+            "garage": "garage",
+            "hide": "hide",
+            "iron": "iron",
+            "main": "main",
+            "market": "market",
+            "place": "place",
+            "smith": "smith",
+            "snob": "snob",
+            "stable": "stable",
+            "statue": "statue",
+            "stone": "clay",
+            "storage": "storage",
+            "wall": "wall",
+            "watchtower": "watchtower",
+            "wood": "wood",
+            "church_f": "first church",
+            "university": "university"
+        },
+        "signature": "signature",
+        "sorting": "Sorting",
+        "columns": "Columns",
+        "numberLines": "Number lines",
+        "showPoints": "Show points",
+        "additionalColumns": "Additional columns",
+        "selection": "Selection",
+        "mistake": "There was a mistake.",
+        "showLessWorlds": "show less worlds",
+        "showPointDiff": "Show 120% range",
+        "index": {},
+        "tabeltitel": {
+            "allyBashRanking": "Internal list of Bashpoints"
+        },
+        "village": {
+            "histPossibilities": "possibilities",
+            "histUnknown": "unknown",
+            "bonus": {
+                "wood": ":amount wood",
+                "clay": ":amount clay",
+                "iron": ":amount iron",
+                "allResources": ":amount for each resource type",
+                "fastBarracks": ":amount faster barracks",
+                "fastStable": ":amount faster stable",
+                "fastWorkshop": ":amount faster workshop",
+                "greatSiege": ":amountDef defense strength. :points influencepoints daily.",
+                "merchants": ":amount merchants & storage",
+                "population": ":amount popupation"
+            }
+        },
+        "topAt": "at",
+        "otherWorldsPlayer": "other worlds of that player",
+        "otherWorldsPlayerPopup": {
+            "bashGes": "max Bash",
+            "points": "max points",
+            "rank": "max rank",
+            "villages": "max villages"
+        },
+        "darkmode": "darkmode",
+        "lightmode": "lightmode",
+        "sigPreview": "Preview",
+        "errors": {
+            "404": {
+                "noServer": "We couldn't find any data about the server ':server'",
+                "noWorld": "We couldn't find any data about the world ':world'",
+                "unknownType": "Unknown type ':type'",
+                "allyNotFound": "The tribe with the id ':ally' could not be found at world ':world'",
+                "playerNotFound": "The player with the id ':player' could not be found at world ':world'",
+                "villageNotFound": "The village with the id ':village' could not be found at world ':world'",
+                "widthTooSmall": "The width of the image is too small",
+                "heightTooSmall": "The height of the image is too small",
+                "noRoundFound": "There doesn't seem to be an active round currently on ':world'",
+                "illegalHistoryIndex": "The index ':index' does not exist in the history data",
+                "toolNotAvail": {
+                    "attackPlanner": "The attack planner is not available for this world",
+                    "greatSiegeCalc": "The greate siege calculator is not available for this world",
+                    "animHistMap": "The animated maps are not available at that world",
+                    "pointCalc": "The point calculator is not available for this world",
+                    "distCalc": "The distance calculator is not available for this world"
+                }
+            },
+            "403": {
+                "loginRequired": "In order to use that feature you need to be logged in"
+            },
+            "422": {
+                "accMgrDB_illegalBuildingName": "Illegal building name given ':building'"
+            }
+        }
+    },
+    "user": {
+        "dashboard": "Dashboard",
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register",
+        "toogleNav": "Toggle navigation",
+        "translations": "Translations",
+        "forgotPassword": "Forgot Your Password?",
+        "mailAddress": "E-Mail Address",
+        "name": "Name",
+        "password": "Password",
+        "passwordConfirm": "Confirm Password",
+        "remember": "Remember Me",
+        "passwordReset": "Reset Password",
+        "sendPasswordReset": "Send Password Reset Link",
+        "formular": "Form",
+        "bugreport": {
+            "description": "Description",
+            "description_help": "The more information the better",
+            "email": "E-Mail",
+            "email_help": "Your e-mail address if we have questions regarding the Report",
+            "form_title": "Titel",
+            "form_title_help": "Choose an apropriate Title",
+            "name": "Name",
+            "name_help": "Your name or a nickname",
+            "priority": "Priority",
+            "prioritySelect": {
+                "critical": "Kritical",
+                "high": "High",
+                "low": "Low",
+                "normal": "Normal"
+            },
+            "priority_help": "Please choose an appropriate classification.",
+            "title": "Report Problem",
+            "url": "URL",
+            "url_help": "If it concerns a specific page, we can faster take care of it  if we get a link to it.",
+            "successMessage": "Your error message was submitted successfully."
+        },
+        "applog": "App Log",
+        "confirm": {
+            "destroy": {
+                "cancel": "Abbort",
+                "ok": "Yes",
+                "title": "Really delete?",
+                "attackPlanContent": "It will not be possible to access the attack plan anymore",
+                "mapContent": "It will not be possible to access the map anymore",
+                "animatedMapContent": "It will not be possible to access the animated map anymore",
+                "renderedAnimatedMapContent": "It will not be possible to access the rendered animated map anymore. All links to this rendered animated map will be invalid"
+            }
+        },
+        "title": {
+            "overview": "overview of"
+        }
+    },
+    "validation": {
+        "accepted": "The :attribute must be accepted.",
+        "active_url": "The :attribute is not a valid URL.",
+        "after": "The :attribute must be a date after :date.",
+        "after_or_equal": "The :attribute must be a date after or equal to :date.",
+        "alpha": "The :attribute may only contain letters.",
+        "alpha_dash": "The :attribute may only contain letters, numbers, dashes and underscores.",
+        "alpha_num": "The :attribute may only contain letters and numbers.",
+        "array": "The :attribute must be an array.",
+        "before": "The :attribute must be a date before :date.",
+        "before_or_equal": "The :attribute must be a date before or equal to :date.",
+        "between": {
+            "numeric": "The :attribute must be between :min and :max.",
+            "file": "The :attribute must be between :min and :max kilobytes.",
+            "string": "The :attribute must be between :min and :max characters.",
+            "array": "The :attribute must have between :min and :max items."
+        },
+        "boolean": "The :attribute field must be true or false.",
+        "confirmed": "The :attribute confirmation does not match.",
+        "date": "The :attribute is not a valid date.",
+        "date_equals": "The :attribute must be a date equal to :date.",
+        "date_format": "The :attribute does not match the format :format.",
+        "different": "The :attribute and :other must be different.",
+        "digits": "The :attribute must be :digits digits.",
+        "digits_between": "The :attribute must be between :min and :max digits.",
+        "dimensions": "The :attribute has invalid image dimensions.",
+        "distinct": "The :attribute field has a duplicate value.",
+        "email": "The :attribute must be a valid email address.",
+        "exists": "The selected :attribute is invalid.",
+        "file": "The :attribute must be a file.",
+        "filled": "The :attribute field must have a value.",
+        "gt": {
+            "numeric": "The :attribute must be greater than :value.",
+            "file": "The :attribute must be greater than :value kilobytes.",
+            "string": "The :attribute must be greater than :value characters.",
+            "array": "The :attribute must have more than :value items."
+        },
+        "gte": {
+            "numeric": "The :attribute must be greater than or equal :value.",
+            "file": "The :attribute must be greater than or equal :value kilobytes.",
+            "string": "The :attribute must be greater than or equal :value characters.",
+            "array": "The :attribute must have :value items or more."
+        },
+        "image": "The :attribute must be an image.",
+        "in": "The selected :attribute is invalid.",
+        "in_array": "The :attribute field does not exist in :other.",
+        "integer": "The :attribute must be an integer.",
+        "ip": "The :attribute must be a valid IP address.",
+        "ipv4": "The :attribute must be a valid IPv4 address.",
+        "ipv6": "The :attribute must be a valid IPv6 address.",
+        "json": "The :attribute must be a valid JSON string.",
+        "lt": {
+            "numeric": "The :attribute must be less than :value.",
+            "file": "The :attribute must be less than :value kilobytes.",
+            "string": "The :attribute must be less than :value characters.",
+            "array": "The :attribute must have less than :value items."
+        },
+        "lte": {
+            "numeric": "The :attribute must be less than or equal :value.",
+            "file": "The :attribute must be less than or equal :value kilobytes.",
+            "string": "The :attribute must be less than or equal :value characters.",
+            "array": "The :attribute must not have more than :value items."
+        },
+        "max": {
+            "numeric": "The :attribute may not be greater than :max.",
+            "file": "The :attribute may not be greater than :max kilobytes.",
+            "string": "The :attribute may not be greater than :max characters.",
+            "array": "The :attribute may not have more than :max items."
+        },
+        "mimes": "The :attribute must be a file of type: :values.",
+        "mimetypes": "The :attribute must be a file of type: :values.",
+        "min": {
+            "numeric": "The :attribute must be at least :min.",
+            "file": "The :attribute must be at least :min kilobytes.",
+            "string": "The :attribute must be at least :min characters.",
+            "array": "The :attribute must have at least :min items."
+        },
+        "not_in": "The selected :attribute is invalid.",
+        "not_regex": "The :attribute format is invalid.",
+        "numeric": "The :attribute must be a number.",
+        "present": "The :attribute field must be present.",
+        "regex": "The :attribute format is invalid.",
+        "required": "The :attribute field is required.",
+        "required_if": "The :attribute field is required when :other is :value.",
+        "required_unless": "The :attribute field is required unless :other is in :values.",
+        "required_with": "The :attribute field is required when :values is present.",
+        "required_with_all": "The :attribute field is required when :values are present.",
+        "required_without": "The :attribute field is required when :values is not present.",
+        "required_without_all": "The :attribute field is required when none of :values are present.",
+        "same": "The :attribute and :other must match.",
+        "size": {
+            "numeric": "The :attribute must be :size.",
+            "file": "The :attribute must be :size kilobytes.",
+            "string": "The :attribute must be :size characters.",
+            "array": "The :attribute must contain :size items."
+        },
+        "starts_with": "The :attribute must start with one of the following: :values",
+        "string": "The :attribute must be a string.",
+        "timezone": "The :attribute must be a valid zone.",
+        "unique": "The :attribute has already been taken.",
+        "uploaded": "The :attribute failed to upload.",
+        "url": "The :attribute format is invalid.",
+        "uuid": "The :attribute must be a valid UUID.",
+        "custom": {
+            "attribute-name": {
+                "rule-name": "custom-message"
+            }
+        },
+        "custom_captcha": "The captcha needs to be solved"
+    }
+}

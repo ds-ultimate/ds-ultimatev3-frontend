@@ -1,0 +1,1164 @@
+{
+    "Captcha": {
+        "task": {
+            "rect": "Klicke auf das Rechteck",
+            "circle": "Klicke auf den Kreis",
+            "triangle": "Klicke auf das Dreieck"
+        },
+        "loadingFailed": "Konnte das Captcha nicht laden"
+    },
+    "admin": {
+        "server": {
+            "title": "Server\u00fcbersicht",
+            "create": "Server anlegen",
+            "id": "ID",
+            "code": "K\u00fcrzel",
+            "flag": "Flagge",
+            "url": "Aktualisierungsurl",
+            "active": "Updates aktiv",
+            "titleCreate": "Server erstellen",
+            "update": "Server editieren",
+            "show": "Server anzeigen",
+            "speed_active": "Speed-Welten aktiv",
+            "classic_active": "Classic-Welten aktiv"
+        },
+        "news": {
+            "title": "Nachrichten",
+            "create": "Neue Nachricht",
+            "id": "ID",
+            "content": "Inhalt",
+            "update": "Nachricht bearbeiten",
+            "titleCreate": "Nachricht erstellen",
+            "show": "Nachricht anzeigen",
+            "updated_at": "Letze \u00c4nderung"
+        },
+        "changelogs": {
+            "title": "\u00c4nderungsprotokolle",
+            "create": "\u00c4nderungsprotokoll erstellen",
+            "id": "ID",
+            "version": "Version",
+            "form_title": "Title",
+            "url": "Githublink",
+            "icon": "Symbol",
+            "color": "Farbe",
+            "created": "Erstellt am",
+            "update": "\u00c4nderungsprotokoll bearbeiten",
+            "content": "Text",
+            "buffer": "Skriptausgabe",
+            "show": "\u00c4nderungsprotokoll ansehen"
+        },
+        "userManagement": {
+            "title": "Rechteverwaltung"
+        },
+        "serverManagement": {
+            "title": "Update Einstellungen"
+        },
+        "worlds": {
+            "title": "Welten\u00fcbersicht",
+            "create": "Welt manuell anlegen",
+            "id": "ID",
+            "server": "Server",
+            "name": "Name",
+            "url": "Updateurl",
+            "active": "Updates aktiv",
+            "update": "Letzte Aktualisierung",
+            "clean": "Letztes aufr\u00e4umen",
+            "titleCreate": "Welt anlegen",
+            "show": "Welt anzeigen",
+            "ally_count": "St\u00e4mme",
+            "player_count": "Spieler",
+            "village_count": "D\u00f6rfer",
+            "config": "Welteneinstellungen",
+            "units": "Einheitenkonfiguration",
+            "display_name": "Angezeigter name"
+        },
+        "bugreport": {
+            "title": "Fehlermeldungen",
+            "comment": {
+                "title": "Kommentare",
+                "update": "Kommentar bearbeiten",
+                "create": "Kommentar erstellen"
+            },
+            "new": "Neuen Bugreport erstellen",
+            "filter": {
+                "all": "Alle",
+                "new": "Neue"
+            },
+            "status": "Status",
+            "statusSelect": {
+                "open": "Offen",
+                "inprogress": "in Bearbeitung",
+                "resolved": "Erledigt",
+                "close": "Geschlossen"
+            },
+            "created_at": "Erstellt",
+            "seen": "Angeschaut von"
+        },
+        "applog": "Logfiles",
+        "roles": {
+            "title": "Rollenverwaltung",
+            "create": "Neue Rolle",
+            "permissions": "Berechtigungen",
+            "titleCreate": "Rolle anlegen",
+            "update": "Rolle bearbeiten",
+            "show": "Rolle anzeigen",
+            "form_title": "Titel"
+        },
+        "users": {
+            "title": "Benutzer\u00fcbersicht",
+            "create": "Neuen Benutzer anlegen",
+            "titleCreate": "Nutzer anlegen",
+            "update": "Nutzer bearbeiten",
+            "show": "Benutzer anzeigen",
+            "name": "Benutzername",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "roles": "Rollen",
+            "verified": "E-Mailadresse ist verifiziert",
+            "email_verified_at": "Verifiziert am"
+        },
+        "bugreports": {
+            "update": "Fehlermeldung bearbeiten",
+            "show": "Fehlermeldung anschauen"
+        },
+        "dashboard": {
+            "bugreports": "Neue Bugreports",
+            "maps": "Weltkarten",
+            "attackplanner": "Angriffsplaner",
+            "users": "Benutzer",
+            "connections": "Verbindungen",
+            "attacks": "Angriffe",
+            "title": "Dashboard"
+        },
+        "cacheStats": {
+            "size": "Gr\u00f6\u00dfe",
+            "num": "Anzahl",
+            "hitrate": "Hitrate",
+            "hits": "Aufrufe",
+            "signatures": "Signaturen",
+            "maps": "Weltkarten",
+            "pictures": "Diagramme",
+            "title": "Cache Statistiken"
+        },
+        "speedWorlds": {
+            "title": "Speed Welten",
+            "create": "Neue Spezialwelt anlegen",
+            "id": "ID",
+            "server": "Server",
+            "name": "Name",
+            "plannedStart": "Geplanter Start",
+            "plannedEnd": "Geplantes Ende",
+            "url": "Url",
+            "started": "aktiv",
+            "instance": "Instanz",
+            "titleCreate": "Spezialwelt anlegen",
+            "update": "Spezialwelt editieren",
+            "show": "Spezialwelt anzeigen",
+            "flag": "Sprachversion",
+            "active": "Aktiv",
+            "display_name": "Angezeigter name"
+        }
+    },
+    "auth": {
+        "failed": "Diese Kombination aus Zugangsdaten, wurde nicht in unserer Datenbank gefunden.",
+        "throttle": "Zu viele Loginversuche, versuchen Sie es bitte in :seconds Sekunden nochmal."
+    },
+    "chart": {
+        "who": {
+            "ally": "Stamm",
+            "player": "Spieler",
+            "village": "Dorf"
+        },
+        "titel": {
+            "points": "Punkte",
+            "rank": "Rang",
+            "village": "D\u00f6rfer",
+            "gesBash": "Besiegte Gegner Insgesamt",
+            "offBash": "Besiegte Gegner als Angreifer",
+            "defBash": "Besiegte Gegner als Verteidiger",
+            "supBash": "Besiegte Gegner als Unterst\u00fctzer"
+        },
+        "label": {
+            "points": "Punkte",
+            "rank": "Rang",
+            "village": "D\u00f6rfer",
+            "gesBash": "Insgesamt",
+            "offBash": "Angreiferpunkte",
+            "defBash": "Verteidigerpunkte",
+            "supBash": "Unterst\u00fctzerpunkte"
+        }
+    },
+    "datatable": {
+        "sEmptyTable": "Keine Daten in der Tabelle vorhanden",
+        "sInfo": "_START_ bis _END_ von _TOTAL_ Eintr\u00e4gen",
+        "sInfoFiltered": "(gefiltert von _MAX_ Eintr\u00e4gen)",
+        "sInfoThousands": ".",
+        "sLengthMenu": "_MENU_ Eintr\u00e4ge anzeigen",
+        "sLoadingRecords": "Wird geladen ..",
+        "sProcessing": "Bitte warten ..",
+        "sSearch": "Suchen",
+        "sZeroRecords": "Keine Eintr\u00e4ge vorhanden",
+        "oPaginate_sFirst": "Erste",
+        "oPaginate_sPrevious": "Zur\u00fcck",
+        "oPaginate_sNext": "N\u00e4chste",
+        "oPaginate_sLast": "Letzte",
+        "select_rows__": "%d Zeilen ausgew\u00e4hlt",
+        "select_rows_1": "1 Zeile ausgew\u00e4hlt",
+        "buttons_print": "Drucken",
+        "buttons_colvis": "Spalten",
+        "buttons_copy": "Kopieren",
+        "buttons_copyTitle": "In Zwischenablage kopieren",
+        "buttons_copyKeys": "Taste <i>ctrl<\/i> oder <i>\\u2318<\/i> + <i>C<\/i> um Tabelle<br>in Zwischenspeicher zu kopieren.<br><br>Um abzubrechen die Nachricht anklicken oder Escape dr\u00fccken.",
+        "buttons_copySuccess__": "%d Zeilen kopiert",
+        "buttons_copySuccess_1": "1 Zeile kopiert",
+        "buttons_pageLength_-1": "Zeige alle Zeilen",
+        "buttons_pageLength__": "Zeige %d Zeilen",
+        "oAria_sSortAscending": ": aktivieren, um Spalte aufsteigend zu sortieren",
+        "oAria_sSortDescending": ": aktivieren, um Spalte absteigend zu sortieren",
+        "sInfoEmpty": "Keine Daten vorhanden"
+    },
+    "datepicker": {
+        "Sunday": "Sonntag",
+        "Monday": "Montag",
+        "Tuesday": "Dienstag",
+        "Wednesday": "Mittwoch",
+        "Thursday": "Donnerstag",
+        "Friday": "Freitag",
+        "Saturday": "Samstag",
+        "Sun": "Son",
+        "Mon": "Mon",
+        "Tue": "Die",
+        "Wed": "Mit",
+        "Thu": "Don",
+        "Fri": "Fre",
+        "Sat": "Sam",
+        "Su": "So",
+        "Mo": "Mo",
+        "Tu": "Di",
+        "We": "Mi",
+        "Th": "Do",
+        "Fr": "Fr",
+        "Sa": "Sa",
+        "January": "Januar",
+        "February": "Februar",
+        "March": "M\u00e4rz",
+        "April": "April",
+        "May": "Mai",
+        "June": "Juni",
+        "July": "Juli",
+        "August": "August",
+        "September": "September",
+        "October": "Oktober",
+        "November": "November",
+        "December": "Dezember",
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "M\u00e4r",
+        "Apr": "Apr",
+        "Jun": "Jun",
+        "Jul": "Jul",
+        "Aug": "Aug",
+        "Sep": "Sep",
+        "Oct": "Okt",
+        "Nov": "Nov",
+        "Dec": "Dez",
+        "Today": "Heute",
+        "Clear": "L\u00f6schen",
+        "months": "Monate"
+    },
+    "global": {
+        "Verify Your Email Address": "Best\u00e4tigen Sie Ihre E-Mail Adresse",
+        "A fresh verification link has been sent to your email address.": "Ein neuer Verifikationslink wurde verschickt.",
+        "Before proceeding, please check your email for a verification link.": "Best\u00e4tigen Sie bitte zuerst Ihre E-Mail.",
+        "If you did not receive the email": "Wenn Sie keine E-Mail erhalten haben",
+        "click here to request another": "Klicken Sie hier, um eine Neue anzufordern.",
+        "Forgot Your Password?": "Passwort vergessen?",
+        "All rights reserved.": "Alle Rechte vorbehalten.",
+        "Forbidden": "Unzul\u00e4ssig",
+        "Go Home": "Nach Hause",
+        "Error": "Fehler",
+        "Hello!": "Hallo!",
+        "hi": "hallo",
+        "If you did not create an account, no further action is required.": "Wenn Sie keinen Account beantragt haben, ist keine weitere Handlung n\u00f6tig.",
+        "If you did not request a password reset, no further action is required.": "Wenn Sie keine Zur\u00fccksetzung des Passworts beantragt haben, ist keine weitere Handlung n\u00f6tig.",
+        "If you\u2019re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Wenn Sie Schwierigkeiten haben, den \":actionText\" Button zu dr\u00fccken, f\u00fcgen sie bitte folgende Adresse in Ihren Browser ein: [:actionURL](:actionURL)",
+        "Oh no": "Oh nein",
+        "Page Expired": "Seite abgelaufen",
+        "Page Not Found": "Seite konnte nicht gefunden werden",
+        "Please click the button below to verify your email address.": "Bitte klicken Sie den Button, um Ihre E-Mail Adresse zu best\u00e4tigen.",
+        "Regards": "Mit freundlichen Gr\u00fc\u00dfen",
+        "Reset Password Notification": "Passwort zur\u00fccksetzen Benachrichtung",
+        "Service Unavailable": "Service nicht verf\u00fcgbar",
+        "Sorry, the page you are looking for could not be found.": "Tut uns leid, die Seite konnte nicht gefunden werden.",
+        "Sorry, you are forbidden from accessing this page.": "Tut uns leid, Sie haben keine Rechte, diese Seite zu besuchen.",
+        "Sorry, you are making too many requests to our servers.": "Tut uns leid, Sie machen derzeit zu viele Anfragen an unseren Server.",
+        "Sorry, you are not authorized to access this page.": "Tut uns leid, Sie haben keine Rechte, diese Seite zu besuchen.",
+        "Sorry, your session has expired. Please refresh and try again.": "Tut uns leid, ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und probieren Sie es erneut.",
+        "Sorry, we are doing some maintenance. Please check back soon.": "Tut uns leid, wir arbeiten gerade an unserer Webseite. Bitte versuchen Sie es sp\u00e4ter erneut.",
+        "This password reset link will expire in :count minutes.": "Dieser Link zum zur\u00fccksetzen des Passworts l\u00e4uft in :count Minuten ab.",
+        "Too Many Requests": "Zu viele Anfragen",
+        "Unauthorized": "Nicht autorisiert",
+        "Verify Email Address": "E-Mail Adresse best\u00e4tigen",
+        "You are receiving this email because we received a password reset request for your account.": "Sie erhalten diese E-Mail, weil wir einen Antrag auf eine Zur\u00fccksetzung Ihres Passworts bekommen haben.",
+        "Whoops!": "Ups!",
+        "Whoops, something went wrong on our servers.": "Ups, etwas ist schief gelaufen."
+    },
+    "pagination": {
+        "Zur\u00fcck": "&laquo; Zur\u00fcck",
+        "Weiter": "Weiter &raquo;"
+    },
+    "passwords": {
+        "password": "Passw\u00f6rter m\u00fcssen mindestens 6 Zeichen lang sein und korrekt best\u00e4tigt werden.",
+        "reset": "Das Passwort wurde zur\u00fcckgesetzt!",
+        "sent": "Passwortwiederherstellung wurde gesendet!",
+        "token": "Der Passwort-Wiederherstellungs-Schl\u00fcssel ist ung\u00fcltig oder abgelaufen.",
+        "user": "Es konnte leider kein Nutzer mit dieser E-Mail-Adresse gefunden werden."
+    },
+    "tool": {
+        "distCalc": {
+            "startVillage": "Startdorf",
+            "targetVillage": "Zieldorf",
+            "days": "Tag(e)",
+            "title": "Laufzeitrechner"
+        },
+        "attackPlanner": {
+            "title": "Angriffsplaner",
+            "offensive": "Offensiv",
+            "attack": "Offensiv",
+            "conquest": "Eroberung",
+            "fake": "Fake",
+            "wallbreaker": "Wallbrecher",
+            "defensive": "Defensiv",
+            "support": "Unterst\u00fctzung",
+            "standSupport": "Stand Unterst\u00fctzung",
+            "fastSupport": "Schnelle Unterst\u00fctzung",
+            "fakeSupport": "Fake Unterst\u00fctzung",
+            "type_helper": "Typ des Angriffes",
+            "type": "Typ",
+            "startVillage": "Startdorf",
+            "startVillage_helper": "Koordinaten des Startdorfes",
+            "targetVillage": "Zieldorf",
+            "targetVillage_helper": "Koordinaten des Zieldorfes",
+            "date": "Datum",
+            "date_helper": "Ankunftstag des Angriffes",
+            "time": "Zeit",
+            "time_helper": "Ankunftszeit des Angriffes",
+            "unit_helper": "langsamste Einheit",
+            "attacker": "Angreifer",
+            "defender": "Verteidiger",
+            "sendTime": "Abschickzeit",
+            "arrivalTime": "Ankunftszeit",
+            "countdown": "Restzeit",
+            "links": "Links zum Teilen",
+            "importExport": "Import\/Export",
+            "statistics": "Statistik",
+            "editLink": "Editierungs Link",
+            "showLink": "Ansehen Link",
+            "editLink_helper": "Jeder, der diesen Link hat, kann den Angriffsplan editieren. Sei daher vorsichtig und gib den Link nur Leuten, denen du vertraust!",
+            "showLink_helper": "Mit diesem Link, kann der Angriffsplan angesehen werden, allerdings nicht editiert werden.",
+            "export": {
+                "BB": {
+                    "default": {
+                        "body": "[u][size=12][b]%TITLE%[\/b][\/size][\/u]\n\n[b]Angriffsplan[\/b]\nAnzahl der Angriffe: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Art[||]Einheit[||]Herkunft[||]Ziel[||]Abschickzeit[||]Versammlungsplatz[\/**]\n%ROW%\n[\/table]\n\n[size=8]Erstellt am %CREATE_AT% mit [url=%CREATE_WITHL%]%CREATE_WITH%[\/url][\/size]",
+                        "row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[\/*]"
+                    }
+                },
+                "IGM": {
+                    "default": {
+                        "row": "%TYPE% von [b]%ATTACKER%[\/b] aus %SOURCE% mit %UNIT% auf [b]%DEFENDER%[\/b]  in %TARGET% startet am [color=#ff0e0e]%SEND%[\/color] und kommt am [color=#2eb92e]%ARRIVE%[\/color] an (%PLACE%)",
+                        "body": "[b]%TITLE%[\/b]\n\n%ROW%\n\nErstellt am %CREATE_AT% mit [url=%CREATE_WITHL%]%CREATE_WITH%[\/url]"
+                    }
+                }
+            },
+            "import": "Import",
+            "export_helper": "Export f\u00fcr die Workbench",
+            "import_helper": "Importiere Angriffe aus deiner Workbench",
+            "attackTotal": "Angriffe Total",
+            "attackStart_village": "Angreifende D\u00f6rfer",
+            "attackTarget_village": "Ziel D\u00f6rfer",
+            "errorKoord": "Start- und Zieldorf d\u00fcrfen nicht gleich sein",
+            "exportWB": "Export DSWorkbench",
+            "exportWBDesc": "Export f\u00fcr DSWorkbench",
+            "exportBB": "Export Forum",
+            "exportBBDesc": "Export f\u00fcr das Forum als Tabelle und mit Bilder",
+            "exportIGM": "Export IGM",
+            "exportIGMDesc": "Export f\u00fcr eine Ingame-Nachricht. Da IGM's keine Tabellen und Bilder anzeigen k\u00f6nnen, wird reiner Text ausgegeben.",
+            "show": "Angriffsplan anzeigen",
+            "audioTiming": "Der Alarm startet %S% s vor ablauf des Timers.",
+            "destroySuccess": "Angriffsplan erfolgreich gel\u00f6scht",
+            "destroyError": "Der Angriffsplan konnte nicht gel\u00f6scht werden. Falls du dies f\u00fcr einen Fehler h\u00e4ltst, melde diesen bitte dem Team (entweder via Discord oder unten \u00fcber Fehler melden)",
+            "fastSwitch": "Eigene Angriffspl\u00e4ne",
+            "withoutTitle": "Dieser Angriffsplaner hat keinen Titel und wird daher immer standardm\u00e4\u00dfig beim Klick auf \"Angriffsplaner\" benutzt. Um damit einen neuen Angriffsplaner zu erstellen, muss ein Titel vergeben werden.",
+            "errorKoordTitle": "Dorf Koordinaten",
+            "errorUnitCount": "Anzahl ist zu gross",
+            "storeSuccessTitle": "Erfolgreich",
+            "storeSuccess": "Angriff wurde erfolgreich erstellt",
+            "storeErrorTitle": "Fehler",
+            "storeError": "Erstellung des Angriffes hat nicht funktioniert.",
+            "updateSuccessTitle": "Erfolgreich",
+            "updateSuccess": "Die Bearbeitung wurde erfolgreich ausgef\u00fchrt.",
+            "updateErrorTitle": "Fehler",
+            "updateError": "Die Bearbeitung konnte nicht ausgef\u00fchrt werden.",
+            "multieditSuccessTitle": "Massenbearbeitung",
+            "multieditSuccess": "Alle Angriffe wurden erfolgreich bearbeitet",
+            "attackCountTitle": "Angriff Auswahl",
+            "attackCount": "Es wurden keine Angriffe f\u00fcr die Bearbeitung ausgew\u00e4hlt",
+            "multiedit": "Massenbearbeitung",
+            "tips": "Tipps",
+            "warnSending": "Die Benutzung des Abschickknopfes geschieht auf eigene Gefahr. Sollten Probleme auftreten, wende dich bitte an das DS-Ultimate Team (entweder im Discord oder via Fehler melden)",
+            "deleteOutdated": "abgelaufene Angriffe l\u00f6schen",
+            "confirm": {
+                "clear": "Es werden ALLE Angriffe gel\u00f6scht",
+                "massDelete": "Die ausgew\u00e4hlten Angriffe werden gel\u00f6scht"
+            },
+            "deleteAll": "Angriffsplan leeren",
+            "errorKoordEmpty": "Start- und Zieldorf d\u00fcrfen nicht leer sein",
+            "uvModeDesc": "Die URLs werden passend f\u00fcr Urlaubsvertretungen generiert",
+            "uvMode": "UV-Modus",
+            "hints": {
+                "selectMultiple": {
+                    "title": "Mehrere Angriffe markieren",
+                    "desc": "Es k\u00f6nnen mehrere Angriffe markiert werden in dem man die <div class=\"badge badge-primary h3\">ctrl<\/div> [<div class=\"badge badge-primary\">\u2318<\/div>] und <div class=\"badge badge-primary\"><i class=\"fas fa-arrow-up\"><\/i><\/div>"
+                },
+                "workbenchImport": {
+                    "title": "Angriffe aus DS-Workbench importieren",
+                    "desc": "In der Befehls\u00fcbersicht alle Angriffe die man \u00fcbertragen m\u00f6chte markieren und kopieren mit <span class=\"truncate\"><div class=\"badge badge-primary\">ctrl<\/div> + <div class=\"badge badge-primary\">c<\/div><\/span> <span class=\"truncate\">[<div class=\"badge badge-primary\">\u2318<\/div> + <div class=\"badge badge-primary\">c<\/div>]<\/span>. Anschliesend beim Importfeld auf DS-Ultimate und die Angriffe einf\u00fcgen <span class=\"truncate\"><div class=\"badge badge-primary\">ctrl<\/div> + <div class=\"badge badge-primary\">v<\/div><\/span> <span class=\"truncate\">[<div class=\"badge badge-primary\">\u2318<\/div> + <div class=\"badge badge-primary\">v<\/div>]<\/span>."
+                }
+            },
+            "villageNotExistStart": "Das Herkunftsdorf existiert nicht",
+            "villageNotExistTarget": "Das Zieldorf existiert nicht",
+            "sendtimeToSoon": "Die Abschickzeit liegt vor 1970",
+            "sendtimeToLate": "Die Abschickzeit liegt zu weit in der Zukunft",
+            "arrivetimeToSoon": "Die Ankunftszeit liegt vor 1970",
+            "errorTitle": "Fehler",
+            "importWBSuccessTitle": "Daten von Workbench erfolgreich importiert",
+            "importWBSuccess": "Import erfolgreich",
+            "villageNotExist": "Das Dorf existiert nicht",
+            "arrivetimeToLate": "Die Ankunftszeit liegt zu weit in der Zukunft",
+            "wbImportWrongData": "Fehlerhafte Input Daten gefunden. Eventuell falsches Format?",
+            "type_tribe_boost": "Freundschaftsskill",
+            "type_support_boost": "Unterst\u00fctzungsboost",
+            "icons": {
+                "devCav": "Verteidigung gegen Kavalerie",
+                "devArcher": "Verteidigung gegen Bogensch\u00fctzen",
+                "wbAlly": "Verteidigung gegen Infanterie",
+                "moveOut": "Roter Pfeil nach rechts",
+                "moveIn": "Gr\u00fcner Pfeil nach Links",
+                "ballBlue": "Blauer Punkt",
+                "ballGreen": "Gr\u00fcner Punkt",
+                "ballYellow": "Gelber Punkt",
+                "ballRed": "Roter Punkt",
+                "ballGrey": "Grauer Punkt",
+                "wbWarning": "Achtung",
+                "wbDie": "W\u00fcrfel",
+                "wbAdd": "Hinzuf\u00fcgen",
+                "wbRemove": "rotes x",
+                "wbCheckbox": "Ausgew\u00e4hlte Checkbox",
+                "wbEye": "Auge",
+                "wbEyeForbidden": "Durchgestrichenes Auge"
+            },
+            "otherUnits": "Andere Einheiten",
+            "iconsTitle": "Icons",
+            "deleteSent": "abgeschickte Angriffe l\u00f6schen"
+        },
+        "map": {
+            "playerSelectPlaceholder": "Spieler w\u00e4hlen",
+            "allySelectPlaceholder": "Stamm w\u00e4hlen",
+            "title": "Weltkarte",
+            "edit": "Markierungen editieren",
+            "settings": "Generelle Einstellungen",
+            "links": "Links zum Teilen",
+            "editLink": "Editierungs Link",
+            "copy": "Kopieren",
+            "editLinkDesc": "Jeder der diesen Link hat, kann die Map editieren. Sei daher vorsichtig und gib den Link nur Leuten, denen du vertraust!",
+            "showLink": "Ansehen Link",
+            "showLinkDesc": "Mit diesem Link kann die Map angesehen werden, allerdings nicht editiert werden.",
+            "showPlayer": "Spielerd\u00f6rfer anzeigen",
+            "showBarbarian": "Barbarend\u00f6rfer anzeigen",
+            "defaultPlayer": "Standardfarbe f\u00fcr Spielerd\u00f6rfer (unmarkiert)",
+            "defaultBarbarian": "Standardfarbe f\u00fcr Barbarend\u00f6rfer (unmarkiert)",
+            "defaultBackground": "Hintergrundfarbe",
+            "zoom": "Zoomstufe",
+            "center": "Mittelpunkt der Karte",
+            "ally": "Stamm markieren",
+            "player": "Spieler Markieren",
+            "village": "Dorf Markieren",
+            "forumLink": "Forums Link",
+            "forumLinkDesc": "MIt diesen BB-Codes kannst du die Map in ein Forum einbinden",
+            "drawing": "Zeichnen",
+            "showAllText": "Alle Makierungen",
+            "deleteDrawing": "l\u00f6sche gezeichnetes",
+            "drawer": {
+                "general": {
+                    "addDrawer": "Neu Zeichenumgebung",
+                    "insertDrawer": "Zeichenumgebung einf\u00fcgen",
+                    "insert": "Einf\u00fcgen",
+                    "freeDrawing": "Freihandzeichnen",
+                    "simpleEraser": "einfacher wei\u00dfer Radiergummi",
+                    "eraser": "Radiergummi",
+                    "deleteCanvas": "L\u00f6sche die Zeichenumgebung",
+                    "deleteCanvasConfirm": "Willst du die Zeichenumgebung wirklich l\u00f6schen?"
+                },
+                "canvas": {
+                    "size": "gr\u00f6\u00dfe",
+                    "position": "Position",
+                    "inline": "in der Zeile",
+                    "left": "links",
+                    "center": "mittig",
+                    "right": "rechts",
+                    "floating": "flie\u00dfend",
+                    "canvasProp": "Canvas Einstellungen",
+                    "background": "Hintergrund",
+                    "transparent": "Transparent",
+                    "cancel": "Abbrechen",
+                    "save": "Speichern"
+                },
+                "fullscreen": {
+                    "enter": "Vollbildmodus aktivieren",
+                    "exit": "Vollbildmodus verlassen"
+                },
+                "shape": {
+                    "bringForward": "Eine Ebene nach vorne",
+                    "bringBackwards": "Eine Ebene nach hinten",
+                    "bringFront": "Ganz nach vorne",
+                    "bringBack": "Ganz nach hinten",
+                    "duplicate": "Verdoppeln",
+                    "remove": "L\u00f6schen"
+                },
+                "brush": {
+                    "size": "Gr\u00f6\u00dfe"
+                },
+                "color": {
+                    "fill": "F\u00fcllung:",
+                    "transparent": "Transparent"
+                },
+                "border": {
+                    "border": "Rahmen:",
+                    "none": "Keiner"
+                },
+                "arrow": {
+                    "drawSingle": "Zeichnen einen Pfeil",
+                    "drawTwo": "Zeichnen einen Doppelpfeil",
+                    "tooltip": "Linien und Pfeile"
+                },
+                "circle": {
+                    "tooltip": "Zeichne einen Kreis"
+                },
+                "line": {
+                    "tooltip": "Zeichne eine Linie"
+                },
+                "rect": {
+                    "tooltip": "Zeichne ein Rechteck"
+                },
+                "triangle": {
+                    "tooltip": "Zeichne ein Dreieck"
+                },
+                "polygon": {
+                    "tooltip": "Zeichne ein Polygon",
+                    "stop": "Zeichnen des Polygons beenden (esc)",
+                    "newLine": "Klicken um eine neue Linie anzufangen"
+                },
+                "text": {
+                    "tooltip": "Platziere einen Text",
+                    "newText": "Klicken um einen neuen Text zu Plazieren",
+                    "font": "Schriftart:"
+                },
+                "moveable": {
+                    "moveCanvas": "Zeichenumgebung bewegen"
+                },
+                "base": {
+                    "tooltip": "Klicken zum Zeichnen:"
+                }
+            },
+            "show": "Karte anzeigen",
+            "markerFactor": "Dorfabstand",
+            "showText": "Markieren",
+            "highlight": "Hervorheben",
+            "highlightAll": "Alle hervorheben",
+            "showContinentNumbers": "Zeige Kontinenten-Nummern",
+            "fastSwitch": "Eignene Weltkarten",
+            "destroySuccess": "Weltkarte erfolgreich gel\u00f6scht",
+            "destroyError": "Die Weltkarte konnte nicht gel\u00f6scht werden. Falls du dies f\u00fcr einen Fehler h\u00e4ltst, melde diesen bitte dem Team (entweder via Discord oder unten \u00fcber Fehler melden)",
+            "withoutTitle": "Diese Weltkarte hat keinen Titel und wird daher immer standardm\u00e4\u00dfig beim Klick auf \"Weltkarte\" benutzt. Um damit eine neue Weltkarte zu erstellen, muss ein Titel vergeben werden.",
+            "cached": "Diese Map, benutzt ein gespeichertes Bild, daher ist die automatische Speicherung deaktiviert. Bei Ver\u00e4nderungen an den Einstellungen wird die Map, von den aktuellen Daten, neu generiert. Der Titel kann ver\u00e4ndert werden, ohne dass sich die Map ver\u00e4ndert.",
+            "autoUpdate": "Automatisches aktualisieren",
+            "autoUpdateHelp": "Wenn aktiviert, werden immer die aktuellen Daten benutzt, um die Weltkarte zu generieren. Wenn deaktiviert, wird die Map einmal generiert und dann immer das gespeicherte Bild verwendet.",
+            "legend": "Legende",
+            "drawingErr": "Fehler in den Zeichnungen.\nBitte die Zeichenoberfl\u00e4che \u00f6ffnen und schlie\u00dfen.\nSollte der Fehler bestehen bleiben, bitte einen Bug-Report erstellen.",
+            "autoZoom": "Automatischer Zoom",
+            "resetDefault": "Reset"
+        },
+        "pointCalc": {
+            "title": "Punkterechner"
+        },
+        "tableGenerator": {
+            "playerByAlly": "Alle Spieler eines Stamms",
+            "villageByPlayer": "Alle D\u00f6rfer eines Spielers",
+            "villageByAlly": "Alle D\u00f6rfer eines Stamms",
+            "title": "Tabellen Generator",
+            "maxSing": "Das Forum akzeptiert max. 1000 das Zeichen \"[\".<br>Darum wurde die Ausgabe in mehrere Tabellen unterteilt",
+            "villageAndPlayerByAlly": "Alle D\u00f6rfer eines Stammes mit ihren Spielern"
+        },
+        "accMgrDB": {
+            "title_show": "Ausbauvorlage ansehen",
+            "title": "Ausbau-Vorlagen Datenbank",
+            "export": "Exportieren",
+            "remAddit": "\u00dcbersch\u00fcssige Geb\u00e4udestufen abrei\u00dfen",
+            "remChurch": "Kirche ignorieren",
+            "remFirstChurch": "Erste Kirche ignorieren",
+            "export_success": "Die Vorlage wurde in die Zwischenablage kopiert",
+            "title_edit": "Ausbauvorlage bearbeiten",
+            "save_success": "Vorlage erfolgreich gespeichert",
+            "import_label": "Import von DS",
+            "import": "Importieren",
+            "table": {
+                "name": "Name",
+                "rating": "Bewertung",
+                "type": "Weltentyp",
+                "creator": "Ersteller"
+            },
+            "err": {
+                "paylod_len": "Die Vorlage scheint unvollst\u00e4ndig. Falls du meinst, dass dies ein Fehler ist, wende dich bitte an das Team",
+                "unknown_building": "Die Vorlage enth\u00e4lt ein unbekanntes Geb\u00e4ude, bitte wende dich an das Team.",
+                "name_not_found": "Die Vorlage scheint unvollst\u00e4ndig. Falls du meinst, dass dies ein Fehler ist, wende dich bitte an das Team"
+            },
+            "name": "Name",
+            "public": "\u00d6ffentlich verf\u00fcgbar machen",
+            "remWT": "Wachturm ignorieren",
+            "name_def": "Vorlage",
+            "building": "Geb\u00e4ude",
+            "leaveMessage": "Die Vorlage wurde noch nicht gespeichert. Wirklich verlassen?",
+            "points": "Punkte",
+            "level": "Level",
+            "showLink": "Ansehen Link",
+            "copy": "Kopieren",
+            "showLinkDesc": "Mit diesem Link kann die Ausbauvorlage angesehen werden, allerdings nicht editiert.",
+            "save_error": "Die Vorlage konnte nicht gespeichert werden. Sind Geb\u00e4ude vorhanden?",
+            "filter": {
+                "watchtower": "Darf einen Wachturm enthalten",
+                "church": "Darf eine Kirche enthalten",
+                "statue": "Darf eine Statue enthalten"
+            },
+            "errors": {
+                "farmLow": "Bauernhof voll!",
+                "storageLow": "Der Speicher fasst nicht genug Rohstoffe!",
+                "aboveMaxLevel": "Geb\u00e4udelevel zu hoch!"
+            }
+        },
+        "animHistMap": {
+            "render": {
+                "finished": "Fertig",
+                "queue": "In der Warteschlange",
+                "mp4": "Erstelle MP4 Video",
+                "image": "Rendere Bild {numImage} von {totalImage}",
+                "zip": "Erstelle zip",
+                "gifAdd": "Erstelle Gif (Lade: {numImage} von {totalImage})",
+                "gifWrite": "Erstelle Gif (Schreibe: {numImage} von {totalImage})"
+            },
+            "title": "Animierte Weltkarte",
+            "edit": "Markierungen editieren",
+            "links": "Links zum Teilen",
+            "settings": "Generelle Einstellungen",
+            "legend": "Legende",
+            "fastSwitch": "Eigene animierte Weltkarten",
+            "withoutTitle": "Diese animierte Weltkarte hat keinen Titel und wird daher immer standardm\u00e4\u00dfig beim Klick auf \"animierte Weltkarte\" benutzt. Um damit eine neue animierte Weltkarte zu erstellen, muss ein Titel vergeben werden.",
+            "renderNow": "Jetzt erstellen!",
+            "rerun": "Nochmal erstellen",
+            "download": {
+                "mp4": "mp4 herunterladen",
+                "zip": "zip herunterladen",
+                "gif": "Gif herunterladen"
+            },
+            "editLink": "Editierungs Link",
+            "editLinkDesc": "Jeder der diesen Link hat, kann die animierte Karte editieren. Sei daher vorsichtig und gib den Link nur Leuten, denen du vertraust!",
+            "showLink": "Ansehen Link",
+            "showLinkDesc": "Mit diesem Link, kann die animierte Weltkarte angesehen werden, allerdings nicht editiert werden.",
+            "destroySuccess": "Animierte Weltkarte erfolgreich gel\u00f6scht",
+            "destroyError": "Die animierte Weltkarte konnte nicht gel\u00f6scht werden. Falls du dies f\u00fcr einen Fehler h\u00e4ltst, melde diesen bitte dem Team (entweder via Discord oder unten \u00fcber Fehler melden)",
+            "renderedDestroySuccess": "Animierte Weltkarte erfolgreich gel\u00f6scht",
+            "renderedDestroyError": "Die animierte Weltkarte konnte nicht gel\u00f6scht werden. Falls du dies f\u00fcr einen Fehler h\u00e4ltst, melde diesen bitte dem Team (entweder via Discord oder unten \u00fcber Fehler melden)",
+            "preview": "Vorschau"
+        },
+        "attackplaner": {
+            "notes": "Notizen"
+        },
+        "greatSiegeCalc": {
+            "title": "Belagerungsrechner"
+        }
+    },
+    "ui": {
+        "player": {
+            "deleted": "Gel\u00f6scht",
+            "barbarian": "Barbaren",
+            "discordNotification": {
+                "addFollow": "Discordbenachrichtigungen bei Adelungen"
+            }
+        },
+        "allyChanges": {
+            "all": "Stammeswechsel",
+            "old": "Stammesaustritte",
+            "new": "Stammesbeitritte"
+        },
+        "conquer": {
+            "lost": "Verluste",
+            "won": "Gewinne",
+            "playerOwn": "Eigene Adelungen",
+            "allyOwn": "Interne \/ Eigen-Adelungen",
+            "highlight": {
+                "all": "Alle",
+                "self": "Selbst",
+                "internal": "Intern",
+                "barbarian": "Barbarend\u00f6rfer",
+                "deleted": "L\u00f6schungen",
+                "win": "Gewinne",
+                "loose": "Verluste",
+                "total": "Gesamt"
+            }
+        },
+        "world": {},
+        "titel": {
+            "ally": "Stamm",
+            "player": "Spieler",
+            "search": "Suche",
+            "searchResults": "Suchergebnisse",
+            "village": "Dorf",
+            "overview": "\u00dcbersicht",
+            "searchLimited": "Es werden nur die ersten $limit Eintr\u00e4ge angezeigt, weil ihre Suche zu viele Ergebnisse lieferte",
+            "settings": "Einstellungen"
+        },
+        "tabletitel": {
+            "info": "Informationen",
+            "general": "Allgemein",
+            "bashStats": "Besiegte Gegner",
+            "player": "Spieler",
+            "villages": "D\u00f6rfer",
+            "top10": "Top 10",
+            "overview": "\u00dcbersicht",
+            "classicWorlds": "Classic Welten",
+            "speedWorlds": "Speed Runden",
+            "casualWorlds": "Casual Welten",
+            "history": "Ausbauverlauf",
+            "allys": "St\u00e4mme",
+            "allyRanking": "Stammes-Rangliste",
+            "playerHist": "Spieler Verlauf"
+        },
+        "table": {
+            "rank": "Rang",
+            "name": "Name",
+            "tag": "Tag",
+            "points": "Punkte",
+            "villages": "D\u00f6rfer",
+            "members": "Mitglieder",
+            "avgPlayer": "Punkte pro Spieler",
+            "avgVillage": "Punkte pro Dorf",
+            "conquer": "Eroberungen",
+            "allyChanges": "Stammeswechsel",
+            "bashGes": "Insgesamt",
+            "bashOff": "Angreifer",
+            "bashDeff": "Verteidiger",
+            "date": "Datum",
+            "playerName": "Spielername",
+            "old": "alter",
+            "new": "neuer",
+            "villageName": "Dorfname",
+            "owner": "Besitzer",
+            "bashStats": "Besiegte Gegner",
+            "bashPointsRatio": "K\/P-Rate",
+            "id": "ID",
+            "continent": "Kontinent",
+            "coordinates": "Koordinaten",
+            "bonusType": "Bonus",
+            "bashSup": "Unterst\u00fctzer",
+            "supDeff": "Unterst\u00fctzung",
+            "allyKillsPercent": "Kills\/Stamm",
+            "playerPointPercent": "Kills\/Punkte",
+            "time": "Zeit",
+            "possibleChanges": "Ausbaum\u00f6glichkeiten",
+            "bashAllS": "BG",
+            "bashAttS": "BGA",
+            "bashDefS": "BGD"
+        },
+        "server": {
+            "title": "Server"
+        },
+        "footer": {
+            "lastUpdate": "Letztes Update",
+            "loadTime": "Ladezeit",
+            "loadTimeUnit": "Sek."
+        },
+        "ally": {
+            "noAlly": "Stammeslos",
+            "deleted": "Gel\u00f6scht"
+        },
+        "news": {
+            "title": "Neuigkeiten"
+        },
+        "unit": {
+            "spear": "Speertr\u00e4ger",
+            "sword": "Schwertk\u00e4mpfer",
+            "axe": "Axtk\u00e4mpfer",
+            "archer": "Bogensch\u00fctze",
+            "spy": "Sp\u00e4her",
+            "light": "Leiche Kavallerie",
+            "marcher": "Berittener Bogensch\u00fctze",
+            "heavy": "Schwere Kavallerie",
+            "ram": "Rammbock",
+            "catapult": "Katapult",
+            "knight": "Paladin",
+            "snob": "Adelsgeschlecht"
+        },
+        "villageNotExist": "Dorf existiert nicht",
+        "nav": {
+            "stats": "Statistiken",
+            "map": "\u00dcbersichtskarte",
+            "toggle": "Umschalten",
+            "disabled": {
+                "missingConfig": "Dieses Feature ist bei der ausgew\u00e4hlten Welt nicht verf\u00fcgbar.",
+                "noWorld": "Um dieses Feature nutzen zu k\u00f6nnen, muss eine Welt ausgew\u00e4hlt werden"
+            },
+            "tops": "Bestwerte"
+        },
+        "ingame": {
+            "normal": "Ingame (Normal)",
+            "guest": "Ingame (Gastzugang)"
+        },
+        "old": {
+            "rank": "Alter Rang",
+            "points": "Alte Punkte",
+            "member_count": "Alte Mitglieder",
+            "village_count": "Alte D\u00f6rfer",
+            "player_points": "Alte Punkte pro Spieler",
+            "gesBash": "Alte Insgesamt",
+            "offBash": "Alte Angreifer",
+            "defBash": "Alte Verteidiger",
+            "village_points": "Alte Punkte pro Dorf",
+            "nodata": "Keine Daten vorhanden",
+            "supBash": "Alte Unterst\u00fctzer"
+        },
+        "own": {
+            "maps": "Eigene Karten",
+            "attackplanner": "Eigene Angriffspl\u00e4ne",
+            "animatedMap": "Eigene animierte Karten",
+            "renderedAnimatedMap": "Eigene fertige animierte Karten"
+        },
+        "noTitle": "Kein Titel",
+        "siteNotFound": "Seite nicht gefunden",
+        "notAllowed": "Unzul\u00e4ssig",
+        "notAllowedDesc": "Du darfst diese Seite nicht betreten.",
+        "personalSettings": {
+            "title": "Einstellungen",
+            "profile": "Profil",
+            "account": "Konto",
+            "connection": "Verbindung",
+            "birthday": "Geburtstag",
+            "skype": "Skype Name",
+            "discord": "Discord Name",
+            "connectionVerified": "Die Verbindung ist best\u00e4tigt.",
+            "saveSettingsSuccess": "Die \u00c4nderungen sind erfolgreich \u00fcbernommen worden",
+            "connectionDestroy": "Die Verbindung ist aufgel\u00f6st",
+            "connectionNiceTroll": "<img src=\"https:\/\/www.kotzendes-einhorn.de\/blog\/wp-content\/uploads\/2014\/02\/Troll-face.png\" height=\"200\" width=\"200\">",
+            "connectionTooEarly": "Warte auf die n\u00e4chste Aktualisierung der Welt.",
+            "connectionSuccess": "Die Verbindung ist erfolgreich best\u00e4tigt.",
+            "connectionError": "Die Verbindung konnte nicht best\u00e4tigt werden, bitte \u00fcberpr\u00fcfe ob der Dorfname richtig gesetzt ist",
+            "skypeShow": "Skype Name anzeigen",
+            "discordShow": "Discord Name anzeigen",
+            "uploadeImage": "Bild hochladen",
+            "deleteImage": "Bild l\u00f6schen",
+            "workInProgress": "Aktuell noch nicht m\u00f6glich",
+            "account_help": "Hier kannst du dich mit anderen Konten verbinden.\n<br>\nWenn du dich mit einem Konto verbunden hast, kannst du dich auch damit anmelden.\n<br>\nFalls du dich mit <b>Discord<\/b> verbindest, hast du die M\u00f6glichkeit, unseren Discord Bot zu benutzen.\n<br>\nEs werden weitere Funktionen auf der Seite folgen, in denen wir den Bot mit einbeziehen werden.",
+            "connection_help": "Hier kannst du dein St\u00e4mmekonto verifizieren.\n(Diese Verifizierung ist nur pro Welt m\u00f6glich) \n<br>\nUm das zu machen, musst du die Welt mit dem Spieler Namen angeben und der Liste hinzuf\u00fcgen.\n<br>\nSobald die Verbindung in der Liste ist, generiert DS-Ultimate eine zuf\u00e4llige Zeichenkette.\n<br>\nDiese Zeichenkette muss dann als Dorfname gesetzt werden.\n<br>\nEs wird nicht vorgegeben, welchem Dorf man den Namen geben muss, aber es muss zum dem hinzugef\u00fcgten Spieler geh\u00f6ren. Nach dem n\u00e4chsten Aktualisieren der Welt, kannst du die Verbindung best\u00e4tigen lassen.",
+            "noPassword": "Es muss ein Passwort gesetzt werden, bevor sie die Verbindung trennen.",
+            "map": "Welkartenvorlage"
+        },
+        "follow": {
+            "map": "Gefolgte Karten",
+            "attackplanner": "Gefolgte Angriffspl\u00e4ne"
+        },
+        "buildings": {
+            "main": "Hauptgeb\u00e4ude",
+            "stable": "Stall",
+            "garage": "Werkstatt",
+            "church": "Kirche",
+            "watchtower": "Wachturm",
+            "snob": "Adelshof",
+            "smith": "Schmiede",
+            "place": "Versammlungsplatz",
+            "statue": "Statue",
+            "market": "Markt",
+            "wood": "Holzf\u00e4ller",
+            "stone": "Lehmgrube",
+            "iron": "Eisenmine",
+            "farm": "Bauernhof",
+            "storage": "Speicher",
+            "hide": "Versteck",
+            "wall": "Wall",
+            "barracks": "Kaserne",
+            "church_f": "Erste Kirche",
+            "university": "Universit\u00e4t"
+        },
+        "signature": "Signatur",
+        "sorting": "Sortierung",
+        "columns": "Spalten",
+        "numberLines": "Zeilen nummerieren",
+        "showPoints": "Punkte anzeigen",
+        "additionalColumns": "Zus\u00e4tzliche Spalten",
+        "selection": "Auswahl",
+        "mistake": "Es gab einen Fehler.",
+        "showLessWorlds": "weniger Welten anzeigen",
+        "showPointDiff": "120er-Bereich anzeigen",
+        "index": {},
+        "tabeltitel": {
+            "allyBashRanking": "Interne Basherliste"
+        },
+        "village": {
+            "histUnknown": "Unbekannt",
+            "histPossibilities": "M\u00f6glichkeiten",
+            "bonus": {
+                "wood": ":amount Holz",
+                "clay": ":amount Lehm",
+                "iron": ":amount Eisen",
+                "population": ":amount Bev\u00f6lkerung",
+                "fastBarracks": ":amount schnellere Kaserne",
+                "fastStable": ":amount schnellerer Stall",
+                "fastWorkshop": ":amount schnellere Werkstatt",
+                "allResources": ":amount auf alle Rohstoffe",
+                "merchants": ":amount H\u00e4ndler & Speicher",
+                "greatSiege": ":amountDef Verteidigungsst\u00e4rke. :points Einflusspunkte t\u00e4glich."
+            }
+        },
+        "topAt": "am",
+        "otherWorldsPlayer": "Andere Welten dieses Spielers",
+        "otherWorldsPlayerPopup": {
+            "rank": "Max Rang",
+            "villages": "Max D\u00f6rfer",
+            "points": "Max Punkte",
+            "bashGes": "Max Bash"
+        },
+        "lightmode": "Lightmode",
+        "darkmode": "Darkmode",
+        "sigPreview": "Vorschau",
+        "errors": {
+            "404": {
+                "noServer": "Keine Daten \u00fcber den Server ':server' vorhanden.",
+                "noWorld": "Keine Daten \u00fcber die Welt ':world' vorhanden.",
+                "unknownType": "Unbekannter typ ':type'",
+                "allyNotFound": "Der Stamm mit der id ':ally' konnte auf Welt ':world' nicht gefunden werden",
+                "playerNotFound": "Der Spieler mit der id ':player' konnte auf Welt ':world' nicht gefunden werden",
+                "villageNotFound": "Das Dorf mit der id ':village' konnte auf Welt ':world' nicht gefunden werden",
+                "widthTooSmall": "Die Breite des Bildes ist zu klein",
+                "heightTooSmall": "Die H\u00f6he des Bildes ist zu klein",
+                "noRoundFound": "Aktuell l\u00e4uft auf der Welt ':world' keine Runde.",
+                "illegalHistoryIndex": "Der Index ':index' existiert nicht in den Vergangenheitsdaten",
+                "toolNotAvail": {
+                    "attackPlanner": "Der Angriffsplaner ist auf dieser Welt nicht verf\u00fcgbar.",
+                    "greatSiegeCalc": "Der Belagerungsrechner ist auf dieser Welt nicht verf\u00fcgbar",
+                    "animHistMap": "Die Animierten Weltkarten sind auf dieser Welt nicht verf\u00fcgbar",
+                    "pointCalc": "Der Punkterechner ist auf dieser Welt nicht verf\u00fcgbar",
+                    "distCalc": "Der Laufzeitrechner ist auf dieser Welt nicht verf\u00fcgbar."
+                }
+            },
+            "403": {
+                "loginRequired": "Um dieses Feature nutzen zu k\u00f6nnen musst du eingeloggt sein"
+            },
+            "422": {
+                "accMgrDB_illegalBuildingName": "Fehlerhafter Geb\u00e4udename: ':building'"
+            }
+        }
+    },
+    "user": {
+        "toogleNav": "Navigationsleite umschalten",
+        "login": "Login",
+        "register": "Registrieren",
+        "dashboard": "Dashboard",
+        "translations": "\u00dcbersetzungen",
+        "logout": "Logout",
+        "name": "Name",
+        "password": "Passwort",
+        "passwordConfirm": "Passwort best\u00e4tigen",
+        "remember": "Angemeldet bleiben",
+        "forgotPassword": "Passwort vergessen?",
+        "mailAddress": "E-Mail Addresse",
+        "passwordReset": "Passwort zur\u00fccksetzen",
+        "sendPasswordReset": "Link zum Zur\u00fccksetzen des Passworts senden",
+        "bugreport": {
+            "title": "Fehler melden",
+            "name": "Name",
+            "name_help": "Name oder Nickname.",
+            "email": "E-Mail",
+            "email_help": "Ihre E-Mailadresse f\u00fcr eventuelle R\u00fcckfragen",
+            "form_title": "Titel",
+            "form_title_help": "Bitte einen treffenden Titel w\u00e4hlen.",
+            "priority": "Priorit\u00e4t",
+            "prioritySelect": {
+                "low": "Schwach",
+                "normal": "Normal",
+                "high": "Hoch",
+                "critical": "Kritisch"
+            },
+            "priority_help": "Bitte w\u00e4hle eine treffende Einstufung.",
+            "description": "Beschreibung",
+            "description_help": "Je ausf\u00fchrlicher, umso besser.",
+            "url": "URL",
+            "url_help": "Falls es eine bestimmte Seite betrifft, k\u00f6nnen wir uns schneller darum k\u00fcmmern, wenn wir einen Link dazu bekommen.",
+            "successMessage": "Ihre Fehlermeldung wurde erfolgreich weitergeleitet."
+        },
+        "formular": "Formular",
+        "applog": "Anwendungslog",
+        "title": {
+            "overview": "\u00dcbersicht von"
+        },
+        "confirm": {
+            "destroy": {
+                "title": "Wirklich l\u00f6schen?",
+                "ok": "Ja",
+                "cancel": "Nein",
+                "mapContent": "Es wird nicht mehr m\u00f6glich sein, die Karte anzusehen oder zu bearbeiten",
+                "attackPlanContent": "Es wird nicht mehr m\u00f6glich sein, den Angriffsplan anzusehen oder zu bearbeiten",
+                "animatedMapContent": "Es wird nicht mehr m\u00f6glich sein, die animierte Karte anzusehen oder zu bearbeiten",
+                "renderedAnimatedMapContent": "Es wird nicht mehr m\u00f6glich sein, die fertig animierte Karte anzusehen. Alle Verlinkungen darauf werden gel\u00f6scht."
+            }
+        }
+    },
+    "validation": {
+        "accepted": ":attribute muss akzeptiert werden.",
+        "active_url": ":attribute ist keine g\u00fcltige Internetadresse.",
+        "after": ":attribute muss ein Datum nach dem :date sein.",
+        "after_or_equal": ":attribute muss ein Datum nach dem :date oder gleich dem :date sein.",
+        "alpha": ":attribute darf nur aus Buchstaben bestehen.",
+        "alpha_dash": ":attribute darf nur aus Buchstaben, Zahlen, Binde- und Unterstrichen bestehen.",
+        "alpha_num": ":attribute darf nur aus Buchstaben und Zahlen bestehen.",
+        "array": ":attribute muss ein Array sein.",
+        "before": ":attribute muss ein Datum vor dem :date sein.",
+        "before_or_equal": ":attribute muss ein Datum vor dem :date oder gleich dem :date sein.",
+        "between": {
+            "numeric": ":attribute muss zwischen :min & :max liegen.",
+            "file": ":attribute muss zwischen :min & :max Kilobytes gro\u00df sein.",
+            "string": ":attribute muss zwischen :min & :max Zeichen lang sein.",
+            "array": ":attribute muss zwischen :min & :max Elemente haben."
+        },
+        "boolean": ":attribute muss entweder 'true' oder 'false' sein.",
+        "confirmed": ":attribute stimmt nicht mit der Best\u00e4tigung \u00fcberein.",
+        "date": ":attribute muss ein g\u00fcltiges Datum sein.",
+        "date_equals": "The :attribute must be a date equal to :date.",
+        "date_format": ":attribute entspricht nicht dem g\u00fcltigen Format f\u00fcr :format.",
+        "different": ":attribute und :other m\u00fcssen sich unterscheiden.",
+        "digits": ":attribute muss :digits Stellen haben.",
+        "digits_between": ":attribute muss zwischen :min und :max Stellen haben.",
+        "dimensions": ":attribute hat ung\u00fcltige Bildabmessungen.",
+        "distinct": ":attribute beinhaltet einen bereits vorhandenen Wert.",
+        "email": ":attribute muss eine g\u00fcltige E-Mail-Adresse sein.",
+        "exists": "Der gew\u00e4hlte Wert f\u00fcr :attribute ist ung\u00fcltig.",
+        "file": ":attribute muss eine Datei sein.",
+        "filled": ":attribute muss ausgef\u00fcllt sein.",
+        "gt": {
+            "numeric": ":attribute muss mindestens :value sein.",
+            "file": ":attribute muss mindestens :value Kilobytes gro\u00df sein.",
+            "string": ":attribute muss mindestens :value Zeichen lang sein.",
+            "array": ":attribute muss mindestens :value Elemente haben."
+        },
+        "gte": {
+            "numeric": ":attribute muss gr\u00f6\u00dfer oder gleich :value sein.",
+            "file": ":attribute muss gr\u00f6\u00dfer oder gleich :value Kilobytes sein.",
+            "string": ":attribute muss gr\u00f6\u00dfer oder gleich :value Zeichen lang sein.",
+            "array": ":attribute muss gr\u00f6\u00dfer oder gleich :value Elemente haben."
+        },
+        "image": ":attribute muss ein Bild sein.",
+        "in": "Der gew\u00e4hlte Wert f\u00fcr :attribute ist ung\u00fcltig.",
+        "in_array": "Der gew\u00e4hlte Wert f\u00fcr :attribute kommt nicht in :other vor.",
+        "integer": ":attribute muss eine ganze Zahl sein.",
+        "ip": ":attribute muss eine g\u00fcltige IP-Adresse sein.",
+        "ipv4": ":attribute muss eine g\u00fcltige IPv4-Adresse sein.",
+        "ipv6": ":attribute muss eine g\u00fcltige IPv6-Adresse sein.",
+        "json": ":attribute muss ein g\u00fcltiger JSON-String sein.",
+        "lt": {
+            "numeric": ":attribute muss kleiner :value sein.",
+            "file": ":attribute muss kleiner :value Kilobytes gro\u00df sein.",
+            "string": ":attribute muss kleiner :value Zeichen lang sein.",
+            "array": ":attribute muss kleiner :value Elemente haben."
+        },
+        "lte": {
+            "numeric": ":attribute muss kleiner oder gleich :value sein.",
+            "file": ":attribute muss kleiner oder gleich :value Kilobytes sein.",
+            "string": ":attribute muss kleiner oder gleich :value Zeichen lang sein.",
+            "array": ":attribute muss kleiner oder gleich :value Elemente haben."
+        },
+        "max": {
+            "numeric": ":attribute darf maximal :max sein.",
+            "file": ":attribute darf maximal :max Kilobytes gro\u00df sein.",
+            "string": ":attribute darf maximal :max Zeichen haben.",
+            "array": ":attribute darf nicht mehr als :max Elemente haben."
+        },
+        "mimes": ":attribute muss den Dateityp :values haben.",
+        "mimetypes": ":attribute muss den Dateityp :values haben.",
+        "min": {
+            "numeric": ":attribute muss mindestens :min sein.",
+            "file": ":attribute muss mindestens :min Kilobytes gro\u00df sein.",
+            "string": ":attribute muss mindestens :min Zeichen lang sein.",
+            "array": ":attribute muss mindestens :min Elemente haben."
+        },
+        "not_in": "Der gew\u00e4hlte Wert f\u00fcr :attribute ist ung\u00fcltig.",
+        "not_regex": ":attribute hat ein ung\u00fcltiges Format.",
+        "numeric": ":attribute muss eine Zahl sein.",
+        "present": ":attribute muss vorhanden sein.",
+        "regex": ":attribute Format ist ung\u00fcltig.",
+        "required": ":attribute muss ausgef\u00fcllt sein.",
+        "required_if": ":attribute muss ausgef\u00fcllt sein, wenn :other :value ist.",
+        "required_unless": ":attribute muss ausgef\u00fcllt sein, wenn :other nicht :values ist.",
+        "required_with": ":attribute muss angegeben werden, wenn :values ausgef\u00fcllt wurde.",
+        "required_with_all": ":attribute muss angegeben werden, wenn :values ausgef\u00fcllt wurde.",
+        "required_without": ":attribute muss angegeben werden, wenn :values nicht ausgef\u00fcllt wurde.",
+        "required_without_all": ":attribute muss angegeben werden, wenn keines der Felder :values ausgef\u00fcllt wurde.",
+        "same": ":attribute und :other m\u00fcssen \u00fcbereinstimmen.",
+        "size": {
+            "numeric": ":attribute muss gleich :size sein.",
+            "file": ":attribute muss :size Kilobyte gro\u00df sein.",
+            "string": ":attribute muss :size Zeichen lang sein.",
+            "array": ":attribute muss genau :size Elemente haben."
+        },
+        "starts_with": "The :attribute must start with one of the following: :values",
+        "string": ":attribute muss ein String sein.",
+        "timezone": ":attribute muss eine g\u00fcltige Zeitzone sein.",
+        "unique": ":attribute ist schon vergeben.",
+        "uploaded": ":attribute konnte nicht hochgeladen werden.",
+        "url": ":attribute muss eine URL sein.",
+        "uuid": ":attribute muss ein UUID sein.",
+        "custom": {
+            "attribute-name": {
+                "rule-name": "custom-message"
+            }
+        },
+        "attributes": {
+            "name": "Name",
+            "username": "Benutzername",
+            "email": "E-Mail-Adresse",
+            "first_name": "Vorname",
+            "last_name": "Nachname",
+            "password": "Passwort",
+            "password_confirmation": "Passwort-Best\u00e4tigung",
+            "city": "Stadt",
+            "country": "Land",
+            "address": "Adresse",
+            "phone": "Telefonnummer",
+            "mobile": "Handynummer",
+            "age": "Alter",
+            "sex": "Geschlecht",
+            "gender": "Geschlecht",
+            "day": "Tag",
+            "month": "Monat",
+            "year": "Jahr",
+            "hour": "Stunde",
+            "minute": "Minute",
+            "second": "Sekunde",
+            "title": "Titel",
+            "content": "Inhalt",
+            "description": "Beschreibung",
+            "excerpt": "Auszug",
+            "date": "Datum",
+            "time": "Uhrzeit",
+            "available": "verf\u00fcgbar",
+            "size": "Gr\u00f6\u00dfe"
+        },
+        "recaptcha": "Bitte best\u00e4tigen",
+        "custom_captcha": "Das Captcha muss gel\u00f6st werden"
+    }
+}

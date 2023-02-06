@@ -1,0 +1,920 @@
+{
+    "admin": {
+        "applog": "Logfiles",
+        "bugreport": {
+            "comment": {
+                "create": "Vytvo\u0159 koment\u00e1\u0159",
+                "title": "Koment\u00e1\u0159e",
+                "update": "Editovat koment\u00e1\u0159"
+            },
+            "created_at": "Vytvo\u0159en\u00fd",
+            "filter": {
+                "all": "V\u0161echno",
+                "new": "Nov\u00fd"
+            },
+            "new": "Nov\u00e9 chybov\u00e9 ozn\u00e1men\u00ed",
+            "seen": "Zobrazeno",
+            "status": "Stav",
+            "statusSelect": {
+                "close": "Uzav\u0159eno",
+                "inprogress": "V procesu",
+                "open": "Otev\u0159eno",
+                "resolved": "Znovu otev\u0159eno"
+            },
+            "title": "Chybov\u00e9 ozn\u00e1men\u00ed"
+        },
+        "bugreports": {
+            "show": "Uk\u00e1zat chybov\u00e9 ozn\u00e1men\u00ed",
+            "update": "Editovat chybov\u00e9 ozn\u00e1men\u00ed"
+        },
+        "cacheStats": {
+            "hitrate": "Hitrate",
+            "hits": "Hits",
+            "maps": "Sv\u011btov\u00e1 mapa",
+            "num": "Mno\u017estv\u00ed",
+            "pictures": "Diagram",
+            "signatures": "Podpisy",
+            "size": "Velikost",
+            "title": "Cache statistika"
+        },
+        "changelogs": {
+            "buffer": "Script output",
+            "color": "Barva",
+            "content": "Text",
+            "create": "New changelog",
+            "created": "vytvo\u0159eno v",
+            "form_title": "N\u00e1zev",
+            "icon": "Ikona",
+            "id": "ID",
+            "show": "show changelog",
+            "title": "changelogs",
+            "update": "edit changelog",
+            "url": "Odkaz na Github",
+            "version": "Verze"
+        },
+        "dashboard": {
+            "attackplanner": "Pl\u00e1nova\u010d \u00fatok\u016f",
+            "attacks": "\u00datoky",
+            "bugreports": "New bugreport",
+            "connections": "Spojen\u00ed",
+            "maps": "Mapa",
+            "title": "Dashboard",
+            "users": "U\u017eivatel\u00e9"
+        },
+        "news": {
+            "content": "Obsah",
+            "create": "Nov\u00e1 zpr\u00e1va",
+            "id": "ID",
+            "show": "Uk\u00e1zat zpr\u00e1vu",
+            "title": "Zpr\u00e1vy",
+            "titleCreate": "Vytvo\u0159i zpr\u00e1vu",
+            "update": "Editovat zpr\u00e1vu",
+            "updated_at": "Posledn\u00ed zm\u011bna"
+        },
+        "roles": {
+            "create": "Nov\u00e1 role",
+            "form_title": "N\u00e1zev",
+            "permissions": "Opr\u00e1vn\u011bn\u00ed",
+            "show": "Uk\u00e1zat roli",
+            "title": "Role administr\u00e1tora",
+            "titleCreate": "Vytvo\u0159it roli",
+            "update": "Editovat roli"
+        },
+        "server": {
+            "active": "Aktualizace aktivn\u00ed",
+            "classic_active": "Klasick\u00fd sv\u011bt aktivn\u00ed",
+            "code": "K\u00f3d",
+            "create": "Vytvo\u0159 server",
+            "flag": "Vlajka",
+            "id": "ID",
+            "show": "Uka\u017e server",
+            "speed_active": "Speed server aktivn\u00ed",
+            "title": "Serverov\u00fd p\u0159ehled",
+            "titleCreate": "Vytvo\u0159 server",
+            "update": "Editovat server",
+            "url": "Aktualizuj URL"
+        },
+        "serverManagement": {
+            "title": "Aktualizuj nastaven\u00ed"
+        },
+        "speedWorlds": {
+            "active": "Aktivn\u00ed",
+            "create": "Vytvo\u0159it nov\u00fd speci\u00e1ln\u00ed sv\u011bt",
+            "display_name": "Zobrazen\u00e9 jm\u00e9no",
+            "flag": "Zem\u011b",
+            "id": "ID",
+            "instance": "Instance",
+            "name": "Jm\u00e9no",
+            "plannedEnd": "Pl\u00e1novan\u00fd konec",
+            "plannedStart": "Pl\u00e1novan\u00fd start",
+            "server": "Server",
+            "show": "Uk\u00e1zat speci\u00e1ln\u00ed sv\u011bt",
+            "started": "Aktivn\u00ed",
+            "title": "Rychlost sv\u011bta",
+            "titleCreate": "Vytvo\u0159it nov\u00fd speci\u00e1ln\u00ed sv\u011bt",
+            "update": "Editovat speci\u00e1ln\u00ed sv\u011bt",
+            "url": "URL"
+        },
+        "worlds": {
+            "village_count": "Vesnice",
+            "active": "Aktualizace aktivn\u00ed",
+            "ally_count": "Kmen",
+            "clean": "Posledn\u00ed \u010dist\u00e1",
+            "config": "Nastaven\u00ed sv\u011bta",
+            "create": "Ru\u010dn\u00ed vytvo\u0159en\u00ed nov\u00e9ho sv\u011bta",
+            "display_name": "Zobrazen\u00e9 jm\u00e9no",
+            "id": "ID",
+            "name": "N\u00e1zev",
+            "player_count": "Hr\u00e1\u010d",
+            "server": "Server",
+            "show": "Uk\u00e1zat sv\u011bt",
+            "title": "Sv\u011btov\u00fd p\u0159ehled",
+            "titleCreate": "Vytvo\u0159en\u00ed sv\u011bta",
+            "units": "Nastaven\u00ed jednotek",
+            "update": "Posledn\u00ed aktualizace",
+            "url": "Aktualizovat URL"
+        },
+        "userManagement": {
+            "title": "P\u0159\u00edstupov\u00e1 pr\u00e1va"
+        },
+        "users": {
+            "create": "Vytvo\u0159it u\u017eivatele",
+            "email": "E-Mail",
+            "email_verified_at": "Ov\u011b\u0159eno v",
+            "name": "U\u017eivatelsk\u00e9 jm\u00e9no",
+            "password": "Heslo",
+            "roles": "Role",
+            "show": "Uka\u017e u\u017eivatele",
+            "title": "U\u017eivatelsk\u00fd p\u0159ehled",
+            "titleCreate": "Vytvo\u0159it u\u017eivatele",
+            "update": "Editovat u\u017eivatele",
+            "verified": "E-mailov\u00e1 adresa je ov\u011b\u0159ena"
+        }
+    },
+    "auth": {
+        "failed": "Tyto \u00fadaje neodpov\u00eddaj\u00ed na\u0161im z\u00e1znam\u016fm.",
+        "throttle": "P\u0159\u00edli\u0161 mnoho pokus\u016f o p\u0159ihl\u00e1\u0161en\u00ed. Zkuste to pros\u00edm znovu za :seconds seconds."
+    },
+    "chart": {
+        "label": {
+            "defBash": "Body obr\u00e1nce",
+            "gesBash": "Celkem",
+            "offBash": "\u00dato\u010dn\u00e9 body",
+            "points": "Bod\u016f",
+            "rank": "Pozice",
+            "supBash": "Body podporovatele",
+            "village": "Vesnice"
+        },
+        "titel": {
+            "defBash": "Pora\u017een\u00fd protivn\u00edk jako obr\u00e1nce",
+            "gesBash": "Pora\u017een\u00fd protivn\u00edk celkem",
+            "offBash": "Pora\u017een\u00fd protivn\u00edk jako \u00fato\u010dn\u00edk",
+            "points": "Body",
+            "rank": "Um\u00edst\u011bn\u00ed",
+            "supBash": "Pora\u017een\u00fd protivn\u00edk jako podporovatel",
+            "village": "Vesnice"
+        },
+        "who": {
+            "ally": "Kmen",
+            "player": "Hr\u00e1\u010d",
+            "village": "Vesnice"
+        }
+    },
+    "datatable": {
+        "buttons_colvis": "Sloupec",
+        "buttons_copy": "Kop\u00edrovat",
+        "oAria_sSortAscending": ": aktivace \u0159azen\u00ed sloupce vzestupn\u011b",
+        "oAria_sSortDescending": ": aktivace se\u0159azen\u00ed sloupce sestupn\u011b",
+        "oPaginate_sFirst": "Prvn\u00ed",
+        "oPaginate_sLast": "Posledn\u00ed",
+        "oPaginate_sNext": "Dal\u0161\u00ed",
+        "oPaginate_sPrevious": "P\u0159edchoz\u00ed",
+        "sEmptyTable": "V tabulce nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje",
+        "sInfo": "Zobrazeno _START_ z _END_ z _TOTAL_ celkov\u00fdch z\u00e1znam\u016f",
+        "sInfoEmpty": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje",
+        "sInfoFiltered": "(filtrov\u00e1no z _MAX_ z\u00e1znam\u016f)",
+        "sLengthMenu": "_MENU_ Zobrazit polo\u017eky",
+        "sSearch": "Vyhled\u00e1v\u00e1n\u00ed",
+        "sZeroRecords": "\u017d\u00e1dn\u00e9 z\u00e1znamy nejsou k dispozici",
+        "select_rows_1": "Vybr\u00e1n 1 \u0159\u00e1dek",
+        "select_rows__": "%d vybran\u00fdch \u0159\u00e1dk\u016f",
+        "sInfoThousands": "."
+    },
+    "datepicker": {
+        "Apr": "Duben",
+        "April": "Duben",
+        "Aug": "Srpen",
+        "August": "Srpen",
+        "Clear": "Odstranit",
+        "Dec": "Prosinec",
+        "December": "Prosinec",
+        "Feb": "\u00danor",
+        "February": "\u00danor",
+        "Fr": "P\u00e1tek",
+        "Fri": "P\u00e1tek",
+        "Friday": "P\u00e1tek",
+        "Jan": "Leden",
+        "January": "Leden",
+        "Jul": "\u010cervenec",
+        "July": "\u010cervenec",
+        "Jun": "\u010cerven",
+        "June": "\u010cerven",
+        "Mar": "Kv\u011bten",
+        "March": "Kv\u011bten",
+        "May": "Kv\u011bten",
+        "Mo": "Pond\u011bl\u00ed",
+        "Mon": "Pond\u011bl\u00ed",
+        "Monday": "Pond\u011bl\u00ed",
+        "Nov": "Listopad",
+        "November": "Listopad",
+        "Oct": "\u0158\u00edjen",
+        "October": "\u0158\u00edjen",
+        "Sa": "Sobota",
+        "Sat": "Sobota",
+        "Saturday": "Ned\u011ble",
+        "Sep": "Z\u00e1\u0159\u00ed",
+        "September": "Z\u00e1\u0159\u00ed",
+        "months": "M\u011bs\u00edce",
+        "Wednesday": "St\u0159eda",
+        "Wed": "St\u0159eda",
+        "Tuesday": "St\u0159eda",
+        "Today": "Dnes",
+        "Thursday": "\u010ctvrtek",
+        "Thu": "\u010ctvrtek",
+        "Sun": "Ned\u011ble",
+        "Su": "Ned\u011ble",
+        "Sunday": "Ned\u011ble",
+        "Tue": "St\u0159eda"
+    },
+    "global": {
+        "A fresh verification link has been sent to your email address.": "Nov\u00fd ov\u011b\u0159ovac\u00ed odkaz byl odesl\u00e1n.",
+        "All rights reserved.": "V\u0161echna pr\u00e1va vyhrazena.",
+        "Before proceeding, please check your email for a verification link.": "Ne\u017e budete pokra\u010dovat, zkontrolujte, zda se ve va\u0161em e-mailu nenach\u00e1z\u00ed ov\u011b\u0159ovac\u00ed odkaz.",
+        "Error": "Chyba",
+        "Forbidden": "Zak\u00e1z\u00e1no",
+        "Forgot Your Password?": "Zapomenul jsi heslo?",
+        "Go Home": "Dom\u016f",
+        "Hello!": "Ahoj!",
+        "If you did not create an account, no further action is required.": "Pokud jste \u00fa\u010det nevytvo\u0159ili, nen\u00ed nutn\u00e1 \u017e\u00e1dn\u00e1 dal\u0161\u00ed akce.",
+        "If you did not receive the email": "Pokud jste neobdr\u017eeli \u017e\u00e1dn\u00fd email.",
+        "If you did not request a password reset, no further action is required.": "Pokud jste nepo\u017e\u00e1dali o resetov\u00e1n\u00ed hesla, nen\u00ed nutn\u00e1 \u017e\u00e1dn\u00e1 dal\u0161\u00ed akce.",
+        "If you\u2019re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Pokud m\u00e1te probl\u00e9m, klikn\u011bte na \":actionText\" tla\u010d\u00edtko, zkop\u00edrujte a vlo\u017ete URL n\u00ed\u017eedo va\u0161eho prohl\u00ed\u017ee\u010de: [:actionURL](:actionURL)",
+        "Oh no": "Oh, to ne!",
+        "Page Expired": "Str\u00e1nka vypr\u0161ela.",
+        "Page Not Found": "Str\u00e1nka nenalezena.",
+        "Please click the button below to verify your email address.": "Pros\u00edm, klikn\u011bte na tla\u010d\u00edtko n\u00ed\u017ee pro ov\u011b\u0159en\u00ed va\u0161\u00ed e-mailov\u00e9 adresy.",
+        "Regards": "S p\u0159\u00e1telsk\u00fdm pozdravem",
+        "Reset Password Notification": "Ozn\u00e1men\u00ed o obnoven\u00ed hesla.",
+        "Service Unavailable": "Slu\u017eba je nedostupn\u00e1.",
+        "Sorry, the page you are looking for could not be found.": "Omlouv\u00e1me se, ale hledanou str\u00e1nku se nepoda\u0159ilo naj\u00edt.",
+        "Sorry, we are doing some maintenance. Please check back soon.": "Omlouv\u00e1me se, prov\u00e1d\u00edme \u00fadr\u017ebu. Pros\u00edm p\u0159ij\u010fte pozd\u011bji.",
+        "Sorry, you are forbidden from accessing this page.": "Je n\u00e1m l\u00edto, ale p\u0159\u00edstup na tuto str\u00e1nku je zak\u00e1z\u00e1n.",
+        "Sorry, you are making too many requests to our servers.": "Omlouv\u00e1me se, ale na na\u0161e servery pos\u00edl\u00e1te p\u0159\u00edli\u0161 mnoho po\u017eadavk\u016f.",
+        "Sorry, you are not authorized to access this page.": "Omlouv\u00e1me se, ale nejste opr\u00e1vn\u011bni k p\u0159\u00edstupu na tuto str\u00e1nku.",
+        "Sorry, your session has expired. Please refresh and try again.": "Omlouv\u00e1me se, va\u0161e sezen\u00ed vypr\u0161elo. Obnovte str\u00e1nku a zkuste to znovu.",
+        "This password reset link will expire in :count minutes.": "Odkaz k resetov\u00e1n\u00ed hesla vypr\u0161\u00ed :count minutes.",
+        "Too Many Requests": "P\u0159\u00edli\u0161 mnoho po\u017eadavk\u016f!",
+        "Unauthorized": "Neopr\u00e1vn\u011bn\u00fd",
+        "Verify Email Address": "Ov\u011b\u0159 e-mailovou adresu",
+        "Verify Your Email Address": "Ov\u011b\u0159 tvou e-mailovou adresu",
+        "Whoops!": "Ajajaj!",
+        "Whoops, something went wrong on our servers.": "Sakra, n\u011bco se pokazilo na na\u0161ich serverech.",
+        "You are receiving this email because we received a password reset request for your account.": "Tento e-mail jste obdr\u017eeli, proto\u017ee jsme obdr\u017eeli \u017e\u00e1dost o resetov\u00e1n\u00ed hesla k va\u0161emu \u00fa\u010dtu.",
+        "click here to request another": "Klikn\u011bte zde a vy\u017e\u00e1dejte si dal\u0161\u00ed",
+        "hi": "Ahoj"
+    },
+    "pagination": {
+        "Weiter": "Dal\u0161\u00ed \u00bb",
+        "Zur\u00fcck": "\u00ab Zp\u011bt"
+    },
+    "passwords": {
+        "password": "Hesla mus\u00ed m\u00edt alespo\u0148 osm znak\u016f a b\u00fdt toto\u017en\u00e1.",
+        "reset": "Va\u0161e heslo bylo resetov\u00e1no!",
+        "sent": "Poslali jsme v\u00e1m e-mailem odkaz na obnoven\u00ed hesla!",
+        "token": "Odkaz k resetov\u00e1n\u00ed hesla je neplatn\u00fd.",
+        "user": "U\u017eivatele s touto e-mailovou adresou nem\u016f\u017eeme naj\u00edt."
+    },
+    "tool": {
+        "accMgrDB": {
+            "building": "Budova",
+            "copy": "Kop\u00edrovat",
+            "err": {
+                "name_not_found": "\u0160ablona se zd\u00e1 p\u0159\u00edli\u0161 kr\u00e1tk\u00e1. Pokud se V\u00e1m zd\u00e1, \u017ee je to chyba, kontaktujte v\u00fdvoj\u00e1\u0159e.",
+                "paylod_len": "\u0160ablona se zd\u00e1 p\u0159\u00edli\u0161 kr\u00e1tk\u00e1. Pokud se V\u00e1m zd\u00e1, \u017ee je to chyba, kontaktujte v\u00fdvoj\u00e1\u0159e.",
+                "unknown_building": "\u0160ablona obsahuje nezn\u00e1mou budovu. Kontaktujte pros\u00edm v\u00fdvoj\u00e1\u0159e."
+            },
+            "errors": {
+                "aboveMaxLevel": "P\u0159\u00edli\u0161 vysok\u00e1 \u00farove\u0148 budovy!",
+                "farmLow": "Selsk\u00fd dv\u016fr je pln\u00fd.",
+                "storageLow": "Sklad je p\u0159\u00edli\u0161 mal\u00fd."
+            },
+            "export": "Export",
+            "export_success": "\u0160ablona byla zkop\u00edrov\u00e1na do schr\u00e1nky.",
+            "filter": {
+                "church": "M\u016f\u017ee obsahovat kostel",
+                "statue": "M\u016f\u017ee obsahovat sochu",
+                "watchtower": "M\u016f\u017ee obsahovat str\u00e1\u017en\u00ed v\u011b\u017e"
+            },
+            "import": "Import",
+            "import_label": "Import from DS",
+            "leaveMessage": "\u0160ablona nebyla je\u0161t\u011b ulo\u017eena. Zru\u0161it?",
+            "level": "Level",
+            "name": "Name",
+            "name_def": "Template",
+            "points": "Body",
+            "public": "Zobrazit ve\u0159ejn\u011b",
+            "remAddit": "Odstran\u011bn\u00ed p\u0159ebyte\u010dn\u00fdch budov",
+            "remChurch": "Ignorovat kostel",
+            "remFirstChurch": "Ignorovat prvn\u00ed kostel",
+            "remWT": "Ignorovat str\u00e1\u017en\u00ed v\u011b\u017ee",
+            "save_error": "\u0160ablonu se nepoda\u0159ilo ulo\u017eit. Existuj\u00ed n\u011bjak\u00e9 budovy?",
+            "save_success": "\u0160ablona byla \u00fasp\u011b\u0161n\u011b ulo\u017eena",
+            "showLink": "Zobrazit odkaz",
+            "showLinkDesc": "Tento odkaz umo\u017e\u0148uje zobrazit p\u0159\u00edstup k \u0161ablon\u011b",
+            "table": {
+                "creator": "Tv\u016frce",
+                "name": "N\u00e1zev",
+                "rating": "Hodnocen\u00ed",
+                "type": "Typ sv\u011bta"
+            },
+            "title": "\u0160ablona stavby pro spr\u00e1vce \u00fa\u010dtu",
+            "title_edit": "Editovat \u0161ablonu",
+            "title_show": "Uk\u00e1zat \u0161ablonu"
+        },
+        "animHistMap": {
+            "destroyError": "Animovanou mapu nebylo mo\u017en\u00e9 odstranit. Pokud se domn\u00edv\u00e1te, \u017ee se jedn\u00e1 o chybu, kontaktujte pros\u00edm t\u00fdm (pomoc\u00ed Discordu nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed probl\u00e9mu v doln\u00ed \u010d\u00e1sti str\u00e1nky).",
+            "destroySuccess": "Animovan\u00e1 mapa \u00fasp\u011b\u0161n\u011b odstran\u011bna",
+            "download": {
+                "gif": "St\u00e1hnout gif",
+                "mp4": "St\u00e1hnout mp4",
+                "zip": "Download zip"
+            },
+            "edit": "Editovat ozna\u010den\u00ed",
+            "editLink": "Sd\u00edlet mo\u017enost editovat pl\u00e1nova\u010d",
+            "editLinkDesc": "Ka\u017ed\u00fd, kdo m\u00e1 tento odkaz, m\u016f\u017ee animovanou mapu upravovat. Bu\u010fte opatrn\u00ed!",
+            "fastSwitch": "Vlastn\u00ed animovan\u00e9 mapy",
+            "legend": "Legenda",
+            "links": "Odkaz ke sd\u00edlen\u00ed",
+            "preview": "N\u00e1hled",
+            "render": {
+                "finished": "Dokon\u010deno",
+                "gifAdd": "Creating gif (reading: {numImage} von {totalImage})",
+                "gifWrite": "Creating gif (writing: {numImage} von {totalImage})",
+                "image": "Rendering image {numImage} of {totalImage}",
+                "mp4": "Creating mp4",
+                "queue": "Ve front\u011b",
+                "zip": "Vytvo\u0159en\u00ed zipu"
+            },
+            "renderNow": "Vytvo\u0159te nyn\u00ed!",
+            "renderedDestroyError": "Vykreslenou animovanou mapu nebylo mo\u017en\u00e9 odstranit. Pokud se domn\u00edv\u00e1te, \u017ee se jedn\u00e1 o chybu, kontaktujte pros\u00edm t\u00fdm (pomoc\u00ed Discordu nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed probl\u00e9mu v doln\u00ed \u010d\u00e1sti str\u00e1nky).",
+            "renderedDestroySuccess": "Vykreslen\u00e1 animovan\u00e1 mapa byla \u00fasp\u011b\u0161n\u011b odstran\u011bna",
+            "rerun": "Vytvo\u0159it znovu",
+            "settings": "Nastaven\u00ed generov\u00e1n\u00ed",
+            "showLink": "Zobrazit odkaz",
+            "showLinkDesc": "Tento odkaz umo\u017e\u0148uje zobrazit p\u0159\u00edstup k animovan\u00e9 map\u011b.",
+            "title": "Vytvo\u0159it mapu sv\u011bta",
+            "withoutTitle": "Tato animovan\u00e1 mapa nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"animovan\u00e1 mapa sv\u011bta\". Chcete-li vytvo\u0159it novou animovanou mapu, mus\u00edte j\u00ed d\u00e1t n\u00e1zev."
+        },
+        "attackPlanner": {
+            "arrivalTime": "\u010cas dopadu",
+            "attack": "\u00datok",
+            "attackCount": "K \u00faprav\u011b nebyly vybr\u00e1ny \u017e\u00e1dn\u00e9 \u00fatoky",
+            "attackCountTitle": "V\u00fdb\u011br \u00fatoku",
+            "attackStart_village": "\u00dato\u010d\u00edc\u00ed vesnice",
+            "attackTarget_village": "C\u00edlov\u00e9 vesnice",
+            "attackTotal": "\u00datoky celkem",
+            "attacker": "\u00dato\u010dn\u00edk",
+            "audioTiming": "Alarm se spust\u00ed %S% p\u0159ed vypr\u0161en\u00edm \u010dasova\u010de.",
+            "confirm": {
+                "clear": "V\u0161echny \u00fatoky budou smaz\u00e1ny"
+            },
+            "conquest": "Dob\u00fdv\u00e1n\u00ed",
+            "countdown": "Odpo\u010d\u00edt\u00e1v\u00e1n\u00ed",
+            "date": "Datum",
+            "date_helper": "Den p\u0159\u00edchodu \u00fatoku",
+            "defender": "Obr\u00e1nce",
+            "defensive": "Obrana",
+            "deleteAll": "Smazat cel\u00fd pl\u00e1n",
+            "deleteOutdated": "Odebrat neaktu\u00e1ln\u00ed \u00fatoky",
+            "destroyError": "Pl\u00e1n \u00fatoku nebylo mo\u017en\u00e9 vymazat. Pokud se domn\u00edv\u00e1te, \u017ee se jedn\u00e1 o chybu, kontaktujte pros\u00edm t\u00fdm (pomoc\u00ed Discordu nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed probl\u00e9mu v doln\u00ed \u010d\u00e1sti str\u00e1nky).",
+            "destroySuccess": "\u00dato\u010dn\u00fd pl\u00e1n \u00fasp\u011b\u0161n\u011b odstran\u011bn",
+            "editLink": "Sd\u00edlet k editaci",
+            "editLink_helper": "Ka\u017ed\u00fd, kdo m\u00e1 tento odkaz, m\u016f\u017ee upravovat pl\u00e1nova\u010d \u00fatok\u016f. Bu\u010fte opatrn\u00ed!",
+            "errorKoord": "V\u00fdchoz\u00ed vesnice a c\u00edlov\u00e1 nesm\u00ed b\u00fdt stejn\u00e1",
+            "errorKoordEmpty": "V\u00fdchoz\u00ed vesnice a c\u00edlov\u00e1 nesm\u00ed b\u00fdt pr\u00e1zdn\u00e1",
+            "errorKoordTitle": "Sou\u0159adnice vesnice",
+            "errorUnitCount": "\u010c\u00edslo je p\u0159\u00edli\u0161 velk\u00e9",
+            "export": {
+                "BB": {
+                    "default": {
+                        "body": "[u][size=12][b]%TITLE%[\/b][\/size][\/u]\n\n[b]Pl\u00e1n \u00fatok\u016f:[\/b]\nPo\u010det \u00fatok\u016f: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[\/**]\n%ROW%\n[\/table]\n\n[size=8]Vytvo\u0159eno v %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[\/url][\/size]",
+                        "row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[\/*]"
+                    }
+                },
+                "IGM": {
+                    "default": {
+                        "body": "[b]%TITLE%[\/b]\n\n%ROW%\n\nCreated at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[\/url]",
+                        "row": "%TYPE% by [b]%ATTACKER%[\/b] from %SOURCE% with %UNIT% at [b]%DEFENDER%[\/b]  on %TARGET% starts on [color=#ff0e0e]%SEND%[\/color] and arrives on [color=#2eb92e]%ARRIVE%[\/color] (%PLACE%)"
+                    }
+                }
+            },
+            "exportBB": "Exportovat f\u00f3rum",
+            "exportBBDesc": "Export pro f\u00f3rum",
+            "exportIGM": "Export IGM",
+            "exportIGMDesc": "Export pro IGM bez obr\u00e1zk\u016f",
+            "exportWB": "Export DSWorkbench",
+            "exportWBDesc": "Export pro DSWorkbench",
+            "export_helper": "Export pro Workbench",
+            "fake": "Fake",
+            "fakeSupport": "Fake podpora",
+            "fastSupport": "Rychl\u00e1 podpora",
+            "fastSwitch": "Vlastn\u00ed pl\u00e1n \u00fatoku",
+            "import": "importovat",
+            "importExport": "Importovat\/Exportovat",
+            "import_helper": "Importovat \u00fatoky z Workbench",
+            "links": "Odkaz pro sd\u00edlen\u00ed",
+            "multiedit": "V\u00edcen\u00e1sobn\u00e1 \u00faprava",
+            "multieditSuccess": "V\u0161echny \u00fatoky byly \u00fasp\u011b\u0161n\u011b zpracov\u00e1ny",
+            "multieditSuccessTitle": "V\u00edcen\u00e1sobn\u00e1 \u00faprava",
+            "offensive": "\u00datok",
+            "sendTime": "\u010cas odesl\u00e1n\u00ed",
+            "show": "Zobrazit \u00fato\u010dn\u00fd pl\u00e1n",
+            "showLink": "Sd\u00edlet pl\u00e1n \u00fatoku",
+            "showLink_helper": "Pomoc\u00ed tohoto odkazu lze pl\u00e1n \u00fatoku zobrazit, ale nelze jej upravovat.",
+            "standSupport": "Dlouhodob\u00e1 podpora",
+            "startVillage": "Startovn\u00ed vesnice",
+            "startVillage_helper": "Sou\u0159adnice v\u00fdchoz\u00ed vesnice",
+            "statistics": "Statistika",
+            "storeError": "Vytvo\u0159en\u00ed \u00fatoku se nezda\u0159ilo.",
+            "storeErrorTitle": "Chyba",
+            "storeSuccess": "\u00datok byl \u00fasp\u011b\u0161n\u011b vytvo\u0159en",
+            "storeSuccessTitle": "\u00dasp\u011b\u0161n\u011b",
+            "support": "Podpora",
+            "targetVillage": "Cilov\u00e1 vesnice",
+            "targetVillage_helper": "Sou\u0159adnice c\u00edlov\u00e9 vesnice",
+            "time": "\u010cas",
+            "time_helper": "\u010cas p\u0159\u00edchodu \u00fatoku",
+            "tips": "Tipy",
+            "title": "Pl\u00e1nova\u010d \u00fatok\u016f",
+            "type": "Typ",
+            "type_helper": "Druh \u00fatoku",
+            "unit_helper": "Nejpomalej\u0161\u00ed jednotka",
+            "updateError": "\u00dapravy nebylo mo\u017en\u00e9 prov\u00e9st",
+            "updateErrorTitle": "Chyba",
+            "updateSuccess": "Zpracov\u00e1n\u00ed prob\u011bhlo \u00fasp\u011b\u0161n\u011b.",
+            "updateSuccessTitle": "\u00dasp\u011b\u0161n\u011b",
+            "uvMode": "Z\u00e1stup dovolen\u00e9",
+            "uvModeDesc": "Adresy URL jsou generov\u00e1ny vhodn\u011b pro nahrazen\u00ed dovolen\u00e9.",
+            "wallbreaker": "Bour\u00e1n\u00ed opevn\u011bn\u00ed",
+            "warnSending": "Tla\u010d\u00edtko odeslat pou\u017e\u00edv\u00e1te na vlastn\u00ed nebezpe\u010d\u00ed. Pokud naraz\u00edte na n\u011bjak\u00e9 probl\u00e9my, kontaktujte pros\u00edm t\u00fdm DS-Ultimate (bu\u010f na Discordu, nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed chyb).",
+            "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev.",
+            "villageNotExist": "Vesnice neexistuje"
+        },
+        "distCalc": {
+            "days": "Den\/dny",
+            "startVillage": "\u00dato\u010d\u00edc\u00ed vesnice",
+            "targetVillage": "C\u00edlov\u00e1 vesnice",
+            "title": "Kalkula\u010dka vzd\u00e1lenosti"
+        },
+        "map": {
+            "ally": "Ozna\u010dit kmen",
+            "allySelectPlaceholder": "Vybrat kmen",
+            "autoUpdate": "Automatick\u00e1 aktualizace",
+            "autoUpdateHelp": "Pokud je tato funkce aktivov\u00e1na, pou\u017eij\u00ed se pro generov\u00e1n\u00ed mapy sv\u011bta v\u017edy aktu\u00e1ln\u00ed data. Pokud je deaktivov\u00e1na, mapa se vygeneruje jednou a pot\u00e9 se v\u017edy pou\u017eije ulo\u017een\u00fd obr\u00e1zek.",
+            "autoZoom": "Automatick\u00fd zoom",
+            "cached": "Tato mapa pou\u017e\u00edv\u00e1 ulo\u017een\u00fd obr\u00e1zek, tak\u017ee automatick\u00e9 ukl\u00e1d\u00e1n\u00ed je vypnuto. Pokud se nastaven\u00ed zm\u011bn\u00ed, mapa se p\u0159egeneruje z aktu\u00e1ln\u00edch dat. N\u00e1zev lze zm\u011bnit beze zm\u011bny mapy.",
+            "center": "St\u0159ed mapy",
+            "copy": "Kop\u00edrovat",
+            "defaultBackground": "Barva pozad\u00ed",
+            "defaultBarbarian": "Standardn\u00ed barva pro barbarsk\u00e9 vesnice (bez ozna\u010den\u00ed)",
+            "defaultPlayer": "Standardn\u00ed barva pro vesnice hr\u00e1\u010d\u016f (bez ozna\u010den\u00ed)",
+            "deleteDrawing": "Odstranit nakreslen\u00e9",
+            "destroyError": "Mapu sv\u011bta nebylo mo\u017en\u00e9 odstranit. Pokud si mysl\u00edte, \u017ee se jedn\u00e1 o chybu, nahlaste ji pros\u00edm t\u00fdmu (bu\u010f p\u0159es Discord, nebo nahl\u00e1\u0161en\u00edm chyby n\u00ed\u017ee).",
+            "destroySuccess": "Mapa sv\u011bta byla \u00fasp\u011b\u0161n\u011b odstran\u011bna",
+            "drawer": {
+                "arrow": {
+                    "drawSingle": "Nakreslete \u0161ipku",
+                    "drawTwo": "Nakreslete dvojitou \u0161ipku",
+                    "tooltip": "\u010c\u00e1ry a \u0161ipky"
+                },
+                "base": {
+                    "tooltip": "Klikn\u011bte pro kreslen\u00ed:"
+                },
+                "border": {
+                    "border": "Ohrani\u010den\u00ed",
+                    "none": "\u017d\u00e1dn\u00e9"
+                },
+                "brush": {
+                    "size": "Velikost"
+                },
+                "canvas": {
+                    "background": "Pozad\u00ed",
+                    "cancel": "Zru\u0161it",
+                    "canvasProp": "Nastaven\u00ed pl\u00e1tna",
+                    "center": "Centrovat",
+                    "floating": "Floating",
+                    "inline": "V \u0159ad\u011b",
+                    "left": "Vlevo",
+                    "position": "Pozice",
+                    "right": "Vpravo",
+                    "save": "Ulo\u017eit",
+                    "size": "Velikost v (px)",
+                    "transparent": "Pr\u016fhledn\u00e9"
+                },
+                "circle": {
+                    "tooltip": "Nakreslete kruh"
+                },
+                "color": {
+                    "fill": "Vyplnit",
+                    "transparent": "Pr\u016fhledn\u00e9"
+                },
+                "fullscreen": {
+                    "enter": "Aktivace re\u017eimu cel\u00e9 obrazovky",
+                    "exit": "Ukon\u010den\u00ed re\u017eimu cel\u00e9 obrazovky"
+                },
+                "general": {
+                    "addDrawer": "Nov\u00e9 prost\u0159ed\u00ed pro kreslen\u00ed",
+                    "deleteCanvas": "Odstran\u011bn\u00ed prost\u0159ed\u00ed v\u00fdkresu",
+                    "deleteCanvasConfirm": "Opravdu chcete odstranit kreslic\u00ed prost\u0159ed\u00ed?",
+                    "eraser": "Guma",
+                    "freeDrawing": "Voln\u00fd kresl\u00edc\u00ed m\u00f3d",
+                    "insert": "Vlo\u017eit",
+                    "insertDrawer": "Vlo\u017eit kresbu",
+                    "simpleEraser": "B\u00edl\u00e1 guma"
+                },
+                "line": {
+                    "tooltip": "Nakreslete \u010d\u00e1ru"
+                },
+                "moveable": {
+                    "moveCanvas": "Move canvas"
+                },
+                "polygon": {
+                    "newLine": "Kliknut\u00edm zah\u00e1j\u00edte nov\u00fd \u0159\u00e1dek",
+                    "stop": "Dokon\u010den\u00ed kreslen\u00ed polygonu (esc)",
+                    "tooltip": "Nakreslete mnoho\u00faheln\u00edk"
+                },
+                "rect": {
+                    "tooltip": "Nakreslete obd\u00e9ln\u00edk"
+                },
+                "shape": {
+                    "bringBack": "Cel\u00e1 cesta zp\u011bt",
+                    "bringBackwards": "O jednu \u00farove\u0148 zp\u011bt",
+                    "bringForward": "O jednu \u00farove\u0148 vp\u0159ed",
+                    "bringFront": "A\u017e dop\u0159edu",
+                    "duplicate": "Duplikovat",
+                    "remove": "Odstranit"
+                },
+                "text": {
+                    "font": "P\u00edsmo",
+                    "newText": "Kliknut\u00edm um\u00edst\u00edte nov\u00fd text",
+                    "tooltip": "Um\u00edst\u011bn\u00ed textu"
+                },
+                "triangle": {
+                    "tooltip": "Nakreslete troj\u00faheln\u00edk"
+                }
+            },
+            "drawing": "Kreslen\u00ed",
+            "drawingErr": "Chyby ve v\u00fdkresech.\nOtev\u0159ete a zav\u0159ete rozhran\u00ed pro kreslen\u00ed.\nPokud chyba p\u0159etrv\u00e1v\u00e1, vytvo\u0159te hl\u00e1\u0161en\u00ed o chyb\u011b.",
+            "edit": "Upravit zna\u010dky",
+            "editLink": "Mo\u017enost editovat",
+            "editLinkDesc": "Ka\u017ed\u00fd, kdo m\u00e1 tento odkaz, m\u016f\u017ee mapu upravovat. Bu\u010fte proto opatrn\u00ed a odkaz poskytujte pouze lidem, kter\u00fdm d\u016fv\u011b\u0159ujete!",
+            "fastSwitch": "Vlastn\u00ed mapa",
+            "forumLink": "Odkaz na f\u00f3rum",
+            "forumLinkDesc": "Pomoc\u00ed t\u011bchto BB-k\u00f3d\u016f m\u016f\u017eete vlo\u017eit mapu do f\u00f3ra.",
+            "highlight": "Zv\u00fdrazn\u011bn\u00ed",
+            "highlightAll": "Zv\u00fdrazn\u011bte v\u0161echny",
+            "legend": "Legenda",
+            "links": "Sd\u00edlen\u00ed odkaz\u016f",
+            "markerFactor": "Vzd\u00e1lenost vesnice",
+            "player": "Ozna\u010dit hr\u00e1\u010de",
+            "playerSelectPlaceholder": "V\u00fdb\u011br hr\u00e1\u010de",
+            "resetDefault": "Resetovat",
+            "settings": "Obecn\u00e1 nastaven\u00ed",
+            "show": "Zobrazit mapu",
+            "showAllText": "V\u0161echna ozna\u010den\u00ed",
+            "showBarbarian": "Zobrazit barbarsk\u00e9 vesnice",
+            "showContinentNumbers": "Zobrazit \u010d\u00edsla kontinent\u016f",
+            "showLink": "Mo\u017enost pouze zobrazit",
+            "showLinkDesc": "Pomoc\u00ed tohoto odkazu lze mapu zobrazit, ale nelze ji upravovat.",
+            "showPlayer": "Zobrazit vesnice hr\u00e1\u010d\u016f",
+            "showText": "Ozna\u010dit",
+            "title": "Mapa sv\u011bta",
+            "village": "Ozna\u010den\u00ed vesnice",
+            "withoutTitle": "Tato mapa sv\u011bta nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto je v\u017edy pou\u017eita jako v\u00fdchoz\u00ed, kdy\u017e kliknete na \"Mapa sv\u011bta\". Chcete-li s n\u00ed vytvo\u0159it novou mapu sv\u011bta, je t\u0159eba j\u00ed p\u0159i\u0159adit n\u00e1zev.",
+            "zoom": "Zv\u011bt\u0161en\u00ed"
+        },
+        "pointCalc": {
+            "title": "Bodov\u00e1 kalkula\u010dka"
+        },
+        "tableGenerator": {
+            "maxSing": "F\u00f3rum akceptuje max. 1000 znak\u016f \"[\".<br>Proto byl v\u00fdstup rozd\u011blen do n\u011bkolika tabulek.",
+            "playerByAlly": "V\u0161ichni hr\u00e1\u010di kmene",
+            "title": "Gener\u00e1tor tabulky",
+            "villageAndPlayerByAlly": "V\u0161echny vesnice kmene a jejich hr\u00e1\u010di",
+            "villageByAlly": "V\u0161echny vesnice kmene",
+            "villageByPlayer": "V\u0161echny vesnice hr\u00e1\u010de"
+        }
+    },
+    "ui": {
+        "index": {},
+        "additionalColumns": "Dal\u0161\u00ed sloupec",
+        "ally": {
+            "deleted": "Odstran\u011bno",
+            "noAlly": "Bez kmenu"
+        },
+        "allyChanges": {
+            "all": "Zm\u011bna kmene",
+            "new": "Tribe accessions",
+            "old": "Tribe exits"
+        },
+        "buildings": {
+            "barracks": "Kas\u00e1rny",
+            "church": "Kostel",
+            "church_f": "Prvn\u00ed kostel",
+            "farm": "Selsk\u00e1 dv\u016fr",
+            "garage": "D\u00edlna",
+            "hide": "Skr\u00fd\u0161",
+            "iron": "\u017delezn\u00fd d\u016fl",
+            "main": "Hlavn\u00ed budova",
+            "market": "Tr\u017ei\u0161t\u011b",
+            "place": "N\u00e1dvo\u0159\u00ed",
+            "smith": "Kov\u00e1rna",
+            "snob": "Pansk\u00fd dv\u016fr",
+            "stable": "St\u00e1je",
+            "statue": "Socha",
+            "stone": "Lom na t\u011b\u017ebu hl\u00edny",
+            "storage": "Skladi\u0161t\u011b",
+            "university": "Univerzita",
+            "wall": "Opevn\u011bn\u00ed",
+            "watchtower": "Str\u00e1\u017en\u00ed v\u011b\u017e",
+            "wood": "D\u0159evorubec"
+        },
+        "columns": "Sloupce",
+        "conquer": {
+            "allyOwn": "Intern\u00ed \/ vlastn\u00ed dob\u00fdv\u00e1n\u00ed",
+            "highlight": {
+                "all": "V\u0161echno",
+                "barbarian": "Barbarsk\u00e1 vesnice",
+                "deleted": "Odstran\u011bn\u00ed",
+                "internal": "Intern\u00ed",
+                "loose": "Ztr\u00e1ty",
+                "self": "Vlastn\u00ed",
+                "win": "Z\u00edskan\u00e9"
+            },
+            "lost": "Ztr\u00e1ty",
+            "playerOwn": "Vlastn\u00ed dobyt\u00ed",
+            "won": "Dobyt\u00ed"
+        },
+        "darkmode": "Tmav\u00fd m\u00f3d",
+        "follow": {
+            "attackplanner": "Sleduje seznam \u00fatok\u016f",
+            "map": "Sledujte mapu"
+        },
+        "footer": {
+            "lastUpdate": "Posledn\u00ed aktualizace",
+            "loadTime": "Doba na\u010d\u00edt\u00e1n\u00ed",
+            "loadTimeUnit": "Sekunda"
+        },
+        "ingame": {
+            "guest": "Zobrazit v hostovac\u00edm re\u017eimu",
+            "normal": "Zobrazit ve h\u0159e"
+        },
+        "lightmode": "Sv\u011btl\u00fd m\u00f3d",
+        "mistake": "Do\u0161lo k chyb\u011b.",
+        "nav": {
+            "disabled": {
+                "missingConfig": "Tato funkce nen\u00ed pro vybran\u00fd sv\u011bt k dispozici.",
+                "noWorld": "Pro pou\u017eit\u00ed t\u00e9to funkce mus\u00ed b\u00fdt vybr\u00e1n sv\u011bt."
+            },
+            "map": "Mapa",
+            "stats": "Statistika",
+            "toggle": "P\u0159epnut\u00ed",
+            "tops": "Nejlep\u0161\u00ed hodnoty"
+        },
+        "news": {
+            "title": "Novinky"
+        },
+        "noTitle": "Bez n\u00e1zvu",
+        "notAllowed": "Nep\u0159\u00edpustn\u00e9",
+        "notAllowedDesc": "Nejste opr\u00e1vn\u011bni zobrazit tuto str\u00e1nku.",
+        "numberLines": "\u010c\u00edslov\u00e1n\u00ed \u0159\u00e1dk\u016f",
+        "old": {
+            "defBash": "Star\u00fd obr\u00e1nce",
+            "gesBash": "Star\u00fd celkem",
+            "member_count": "Star\u00fd \u010dlenov\u00e9",
+            "nodata": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje",
+            "offBash": "Star\u00fd \u00fato\u010dn\u00edci",
+            "player_points": "Star\u00e9 body na hr\u00e1\u010de",
+            "points": "Star\u00e9 body",
+            "rank": "Star\u00fd rank",
+            "supBash": "Star\u00fd podporovatel",
+            "village_count": "Star\u00fd vesnice",
+            "village_points": "Star\u00fd bod na hr\u00e1\u010de"
+        },
+        "otherWorldsPlayer": "Dal\u0161\u00ed sv\u011bty tohoto hr\u00e1\u010de",
+        "otherWorldsPlayerPopup": {
+            "bashGes": "Maxim\u00e1ln\u00ed \u00fato\u010dn\u00e9 body",
+            "points": "Maxim\u00e1ln\u00ed body",
+            "rank": "Maxim\u00e1ln\u00ed rank",
+            "villages": "Maximum vesnic"
+        },
+        "own": {
+            "animatedMap": "Vlastn\u00ed animovan\u00e9 mapy",
+            "attackplanner": "Vlastn\u00ed pl\u00e1ny \u00fatoku",
+            "maps": "Vlastn\u00ed mapa",
+            "renderedAnimatedMap": "Vlastn\u00ed hotov\u00e9 animovan\u00e9 mapy"
+        },
+        "personalSettings": {
+            "account": "\u00da\u010det",
+            "account_help": "Zde se m\u016f\u017eete p\u0159ipojit k dal\u0161\u00edm \u00fa\u010dt\u016fm.\n<br>\nWenn du dich mit einem Konto verbunden hast, kannst du dich auch damit anmelden.\n<br>\nPokud jste se p\u0159ipojili k \u00fa\u010dtu, m\u016f\u017eete se p\u0159ihl\u00e1sit tak\u00e9 pomoc\u00ed n\u011bj.\n<br>\nDal\u0161\u00ed funkce budou n\u00e1sledovat na webu, kde budeme zahrnovat bota.",
+            "birthday": "Narozeniny",
+            "connection": "Spojen\u00ed",
+            "connectionDestroy": "P\u0159ipojen\u00ed je p\u0159eru\u0161eno",
+            "connectionError": "P\u0159ipojen\u00ed se nepoda\u0159ilo potvrdit, zkontrolujte pros\u00edm, zda je n\u00e1zev obce nastaven spr\u00e1vn\u011b.",
+            "connectionNiceTroll": "<img src=\"https:\/\/www.kotzendes-einhorn.de\/blog\/wp-content\/uploads\/2014\/02\/Troll-face.png\" height=\"200\" width=\"200\">",
+            "connectionSuccess": "P\u0159ipojen\u00ed je \u00fasp\u011b\u0161n\u011b potvrzeno.",
+            "connectionTooEarly": "Po\u010dkejte na dal\u0161\u00ed aktualizaci sv\u011bta.",
+            "connectionVerified": "Spojen\u00ed je potvrzeno.",
+            "connection_help": "Zde m\u016f\u017eete ov\u011b\u0159it sv\u016fj kmenov\u00fd \u00fa\u010det.\n(Toto ov\u011b\u0159en\u00ed je mo\u017en\u00e9 pouze pro jeden sv\u011bt) \n<br>\nK tomu je t\u0159eba zadat sv\u011bt se jm\u00e9nem hr\u00e1\u010de a p\u0159idat jej do seznamu.\n<br>\nJakmile je p\u0159ipojen\u00ed v seznamu, slu\u017eba DS-Ultimate vygeneruje n\u00e1hodn\u00fd \u0159et\u011bzec.\n<br>\nTento \u0159et\u011bzec pak mus\u00ed b\u00fdt nastaven jako n\u00e1zev obce.\n<br>\nNen\u00ed ur\u010deno, kter\u00e9 vesnici m\u00e1te d\u00e1t jm\u00e9no, ale mus\u00ed pat\u0159it p\u0159idan\u00e9mu hr\u00e1\u010di. Po dal\u0161\u00edm obnoven\u00ed sv\u011bta m\u016f\u017eete p\u0159ipojen\u00ed potvrdit.",
+            "deleteImage": "Odstranit obr\u00e1zek",
+            "discord": "Discord jm\u00e9no",
+            "discordShow": "Zobrazit Discord jm\u00e9no",
+            "map": "\u0160ablona mapy",
+            "noPassword": "P\u0159ed odpojen\u00edm je nutn\u00e9 nastavit heslo.",
+            "profile": "Profil",
+            "saveSettingsSuccess": "Zm\u011bny byly \u00fasp\u011b\u0161n\u011b p\u0159ijaty",
+            "skype": "Skype jm\u00e9no",
+            "skypeShow": "Uk\u00e1zat Skype jm\u00e9no",
+            "title": "Nastaven\u00ed",
+            "uploadeImage": "Nahr\u00e1t obr\u00e1zek",
+            "workInProgress": "V sou\u010dasn\u00e9 dob\u011b je\u0161t\u011b nen\u00ed mo\u017en\u00e9"
+        },
+        "player": {
+            "barbarian": "Barbarsk\u00e1 vesnice",
+            "deleted": "Odstran\u011bno",
+            "discordNotification": {
+                "addFollow": "Discord notifikace po dobyt\u00ed"
+            }
+        },
+        "selection": "V\u00fdb\u011br",
+        "server": {
+            "title": "Server"
+        },
+        "showLessWorlds": "Zobrazit m\u00e9n\u011b sv\u011bt\u016f",
+        "showPointDiff": "Zobrazit rozsah 120 %",
+        "showPoints": "Uk\u00e1zat body",
+        "sigPreview": "N\u00e1hled",
+        "signature": "Podpis",
+        "siteNotFound": "Str\u00e1nka nebyla nalezena",
+        "sorting": "T\u0159\u00edd\u011bn\u00ed",
+        "tabeltitel": {
+            "allyBashRanking": "Intern\u00ed seznam \u00fato\u010dn\u00fdch bod\u016f"
+        },
+        "table": {
+            "allyChanges": "Kmenov\u00e9 zm\u011bny",
+            "allyKillsPercent": "\u00dato\u010dn\u00e9 body kmene",
+            "avgPlayer": "Body na hr\u00e1\u010de",
+            "avgVillage": "Body na vesnici",
+            "bashAllS": "Obrann\u00e9 body",
+            "bashAttS": "\u00dato\u010dn\u00e9 body",
+            "bashDefS": "Body celkem",
+            "bashDeff": "Obr\u00e1nce",
+            "bashGes": "Celkem",
+            "bashOff": "\u00dato\u010dn\u00edk",
+            "bashPointsRatio": "K\/P-Rate",
+            "bashStats": "Pora\u017een\u00fd protivn\u00edk",
+            "bashSup": "Podporovatel",
+            "bonusType": "Bonus",
+            "conquer": "Dobyt\u00ed",
+            "continent": "Kontinent",
+            "coordinates": "Sou\u0159adnice",
+            "date": "Datum",
+            "id": "ID",
+            "members": "\u010clenov\u00e9",
+            "name": "N\u00e1zev",
+            "new": "Nov\u00fd",
+            "old": "Star\u00fd",
+            "owner": "Vlastn\u00edk",
+            "playerName": "Jm\u00e9no hr\u00e1\u010de",
+            "playerPointPercent": "Kills\/Points",
+            "points": "Body",
+            "possibleChanges": "Mo\u017en\u00e9 budovy",
+            "rank": "Pozice",
+            "supDeff": "Podpora",
+            "tag": "Tag",
+            "time": "\u010cas",
+            "villageName": "N\u00e1zev vesnice",
+            "villages": "Vesnice"
+        },
+        "tabletitel": {
+            "allyRanking": "Kmenov\u00e9 um\u00edst\u011bn\u00ed",
+            "allys": "Kmen",
+            "bashStats": "Pora\u017een\u00fd protivn\u00edk",
+            "casualWorlds": "Casual sv\u011bt",
+            "classicWorlds": "Classic sv\u011bt",
+            "general": "Obecn\u00e9",
+            "history": "Historie stavby",
+            "info": "Informace",
+            "overview": "P\u0159ehled",
+            "player": "Hr\u00e1\u010d",
+            "playerHist": "Historie hr\u00e1\u010de",
+            "speedWorlds": "Speed kolo",
+            "top10": "Top 10",
+            "villages": "Vesnice"
+        },
+        "titel": {
+            "ally": "Kmen",
+            "overview": "P\u0159ehled",
+            "player": "Hr\u00e1\u010d",
+            "search": "Vyhledat",
+            "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
+            "searchResults": "V\u00fdsledky hled\u00e1n\u00ed",
+            "settings": "Nastaven\u00ed",
+            "village": "Vesnice"
+        },
+        "topAt": "v",
+        "unit": {
+            "archer": "Lu\u010di\u0161tn\u00edk",
+            "axe": "Sekern\u00edk",
+            "catapult": "Katapult",
+            "heavy": "T\u011b\u017ek\u00e1 kavalerie",
+            "knight": "Paladin",
+            "light": "Lehk\u00e1 kaval\u00e9rie",
+            "marcher": "Lu\u010di\u0161tn\u00edk na koni",
+            "ram": "Beranidlo",
+            "snob": "\u0160lechtic",
+            "spear": "Kopin\u00edk",
+            "spy": "\u0160peh",
+            "sword": "\u0160erm\u00ed\u0159"
+        },
+        "village": {
+            "histPossibilities": "Mo\u017enosti",
+            "histUnknown": "Nezn\u00e1m\u00e9"
+        },
+        "villageNotExist": "Vesnice neexistuje",
+        "world": {},
+        "errors": {
+            "404": {
+                "toolNotAvail": {
+                    "attackPlanner": "Pl\u00e1nova\u010d \u00fatoku nen\u00ed pro tento sv\u011bt k dispozici.",
+                    "distCalc": "Kalkula\u010dka vzd\u00e1lenosti nen\u00ed pro tento sv\u011bt k dispozici.",
+                    "pointCalc": "Kalkula\u010dka sk\u00f3re nen\u00ed v tomto sv\u011bt\u011b k dispozici."
+                }
+            }
+        }
+    },
+    "user": {
+        "applog": "Protokol aplikace",
+        "bugreport": {
+            "description": "Popis",
+            "description_help": "\u010c\u00edm podrobn\u011bj\u0161\u00ed, t\u00edm lep\u0161\u00ed.",
+            "email": "E-Mail",
+            "email_help": "Va\u0161e e-mailov\u00e1 adresa pro p\u0159\u00edpadn\u00e9 dotazy",
+            "form_title": "N\u00e1zev",
+            "form_title_help": "Zvolte pros\u00edm vhodn\u00fd n\u00e1zev.",
+            "name": "Jm\u00e9no",
+            "name_help": "Va\u0161e jm\u00e9no nebo p\u0159ezd\u00edvka",
+            "priority": "Priorita",
+            "prioritySelect": {
+                "critical": "Kritick\u00e1",
+                "high": "Vysok\u00e1",
+                "low": "N\u00edzk\u00e1",
+                "normal": "Norm\u00e1ln\u00ed"
+            },
+            "priority_help": "Zvolte pros\u00edm vhodnou klasifikaci.",
+            "successMessage": "Va\u0161e chybov\u00e1 zpr\u00e1va byla \u00fasp\u011b\u0161n\u011b odesl\u00e1na.",
+            "title": "Nahl\u00e1sit chybu",
+            "url": "URL",
+            "url_help": "Pokud se t\u00fdk\u00e1 konkr\u00e9tn\u00ed str\u00e1nky, m\u016f\u017eeme se j\u00ed zab\u00fdvat rychleji, pokud na ni dostaneme odkaz."
+        },
+        "confirm": {
+            "destroy": {
+                "animatedMapContent": "Animovanou mapu ji\u017e nebude mo\u017en\u00e9 zobrazit ani upravit.",
+                "attackPlanContent": "Pl\u00e1n \u00fatoku ji\u017e nebude mo\u017en\u00e9 zobrazit ani upravit.",
+                "cancel": "Ne",
+                "mapContent": "Mapu ji\u017e nebude mo\u017en\u00e9 zobrazit ani upravit.",
+                "ok": "Ano",
+                "renderedAnimatedMapContent": "Hotovou animovanou mapu ji\u017e nebude mo\u017en\u00e9 zobrazit. V\u0161echny odkazy na n\u011bj budou smaz\u00e1ny.",
+                "title": "Opravdu odstranit?"
+            }
+        },
+        "dashboard": "Dashboard",
+        "forgotPassword": "Zapomenul jsi heslo?",
+        "formular": "Formul\u00e1\u0159",
+        "login": "P\u0159ihl\u00e1\u0161en\u00ed",
+        "logout": "Odhl\u00e1\u0161en\u00ed",
+        "mailAddress": "E-mailov\u00e1 adresa",
+        "name": "N\u00e1zev",
+        "password": "Heslo",
+        "passwordConfirm": "Potvrzen\u00ed hesla",
+        "passwordReset": "Zapomenut\u00e9 heslo",
+        "register": "Registrovat",
+        "remember": "Z\u016fstat p\u0159ihl\u00e1\u0161en\u00fd.",
+        "sendPasswordReset": "Odeslat odkaz pro obnoven\u00ed hesla",
+        "title": {
+            "overview": "P\u0159ehled"
+        },
+        "translations": "P\u0159eklad",
+        "toogleNav": "P\u0159ep\u00edn\u00e1n\u00ed navigace"
+    }
+}

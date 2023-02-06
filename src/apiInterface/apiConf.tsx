@@ -1,6 +1,6 @@
 import {Dict} from "../util/customTypes";
 
-const BASE_PATH = <censored>
+const BASE_PATH: string = process.env.REACT_APP_API_URL as string
 
 const apiRequestGenerator = (uri: string) => {
   return (params: Dict<string>) => {
@@ -12,7 +12,8 @@ const apiRequestGenerator = (uri: string) => {
   }
 }
 
-const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
 const indexPage = apiRequestGenerator("indexPage")
+const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
+const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
 
-export {serverGetWorlds, indexPage}
+export {indexPage, serverGetWorlds, worldOverview}
