@@ -1,4 +1,6 @@
+import "server-only"
 import Link from "next/link";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function Home() {
   return (
@@ -10,4 +12,14 @@ export default function Home() {
         <Link href={'/de/210'}>DE 210</Link><br />
       </h1>
   )
+}
+
+export async function getServerSideProps({locale}: {locale: string}) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', [
+        'ui',
+      ])),
+    },
+  }
 }
