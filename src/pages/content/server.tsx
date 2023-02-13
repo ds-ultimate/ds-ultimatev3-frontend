@@ -52,17 +52,17 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
         <tbody>
         {data.map(w => {
           return (
-              <tr key={w.server + w.name}>
+              <tr key={w.server__code + w.name}>
                 <td>
                   {server && <span className={"flag-icon flag-icon-" + server.flag}></span>}
-                  <Link to={formatRoute(WORLD, {server: w.server, world: w.name})}><WorldDisplayName world={w} /></Link>
-                  <small>({w.server + w.name})</small>
+                  <Link to={formatRoute(WORLD, {server: w.server__code, world: w.name})}><WorldDisplayName world={w} /></Link>
+                  <small>({w.server__code + w.name})</small>
                   <WorldState world={w} />
                 </td>
-                <td><Link to={formatRoute(WORLD_PLAYER_CUR, {server: w.server, world: w.name})}>
+                <td><Link to={formatRoute(WORLD_PLAYER_CUR, {server: w.server__code, world: w.name})}>
                   <FormatNumber n={w.player_count} />
                 </Link></td>
-                <td><Link to={formatRoute(WORLD_ALLY_CUR, {server: w.server, world: w.name})}>
+                <td><Link to={formatRoute(WORLD_ALLY_CUR, {server: w.server__code, world: w.name})}>
                   <FormatNumber n={w.ally_count} />
                 </Link></td>
                 <td><FormatNumber n={w.village_count} /></td>

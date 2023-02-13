@@ -24,12 +24,27 @@
   "showMoreWorlds": "",
   "table": {
     "ally": "",
+    "avgVillage": "",
+    "bashDef": "",
+    "bashGes": "",
+    "bashOff": "",
+    "bashSup": "",
+    "members": "",
+    "name": "",
     "player": "",
+    "points": "",
+    "rank": "",
+    "tag": "",
     "village": "",
+    "villages": "",
     "world": ""
   },
   "table-title": {
+    "bashStats": "",
+    "general": "",
     "normalWorlds": "",
+    "overview": "",
+    "player": "",
     "specialWorlds": ""
   },
   "title": {

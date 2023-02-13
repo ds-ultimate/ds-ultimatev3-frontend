@@ -103,7 +103,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
     let basePath = WORLD
     const serverWorldsNav = serverWorlds.map(w => {
       return (
-          <DropdownItem key={"serverWorldsNav_" + w.server + w.name} to={formatRoute(basePath, {server: w.server, world: w.name})}>
+          <DropdownItem key={"serverWorldsNav_" + w.server__code + w.name} to={formatRoute(basePath, {server: w.server__code, world: w.name})}>
             <WorldDisplayName world={w} />
           </DropdownItem>
       )

@@ -7,6 +7,7 @@ $replacements = [
     "ui.table-title" => "ui.tabletitel",
     "ui.title" => "ui.titel",
     "ui.world.world" => "ui.world.normal",
+    "ui.table.bashDef" => "ui.table.bashDeff",
 ];
 $allow_errors = false;
 

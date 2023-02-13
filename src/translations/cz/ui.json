@@ -24,12 +24,27 @@
   "showMoreWorlds": "Zobrazit více světů",
   "table": {
     "ally": "Kmen",
+    "avgVillage": "Body na vesnici",
+    "bashDef": "Obránce",
+    "bashGes": "Celkem",
+    "bashOff": "Útočník",
+    "bashSup": "Podporovatel",
+    "members": "Členové",
+    "name": "Název",
     "player": "Hráč",
+    "points": "Body",
+    "rank": "Pozice",
+    "tag": "Tag",
     "village": "Vesnice",
+    "villages": "Vesnice",
     "world": "Svět"
   },
   "table-title": {
+    "bashStats": "Poražený protivník",
+    "general": "Obecné",
     "normalWorlds": "Normální svět",
+    "overview": "Přehled",
+    "player": "Hráč",
     "specialWorlds": "Speciální světy"
   },
   "title": {

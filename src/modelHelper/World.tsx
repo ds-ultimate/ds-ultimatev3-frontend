@@ -1,4 +1,7 @@
 import {useTranslation} from "react-i18next";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {faBan, faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 
 type worldType = {
   id: number,
@@ -9,7 +12,7 @@ type worldType = {
   village_count: number,
   active: boolean | null,
   maintenanceMode: boolean,
-  server: string,
+  server__code: string,
   hasConfig: boolean,
   hasUnits: boolean,
   hasBuildings: boolean,
@@ -36,19 +39,22 @@ const WorldDisplayName = ({world}: {world: worldType}) => {
 }
 
 const WorldState = ({world}: {world: worldType}) => {
-  let classes: string
+  let spanClass: string
+  let fontIcon: IconProp
   if(world.active == null) {
-    classes = "fas fa-ban text-danger"
+    spanClass = "text-danger"
+    fontIcon = faBan
   } else if(world.active) {
-    classes = "fas fa-check text-success"
+    spanClass = "text-success"
+    fontIcon = faCheck
   } else {
-    classes = "fas fa-times text-danger"
+    spanClass = "text-danger"
+    fontIcon = faTimes
   }
   return (
-      <>
-        {/* TODO just use icon here */}
-        <span className={classes}>{world.active}</span>
-      </>
+      <span className={spanClass} >
+      <FontAwesomeIcon icon={fontIcon} />
+      </span>
   )
 }
 

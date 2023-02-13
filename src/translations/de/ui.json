@@ -24,12 +24,27 @@
   "showMoreWorlds": "mehr Welten anzeigen",
   "table": {
     "ally": "Stamm",
+    "avgVillage": "Punkte pro Dorf",
+    "bashDef": "Verteidiger",
+    "bashGes": "Insgesamt",
+    "bashOff": "Angreifer",
+    "bashSup": "Unterstützer",
+    "members": "Mitglieder",
+    "name": "Name",
     "player": "Spieler",
+    "points": "Punkte",
+    "rank": "Rang",
+    "tag": "Tag",
     "village": "Dorf",
+    "villages": "Dörfer",
     "world": "Welt"
   },
   "table-title": {
+    "bashStats": "Besiegte Gegner",
+    "general": "Allgemein",
     "normalWorlds": "Normale Welten",
+    "overview": "Übersicht",
+    "player": "Spieler",
     "specialWorlds": "Spezial Welten"
   },
   "title": {

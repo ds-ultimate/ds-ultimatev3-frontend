@@ -9,6 +9,10 @@ import i18next from "i18next"
 import trans_de_ui from "./translations/de/ui.json"
 import trans_en_ui from "./translations/en/ui.json"
 
+import trans_de_datatable from "./translations/de/datatable.json"
+import trans_en_datatable from "./translations/en/datatable.json"
+import Debugbar from "./util/Debugbar";
+
 //TODO: icons with different sizes
 //TODO: index.html -> import icons / Initial title / check everything
 //TODO: manifest.json -> rewrite this
@@ -24,10 +28,12 @@ i18next.init({
   lng: 'en',                              // language to use
   resources: {
     en: {
-      ui: trans_en_ui
+      ui: trans_en_ui,
+      datatable: trans_en_datatable,
     },
     de: {
-      ui: trans_de_ui
+      ui: trans_de_ui,
+      datatable: trans_de_datatable,
     },
   },
 });
@@ -39,6 +45,7 @@ root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <App/>
+      <Debugbar />
     </I18nextProvider>
   </React.StrictMode>
 );

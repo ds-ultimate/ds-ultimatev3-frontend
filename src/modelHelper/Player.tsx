@@ -8,8 +8,8 @@ type playerType = {
   playerID: number,
   name: string,
   ally_id: number,
-  ally_tag: string | null,
-  ally_name: string | null,
+  allyLatest__tag: string | null,
+  allyLatest__name: string | null,
   village_count: number,
   points: number,
   rank: number,
@@ -26,17 +26,25 @@ type playerType = {
 const LinkPlayer = ({player, world, withAlly}: {player: playerType, world: worldType, withAlly?: boolean}) => {
   return (
       <>
-        <Link to={formatRoute(PLAYER_INFO, {server: world.server, world: world.name, player: (player.playerID + "")})}>
+        <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (player.playerID + "")})}>
           <DecodeName name={player.name} />
         </Link>
-        {withAlly && player.ally_tag && (
-            <Link to={formatRoute(ALLY_INFO, {server: world.server, world: world.name, ally: (player.ally_id + "")})}>
-              [<DecodeName name={player.ally_tag} />]
+        {withAlly && player.allyLatest__tag && <LinkPlayerAlly player={player} world={world} />}
+      </>
+  )
+}
+
+const LinkPlayerAlly = ({player, world}: {player: playerType, world: worldType}) => {
+  return (
+      <>
+        {player.allyLatest__tag?(
+            <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (player.ally_id + "")})}>
+              [<DecodeName name={player.allyLatest__tag} />]
             </Link>
-        )}
+        ):"-"}
       </>
   )
 }
 
 export type {playerType}
-export {LinkPlayer}
+export {LinkPlayer, LinkPlayerAlly}

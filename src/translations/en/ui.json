@@ -24,12 +24,27 @@
   "showMoreWorlds": "show more worlds",
   "table": {
     "ally": "tribe",
+    "avgVillage": "Points per village",
+    "bashDef": "defender",
+    "bashGes": "total",
+    "bashOff": "Attacker",
+    "bashSup": "supporter",
+    "members": "members",
+    "name": "name",
     "player": "player",
+    "points": "points",
+    "rank": "rank",
+    "tag": "tag",
     "village": "village",
+    "villages": "villages",
     "world": "world"
   },
   "table-title": {
+    "bashStats": "Opponents defeated",
+    "general": "General",
     "normalWorlds": "normal worlds",
+    "overview": "Overview",
+    "player": "player",
     "specialWorlds": "Special worlds"
   },
   "title": {

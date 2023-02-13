@@ -78,8 +78,21 @@ const getWorldOverview = (server: string, world: string) => {
   return loader.getPromise()
 }
 
+const getWorldData = (server: string, world: string) => {
+  return new Promise<worldType>((resolve) => {
+    getWorldsOfServer(server)
+        .then(({worlds}) => {
+          const w = worlds.find(w => w.name === world)
+          if(w) {
+            resolve(w)
+          }
+        })
+  })
+}
+
 export {
   getWorldsOfServer, WORLDS_OF_SERVER_DEFAULT,
   getIndexPageData, INDEX_PAGE_DEFAULT,
   getWorldOverview, WORLD_OVERVIEW_DEFAULT,
+  getWorldData,
 }

@@ -23,7 +23,7 @@ type allyType = {
 const LinkAlly = ({ally, world, useTag}: {ally: allyType, world: worldType, useTag?: boolean}) => {
   return (
       <>
-        <Link to={formatRoute(ALLY_INFO, {server: world.server, world: world.name, ally: (ally.allyID + "")})}>
+        <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (ally.allyID + "")})}>
           {useTag?(
               <DecodeName name={ally.tag} />
           ):(
