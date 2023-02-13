@@ -190,13 +190,9 @@
     },
     "datatable": {
         "sEmptyTable": "Keine Daten in der Tabelle vorhanden",
-        "sInfo": "_START_ bis _END_ von _TOTAL_ Eintr\u00e4gen",
-        "sInfoFiltered": "(gefiltert von _MAX_ Eintr\u00e4gen)",
         "sInfoThousands": ".",
-        "sLengthMenu": "_MENU_ Eintr\u00e4ge anzeigen",
         "sLoadingRecords": "Wird geladen ..",
         "sProcessing": "Bitte warten ..",
-        "sSearch": "Suchen",
         "sZeroRecords": "Keine Eintr\u00e4ge vorhanden",
         "oPaginate_sFirst": "Erste",
         "oPaginate_sLast": "Letzte",

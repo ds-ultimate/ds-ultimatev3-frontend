@@ -3,8 +3,9 @@ import axios from "axios";
 import {SORTING_DIRECTION} from "./DatatableBase";
 
 type paramsType<T> = {api: string, page: number, limit: number, cells: Array<(data: T) => string | JSX.Element>,
-  keyGen: (data: T) => Key, pageCnt: (pages: number) => void, sort?: number, sortDir?: SORTING_DIRECTION}
-export default function DatatableCoreClientSide<T>({api, page, limit, cells, keyGen, pageCnt, sort, sortDir}: paramsType<T>) {
+  keyGen: (data: T) => Key, itemCntCallback: (totalCount: number, filteredCount: number)=> void,
+  sort: Array<[number, SORTING_DIRECTION]>, search?: string}
+export default function DatatableCoreClientSide<T>({api, page, limit, cells, keyGen, itemCntCallback, sort, search}: paramsType<T>) {
   //TODO this whole thing
   const [data, setData] = useState<T[]>()
 

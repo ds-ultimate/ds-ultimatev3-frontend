@@ -1,12 +1,5 @@
 
 const nf = new Intl.NumberFormat("de-DE")
-function FormatNumber({n}: {n: number}) {
-  return (
-      <>
-        {nf.format(n)}
-      </>
-  )
-}
 
 const DecodeName = ({name}: {name: string}) => {
   return (
@@ -16,4 +9,4 @@ const DecodeName = ({name}: {name: string}) => {
   )
 }
 
-export {FormatNumber, DecodeName}
+export {nf, DecodeName}

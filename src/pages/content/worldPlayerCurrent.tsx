@@ -1,11 +1,11 @@
 import {useParams} from "react-router-dom";
-import DatatableBase from "../../util/datatables/DatatableBase";
+import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {useTranslation} from "react-i18next";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useEffect, useState} from "react";
 import {getWorldData} from "../../apiInterface/loadContent";
 import {LinkPlayer, LinkPlayerAlly, playerType} from "../../modelHelper/Player";
-import {FormatNumber} from "../../util/UtilFunctions";
+import {nf} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
 import DatatableHeader from "../../util/datatables/DatatableHeader";
 
@@ -57,17 +57,17 @@ export default function WorldPlayerCurrentPage() {
           </tr>
           </thead>
         } cells={[
-          (p) => <FormatNumber n={p.rank} />,
+          (p) => nf.format(p.rank),
           (p) => <>{dataWorld && <LinkPlayer player={p} world={dataWorld} />}</>,
           (p) => <>{dataWorld && <LinkPlayerAlly player={p} world={dataWorld} />}</>,
-          (p) => <FormatNumber n={p.points} />,
-          (p) => <FormatNumber n={p.village_count} />,
-          (p) => <FormatNumber n={(p.village_count === 0)?(0):(p.points / p.village_count)} />,
-          (p) => <FormatNumber n={p.gesBash} />,
-          (p) => <FormatNumber n={p.offBash} />,
-          (p) => <FormatNumber n={p.defBash} />,
-          (p) => <FormatNumber n={p.supBash} />,
-        ]} keyGen={p => p.playerID} serverSide />
+          (p) => nf.format(p.points),
+          (p) => nf.format(p.village_count),
+          (p) => nf.format((p.village_count === 0)?(0):(p.points / p.village_count)),
+          (p) => nf.format(p.gesBash),
+          (p) => nf.format(p.offBash),
+          (p) => nf.format(p.defBash),
+          (p) => nf.format(p.supBash),
+        ]} keyGen={p => p.playerID} serverSide defaultSort={["rank", SORTING_DIRECTION.ASC]} />
       </>
   )
 };

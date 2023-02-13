@@ -3,21 +3,21 @@ import axios from "axios";
 import {SORTING_DIRECTION} from "./DatatableBase";
 
 type paramsType<T> = {api: string, page: number, limit: number, cells: Array<(data: T) => string | JSX.Element>,
-  keyGen: (data: T) => Key, pageCnt: (pages: number) => void, sort?: string, sortDir?: SORTING_DIRECTION}
+  keyGen: (data: T) => Key, itemCntCallback: (totalCount: number, filteredCount: number) => void,
+  sort: Array<[string, SORTING_DIRECTION]>, search?: string}
 
-export default function DatatableCoreServerSide<T>({api, page, limit, cells, keyGen, pageCnt, sort, sortDir}: paramsType<T>) {
+export default function DatatableCoreServerSide<T>({api, page, limit, cells, keyGen, itemCntCallback, sort, search}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
 
   useEffect(() => {
     let mounted = true
     const start = page * limit
 
-    axios.get(api, {params: {start, length: limit, sort: [[sort, sortDir]]}})
+    axios.get(api, {params: {start, length: limit, sort, search}})
         .then((resp) => {
           if(mounted) {
             setData(resp.data.data)
-            const pages = Math.ceil(resp.data.count / limit)
-            pageCnt(pages)
+            itemCntCallback(resp.data.count, resp.data.filtered)
           }
         })
         .catch((reason) => {
@@ -27,7 +27,7 @@ export default function DatatableCoreServerSide<T>({api, page, limit, cells, key
     return () => {
       mounted = false
     }
-  }, [api, page, limit, pageCnt, sort, sortDir])
+  }, [api, page, limit, itemCntCallback, sort, search])
 
   return (
       <>

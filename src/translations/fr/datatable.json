@@ -1,4 +1,8 @@
 {
   "oPaginate_sNext": "",
-  "oPaginate_sPrevious": ""
+  "oPaginate_sPrevious": "",
+  "sInfo": "",
+  "sInfoFiltered": "",
+  "sLengthMenu": "",
+  "sSearch": ""
 }

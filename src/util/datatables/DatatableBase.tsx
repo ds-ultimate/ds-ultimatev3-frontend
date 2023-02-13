@@ -1,112 +1,143 @@
-import {useTranslation} from "react-i18next";
-import React, {createContext, Key, useCallback, useState} from "react";
+import React, {ChangeEvent, createContext, Key, useCallback, useState} from "react";
 import DatatableCoreServerSide from "./DatatableCoreServerSide";
 import DatatableCoreClientSide from "./DatatableCoreClientSide";
+import Pagination from "./Pagination";
+import {useTranslation} from "react-i18next";
+import {nf} from "../UtilFunctions";
 
 type paramsType<T> = {api: string, header: JSX.Element, serverSide?: boolean,
-  cells: Array<(data: T) => string | JSX.Element>, keyGen: (data: T) => Key}
+  cells: Array<(data: T) => string | JSX.Element>, keyGen: (data: T) => Key, defaultSort?: [sort_type, SORTING_DIRECTION]}
 
 type sort_type = string | number
-type stateType = {page: number, pageCnt: number, limit: number, sort?: sort_type, sortDirection?: SORTING_DIRECTION}
+type stateType = {page: number, totalCount: number, filteredCount: number, limit: number,
+  sort: Array<[sort_type, SORTING_DIRECTION]>, search?: string}
 
-const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION) => void,
-  curSortBy?: sort_type, curSortDir?: SORTING_DIRECTION}>({})
+const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION, append: boolean) => void,
+  curSortBy?: Array<[sort_type, SORTING_DIRECTION]>}>({})
 
 enum SORTING_DIRECTION {
   ASC,
   DESC,
 }
 
-export default function DatatableBase<T>({api, header, serverSide, cells, keyGen}: paramsType<T>) {
+export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, defaultSort}: paramsType<T>) {
   // TODO save / read setting from localStorage
-  const [{page, pageCnt, limit, sort, sortDirection}, setConfig] =
-      useState<stateType>({page: 0, pageCnt: 1, limit: 10})
+  // TODO think how to do optional filtering
+  const { t } = useTranslation("datatable")
+  const [{page, totalCount, filteredCount, limit, sort, search}, setConfig] =
+      useState<stateType>({page: 0, totalCount: 1, filteredCount: 1, limit: 10, sort: (defaultSort)?[defaultSort]:[]})
 
-  const pageCntCallback = useCallback((pageCount: number) => {
-    setConfig((prevState) => {return {...prevState, pageCnt: pageCount}})
+  const itemCntCallback = useCallback((totalCount: number, filteredCount: number) => {
+    setConfig((prevState) => {return {...prevState, totalCount, filteredCount}})
   }, [])
 
   const changePage = (page: number) => {
     setConfig((prevState) => {return {...prevState, page: page}})
   }
 
-  const sortingCallback = useCallback((key: sort_type, dir: SORTING_DIRECTION) => {
-    setConfig((prevState) => {return {...prevState, sort: key, sortDirection: dir}})
+  const sortingCallback = useCallback((key: sort_type, defaultDir: SORTING_DIRECTION, append: boolean) => {
+    setConfig((prevState) => {
+      let newDir: SORTING_DIRECTION | undefined = defaultDir
+      const index = prevState.sort.findIndex((elm) => elm[0] === key)
+      if(index !== -1) {
+        if (prevState.sort[index][1] === defaultDir) {
+          if (defaultDir === SORTING_DIRECTION.ASC) {
+            newDir = SORTING_DIRECTION.DESC
+          } else {
+            newDir = SORTING_DIRECTION.ASC
+          }
+        } else {
+          newDir = undefined
+        }
+      }
+
+      if(append) {
+        let newSort = [...prevState.sort]
+        if(index === -1) {
+          newSort.push([key, newDir as SORTING_DIRECTION])
+        } else if(newDir !== undefined) {
+          newSort[index] = [newSort[index][0], newDir]
+        } else {
+          newSort = [...newSort.slice(0, index), ...newSort.slice(index + 1)]
+        }
+        return {...prevState, sort: newSort}
+      }
+      if(newDir !== undefined) {
+        return {...prevState, sort: [[key, newDir]]}
+      } else {
+        return {...prevState, sort: []}
+      }
+    })
   }, [])
 
-  const coreProps = {api, page, cells, keyGen, pageCnt: pageCntCallback, limit, sortDir: sortDirection}
+  const limitSelectCallback = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+    setConfig((prevState) => {
+      const newLimit = parseInt(event.target.value)
+      const start = prevState.limit * prevState.page
+      const newPage = Math.floor(start / newLimit)
+      return {...prevState, limit: newLimit, page: newPage}
+    })
+  }, [])
+
+  const searchChangeCallback = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    let val: string | undefined = event.target.value
+    if(val === "") {
+      val =  undefined
+    }
+    setConfig((prevState) => { return {...prevState, search: val}})
+  }, [])
+
+  const lengthMenu = t('sLengthMenu')
+  const lengthMenu_idx = lengthMenu.indexOf("_MENU_")
+  const lengthMenu_pre = lengthMenu.substring(0, lengthMenu_idx)
+  const lengthMenu_post = lengthMenu.substring(lengthMenu_idx + "_MENU_".length)
+
+  const coreProps = {api, page, cells, keyGen, itemCntCallback, limit, search}
 
   return (
       <>
-        <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort, curSortDir: sortDirection}}>
+        <div className={"datatable-top-bar"}>
+          <div className={"datatable-amount-selector"}>
+            {lengthMenu_pre}
+            <select onChange={limitSelectCallback}>
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+            {lengthMenu_post}
+          </div>
+          <div className={"datatable-search"}>
+            {t('sSearch')}
+            <input type={"text"} onChange={searchChangeCallback} />
+          </div>
+        </div>
+        <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort}}>
           <table>
             {header}
             <tbody>
             {
               serverSide?
                   <DatatableCoreServerSide<T>
-                      sort={sort as string}
+                      sort={sort as Array<[string, SORTING_DIRECTION]>}
                       {...coreProps}
                   />:
                   <DatatableCoreClientSide<T>
-                      sort={sort as number}
+                      sort={sort as Array<[number, SORTING_DIRECTION]>}
                       {...coreProps}
                   />
             }
             </tbody>
           </table>
-          <Pagination pageCnt={pageCnt} page={page} changePage={changePage} />
+          <div className={"datatable-footer"}>
+            <div className={"datatable-info"}>
+              {t('sInfo', {start: nf.format(page*limit + 1), end: nf.format(Math.min((page+1) * limit, filteredCount)), total: nf.format(filteredCount)})}
+              {filteredCount !== totalCount && (" " + t('sInfoFiltered', {max: nf.format(totalCount)}))}
+            </div>
+            <Pagination pageCnt={Math.ceil(filteredCount / limit)} page={page} changePage={changePage} />
+          </div>
         </DatatableContext.Provider>
       </>
-  )
-}
-
-function Pagination({pageCnt, page, changePage}: {pageCnt: number, page: number, changePage: (page: number) => void}) {
-  const { t } = useTranslation("datatable")
-  let pageOptions: Array<[Key, number]> = []
-  if(pageCnt < 7) {
-    //no separator
-    for(let i = 1; i <= pageCnt; i++) {
-      pageOptions.push([i, i])
-    }
-  } else if(page < 4) {
-    //no separator in the front
-    for(let i = 1; i <= 5; i++) {
-      pageOptions.push([i, i])
-    }
-    pageOptions.push(["e", -1])
-    pageOptions.push([pageCnt, pageCnt])
-  } else if(page > pageCnt - 5) {
-    //no separator in the back
-    pageOptions.push([1, 1])
-    pageOptions.push(["s", -1])
-    for(let i = pageCnt - 4; i <= pageCnt; i++) {
-      pageOptions.push([i, i])
-    }
-  } else {
-    //both needed
-    pageOptions.push([1, 1])
-    pageOptions.push(["s", -1])
-    pageOptions.push([page, page])
-    pageOptions.push([page + 1, page + 1])
-    pageOptions.push([page + 2, page + 2])
-    pageOptions.push(["e", -1])
-    pageOptions.push([pageCnt, pageCnt])
-  }
-
-  return (
-      <div>
-        <button  onClick={() => changePage((page > 0)?(page - 1):0)}>{t("oPaginate_sPrevious")}</button>
-        {pageOptions.map(p => {
-          if(p[1] === -1) {
-            return <div key={p[0]}>...</div>
-          }
-          return (
-              <button key={p[0]} className={(page + 1 === p[1])?"active":""} onClick={() => changePage(p[1] - 1)}>{p[1]}</button>
-          )
-        })}
-        <button  onClick={() => changePage((page < pageCnt - 1)?(page + 1):pageCnt)}>{t("oPaginate_sNext")}</button>
-      </div>
   )
 }
 

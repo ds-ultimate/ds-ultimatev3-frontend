@@ -1,17 +1,20 @@
-import React, {ReactNode, useContext} from "react";
+import React, {MouseEvent, ReactNode, useContext} from "react";
 import {DatatableContext, SORTING_DIRECTION} from "./DatatableBase";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSort, faSortDesc, faSortUp} from "@fortawesome/free-solid-svg-icons";
 
 type paramsType = {children: ReactNode, sortBy?: string, sortDescDefault?: boolean}
 
+type mEventType = MouseEvent<HTMLTableHeaderCellElement>
+
 export default function DatatableHeader({children, sortBy, sortDescDefault}: paramsType) {
-  const {setSortBy, curSortBy, curSortDir} = useContext(DatatableContext)
+  const {setSortBy, curSortBy} = useContext(DatatableContext)
 
   let sortingIcon: ReactNode = undefined
-  if(sortBy !== undefined) {
-    if(curSortBy === sortBy) {
-      if(curSortDir === SORTING_DIRECTION.ASC) {
+  if(sortBy) {
+    const curSortFound = curSortBy?.find(([elm, _dir]) => elm === sortBy)
+    if(curSortFound) {
+      if(curSortFound[1] === SORTING_DIRECTION.ASC) {
         sortingIcon = <FontAwesomeIcon icon={faSortUp} />
       } else {
         sortingIcon = <FontAwesomeIcon icon={faSortDesc} />
@@ -23,15 +26,8 @@ export default function DatatableHeader({children, sortBy, sortDescDefault}: par
 
   let onclickHandler = undefined
   if(sortBy !== undefined && setSortBy !== undefined) {
-    if(curSortBy === sortBy) {
-      if(curSortDir === SORTING_DIRECTION.ASC) {
-        onclickHandler = () => setSortBy(sortBy, SORTING_DIRECTION.DESC)
-      } else {
-        onclickHandler = () => setSortBy(sortBy, SORTING_DIRECTION.ASC)
-      }
-    } else {
-      onclickHandler = () => setSortBy(sortBy, sortDescDefault?SORTING_DIRECTION.DESC:SORTING_DIRECTION.ASC)
-    }
+    onclickHandler = (event: mEventType) =>
+        setSortBy(sortBy, sortDescDefault?SORTING_DIRECTION.DESC:SORTING_DIRECTION.ASC, event.ctrlKey)
   }
 
   return (

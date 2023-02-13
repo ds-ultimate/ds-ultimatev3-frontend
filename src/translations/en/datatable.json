@@ -1,4 +1,8 @@
 {
   "oPaginate_sNext": "Next",
-  "oPaginate_sPrevious": "Previous"
+  "oPaginate_sPrevious": "Previous",
+  "sInfo": "Showing {{start}} to {{end}} of {{total}} entries",
+  "sInfoFiltered": "(filtered from {{max}} total entries)",
+  "sLengthMenu": "Show _MENU_ entries",
+  "sSearch": "Search:"
 }

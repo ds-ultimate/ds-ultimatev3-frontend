@@ -1,4 +1,8 @@
 {
   "oPaginate_sNext": "Další",
-  "oPaginate_sPrevious": "Předchozí"
+  "oPaginate_sPrevious": "Předchozí",
+  "sInfo": "Zobrazeno {{start}} z {{end}} z {{total}} celkových záznamů",
+  "sInfoFiltered": "(filtrováno z {{max}} záznamů)",
+  "sLengthMenu": "_MENU_ Zobrazit položky",
+  "sSearch": "Vyhledávání"
 }

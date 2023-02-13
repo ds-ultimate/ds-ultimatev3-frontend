@@ -5,7 +5,7 @@ import {LinkPlayer, playerType} from "../../modelHelper/Player";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {getWorldOverview, WORLD_OVERVIEW_DEFAULT} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
-import {FormatNumber} from "../../util/UtilFunctions";
+import {nf} from "../../util/UtilFunctions";
 
 export default function WorldPage() {
   const {server, world} = useParams()
@@ -46,10 +46,10 @@ export default function WorldPage() {
           {worldData && worldOverview.player.map(p => {
             return (
                 <tr key={p.playerID}>
-                  <th><FormatNumber n={p.rank} /></th>
+                  <th>{nf.format(p.rank)}</th>
                   <td><LinkPlayer player={p} world={worldData} withAlly /></td>
-                  <th><FormatNumber n={p.points} /></th>
-                  <th><FormatNumber n={p.village_count} /></th>
+                  <td>{nf.format(p.points)}</td>
+                  <td>{nf.format(p.village_count)}</td>
                 </tr>
             )
           })}
@@ -70,12 +70,12 @@ export default function WorldPage() {
           {worldData && worldOverview.ally.map(a => {
             return (
                 <tr key={a.allyID}>
-                  <th><FormatNumber n={a.rank} /></th>
+                  <th>{nf.format(a.rank)}</th>
                   <td><LinkAlly ally={a} world={worldData} /></td>
                   <td><LinkAlly ally={a} world={worldData} useTag /></td>
-                  <th><FormatNumber n={a.points} /></th>
-                  <th><FormatNumber n={a.member_count} /></th>
-                  <th><FormatNumber n={a.village_count} /></th>
+                  <td>{nf.format(a.points)}</td>
+                  <td>{nf.format(a.member_count)}</td>
+                  <td>{nf.format(a.village_count)}</td>
                 </tr>
             )
           })}

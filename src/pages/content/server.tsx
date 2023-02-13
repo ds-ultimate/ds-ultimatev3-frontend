@@ -6,7 +6,7 @@ import {getWorldsOfServer, WORLDS_OF_SERVER_DEFAULT} from "../../apiInterface/lo
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../../util/routes";
-import {FormatNumber} from "../../util/UtilFunctions";
+import {nf} from "../../util/UtilFunctions";
 
 function WorldTypeSection({data, header, server}: {data: worldType[], header: string, server?: serverType}) {
   const { t } = useTranslation("ui")
@@ -60,12 +60,12 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
                   <WorldState world={w} />
                 </td>
                 <td><Link to={formatRoute(WORLD_PLAYER_CUR, {server: w.server__code, world: w.name})}>
-                  <FormatNumber n={w.player_count} />
+                  {nf.format(w.player_count)}
                 </Link></td>
                 <td><Link to={formatRoute(WORLD_ALLY_CUR, {server: w.server__code, world: w.name})}>
-                  <FormatNumber n={w.ally_count} />
+                  {nf.format(w.ally_count)}
                 </Link></td>
-                <td><FormatNumber n={w.village_count} /></td>
+                <td>{nf.format(w.village_count)}</td>
               </tr>
           )
         })}
