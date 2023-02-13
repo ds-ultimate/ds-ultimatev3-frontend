@@ -16,7 +16,7 @@ const WorldConquerDaily = lazy(() => import("./pages/content/worldConquerDaily")
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.REACT_APP_BASE_DIR}>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path={'/'} element={<RootLayout />}>

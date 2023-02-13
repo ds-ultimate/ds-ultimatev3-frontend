@@ -17,9 +17,11 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-router-dom": "^6.7.0",
-    "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +46,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://api.test.ds-ultimate.de/test"
 }
