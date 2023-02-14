@@ -24,6 +24,7 @@
   "showMoreWorlds": "show more worlds",
   "table": {
     "ally": "tribe",
+    "avgPlayer": "Points per player",
     "avgVillage": "Points per village",
     "bashDef": "defender",
     "bashGes": "total",
@@ -40,6 +41,7 @@
     "world": "world"
   },
   "table-title": {
+    "ally": "tribe",
     "bashStats": "Opponents defeated",
     "general": "General",
     "normalWorlds": "normal worlds",

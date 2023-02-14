@@ -673,7 +673,6 @@
         "world": {},
         "table": {
             "allyChanges": "tribe changes",
-            "avgPlayer": "Points per player",
             "bashStats": "Opponents defeated",
             "conquer": "conquers",
             "continent": "continent",
@@ -735,7 +734,6 @@
             "classicWorlds": "Classic worlds",
             "speedWorlds": "Speed worlds",
             "history": "Build history",
-            "allys": "tribe",
             "allyRanking": "tribe ranking",
             "playerHist": "player history"
         },

@@ -24,6 +24,7 @@
   "showMoreWorlds": "",
   "table": {
     "ally": "",
+    "avgPlayer": "",
     "avgVillage": "",
     "bashDef": "",
     "bashGes": "",
@@ -40,6 +41,7 @@
     "world": ""
   },
   "table-title": {
+    "ally": "",
     "bashStats": "",
     "general": "",
     "normalWorlds": "",

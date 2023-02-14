@@ -35,8 +35,6 @@ export default function WorldPlayerCurrentPage() {
       <>
         <h1>{dataWorld && <WorldDisplayName world={dataWorld} />}</h1>
         <h2>{t("table-title.overview")} {t("table-title.player")}</h2>
-        Server: {server}<br />
-        World: {world}<br />
         <DatatableBase<playerType> api={worldPlayerCurrentTable({server, world})} header={
           <thead>
           <tr>
@@ -67,7 +65,7 @@ export default function WorldPlayerCurrentPage() {
           (p) => nf.format(p.offBash),
           (p) => nf.format(p.defBash),
           (p) => nf.format(p.supBash),
-        ]} keyGen={p => p.playerID} serverSide defaultSort={["rank", SORTING_DIRECTION.ASC]} />
+        ]} keyGen={p => p.playerID} serverSide defaultSort={["rank", SORTING_DIRECTION.ASC]} saveAs={'worldPlayer'}/>
       </>
   )
 };

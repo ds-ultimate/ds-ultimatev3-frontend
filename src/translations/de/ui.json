@@ -24,6 +24,7 @@
   "showMoreWorlds": "mehr Welten anzeigen",
   "table": {
     "ally": "Stamm",
+    "avgPlayer": "Punkte pro Spieler",
     "avgVillage": "Punkte pro Dorf",
     "bashDef": "Verteidiger",
     "bashGes": "Insgesamt",
@@ -40,6 +41,7 @@
     "world": "Welt"
   },
   "table-title": {
+    "ally": "Stämme",
     "bashStats": "Besiegte Gegner",
     "general": "Allgemein",
     "normalWorlds": "Normale Welten",

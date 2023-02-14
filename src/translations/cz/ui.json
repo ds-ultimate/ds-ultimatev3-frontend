@@ -24,6 +24,7 @@
   "showMoreWorlds": "Zobrazit více světů",
   "table": {
     "ally": "Kmen",
+    "avgPlayer": "Body na hráče",
     "avgVillage": "Body na vesnici",
     "bashDef": "Obránce",
     "bashGes": "Celkem",
@@ -40,6 +41,7 @@
     "world": "Svět"
   },
   "table-title": {
+    "ally": "Kmen",
     "bashStats": "Poražený protivník",
     "general": "Obecné",
     "normalWorlds": "Normální svět",

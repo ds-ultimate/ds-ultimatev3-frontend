@@ -728,12 +728,10 @@
             "speedWorlds": "Speed Runden",
             "casualWorlds": "Casual Welten",
             "history": "Ausbauverlauf",
-            "allys": "St\u00e4mme",
             "allyRanking": "Stammes-Rangliste",
             "playerHist": "Spieler Verlauf"
         },
         "table": {
-            "avgPlayer": "Punkte pro Spieler",
             "conquer": "Eroberungen",
             "allyChanges": "Stammeswechsel",
             "date": "Datum",

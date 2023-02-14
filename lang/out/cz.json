@@ -769,7 +769,6 @@
         "table": {
             "allyChanges": "Kmenov\u00e9 zm\u011bny",
             "allyKillsPercent": "\u00dato\u010dn\u00e9 body kmene",
-            "avgPlayer": "Body na hr\u00e1\u010de",
             "bashAllS": "Obrann\u00e9 body",
             "bashAttS": "\u00dato\u010dn\u00e9 body",
             "bashDefS": "Body celkem",
@@ -793,7 +792,6 @@
         },
         "tabletitel": {
             "allyRanking": "Kmenov\u00e9 um\u00edst\u011bn\u00ed",
-            "allys": "Kmen",
             "casualWorlds": "Casual sv\u011bt",
             "classicWorlds": "Classic sv\u011bt",
             "history": "Historie stavby",

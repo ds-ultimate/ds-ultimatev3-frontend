@@ -1,16 +1,25 @@
-import React, {ChangeEvent, createContext, Key, useCallback, useState} from "react";
+import React, {ChangeEvent, createContext, Key, useCallback} from "react";
 import DatatableCoreServerSide from "./DatatableCoreServerSide";
 import DatatableCoreClientSide from "./DatatableCoreClientSide";
 import Pagination from "./Pagination";
 import {useTranslation} from "react-i18next";
 import {nf} from "../UtilFunctions";
+import usePersistentState from "../persitentState";
 
-type paramsType<T> = {api: string, header: JSX.Element, serverSide?: boolean,
-  cells: Array<(data: T) => string | JSX.Element>, keyGen: (data: T) => Key, defaultSort?: [sort_type, SORTING_DIRECTION]}
+type paramsType<T> = {
+  api: string,
+  header: JSX.Element,
+  serverSide?: boolean,
+  cells: Array<(data: T) => string | JSX.Element>,
+  keyGen: (data: T) => Key,
+  rowClassGen?: (data: T) => string | undefined,
+  defaultSort?: [sort_type, SORTING_DIRECTION],
+  saveAs: string
+}
 
 type sort_type = string | number
-type stateType = {page: number, totalCount: number, filteredCount: number, limit: number,
-  sort: Array<[sort_type, SORTING_DIRECTION]>, search?: string}
+type persistentStateType = {limit: number, sort: Array<[sort_type, SORTING_DIRECTION]>}
+type volatileStateType = {page: number, totalCount: number, filteredCount: number, search?: string}
 
 const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION, append: boolean) => void,
   curSortBy?: Array<[sort_type, SORTING_DIRECTION]>}>({})
@@ -20,27 +29,27 @@ enum SORTING_DIRECTION {
   DESC,
 }
 
-export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, defaultSort}: paramsType<T>) {
-  // TODO save / read setting from localStorage
+export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, rowClassGen, defaultSort, saveAs}: paramsType<T>) {
   // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
-  const [{page, totalCount, filteredCount, limit, sort, search}, setConfig] =
-      useState<stateType>({page: 0, totalCount: 1, filteredCount: 1, limit: 10, sort: (defaultSort)?[defaultSort]:[]})
+  const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
+      usePersistentState<persistentStateType, volatileStateType>("datatable." + saveAs,
+          [{limit: 10, sort: (defaultSort)?[defaultSort]:[]}, {page: 0, totalCount: 1, filteredCount: 1}])
 
   const itemCntCallback = useCallback((totalCount: number, filteredCount: number) => {
-    setConfig((prevState) => {return {...prevState, totalCount, filteredCount}})
-  }, [])
+    setVolatile((prevState) => {return {...prevState, totalCount, filteredCount}})
+  }, [setVolatile])
 
-  const changePage = (page: number) => {
-    setConfig((prevState) => {return {...prevState, page: page}})
-  }
+  const changePage = useCallback((page: number) => {
+    setVolatile((prevState) => {return {...prevState, page}})
+  }, [setVolatile])
 
   const sortingCallback = useCallback((key: sort_type, defaultDir: SORTING_DIRECTION, append: boolean) => {
-    setConfig((prevState) => {
+    setPersistent((oldP) => {
       let newDir: SORTING_DIRECTION | undefined = defaultDir
-      const index = prevState.sort.findIndex((elm) => elm[0] === key)
+      const index = oldP.sort.findIndex((elm) => elm[0] === key)
       if(index !== -1) {
-        if (prevState.sort[index][1] === defaultDir) {
+        if (oldP.sort[index][1] === defaultDir) {
           if (defaultDir === SORTING_DIRECTION.ASC) {
             newDir = SORTING_DIRECTION.DESC
           } else {
@@ -52,7 +61,7 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
       }
 
       if(append) {
-        let newSort = [...prevState.sort]
+        let newSort = [...oldP.sort]
         if(index === -1) {
           newSort.push([key, newDir as SORTING_DIRECTION])
         } else if(newDir !== undefined) {
@@ -60,24 +69,24 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
         } else {
           newSort = [...newSort.slice(0, index), ...newSort.slice(index + 1)]
         }
-        return {...prevState, sort: newSort}
+        return {...oldP, sort: newSort}
       }
       if(newDir !== undefined) {
-        return {...prevState, sort: [[key, newDir]]}
+        return {...oldP, sort: [[key, newDir]]}
       } else {
-        return {...prevState, sort: []}
+        return {...oldP, sort: []}
       }
     })
-  }, [])
+  }, [setPersistent])
 
   const limitSelectCallback = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
-    setConfig((prevState) => {
+    setConfig(([oldP, oldV]) => {
       const newLimit = parseInt(event.target.value)
-      const start = prevState.limit * prevState.page
+      const start = oldP.limit * oldV.page
       const newPage = Math.floor(start / newLimit)
-      return {...prevState, limit: newLimit, page: newPage}
+      return [{...oldP, limit: newLimit}, {...oldV, page: newPage}]
     })
-  }, [])
+  }, [setConfig])
 
   const searchChangeCallback = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     let val: string | undefined = event.target.value
@@ -85,25 +94,24 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
       val =  undefined
     }
     setConfig((prevState) => { return {...prevState, search: val}})
-  }, [])
+  }, [setConfig])
 
   const lengthMenu = t('sLengthMenu')
   const lengthMenu_idx = lengthMenu.indexOf("_MENU_")
   const lengthMenu_pre = lengthMenu.substring(0, lengthMenu_idx)
   const lengthMenu_post = lengthMenu.substring(lengthMenu_idx + "_MENU_".length)
 
-  const coreProps = {api, page, cells, keyGen, itemCntCallback, limit, search}
+  const coreProps = {api, page, cells, keyGen, itemCntCallback, limit, search, rowClassGen}
 
   return (
       <>
         <div className={"datatable-top-bar"}>
           <div className={"datatable-amount-selector"}>
             {lengthMenu_pre}
-            <select onChange={limitSelectCallback}>
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-              <option>100</option>
+            <select onChange={limitSelectCallback} defaultValue={limit}>
+              {[10, 25, 50, 100].map(l => (
+                  <option key={l}>{l}</option>
+              ))}
             </select>
             {lengthMenu_post}
           </div>
