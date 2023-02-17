@@ -12,6 +12,18 @@
     "current": "Current",
     "history": "History"
   },
+  "old": {
+    "defBash": "Old Defender",
+    "gesBash": "Old Total",
+    "member_count": "Old Members",
+    "offBash": "Old Attacker",
+    "player_points": "Old Points per Player",
+    "points": "Old Points",
+    "rank": "Old Rank",
+    "supBash": "Old Supporter",
+    "village_count": "Old Villages",
+    "village_points": "Old Point per player"
+  },
   "server": {
     "choose": "Choose your server",
     "code": "code",
@@ -42,11 +54,13 @@
   },
   "table-title": {
     "ally": "tribe",
+    "allyRanking": "tribe ranking",
     "bashStats": "Opponents defeated",
     "general": "General",
     "normalWorlds": "normal worlds",
     "overview": "Overview",
     "player": "player",
+    "playerRanking": "player ranking",
     "specialWorlds": "Special worlds"
   },
   "title": {

@@ -13,6 +13,8 @@ import trans_de_datatable from "./translations/de/datatable.json"
 import trans_en_datatable from "./translations/en/datatable.json"
 import Debugbar from "./util/Debugbar";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 //TODO: icons with different sizes
 //TODO: index.html -> import icons / Initial title / check everything
 //TODO: manifest.json -> rewrite this

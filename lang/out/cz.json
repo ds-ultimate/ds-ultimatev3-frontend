@@ -695,17 +695,7 @@
         "notAllowedDesc": "Nejste opr\u00e1vn\u011bni zobrazit tuto str\u00e1nku.",
         "numberLines": "\u010c\u00edslov\u00e1n\u00ed \u0159\u00e1dk\u016f",
         "old": {
-            "defBash": "Star\u00fd obr\u00e1nce",
-            "gesBash": "Star\u00fd celkem",
-            "member_count": "Star\u00fd \u010dlenov\u00e9",
-            "nodata": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje",
-            "offBash": "Star\u00fd \u00fato\u010dn\u00edci",
-            "player_points": "Star\u00e9 body na hr\u00e1\u010de",
-            "points": "Star\u00e9 body",
-            "rank": "Star\u00fd rank",
-            "supBash": "Star\u00fd podporovatel",
-            "village_count": "Star\u00fd vesnice",
-            "village_points": "Star\u00fd bod na hr\u00e1\u010de"
+            "nodata": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje"
         },
         "otherWorldsPlayer": "Dal\u0161\u00ed sv\u011bty tohoto hr\u00e1\u010de",
         "otherWorldsPlayerPopup": {
@@ -791,7 +781,6 @@
             "villageName": "N\u00e1zev vesnice"
         },
         "tabletitel": {
-            "allyRanking": "Kmenov\u00e9 um\u00edst\u011bn\u00ed",
             "casualWorlds": "Casual sv\u011bt",
             "classicWorlds": "Classic sv\u011bt",
             "history": "Historie stavby",

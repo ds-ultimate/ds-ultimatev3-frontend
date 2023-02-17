@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import {useTranslation} from "react-i18next";
 import {nf} from "../UtilFunctions";
 import usePersistentState from "../persitentState";
+import {Dict} from "../customTypes";
 
 type paramsType<T> = {
   api: string,
@@ -14,7 +15,9 @@ type paramsType<T> = {
   keyGen: (data: T) => Key,
   rowClassGen?: (data: T) => string | undefined,
   defaultSort?: [sort_type, SORTING_DIRECTION],
-  saveAs: string
+  saveAs: string,
+  api_params?: Dict<any>,
+  topBarMiddle?: JSX.Element,
 }
 
 type sort_type = string | number
@@ -29,7 +32,8 @@ enum SORTING_DIRECTION {
   DESC,
 }
 
-export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, rowClassGen, defaultSort, saveAs}: paramsType<T>) {
+export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, rowClassGen, defaultSort, saveAs,
+                                          api_params, topBarMiddle}: paramsType<T>) {
   // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
@@ -93,7 +97,7 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
     if(val === "") {
       val =  undefined
     }
-    setConfig((prevState) => { return {...prevState, search: val}})
+    setVolatile((prevState) => { return {...prevState, search: val}})
   }, [setConfig])
 
   const lengthMenu = t('sLengthMenu')
@@ -101,7 +105,7 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
   const lengthMenu_pre = lengthMenu.substring(0, lengthMenu_idx)
   const lengthMenu_post = lengthMenu.substring(lengthMenu_idx + "_MENU_".length)
 
-  const coreProps = {api, page, cells, keyGen, itemCntCallback, limit, search, rowClassGen}
+  const coreProps = {api, page, cells, keyGen, itemCntCallback, limit, search, rowClassGen, api_params}
 
   return (
       <>
@@ -115,6 +119,7 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
             </select>
             {lengthMenu_post}
           </div>
+          {topBarMiddle}
           <div className={"datatable-search"}>
             {t('sSearch')}
             <input type={"text"} onChange={searchChangeCallback} />

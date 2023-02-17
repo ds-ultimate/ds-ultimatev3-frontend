@@ -1,17 +1,29 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import RootLayout from "./pages/layout/root_layout"
 import * as RouteHolder from "./util/routes";
-const Index = lazy(() => import("./pages/content/index"));
-const Server = lazy(() => import("./pages/content/server"));
-const World = lazy(() => import("./pages/content/world"));
-const WorldPlayerCur = lazy(() => import("./pages/content/worldPlayerCurrent"));
-const WorldPlayerHist = lazy(() => import("./pages/content/worldPlayerHistory"));
-const WorldAllyCur = lazy(() => import("./pages/content/worldAllyCurrent"));
-const WorldAllyHist = lazy(() => import("./pages/content/worldAllyHistory"));
-const WorldConquer = lazy(() => import("./pages/content/worldConquer"));
-const WorldConquerDaily = lazy(() => import("./pages/content/worldConquerDaily"));
+
+import IndexPage from "./pages/content/Index";
+import ServerPage from "./pages/content/Server";
+import WorldPage from "./pages/content/World";
+import WorldPlayerCurrentPage from "./pages/content/WorldPlayerCurrent";
+import WorldPlayerHistoryPage from "./pages/content/WorldPlayerHistory";
+import WorldAllyCurrentPage from "./pages/content/WorldAllyCurrent";
+import WorldAllyHistoryPage from "./pages/content/WorldAllyHistory";
+import WorldConquerPage from "./pages/content/WorldConquer";
+import WorldConquerDailyPage from "./pages/content/WorldConquerDaily";
+/*
+const IndexPage = lazy(() => import("./pages/content/Index"));
+const ServerPage = lazy(() => import("./pages/content/Server"));
+const WorldPage = lazy(() => import("./pages/content/World"));
+const WorldPlayerCurrentPage = lazy(() => import("./pages/content/WorldPlayerCurrent"));
+const WorldPlayerHistoryPage = lazy(() => import("./pages/content/WorldPlayerHistory"));
+const WorldAllyCurrentPage = lazy(() => import("./pages/content/WorldAllyCurrent"));
+const WorldAllyHistoryPage = lazy(() => import("./pages/content/WorldAllyHistory"));
+const WorldConquerPage = lazy(() => import("./pages/content/WorldConquer"));
+const WorldConquerDailyPage = lazy(() => import("./pages/content/WorldConquerDaily"));
+*/
 //TODO better fallback for loading
 
 function App() {
@@ -20,15 +32,15 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path={'/'} element={<RootLayout />}>
-              <Route path={RouteHolder.INDEX} element={<Index />}/>
-              <Route path={RouteHolder.SERVER} element={<Server />}/>
-              <Route path={RouteHolder.WORLD} element={<World />}/>
-              <Route path={RouteHolder.WORLD_PLAYER_CUR} element={<WorldPlayerCur />}/>
-              <Route path={RouteHolder.WORLD_PLAYER_HIST} element={<WorldPlayerHist />}/>
-              <Route path={RouteHolder.WORLD_ALLY_CUR} element={<WorldAllyCur />}/>
-              <Route path={RouteHolder.WORLD_ALLY_HIST} element={<WorldAllyHist />}/>
-              <Route path={RouteHolder.WORLD_CONQUER} element={<WorldConquer />}/>
-              <Route path={RouteHolder.WORLD_CONQUER_DAILY} element={<WorldConquerDaily />}/>
+              <Route path={RouteHolder.INDEX} element={<IndexPage />}/>
+              <Route path={RouteHolder.SERVER} element={<ServerPage />}/>
+              <Route path={RouteHolder.WORLD} element={<WorldPage />}/>
+              <Route path={RouteHolder.WORLD_PLAYER_CUR} element={<WorldPlayerCurrentPage />}/>
+              <Route path={RouteHolder.WORLD_PLAYER_HIST} element={<WorldPlayerHistoryPage />}/>
+              <Route path={RouteHolder.WORLD_ALLY_CUR} element={<WorldAllyCurrentPage />}/>
+              <Route path={RouteHolder.WORLD_ALLY_HIST} element={<WorldAllyHistoryPage />}/>
+              <Route path={RouteHolder.WORLD_CONQUER} element={<WorldConquerPage />}/>
+              <Route path={RouteHolder.WORLD_CONQUER_DAILY} element={<WorldConquerDailyPage />}/>
             </Route>
           </Routes>
         </Suspense>

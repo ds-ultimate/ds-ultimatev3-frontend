@@ -4,12 +4,11 @@ import {formatRoute} from "../util/router";
 import {ALLY_INFO, PLAYER_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 
-type playerType = {
+
+type playerPureType = {
   playerID: number,
   name: string,
   ally_id: number,
-  allyLatest__tag: string | null,
-  allyLatest__name: string | null,
   village_count: number,
   points: number,
   rank: number,
@@ -21,6 +20,11 @@ type playerType = {
   supBashRank: number,
   gesBash: number,
   gesBashRank: number,
+}
+
+type playerType = playerPureType & {
+  allyLatest__tag: string | null,
+  allyLatest__name: string | null,
 }
 
 const LinkPlayer = ({player, world, withAlly}: {player: playerType, world: worldType, withAlly?: boolean}) => {
@@ -46,5 +50,5 @@ const LinkPlayerAlly = ({player, world}: {player: playerType, world: worldType})
   )
 }
 
-export type {playerType}
+export type {playerType, playerPureType}
 export {LinkPlayer, LinkPlayerAlly}

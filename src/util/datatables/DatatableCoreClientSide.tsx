@@ -1,6 +1,7 @@
 import {Key, useEffect, useState} from "react";
 import axios from "axios";
 import {SORTING_DIRECTION} from "./DatatableBase";
+import {Dict} from "../customTypes";
 
 type paramsType<T> = {
   api: string,
@@ -11,9 +12,10 @@ type paramsType<T> = {
   rowClassGen?: (data: T) => string | undefined,
   itemCntCallback: (totalCount: number, filteredCount: number)=> void,
   sort: Array<[number, SORTING_DIRECTION]>,
-  search?: string
+  search?: string,
+  api_params?: Dict<any>,
 }
-export default function DatatableCoreClientSide<T>({api, page, limit, cells, keyGen, rowClassGen, itemCntCallback, sort, search}: paramsType<T>) {
+export default function DatatableCoreClientSide<T>({api, page, limit, cells, keyGen, rowClassGen, itemCntCallback, sort, search, api_params}: paramsType<T>) {
   //TODO this whole thing
   const [data, setData] = useState<T[]>()
 

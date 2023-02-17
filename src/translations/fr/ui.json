@@ -12,6 +12,18 @@
     "current": "",
     "history": ""
   },
+  "old": {
+    "defBash": "",
+    "gesBash": "",
+    "member_count": "",
+    "offBash": "",
+    "player_points": "",
+    "points": "",
+    "rank": "",
+    "supBash": "",
+    "village_count": "",
+    "village_points": ""
+  },
   "server": {
     "choose": "",
     "code": "",
@@ -42,11 +54,13 @@
   },
   "table-title": {
     "ally": "",
+    "allyRanking": "",
     "bashStats": "",
     "general": "",
     "normalWorlds": "",
     "overview": "",
     "player": "",
+    "playerRanking": "",
     "specialWorlds": ""
   },
   "title": {

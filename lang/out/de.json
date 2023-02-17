@@ -728,7 +728,6 @@
             "speedWorlds": "Speed Runden",
             "casualWorlds": "Casual Welten",
             "history": "Ausbauverlauf",
-            "allyRanking": "Stammes-Rangliste",
             "playerHist": "Spieler Verlauf"
         },
         "table": {
@@ -800,17 +799,7 @@
             "guest": "Ingame (Gastzugang)"
         },
         "old": {
-            "rank": "Alter Rang",
-            "points": "Alte Punkte",
-            "member_count": "Alte Mitglieder",
-            "village_count": "Alte D\u00f6rfer",
-            "player_points": "Alte Punkte pro Spieler",
-            "gesBash": "Alte Insgesamt",
-            "offBash": "Alte Angreifer",
-            "defBash": "Alte Verteidiger",
-            "village_points": "Alte Punkte pro Dorf",
-            "nodata": "Keine Daten vorhanden",
-            "supBash": "Alte Unterst\u00fctzer"
+            "nodata": "Keine Daten vorhanden"
         },
         "own": {
             "maps": "Eigene Karten",

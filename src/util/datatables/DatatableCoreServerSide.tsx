@@ -1,6 +1,7 @@
 import {Key, useEffect, useState} from "react";
 import axios from "axios";
 import {SORTING_DIRECTION} from "./DatatableBase";
+import {Dict} from "../customTypes";
 
 type paramsType<T> = {
   api: string,
@@ -11,17 +12,18 @@ type paramsType<T> = {
   rowClassGen?: (data: T) => string | undefined,
   itemCntCallback: (totalCount: number, filteredCount: number)=> void,
   sort: Array<[string, SORTING_DIRECTION]>,
-  search?: string
+  search?: string,
+  api_params?: Dict<any>,
 }
 
-export default function DatatableCoreServerSide<T>({api, page, limit, cells, keyGen, rowClassGen, itemCntCallback, sort, search}: paramsType<T>) {
+export default function DatatableCoreServerSide<T>({api, page, limit, cells, keyGen, rowClassGen, itemCntCallback, sort, search, api_params}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
 
   useEffect(() => {
     let mounted = true
     const start = page * limit
 
-    axios.get(api, {params: {start, length: limit, sort, search}})
+    axios.get(api, {params: {start, length: limit, sort, search, ...api_params}})
         .then((resp) => {
           if(mounted) {
             setData(resp.data.data)
@@ -35,7 +37,7 @@ export default function DatatableCoreServerSide<T>({api, page, limit, cells, key
     return () => {
       mounted = false
     }
-  }, [api, page, limit, itemCntCallback, sort, search])
+  }, [api, page, limit, itemCntCallback, sort, search, api_params])
 
   return (
       <>

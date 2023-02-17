@@ -4,6 +4,7 @@ $filesOut = recursive_get_files("../src/translations");
 
 $replacements = [
     "ui.table-title.allyBashRanking" => "ui.tabeltitel.allyBashRanking",
+    "ui.table-title.allyRanking" => "ui.tabletitel.allyRanking",
     "ui.table-title.ally" => "ui.tabletitel.allys",
     "ui.table-title" => "ui.tabletitel",
     "ui.title" => "ui.titel",

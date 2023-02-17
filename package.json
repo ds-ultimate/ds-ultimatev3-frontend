@@ -14,6 +14,7 @@
     "i18next": "^22.4.9",
     "i18next-parser": "^7.6.0",
     "react": "^18.2.0",
+    "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-router-dom": "^6.7.0",
@@ -21,6 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/react-datepicker": "^4.8.0",
     "react-scripts": "5.0.1"
   },
   "scripts": {

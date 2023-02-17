@@ -12,6 +12,18 @@
     "current": "Aktuell",
     "history": "Verlauf"
   },
+  "old": {
+    "defBash": "Alte Verteidiger",
+    "gesBash": "Alte Insgesamt",
+    "member_count": "Alte Mitglieder",
+    "offBash": "Alte Angreifer",
+    "player_points": "Alte Punkte pro Spieler",
+    "points": "Alte Punkte",
+    "rank": "Alter Rang",
+    "supBash": "Alte Unterstützer",
+    "village_count": "Alte Dörfer",
+    "village_points": "Alte Punkte pro Dorf"
+  },
   "server": {
     "choose": "Wähle deinen Server aus",
     "code": "Code",
@@ -42,11 +54,13 @@
   },
   "table-title": {
     "ally": "Stämme",
+    "allyRanking": "Stammes-Rangliste",
     "bashStats": "Besiegte Gegner",
     "general": "Allgemein",
     "normalWorlds": "Normale Welten",
     "overview": "Übersicht",
     "player": "Spieler",
+    "playerRanking": "Spieler-Rangliste",
     "specialWorlds": "Spezial Welten"
   },
   "title": {

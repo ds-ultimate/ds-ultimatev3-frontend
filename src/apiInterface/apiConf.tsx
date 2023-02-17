@@ -19,6 +19,16 @@ const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
 //Datatables
 const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
 const worldPlayerCurrentTable = apiRequestGenerator("tables/worldPlayer/{server}/{world}")
+const worldAllyHistoryTable = apiRequestGenerator("tables/worldHistoryAlly/{server}/{world}")
+const worldPlayerHistoryTable = apiRequestGenerator("tables/worldHistoryPlayer/{server}/{world}")
 
 
-export {indexPage, serverGetWorlds, worldOverview, worldAllyCurrentTable, worldPlayerCurrentTable}
+export {
+  indexPage,
+  serverGetWorlds,
+  worldOverview,
+  worldAllyCurrentTable,
+  worldPlayerCurrentTable,
+  worldAllyHistoryTable,
+  worldPlayerHistoryTable
+}

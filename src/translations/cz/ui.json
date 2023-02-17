@@ -12,6 +12,18 @@
     "current": "Aktuální",
     "history": "Historie"
   },
+  "old": {
+    "defBash": "Starý obránce",
+    "gesBash": "Starý celkem",
+    "member_count": "Starý členové",
+    "offBash": "Starý útočníci",
+    "player_points": "Staré body na hráče",
+    "points": "Staré body",
+    "rank": "Starý rank",
+    "supBash": "Starý podporovatel",
+    "village_count": "Starý vesnice",
+    "village_points": "Starý bod na hráče"
+  },
   "server": {
     "choose": "Vyber svůj server",
     "code": "Server",
@@ -42,11 +54,13 @@
   },
   "table-title": {
     "ally": "Kmen",
+    "allyRanking": "Kmenové umístění",
     "bashStats": "Poražený protivník",
     "general": "Obecné",
     "normalWorlds": "Normální svět",
     "overview": "Přehled",
     "player": "Hráč",
+    "playerRanking": "Hráč umístění",
     "specialWorlds": "Speciální světy"
   },
   "title": {
