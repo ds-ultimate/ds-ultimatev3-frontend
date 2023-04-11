@@ -111,7 +111,7 @@ export default function ServerPage() {
   return (
       <Row className="justify-content-center">
         <Col xs={12}>
-          <Col md={5} className={"p-lg-3 mx-auto my-1 text-center"}>
+          <Col md={5} className={"p-lg-5 mx-auto my-1 text-center"}>
             <h1 className={"fw-normal"}>{t('title.worldOverview')}</h1>
           </Col>
         </Col>

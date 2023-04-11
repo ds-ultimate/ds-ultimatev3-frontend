@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.playerTable tr>*:nth-child(3), .playerTable tr>*:nth-child(4) {
+  text-align: right !important;
+}
+
+.playerTable tr>*:nth-child(2) {
+  @include text-truncate();
+  max-width: 200px;
+}
+
+.allyTable tr>*:nth-child(4), .allyTable tr>*:nth-child(5), .allyTable tr>*:nth-child(6) {
+  text-align: right !important;
+}
+
+.allyTable tr>*:nth-child(2) {
+  @include text-truncate();
+  max-width: 130px;
+}
