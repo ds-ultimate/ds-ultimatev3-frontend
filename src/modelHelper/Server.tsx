@@ -1,3 +1,4 @@
+import Flags from 'country-flag-icons/react/3x2'
 
 type serverType = {
   id: number,
@@ -12,4 +13,13 @@ type serverType = {
   world_cnt: number,
 }
 
+const ServerFlag = ({server}: {server: serverType}) => {
+  // @ts-ignore
+  const Flag = Flags[server.flag.toUpperCase()]
+  return (
+      <Flag className={"flags"}/>
+  )
+}
+
 export type {serverType}
+export {ServerFlag}

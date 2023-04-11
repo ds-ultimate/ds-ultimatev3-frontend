@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "./pages/layout/root_layout"
 import * as RouteHolder from "./util/routes";
 
+import "./bootstrap.scss"
+
 import IndexPage from "./pages/content/Index";
 import ServerPage from "./pages/content/Server";
 import WorldPage from "./pages/content/World";

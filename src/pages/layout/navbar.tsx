@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-import Dropdown from "./dropdown";
+import {GB, DE, CZ} from 'country-flag-icons/react/3x2'
 import {getWorldsOfServer} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import DropdownItem from "./dropdownItem";
 import {formatRoute} from "../../util/router";
+import {Navbar as ReactNav, Nav, NavDropdown, Form, Button, Dropdown} from 'react-bootstrap';
+import {Link} from "react-router-dom";
 import {
   INDEX,
   SERVER,
@@ -15,7 +16,7 @@ import {
   WORLD_PLAYER_CUR,
   WORLD_PLAYER_HIST
 } from "../../util/routes";
-import DropdownItemEvent from "./dropdownItemEvent";
+import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
 
 /*
 
@@ -64,6 +65,7 @@ if($worldArg !== null) {
 $retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
  */
 
+//TODO: fix this for mobile...
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
   const [serverWorlds, setServerWorlds] = useState<worldType[]>([])
   const [t, i18n] = useTranslation("ui")
@@ -90,72 +92,138 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   }, [serverCode])
 
   const allMenu: Array<JSX.Element> = []
-  allMenu.push(<DropdownItem key={"toIndex"} to={formatRoute(INDEX)}>DS-Ultimate</DropdownItem>)
 
   if(serverCode !== undefined) {
     allMenu.push(
-        <DropdownItem key={"toOverview"} to={formatRoute(SERVER, {server: serverCode})}>
-          {t('title.worldOverview')}
-        </DropdownItem>
+        <Nav.Item key={"toOverview"}>
+          <Nav.Link as={Link} to={formatRoute(SERVER, {server: serverCode})}>
+            {t('title.worldOverview')}
+          </Nav.Link>
+        </Nav.Item>
     )
 
     //TODO switch base path if we are inside a tool / ...
     let basePath = WORLD
     const serverWorldsNav = serverWorlds.map(w => {
       return (
-          <DropdownItem key={"serverWorldsNav_" + w.server__code + w.name} to={formatRoute(basePath, {server: w.server__code, world: w.name})}>
+          <NavDropdown.Item
+              key={"serverWorldsNav_" + w.server__code + w.name}
+              as={Link}
+              to={formatRoute(basePath, {server: w.server__code, world: w.name})}>
             <WorldDisplayName world={w} />
-          </DropdownItem>
+          </NavDropdown.Item>
       )
     })
 
-    allMenu.push(<Dropdown key={"serverWorldsDropdown"} root={<div>{t("server.worlds")}</div>} hover={true}>
-      {serverWorldsNav}
-    </Dropdown>)
+    allMenu.push(
+        <NavDropdown
+            key={"serverWorldsDropdown"}
+            title={t("server.worlds")}>
+          {serverWorldsNav}
+        </NavDropdown>
+    )
   }
+
   if(worldName !== undefined) {
     allMenu.push(
-        <Dropdown key={"worldRankingsDropdown"} root={<div>{t("server.ranking")}</div>} hover={true}>
-          <DropdownItem key={"worldTop10"} to={formatRoute(WORLD, {server: serverCode, world: worldName})}>
+        <NavDropdown
+            key={"worldRankingsDropdown"}
+            title={t("server.ranking")}>
+          <NavDropdown.Item key={"worldTop10"} as={Link} to={formatRoute(WORLD, {server: serverCode, world: worldName})}>
             {t('server.ranking')}
-          </DropdownItem>
-          <DropdownItem key={"worldTablePlayerCur"} to={formatRoute(WORLD_PLAYER_CUR, {server: serverCode, world: worldName})}>
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"worldTablePlayerCur"} as={Link} to={formatRoute(WORLD_PLAYER_CUR, {server: serverCode, world: worldName})}>
             {t('table.player')} ({t('nav.current')})
-          </DropdownItem>
-          <DropdownItem key={"worldTablePlayerHist"} to={formatRoute(WORLD_PLAYER_HIST, {server: serverCode, world: worldName})}>
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"worldTablePlayerHist"} as={Link} to={formatRoute(WORLD_PLAYER_HIST, {server: serverCode, world: worldName})}>
             {t('table.player')} ({t('nav.history')})
-          </DropdownItem>
-          <DropdownItem key={"worldTableAllyCur"} to={formatRoute(WORLD_ALLY_CUR, {server: serverCode, world: worldName})}>
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"worldTableAllyCur"} as={Link} to={formatRoute(WORLD_ALLY_CUR, {server: serverCode, world: worldName})}>
             {t('table.ally')} ({t('nav.current')})
-          </DropdownItem>
-          <DropdownItem key={"worldTableAllyHist"} to={formatRoute(WORLD_ALLY_HIST, {server: serverCode, world: worldName})}>
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"worldTableAllyHist"} as={Link} to={formatRoute(WORLD_ALLY_HIST, {server: serverCode, world: worldName})}>
             {t('table.ally')} ({t('nav.history')})
-          </DropdownItem>
-        </Dropdown>
+          </NavDropdown.Item>
+        </NavDropdown>
     )
     allMenu.push(
-        <Dropdown key={"worldConquerDropdown"} root={<div>{t("conquer.all")}</div>} hover={true}>
-          <DropdownItem key={"worldConquerAll"} to={formatRoute(WORLD_CONQUER, {server: serverCode, world: worldName, type: "all"})}>
+        <NavDropdown
+            key={"worldConquerDropdown"}
+            title={t("conquer.all")}>
+          <NavDropdown.Item key={"worldConquerAll"} as={Link} to={formatRoute(WORLD_CONQUER, {server: serverCode, world: worldName, type: "all"})}>
             {t('conquer.all')}
-          </DropdownItem>
-          <DropdownItem key={"worldConquerDaily"} to={formatRoute(WORLD_CONQUER_DAILY, {server: serverCode, world: worldName})}>
+          </NavDropdown.Item>
+          <NavDropdown.Item key={"worldConquerDaily"} as={Link} to={formatRoute(WORLD_CONQUER_DAILY, {server: serverCode, world: worldName})}>
             {t('conquer.daily')}
-          </DropdownItem>
-        </Dropdown>
+          </NavDropdown.Item>
+        </NavDropdown>
     )
   }
-  allMenu.push(<Dropdown key={"toolDropdown"} root={<div>{t("server.tools")}</div>} hover={true}>
-    <DropdownItem key={"TODO"} to={"#"} disabled>TODO</DropdownItem>
-  </Dropdown>)
+  allMenu.push(
+      <NavDropdown key={"toolDropdown"} title={t("server.tools")}>
+        <NavDropdown.Item key={"TODO"} as={Link} to={"#"} disabled>TODO</NavDropdown.Item>
+      </NavDropdown>
+  )
 
-  allMenu.push(<Dropdown key={"langDropdown"} root={<div>{t("language")}</div>} hover={true}>
-    <DropdownItemEvent key={"de"} onclick={() => i18n.changeLanguage('de')}>de</DropdownItemEvent>
-    <DropdownItemEvent key={"en"} onclick={() => i18n.changeLanguage('en')}>en</DropdownItemEvent>
-  </Dropdown>)
+  const getCurrentTheme = useGetCurrentTheme()
+  const setTheme = useSetTheme()
+  if(getCurrentTheme() === THEME.LIGHT) {
+    allMenu.push(
+        <Nav.Item key={"darkModeToggle"} className="ms-auto">
+          <Button variant={"outline-dark"} onClick={() => setTheme(THEME.DARK)}>{t('darkMode')}</Button>
+        </Nav.Item>
+    )
+  } else {
+    allMenu.push(
+        <Nav.Item key={"darkModeToggle"} className="ms-auto">
+          <Button variant={"outline-primary"} onClick={() => setTheme(THEME.LIGHT)}>{t('lightMode')}</Button>
+        </Nav.Item>
+    )
+  }
+
+  if(serverCode) {
+    allMenu.push(
+        <Form className="d-flex ms-2" key={"search"}>
+          <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+          />
+          <Button variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>{t('title.search')}</Button>
+        </Form>
+    )
+    //TODO: implement search
+  }
+
+  const selectLang = function(eventData: string | null) {
+    if(eventData)
+      i18n.changeLanguage(eventData)
+  }
+  allMenu.push(
+      <Dropdown key={"langDropdown"} className={"ms-2"} onSelect={selectLang}>
+        <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>
+          {t("language")}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item eventKey={'de'}><DE className={"flags"}/>Deutsch</Dropdown.Item>
+          <Dropdown.Item eventKey={'en'}><GB className={"flags"}/>English</Dropdown.Item>
+          <Dropdown.Item eventKey={'cz'}><CZ className={"flags"}/>Czech</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+  )
+
+  //TODO: add login + user area here
 
   return (
-      <nav>
-        {allMenu}
-      </nav>
+      <ReactNav className={"nav-bg"} expand={"lg"}>
+        <ReactNav.Brand key={"toIndex"} as={Link} to={formatRoute(INDEX)}>DS-Ultimate</ReactNav.Brand>
+        <ReactNav.Toggle aria-controls="navbarScroll" />
+        <ReactNav.Collapse id={"navbarScroll"}>
+          <Nav className={"w-100"}>
+            {allMenu}
+          </Nav>
+        </ReactNav.Collapse>
+      </ReactNav>
   )
 }

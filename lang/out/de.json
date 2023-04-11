@@ -713,7 +713,6 @@
         "titel": {
             "ally": "Stamm",
             "player": "Spieler",
-            "search": "Suche",
             "searchResults": "Suchergebnisse",
             "village": "Dorf",
             "overview": "\u00dcbersicht",
@@ -766,9 +765,7 @@
             "noAlly": "Stammeslos",
             "deleted": "Gel\u00f6scht"
         },
-        "news": {
-            "title": "Neuigkeiten"
-        },
+        "news": {},
         "unit": {
             "spear": "Speertr\u00e4ger",
             "sword": "Schwertk\u00e4mpfer",
@@ -900,8 +897,6 @@
             "points": "Max Punkte",
             "bashGes": "Max Bash"
         },
-        "lightmode": "Lightmode",
-        "darkmode": "Darkmode",
         "sigPreview": "Vorschau",
         "errors": {
             "404": {

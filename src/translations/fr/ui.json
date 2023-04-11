@@ -4,13 +4,18 @@
     "all": "",
     "daily": ""
   },
+  "darkMode": "",
   "index": {
     "help": ""
   },
   "language": "",
+  "lightMode": "",
   "nav": {
     "current": "",
     "history": ""
+  },
+  "news": {
+    "title": ""
   },
   "old": {
     "defBash": "",
@@ -64,6 +69,7 @@
     "specialWorlds": ""
   },
   "title": {
+    "search": "",
     "worldOverview": ""
   },
   "world": {

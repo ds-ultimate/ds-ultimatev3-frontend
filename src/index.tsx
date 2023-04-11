@@ -5,12 +5,15 @@ import reportWebVitals from './reportWebVitals';
 
 import {I18nextProvider} from "react-i18next";
 import i18next from "i18next"
+import LanguageDetector from "i18next-browser-languagedetector"
 
 import trans_de_ui from "./translations/de/ui.json"
 import trans_en_ui from "./translations/en/ui.json"
+import trans_cz_ui from "./translations/cz/ui.json"
 
 import trans_de_datatable from "./translations/de/datatable.json"
 import trans_en_datatable from "./translations/en/datatable.json"
+import trans_cz_datatable from "./translations/cz/datatable.json"
 import Debugbar from "./util/Debugbar";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,17 +28,24 @@ import "react-datepicker/dist/react-datepicker.css";
 //TODO: workflow for compile & upload
 
 // noinspection JSIgnoredPromiseFromCall
-i18next.init({
+i18next.use(LanguageDetector).init({
   interpolation: { escapeValue: false },  // React already does escaping
-  lng: 'en',                              // language to use
+  detection: {
+    order: ['localStorage', 'navigator'],
+    caches: ['localStorage']
+  },
   resources: {
+    de: {
+      ui: trans_de_ui,
+      datatable: trans_de_datatable,
+    },
     en: {
       ui: trans_en_ui,
       datatable: trans_en_datatable,
     },
-    de: {
-      ui: trans_de_ui,
-      datatable: trans_de_datatable,
+    cz: {
+      ui: trans_cz_ui,
+      datatable: trans_cz_datatable,
     },
   },
 });

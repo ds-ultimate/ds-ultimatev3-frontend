@@ -737,7 +737,6 @@
             "playerHist": "player history"
         },
         "titel": {
-            "search": "Search",
             "searchResults": "Search results",
             "village": "Village",
             "overview": "Overview",
@@ -755,9 +754,7 @@
             "noAlly": "without tribe",
             "deleted": "deleted"
         },
-        "news": {
-            "title": "News"
-        },
+        "news": {},
         "unit": {
             "archer": "Archer",
             "axe": "Axe",
@@ -889,8 +886,6 @@
             "rank": "max rank",
             "villages": "max villages"
         },
-        "darkmode": "darkmode",
-        "lightmode": "lightmode",
         "sigPreview": "Preview",
         "errors": {
             "404": {

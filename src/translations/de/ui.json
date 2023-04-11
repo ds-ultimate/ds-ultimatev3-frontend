@@ -4,13 +4,18 @@
     "all": "Adelungen",
     "daily": "Adelsrangliste Täglich"
   },
+  "darkMode": "Darkmode",
   "index": {
     "help": "Um die meisten Funktionen der Seite nutzen zu können, musst du einen Server und eine Welt auswählen."
   },
   "language": "Sprache",
+  "lightMode": "Lightmode",
   "nav": {
     "current": "Aktuell",
     "history": "Verlauf"
+  },
+  "news": {
+    "title": "Neuigkeiten"
   },
   "old": {
     "defBash": "Alte Verteidiger",
@@ -64,6 +69,7 @@
     "specialWorlds": "Spezial Welten"
   },
   "title": {
+    "search": "Suche",
     "worldOverview": "Weltenübersicht"
   },
   "world": {

@@ -4,13 +4,18 @@
     "all": "Conquers",
     "daily": "Conquer ranking daily"
   },
+  "darkMode": "darkmode",
   "index": {
     "help": "In order to use most of the functions of this site you need to choose a server and a world."
   },
   "language": "Language",
+  "lightMode": "lightmode",
   "nav": {
     "current": "Current",
     "history": "History"
+  },
+  "news": {
+    "title": "News"
   },
   "old": {
     "defBash": "Old Defender",
@@ -64,6 +69,7 @@
     "specialWorlds": "Special worlds"
   },
   "title": {
+    "search": "Search",
     "worldOverview": "World overview"
   },
   "world": {

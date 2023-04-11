@@ -4,13 +4,18 @@
     "all": "Dobytí",
     "daily": "Aktuálně dobyté vesnice"
   },
+  "darkMode": "Tmavý mód",
   "index": {
     "help": "Chcete-li používat většinu funkcí webu, musíte si vybrat server a svět."
   },
   "language": "Jazyk",
+  "lightMode": "Světlý mód",
   "nav": {
     "current": "Aktuální",
     "history": "Historie"
+  },
+  "news": {
+    "title": "Novinky"
   },
   "old": {
     "defBash": "Starý obránce",
@@ -64,6 +69,7 @@
     "specialWorlds": "Speciální světy"
   },
   "title": {
+    "search": "Vyhledat",
     "worldOverview": "Přehled světů"
   },
   "world": {

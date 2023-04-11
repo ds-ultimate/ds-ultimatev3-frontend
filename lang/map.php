@@ -10,6 +10,8 @@ $replacements = [
     "ui.title" => "ui.titel",
     "ui.world.world" => "ui.world.normal",
     "ui.table.bashDef" => "ui.table.bashDeff",
+    "lightMode" => "lightmode",
+    "darkMode" => "darkmode",
 ];
 $allow_errors = false;
 

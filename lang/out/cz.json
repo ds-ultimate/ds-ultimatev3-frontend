@@ -661,7 +661,6 @@
             "playerOwn": "Vlastn\u00ed dobyt\u00ed",
             "won": "Dobyt\u00ed"
         },
-        "darkmode": "Tmav\u00fd m\u00f3d",
         "follow": {
             "attackplanner": "Sleduje seznam \u00fatok\u016f",
             "map": "Sledujte mapu"
@@ -675,7 +674,6 @@
             "guest": "Zobrazit v hostovac\u00edm re\u017eimu",
             "normal": "Zobrazit ve h\u0159e"
         },
-        "lightmode": "Sv\u011btl\u00fd m\u00f3d",
         "mistake": "Do\u0161lo k chyb\u011b.",
         "nav": {
             "disabled": {
@@ -687,9 +685,7 @@
             "toggle": "P\u0159epnut\u00ed",
             "tops": "Nejlep\u0161\u00ed hodnoty"
         },
-        "news": {
-            "title": "Novinky"
-        },
+        "news": {},
         "noTitle": "Bez n\u00e1zvu",
         "notAllowed": "Nep\u0159\u00edpustn\u00e9",
         "notAllowedDesc": "Nejste opr\u00e1vn\u011bni zobrazit tuto str\u00e1nku.",
@@ -794,7 +790,6 @@
             "ally": "Kmen",
             "overview": "P\u0159ehled",
             "player": "Hr\u00e1\u010d",
-            "search": "Vyhledat",
             "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
             "searchResults": "V\u00fdsledky hled\u00e1n\u00ed",
             "settings": "Nastaven\u00ed",

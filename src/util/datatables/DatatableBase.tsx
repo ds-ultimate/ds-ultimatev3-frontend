@@ -98,7 +98,7 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
       val =  undefined
     }
     setVolatile((prevState) => { return {...prevState, search: val}})
-  }, [setConfig])
+  }, [setVolatile])
 
   const lengthMenu = t('sLengthMenu')
   const lengthMenu_idx = lengthMenu.indexOf("_MENU_")
