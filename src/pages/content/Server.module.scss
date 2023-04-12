@@ -1,3 +1,4 @@
+@import '../../customVariables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
@@ -5,15 +6,13 @@
 @include media-breakpoint-down(lg) {
   .serverTruncate {
     max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include text-truncate();
   }
 }
 
 @include media-breakpoint-down(sm) {
   .serverTruncate {
-    max-width: 80px;
+    max-width: 100px;
   }
 }
 

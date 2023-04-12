@@ -60,7 +60,7 @@ export default function IndexPage() {
           <tr key={s.code}>
             <td><ServerFlag server={s} /></td>
             <td>{s.code}</td>
-            <td><a href={s.url}>{s.url}</a></td>
+            <td className={styles.dsLinkTruncate}><a href={s.url}>{s.url}</a></td>
             <td>{s.world_cnt}</td>
             <td><Link to={formatRoute(SERVER, {server: s.code})} className={"btn btn-primary btn-sm"}>{t('server.show')}</Link></td>
           </tr>
@@ -88,9 +88,9 @@ export default function IndexPage() {
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col xs={12} lg={6} className={"mt-2"}>
+          <Col xs={12} lg={9} xl={6} className={"mt-2"}>
             <Card>
-              <Card.Body>
+              <Card.Body className={"table-responsive"}>
                 <Card.Title as={"h2"}>{t("server.choose")}:</Card.Title>
                 <Table striped hover>
                   <thead>

@@ -1,89 +1,5 @@
-/* The following block can be included in a custom.scss */
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-
-//Table
-$table-cell-padding: .1rem !default;
-
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1250px
-);
-
-$navbar-padding-x: 1rem;
-$navbar-padding-y: 0.5rem;
-$table-cell-padding-y: 0.1rem;
-$spacer: 1.25rem;
-
-$link-decoration: none;
-
-// Colors
-$primary: #edd492;
-$secondary: #7d510f;
-$primaryBg: #fbf6e9;
-$secondaryBg: #edd492;
-$text-color: #7d510f;
-$link-color: #7d510f;
-
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
-
-$body-bg:                   rgba(192, 192, 192, 0.835);
-$component-active-bg:       $body-bg;
-$card-bg:                   var(--custom-card-bg);
-$dropdown-bg:               var(--custom-dropdown-bg);
-$input-bg:                  var(--custom-input-bg);
-$body-emphasis-color-dark:  #aaa;
-
-$component-active-color: black;
-$pagination-disabled-color: black;
-$link-color: rgb(85, 58, 11);
-$pagination-color: black;
-$pagination-hover-color: black;
-$popover-bg: rgb(207, 207, 207);
-
-$table-striped-bg: var(--custom-striped-bg);
-$table-hover-bg: var(--custom-hover-bg);
-
-$primary-dark:       #4d4d4d;
-$secondary-dark:     #6c757d;
-$success-dark:       $green;
-$info-dark:          $cyan;
-$warning-dark:       $orange;
-$danger-dark:        $red;
-$light-dark:         #7c7c7c;
-$dark-dark:          #343a40;
-$theme-colors-dark: (
-    "primary":    $primary-dark,
-    "secondary":  $secondary-dark,
-    "success":    $success-dark,
-    "info":       $info-dark,
-    "warning":    $warning-dark,
-    "danger":     $danger-dark,
-    "light":      $light-dark,
-    "dark":       $dark-dark,
-);
-
-$link-color-dark: #adadad;
-$headings-color-dark: #d3d3d3;
-
+@import "customVariables";
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
 
@@ -117,6 +33,9 @@ and https://github.com/twbs/bootstrap/pull/38136
       @debug $value;
       .btn-#{$color} {
         @include button-variant($value, $value);
+      }
+      .btn-outline-#{$color} {
+        @include button-outline-variant($value, $value);
       }
     }
   }

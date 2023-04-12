@@ -5,7 +5,7 @@ import {getWorldsOfServer} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
-import {Navbar as ReactNav, Nav, NavDropdown, Form, Button, Dropdown} from 'react-bootstrap';
+import {Navbar as ReactNav, Nav, NavDropdown, Form, Dropdown, Button} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import {
   INDEX,
@@ -65,7 +65,6 @@ if($worldArg !== null) {
 $retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
  */
 
-//TODO: fix this for mobile...
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
   const [serverWorlds, setServerWorlds] = useState<worldType[]>([])
   const [t, i18n] = useTranslation("ui")
@@ -167,26 +166,25 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
 
   const getCurrentTheme = useGetCurrentTheme()
   const setTheme = useSetTheme()
+  let props: [string, string, string]
   if(getCurrentTheme() === THEME.LIGHT) {
-    allMenu.push(
-        <Nav.Item key={"darkModeToggle"} className="ms-auto">
-          <Button variant={"outline-dark"} onClick={() => setTheme(THEME.DARK)}>{t('darkMode')}</Button>
-        </Nav.Item>
-    )
+    props = ["outline-dark", THEME.DARK, t('darkMode')]
   } else {
-    allMenu.push(
-        <Nav.Item key={"darkModeToggle"} className="ms-auto">
-          <Button variant={"outline-primary"} onClick={() => setTheme(THEME.LIGHT)}>{t('lightMode')}</Button>
-        </Nav.Item>
-    )
+    props = ["outline-light", THEME.LIGHT, t('lightMode')]
   }
+  allMenu.push(
+      <Nav.Item key={"darkModeToggle"} className="ms-lg-auto">
+        <Nav.Link className={"d-lg-none"} onClick={() => setTheme(props[1])}>{props[2]}</Nav.Link>
+        <Button className={"d-none d-lg-inline-block"} variant={props[0]} onClick={() => setTheme(props[1])}>{props[2]}</Button>
+      </Nav.Item>//btn btn-${props[0]}
+  )
 
   if(serverCode) {
     allMenu.push(
-        <Form className="d-flex ms-2" key={"search"}>
+        <Form className="d-flex ms-lg-2" key={"search"}>
           <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder={t('title.search') ?? undefined}
               className="me-2"
               aria-label="Search"
           />
@@ -194,23 +192,38 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
         </Form>
     )
     //TODO: implement search
+    //TODO: mobile search
   }
 
   const selectLang = function(eventData: string | null) {
     if(eventData)
       i18n.changeLanguage(eventData)
   }
+
+  const langItems = (
+      <>
+        <Dropdown.Item eventKey={'de'}><DE className={"flags"}/>Deutsch</Dropdown.Item>
+        <Dropdown.Item eventKey={'en'}><GB className={"flags"}/>English</Dropdown.Item>
+        <Dropdown.Item eventKey={'cz'}><CZ className={"flags"}/>Czech</Dropdown.Item>
+      </>
+  )
   allMenu.push(
-      <Dropdown key={"langDropdown"} className={"ms-2"} onSelect={selectLang}>
-        <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>
-          {t("language")}
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item eventKey={'de'}><DE className={"flags"}/>Deutsch</Dropdown.Item>
-          <Dropdown.Item eventKey={'en'}><GB className={"flags"}/>English</Dropdown.Item>
-          <Dropdown.Item eventKey={'cz'}><CZ className={"flags"}/>Czech</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <div key={"langDropdown-lg"} className={"d-none d-lg-inline"}>
+        <Dropdown className={"ms-2"} onSelect={selectLang}>
+          <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>
+            {t("language")}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+  )
+  allMenu.push(
+      <div key={"langDropdown-mobile"} className={"d-lg-none"}>
+        <NavDropdown onSelect={selectLang} title={t("language")}>
+          {langItems}
+        </NavDropdown>
+      </div>
   )
 
   //TODO: add login + user area here

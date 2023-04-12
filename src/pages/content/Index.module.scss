@@ -1,9 +1,17 @@
+@import '../../customVariables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
 .newsBorder {
   border: 1px solid black !important;
+}
+
+@include media-breakpoint-down(xs) {
+  .dsLinkTruncate {
+    @include text-truncate();
+    max-width: 150px;
+  }
 }
 
 @include color-mode(dark) {

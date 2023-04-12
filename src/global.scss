@@ -30,7 +30,7 @@
 @include media-breakpoint-up(xl) {
   .container {
     max-width: inherit;
-    width: max(80%, calc(540px + 50%));
+    width: max(80%, calc(625px + 50%));
   }
 }
 
@@ -40,9 +40,7 @@ table {
 
 .truncate {
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @include text-truncate();
 }
 
 .dark-img-bg {

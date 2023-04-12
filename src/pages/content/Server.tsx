@@ -12,6 +12,7 @@ import {Button, Card, Col, Collapse, Row, Table} from "react-bootstrap";
 import styles from "./Server.module.scss"
 
 function WorldTypeSection({data, header, server, type}: {data: worldType[], header: string, server?: serverType, type: string}) {
+  //TODO: 404 Page
   const { t } = useTranslation("ui")
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const activeData = data.filter(w => w.active)

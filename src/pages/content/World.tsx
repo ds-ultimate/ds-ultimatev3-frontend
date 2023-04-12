@@ -11,9 +11,10 @@ import {Card, Col, Row, Table} from "react-bootstrap";
 import styles from "./World.module.scss"
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
+  //TODO: 404 Page
   const { t } = useTranslation("ui")
   return (
-      <>
+      <Card.Body className={"table-responsive"}>
         <Card.Title as={"h2"}>{t('table-title.top10') + " " + t('table-title.player')}</Card.Title>
         <Table hover striped className={"table-responsive w-100 " + styles.playerTable}>
           <thead>
@@ -37,14 +38,14 @@ function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, 
           })}
           </tbody>
         </Table>
-      </>
+      </Card.Body>
   )
 }
 
 function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worldAllyData: allyType[]}) {
   const { t } = useTranslation("ui")
   return (
-      <>
+      <Card.Body className={"table-responsive"}>
         <Card.Title as={"h2"}>{t('table-title.top10') + " " + t('table-title.ally')}</Card.Title>
         <Table hover striped className={"table-responsive w-100 " + styles.playerTable}>
           <thead>
@@ -72,7 +73,7 @@ function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worl
           })}
           </tbody>
         </Table>
-      </>
+      </Card.Body>
   )
 }
 
@@ -107,16 +108,12 @@ export default function WorldPage() {
         </Col>
         <Col xs={12} lg={6} className={"mt-2"}>
           <Card>
-            <Card.Body>
               <WorldPlayerTable worldData={worldData} worldPlayerData={worldOverview.player} />
-            </Card.Body>
           </Card>
         </Col>
         <Col xs={12} lg={6} className={"mt-2"}>
           <Card>
-            <Card.Body>
               <WorldAllyTable worldData={worldData} worldAllyData={worldOverview.ally} />
-            </Card.Body>
           </Card>
         </Col>
       </Row>
