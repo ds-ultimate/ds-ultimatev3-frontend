@@ -30,6 +30,7 @@ interface externalCellProps<T> {
   cells: Array<(data: T) => string | JSX.Element>,
   keyGen: (data: T) => Key,
   rowClassGen?: (data: T) => string | undefined,
+  cellClasses?: string[]
 }
 
 export interface internalCellProps<T> extends externalCellProps<T> {
@@ -59,8 +60,8 @@ export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir:
   curSortBy?: Array<[sort_type, SORTING_DIRECTION]>}>({})
 
 
-export default function DatatableBase<T>({api, header, serverSide, cells, keyGen, rowClassGen, defaultSort, saveAs,
-                                          api_params, topBarMiddle, topBarEnd, responsiveTable}: paramsType<T>) {
+export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd,
+                                          cellClasses, responsiveTable, ...unusedProps}: paramsType<T>) {
   // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
@@ -134,15 +135,15 @@ export default function DatatableBase<T>({api, header, serverSide, cells, keyGen
 
   const curBreakpoint = useBreakpointIdx()
   const [headerNode, colVisible, colInvisible, headerNames] = useMemo(() => {
-    return [header.buildNodes(), header.getScreenVisibilityMapping(), header.getOffVisibilityMapping(), header.getNames()]
-  }, [header])
+    return [header.buildNodes(cellClasses), header.getScreenVisibilityMapping(), header.getOffVisibilityMapping(), header.getNames()]
+  }, [header, cellClasses])
   const visibleCells = colVisible[curBreakpoint]
   const invisibleCells = colInvisible[curBreakpoint]
 
   const coreProps = {
-    api, page, cells, visibleCells, invisibleCells, headerNames,
-    keyGen, itemCntCallback, limit, search, rowClassGen, api_params
+    page, visibleCells, invisibleCells, headerNames, itemCntCallback, limit, search, cellClasses, ...unusedProps
   }
+
   return (
       <div>
         <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort}}>

@@ -1,18 +1,21 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {WorldDisplayName, worldType} from "../../modelHelper/World";
+import React, {useState} from "react";
+import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import {getWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loadContent";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import DatePicker from "react-datepicker"
 import {AllyDatatableHeader} from "./WorldAllyCurrent";
+import StatsPage from "../layout/StatsPage";
+import {Col} from "react-bootstrap";
+import useDatepickerLanguage from "../../util/datepickerLanguage";
 
 export default function WorldAllyHistoryPage() {
   const {server, world} = useParams()
-  const [dataWorld, setDataWorld] = useState<worldType>()
+  const worldData = useWorldData(server, world)
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   const firstDay = new Date()
@@ -20,34 +23,21 @@ export default function WorldAllyHistoryPage() {
   const [startDate, setStartDate] = useState<Date>(yesterday);
   const { t } = useTranslation("ui")
 
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined || world === undefined) {
-      setDataWorld(undefined)
-    } else {
-      getWorldData(server, world)
-          .then(data => {
-            if(mounted) {
-              setDataWorld(data)
-            }
-          })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server, world])
-
-  return (
-      <>
-        <h1>{dataWorld && <WorldDisplayName world={dataWorld} />}</h1>
-        <h2>{t("table-title.allyRanking")}</h2>
+  return <StatsPage
+      title={
+        <>
+          {worldData && <WorldDisplayName world={worldData} />}<br />
+          {t("table-title.allyRanking")}
+        </>
+      }
+      table={
         <DatatableBase<[allyType, allyType | null]>
             api={worldAllyHistoryTable({server, world})}
             header={AllyDatatableHeader(t)}
             cells={[
               (a) => <ShowHistory name={t("old.rank")} o_dat={a[1]?.rank} n_dat={a[0].rank} invert />,
-              (a) => <>{dataWorld && <LinkAlly ally={a[0]} world={dataWorld} />}</>,
-              (a) => <>{dataWorld && <LinkAlly ally={a[0]} world={dataWorld} useTag />}</>,
+              (a) => <>{worldData && <LinkAlly ally={a[0]} world={worldData} />}</>,
+              (a) => <>{worldData && <LinkAlly ally={a[0]} world={worldData} useTag />}</>,
               (a) => <ShowHistory name={t("old.points")} o_dat={a[1]?.points} n_dat={a[0].points} />,
               (a) => <ShowHistory name={t("old.member_count")} o_dat={a[1]?.member_count} n_dat={a[0].member_count} />,
               (a) => <ShowHistory name={t("old.village_count")} o_dat={a[1]?.village_count} n_dat={a[0].village_count} />,
@@ -56,20 +46,26 @@ export default function WorldAllyHistoryPage() {
               (a) => <ShowHistory name={t("old.offBash")} o_dat={a[1]?.offBash} n_dat={a[0].offBash} />,
               (a) => <ShowHistory name={t("old.defBash")} o_dat={a[1]?.defBash} n_dat={a[0].defBash} />,
             ]}
+            cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={a => a[0].allyID}
             serverSide
             defaultSort={["rank", SORTING_DIRECTION.ASC]}
             saveAs={'worldAllyHist'}
+            responsiveTable
             api_params={{day: dateFormatYMD(startDate)}}
             topBarMiddle={(
-                <DatePicker
-                    selected={startDate}
-                    onChange={(date) => date?setStartDate(date):undefined}
-                    minDate={firstDay}
-                    maxDate={yesterday}
-                />
+                <Col xs={12} md={"auto"} className={"ms-md-auto mb-2"}>
+                  <DatePicker
+                      selected={startDate}
+                      onChange={(date) => date?setStartDate(date):undefined}
+                      minDate={firstDay}
+                      maxDate={yesterday}
+                      className={"form-control"}
+                      locale={useDatepickerLanguage()}
+                  />
+                </Col>
             )}
         />
-      </>
-  )
+      }
+  />
 };

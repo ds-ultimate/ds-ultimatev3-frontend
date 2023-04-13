@@ -33,11 +33,11 @@ export default class DatatableHeaderBuilder {
     return this
   }
 
-  buildNodes() {
+  buildNodes(cellClasses: string[] | undefined) {
     const visibility = this.getVisibility()
     return (
         <thead>
-        {this.data.map((value, idx) => value.buildNode(visibility, idx))}
+        {this.data.map((value, idx) => value.buildNode(visibility, idx, cellClasses))}
         </thead>
     )
   }
@@ -121,19 +121,22 @@ class DatatableRowBuilder {
     return result
   }
 
-  buildNode(visibility: string[], key: Key) {
+  buildNode(visibility: string[], key: Key, cellClasses: string[] | undefined) {
     let index = 0
     return (
         <tr key={key}>
           {this.cells.map((value, idx) => {
-            const visible = visibility.slice(index, index + (value.colSpan ?? 1))
-            index += value.colSpan ?? 1
+            const len = value.colSpan ?? 1
+            const visible = visibility.slice(index, index + len)
+            const className = (len === 1 && cellClasses)?cellClasses[index]:undefined
+            index += len
             return (
                 <DatatableHeader
                     key={idx}
                     sortBy={value.sortBy}
                     sortDescDefault={value.sortDescDefault}
                     showAt={visible}
+                    className={className}
                 >
                   {value.title}
                 </DatatableHeader>

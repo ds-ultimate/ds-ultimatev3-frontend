@@ -8,7 +8,7 @@ import {nf} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
-import {Card, Col, Row} from "react-bootstrap";
+import StatsPage from "../layout/StatsPage";
 
 const AllyDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
   return new DatatableHeaderBuilder()
@@ -35,45 +35,38 @@ export default function WorldAllyCurrentPage() {
   const worldData = useWorldData(server, world)
   const { t } = useTranslation("ui")
 
-  return (
-      <Row className="justify-content-center">
-        <Col xs={12}>
-          <Col md={5} className={"p-lg-5 mx-auto my-1 text-center"}>
-            <h1 className={"fw-normal"}>
-              {worldData && <WorldDisplayName world={worldData} />}<br />
-              {t("table-title.overview")} {t("table-title.ally")}
-            </h1>
-          </Col>
-        </Col>
-        <Col xs={12} className={"mt-2"}>
-          <Card>
-            <Card.Body>
-              <DatatableBase<allyType>
-                  api={worldAllyCurrentTable({server, world})}
-                  header={AllyDatatableHeader(t)}
-                  cells={[
-                    (a) => nf.format(a.rank),
-                    (a) => <>{worldData && <LinkAlly ally={a} world={worldData} />}</>,
-                    (a) => <>{worldData && <LinkAlly ally={a} world={worldData} useTag />}</>,
-                    (a) => nf.format(a.points),
-                    (a) => nf.format(a.member_count),
-                    (a) => nf.format(a.village_count),
-                    (a) => nf.format((a.member_count === 0)?(0):(a.points / a.member_count)),
-                    (a) => nf.format(a.gesBash),
-                    (a) => nf.format(a.offBash),
-                    (a) => nf.format(a.defBash),
-                  ]}
-                  keyGen={a => a.allyID}
-                  serverSide
-                  defaultSort={["rank", SORTING_DIRECTION.ASC]}
-                  saveAs={'worldAlly'}
-                  responsiveTable
-              />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-  )
+  return <StatsPage
+      title={
+        <>
+          {worldData && <WorldDisplayName world={worldData} />}<br />
+          {t("table-title.overview")} {t("table-title.ally")}
+        </>
+      }
+      table={
+        <DatatableBase<allyType>
+            api={worldAllyCurrentTable({server, world})}
+            header={AllyDatatableHeader(t)}
+            cells={[
+              (a) => nf.format(a.rank),
+              (a) => <>{worldData && <LinkAlly ally={a} world={worldData} />}</>,
+              (a) => <>{worldData && <LinkAlly ally={a} world={worldData} useTag />}</>,
+              (a) => nf.format(a.points),
+              (a) => nf.format(a.member_count),
+              (a) => nf.format(a.village_count),
+              (a) => nf.format((a.member_count === 0)?(0):(a.points / a.member_count)),
+              (a) => nf.format(a.gesBash),
+              (a) => nf.format(a.offBash),
+              (a) => nf.format(a.defBash),
+            ]}
+            cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
+            keyGen={a => a.allyID}
+            serverSide
+            defaultSort={["rank", SORTING_DIRECTION.ASC]}
+            saveAs={'worldAlly'}
+            responsiveTable
+        />
+      }
+  />
 };
 
 export {AllyDatatableHeader}

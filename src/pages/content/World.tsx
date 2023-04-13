@@ -11,7 +11,7 @@ import {Card, Col, Row, Table} from "react-bootstrap";
 import styles from "./World.module.scss"
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
-  //TODO: 404 Page
+  //TODO: 404 Page actually all of them
   const { t } = useTranslation("ui")
   return (
       <Card.Body className={"table-responsive"}>

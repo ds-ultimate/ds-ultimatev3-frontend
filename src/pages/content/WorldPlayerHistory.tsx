@@ -50,6 +50,7 @@ export default function WorldPlayerHistoryPage() {
                     (p) => <ShowHistory name={t("old.defBash")} o_dat={p[1]?.defBash} n_dat={p[0].defBash} />,
                     (p) => <ShowHistory name={t("old.supBash")} o_dat={p[1]?.supBash} n_dat={p[0].supBash} />,
                   ]}
+                  cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
                   keyGen={p => p[0].playerID}
                   serverSide
                   defaultSort={["rank", SORTING_DIRECTION.ASC]}

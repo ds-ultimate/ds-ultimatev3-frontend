@@ -58,6 +58,7 @@ export default function WorldPlayerCurrentPage() {
               (p) => nf.format(p.defBash),
               (p) => nf.format(p.supBash),
             ]}
+            cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={p => p.playerID}
             serverSide
             defaultSort={["rank", SORTING_DIRECTION.ASC]}

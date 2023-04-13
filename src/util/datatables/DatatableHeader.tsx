@@ -6,15 +6,16 @@ import styles from "./Datatable.module.scss"
 import {Breakpoint, breakpoints, useBreakpointIdx} from "../bootrapBreakpoints";
 
 type paramsType = {
-  children: ReactNode,
-  sortBy?: string,
+  children: ReactNode
+  sortBy?: string
   sortDescDefault?: boolean
   showAt: Breakpoint[]
+  className?: string
 }
 
 type mEventType = MouseEvent<HTMLTableHeaderCellElement>
 
-export default function DatatableHeader({children, sortBy, sortDescDefault, showAt}: paramsType) {
+export default function DatatableHeader({children, sortBy, sortDescDefault, showAt, className}: paramsType) {
   const {setSortBy, curSortBy} = useContext(DatatableContext)
   const breakPoint = useBreakpointIdx()
 
@@ -51,7 +52,7 @@ export default function DatatableHeader({children, sortBy, sortDescDefault, show
   }
 
   return (
-        <th onClick={onclickHandler} colSpan={colspan}>
+        <th onClick={onclickHandler} colSpan={colspan} className={className}>
           {children}
           {sortingIcon}
         </th>

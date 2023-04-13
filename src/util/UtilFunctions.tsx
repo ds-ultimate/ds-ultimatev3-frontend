@@ -55,7 +55,7 @@ const ShowHistory = ({name, o_dat, n_dat, invert}: {name: string, o_dat?: number
   // TODO use ui.old.nodata if o_dat is null inside popup
   return (
       <OverlayTrigger
-        delay={{show: 250, hide: 400}}
+        delay={{show: 0, hide: 400}}
         overlay={(
             <Tooltip>{name} {nf.format(o_dat)}</Tooltip>
         )}>

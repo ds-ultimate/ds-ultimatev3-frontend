@@ -22,7 +22,7 @@ export default  function DatatableBodyRender<T>({data, keyGen, ...cellProps}: bo
   )
 }
 
-function DatatableRowRender<T>({d, rowClassGen, keyGen, visibleCells, invisibleCells, cells, headerNames}: rowProps<T>) {
+function DatatableRowRender<T>({d, cellClasses, rowClassGen, keyGen, visibleCells, invisibleCells, cells, headerNames}: rowProps<T>) {
   const [extended, setExtended] = useState(false)
   const extendEnabled = invisibleCells.length > 0
   const realExtended = extended && extendEnabled
@@ -41,7 +41,7 @@ function DatatableRowRender<T>({d, rowClassGen, keyGen, visibleCells, invisibleC
                   </td>
               )
             }
-            return <td key={cIdx}>{cells[cIdx](d)}</td>
+            return <td key={cIdx} className={cellClasses?cellClasses[cIdx]:undefined}>{cells[cIdx](d)}</td>
           })}
         </tr>
         {realExtended && (
