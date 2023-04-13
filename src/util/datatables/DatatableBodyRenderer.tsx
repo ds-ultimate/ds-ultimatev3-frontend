@@ -1,0 +1,67 @@
+import React from "react";
+import {internalCellProps} from "./DatatableBase";
+import {useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleMinus, faCirclePlus} from "@fortawesome/free-solid-svg-icons";
+
+
+interface bodyProps<T> extends internalCellProps<T> {
+  data: T[] | undefined,
+}
+
+interface rowProps<T> extends internalCellProps<T> {
+  d: T,
+}
+
+export default  function DatatableBodyRender<T>({data, keyGen, ...cellProps}: bodyProps<T>) {
+  return (
+      <>
+        {data?.map(d => {
+          return <DatatableRowRender key={keyGen(d)} d={d} keyGen={keyGen} {...cellProps}/>
+        })}
+      </>
+  )
+}
+
+function DatatableRowRender<T>({d, rowClassGen, keyGen, visibleCells, invisibleCells, cells, headerNames}: rowProps<T>) {
+  const [extended, setExtended] = useState(false)
+  const extendEnabled = invisibleCells.length > 0
+  const realExtended = extended && extendEnabled
+
+  return (
+      <>
+        <tr className={rowClassGen?rowClassGen(d):undefined}>
+          {visibleCells.map((cIdx, vIdx) => {
+            if(vIdx === 0 && extendEnabled) {
+              return (
+                  <td key={cIdx}>
+                  <span className={"pe-2 " + (extended?"text-danger":"text-info")} onClick={() => setExtended((old) => !old)}>
+                    <FontAwesomeIcon icon={extended?faCirclePlus:faCircleMinus}/>
+                  </span>
+                    {cells[cIdx](d)}
+                  </td>
+              )
+            }
+            return <td key={cIdx}>{cells[cIdx](d)}</td>
+          })}
+        </tr>
+        {realExtended && (
+            <>
+              <tr className={"d-none"}>{/* fake tr for striped cells */}</tr>
+              <tr>
+                <td colSpan={cells.length}>
+                  {invisibleCells.map(cIdx => {
+                    return (
+                        <React.Fragment key={cIdx}>
+                          {headerNames[cIdx]}: {cells[cIdx](d)}
+                          <br />
+                        </React.Fragment>
+                    )
+                  })}
+                </td>
+              </tr>
+            </>
+        )}
+      </>
+  )
+}

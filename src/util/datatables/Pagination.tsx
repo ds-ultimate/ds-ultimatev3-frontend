@@ -1,5 +1,8 @@
 import {useTranslation} from "react-i18next";
 import React, {Key} from "react";
+import {Button, InputGroup} from "react-bootstrap";
+import {THEME, useGetCurrentTheme} from "../../pages/layout/theme";
+import {useBreakpointDown} from "../bootrapBreakpoints";
 
 export default function Pagination({pageCnt, page, changePage}: {pageCnt: number, page: number, changePage: (page: number) => void}) {
   const { t } = useTranslation("datatable")
@@ -34,18 +37,22 @@ export default function Pagination({pageCnt, page, changePage}: {pageCnt: number
     pageOptions.push([pageCnt, pageCnt])
   }
 
+  const getTheme = useGetCurrentTheme()
+  const variant = (getTheme() === THEME.LIGHT)?"light":"dark"
+  const isSmall = useBreakpointDown("xs")
+
   return (
-      <div className={"datatable-pagination"}>
-        <button  onClick={() => changePage((page > 0)?(page - 1):0)}>{t("oPaginate_sPrevious")}</button>
+      <InputGroup size={isSmall?"sm":undefined}>
+        <Button variant={variant} onClick={() => changePage((page > 0)?(page - 1):0)}>{t("oPaginate_sPrevious")}</Button>
         {pageOptions.map(p => {
           if(p[1] === -1) {
-            return <div key={p[0]}>...</div>
+            return <InputGroup.Text key={p[0]}>...</InputGroup.Text>
           }
           return (
-              <button key={p[0]} className={(page + 1 === p[1])?"active":""} onClick={() => changePage(p[1] - 1)}>{p[1]}</button>
+              <Button variant={variant} key={p[0]} className={(page + 1 === p[1])?" active":""} onClick={() => changePage(p[1] - 1)}>{p[1]}</Button>
           )
         })}
-        <button  onClick={() => changePage((page < pageCnt - 1)?(page + 1):pageCnt)}>{t("oPaginate_sNext")}</button>
-      </div>
+        <Button variant={variant} onClick={() => changePage((page < pageCnt - 1)?(page + 1):pageCnt)}>{t("oPaginate_sNext")}</Button>
+      </InputGroup>
   )
 }

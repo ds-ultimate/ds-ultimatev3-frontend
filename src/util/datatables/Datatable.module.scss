@@ -1,0 +1,18 @@
+@import '../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.sort {
+  margin-left: 0.5rem;
+}
+
+.sortActive {
+  opacity: 0.8;
+  @extend .sort;
+}
+
+.sortInactive {
+  opacity: 0.3;
+  @extend .sort;
+}

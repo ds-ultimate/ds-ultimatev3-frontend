@@ -1,22 +1,14 @@
-import {Key, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import {SORTING_DIRECTION} from "./DatatableBase";
-import {Dict} from "../customTypes";
+import {coreProps, SORTING_DIRECTION} from "./DatatableBase";
+import DatatableBodyRender from "./DatatableBodyRenderer";
 
-type paramsType<T> = {
-  api: string,
-  page: number,
-  limit: number,
-  cells: Array<(data: T) => string | JSX.Element>,
-  keyGen: (data: T) => Key,
-  rowClassGen?: (data: T) => string | undefined,
-  itemCntCallback: (totalCount: number, filteredCount: number)=> void,
+interface paramsType<T> extends coreProps<T> {
   sort: Array<[string, SORTING_DIRECTION]>,
-  search?: string,
-  api_params?: Dict<any>,
 }
 
-export default function DatatableCoreServerSide<T>({api, page, limit, cells, keyGen, rowClassGen, itemCntCallback, sort, search, api_params}: paramsType<T>) {
+export default function DatatableCoreServerSide<T>({api, page, limit, itemCntCallback, sort, search, api_params,
+                                                   ...bodyProps}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
 
   useEffect(() => {
@@ -39,15 +31,5 @@ export default function DatatableCoreServerSide<T>({api, page, limit, cells, key
     }
   }, [api, page, limit, itemCntCallback, sort, search, api_params])
 
-  return (
-      <>
-        {data?.map(d => {
-          return (
-              <tr key={keyGen(d)} className={rowClassGen?rowClassGen(d):undefined}>
-                {cells.map((c, idx) => <td key={idx}>{c(d)}</td>)}
-              </tr>
-          )
-        })}
-      </>
-  )
+  return <DatatableBodyRender data={data} {...bodyProps}/>
 }

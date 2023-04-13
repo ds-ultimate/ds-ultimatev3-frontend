@@ -7,46 +7,44 @@ import {getWorldData} from "../../apiInterface/loadContent";
 import {LinkPlayer, LinkPlayerAlly, playerType} from "../../modelHelper/Player";
 import {nf} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
-import DatatableHeader from "../../util/datatables/DatatableHeader";
 import {TFunction} from "i18next";
+import {Card, Col, Row} from "react-bootstrap";
+import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 
 const PlayerDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
-  return (
-      <thead>
-      <tr>
-        <th colSpan={6}>{t('table-title.general')}</th>
-        <th colSpan={4}>{t('table-title.bashStats')}</th>
-      </tr>
-      <tr>
-        <DatatableHeader sortBy={"rank"}>{t('table.rank')}</DatatableHeader>
-        <DatatableHeader sortBy={"name"}>{t('table.name')}</DatatableHeader>
-        <DatatableHeader sortBy={"allyLatest__name"}>{t('table.ally')}</DatatableHeader>
-        <DatatableHeader sortBy={"points"} sortDescDefault>{t('table.points')}</DatatableHeader>
-        <DatatableHeader sortBy={"village_count"} sortDescDefault>{t('table.villages')}</DatatableHeader>
-        <DatatableHeader>{t('table.avgVillage')}</DatatableHeader>
-        <DatatableHeader sortBy={"gesBash"} sortDescDefault>{t('table.bashGes')}</DatatableHeader>
-        <DatatableHeader sortBy={"offBash"} sortDescDefault>{t('table.bashOff')}</DatatableHeader>
-        <DatatableHeader sortBy={"defBash"} sortDescDefault>{t('table.bashDef')}</DatatableHeader>
-        <DatatableHeader sortBy={"supBash"} sortDescDefault>{t('table.bashSup')}</DatatableHeader>
-      </tr>
-      </thead>
-  )
+  return new DatatableHeaderBuilder()
+      .addRow(row => {
+        row.addCell({colSpan: 6, useConcat: false, title: t('table-title.general')})
+        row.addCell({colSpan: 4, title: t('table-title.bashStats')})
+      })
+      .addMainRow(row => {
+        row.addCell({sortBy: "rank", title: t('table.rank')})
+        row.addCell({sortBy: "name", title: t('table.name')})
+        row.addCell({sortBy: "allyLatest__name", title: t('table.ally')})
+        row.addCell({sortBy: "points", sortDescDefault: true, title: t('table.points')})
+        row.addCell({sortBy: "village_count", sortDescDefault: true, title: t('table.villages')})
+        row.addCell({showAt: "md", title: t('table.avgVillage')})
+        row.addCell({showAt: "lg", sortBy: "gesBash", sortDescDefault: true, title: t('table.bashGes')})
+        row.addCell({showAt: "lg", sortBy: "offBash", sortDescDefault: true, title: t('table.bashOff')})
+        row.addCell({showAt: "lg", sortBy: "defBash", sortDescDefault: true, title: t('table.bashDef')})
+        row.addCell({showAt: "lg", sortBy: "supBash", sortDescDefault: true, title: t('table.bashSup')})
+      })
 }
 
 export default function WorldPlayerCurrentPage() {
   const {server, world} = useParams()
-  const [dataWorld, setDataWorld] = useState<worldType>()
+  const [worldData, setWorldData] = useState<worldType>()
   const { t } = useTranslation("ui")
 
   useEffect(() => {
     let mounted = true
     if(server === undefined || world === undefined) {
-      setDataWorld(undefined)
+      setWorldData(undefined)
     } else {
       getWorldData(server, world)
           .then(data => {
             if(mounted) {
-              setDataWorld(data)
+              setWorldData(data)
             }
           })
     }
@@ -56,30 +54,43 @@ export default function WorldPlayerCurrentPage() {
   }, [server, world])
 
   return (
-      <>
-        <h1>{dataWorld && <WorldDisplayName world={dataWorld} />}</h1>
-        <h2>{t("table-title.overview")} {t("table-title.player")}</h2>
-        <DatatableBase<playerType>
-            api={worldPlayerCurrentTable({server, world})}
-            header={PlayerDatatableHeader(t)}
-            cells={[
-              (p) => nf.format(p.rank),
-              (p) => <>{dataWorld && <LinkPlayer player={p} world={dataWorld} />}</>,
-              (p) => <>{dataWorld && <LinkPlayerAlly player={p} world={dataWorld} />}</>,
-              (p) => nf.format(p.points),
-              (p) => nf.format(p.village_count),
-              (p) => nf.format((p.village_count === 0)?(0):(p.points / p.village_count)),
-              (p) => nf.format(p.gesBash),
-              (p) => nf.format(p.offBash),
-              (p) => nf.format(p.defBash),
-              (p) => nf.format(p.supBash),
-            ]}
-            keyGen={p => p.playerID}
-            serverSide
-            defaultSort={["rank", SORTING_DIRECTION.ASC]}
-            saveAs={'worldPlayer'}
-        />
-      </>
+      <Row className="justify-content-center">
+        <Col xs={12}>
+          <Col md={5} className={"p-lg-5 mx-auto my-1 text-center"}>
+            <h1 className={"fw-normal"}>
+              {worldData && <WorldDisplayName world={worldData} />}<br />
+              {t("table-title.overview")} {t("table-title.player")}
+            </h1>
+          </Col>
+        </Col>
+        <Col xs={12} className={"mt-2"}>
+          <Card>
+            <Card.Body>
+              <DatatableBase<playerType>
+                  api={worldPlayerCurrentTable({server, world})}
+                  header={PlayerDatatableHeader(t)}
+                  cells={[
+                    (p) => nf.format(p.rank),
+                    (p) => <>{worldData && <LinkPlayer player={p} world={worldData} />}</>,
+                    (p) => <>{worldData && <LinkPlayerAlly player={p} world={worldData} />}</>,
+                    (p) => nf.format(p.points),
+                    (p) => nf.format(p.village_count),
+                    (p) => nf.format((p.village_count === 0)?(0):(p.points / p.village_count)),
+                    (p) => nf.format(p.gesBash),
+                    (p) => nf.format(p.offBash),
+                    (p) => nf.format(p.defBash),
+                    (p) => nf.format(p.supBash),
+                  ]}
+                  keyGen={p => p.playerID}
+                  serverSide
+                  defaultSort={["rank", SORTING_DIRECTION.ASC]}
+                  saveAs={'worldPlayer'}
+                  responsiveTable
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
   )
 };
 

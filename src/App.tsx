@@ -10,7 +10,7 @@ import IndexPage from "./pages/content/Index";
 import ServerPage from "./pages/content/Server";
 import WorldPage from "./pages/content/World";
 import WorldPlayerCurrentPage from "./pages/content/WorldPlayerCurrent";
-import WorldPlayerHistoryPage from "./pages/content/WorldPlayerHistory";
+/*import WorldPlayerHistoryPage from "./pages/content/WorldPlayerHistory";
 import WorldAllyCurrentPage from "./pages/content/WorldAllyCurrent";
 import WorldAllyHistoryPage from "./pages/content/WorldAllyHistory";
 import WorldConquerPage from "./pages/content/WorldConquer";
@@ -38,11 +38,13 @@ function App() {
               <Route path={RouteHolder.SERVER} element={<ServerPage />}/>
               <Route path={RouteHolder.WORLD} element={<WorldPage />}/>
               <Route path={RouteHolder.WORLD_PLAYER_CUR} element={<WorldPlayerCurrentPage />}/>
+              {/*
               <Route path={RouteHolder.WORLD_PLAYER_HIST} element={<WorldPlayerHistoryPage />}/>
               <Route path={RouteHolder.WORLD_ALLY_CUR} element={<WorldAllyCurrentPage />}/>
               <Route path={RouteHolder.WORLD_ALLY_HIST} element={<WorldAllyHistoryPage />}/>
               <Route path={RouteHolder.WORLD_CONQUER} element={<WorldConquerPage />}/>
               <Route path={RouteHolder.WORLD_CONQUER_DAILY} element={<WorldConquerDailyPage />}/>
+              */}
             </Route>
           </Routes>
         </Suspense>
