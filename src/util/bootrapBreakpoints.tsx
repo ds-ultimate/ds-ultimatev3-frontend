@@ -1,5 +1,5 @@
 //Based on https://github.com/AlexWebLab/bootstrap-5-breakpoint-react-hook/issues/1 and the original repository
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 
 export const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
 const breakpointSizes = [576, 768, 992, 1200, 1440]

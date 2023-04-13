@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {de, enGB, cs} from "date-fns/locale"
+import {cs, de, enGB} from "date-fns/locale"
 
 export default function useDatepickerLanguage() {
   const {i18n} = useTranslation()

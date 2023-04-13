@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
 import {internalCellProps} from "./DatatableBase";
-import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleMinus, faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 

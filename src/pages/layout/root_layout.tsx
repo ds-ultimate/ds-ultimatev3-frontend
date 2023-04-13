@@ -1,6 +1,6 @@
 import {Outlet, useParams} from "react-router-dom";
 
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import {Container} from "react-bootstrap";
 import {CustomThemeProvider} from "./theme";
 

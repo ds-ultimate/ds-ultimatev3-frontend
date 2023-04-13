@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, {Suspense} from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import RootLayout from "./pages/layout/root_layout"
 import * as RouteHolder from "./util/routes";

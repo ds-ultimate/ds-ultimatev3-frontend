@@ -1,11 +1,12 @@
 import axios, {AxiosResponse} from "axios";
-import {serverGetWorlds, indexPage, worldOverview} from "./apiConf";
+import {indexPage, serverGetWorlds, worldOverview} from "./apiConf";
 import {worldType} from "../modelHelper/World";
 import {serverType} from "../modelHelper/Server";
 import {newsType} from "../modelHelper/News";
 import {Dict} from "../util/customTypes";
 import {playerType} from "../modelHelper/Player";
 import {allyType} from "../modelHelper/Ally";
+import {useEffect, useState} from "react";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -51,8 +52,8 @@ class Dataloader<T> {
 }
 
 let worldsOfServerData: Dict<Dataloader<{server?: serverType, worlds: worldType[]}>> = {}
-const WORLDS_OF_SERVER_DEFAULT = {worlds: []}
-const getWorldsOfServer = (server: string) => {
+export const WORLDS_OF_SERVER_DEFAULT = {worlds: []}
+export function getWorldsOfServer(server: string) {
   let loader = worldsOfServerData[server]
   if(loader !== undefined) {
     return loader.getPromise()
@@ -63,8 +64,8 @@ const getWorldsOfServer = (server: string) => {
 }
 
 let indexPageCache: Dataloader<{servers: serverType[], news: newsType[]}> | undefined = undefined
-const INDEX_PAGE_DEFAULT = {servers: [], news: []}
-const getIndexPageData = () => {
+export const INDEX_PAGE_DEFAULT = {servers: [], news: []}
+export function getIndexPageData(){
   if(indexPageCache !== undefined) {
     return indexPageCache.getPromise()
   }
@@ -72,13 +73,13 @@ const getIndexPageData = () => {
   return indexPageCache.getPromise()
 }
 
-const WORLD_OVERVIEW_DEFAULT = {player: [], ally: []}
-const getWorldOverview = (server: string, world: string) => {
+export const WORLD_OVERVIEW_DEFAULT = {player: [], ally: []}
+export function getWorldOverview(server: string, world: string) {
   const loader = new Dataloader<{player: playerType[], ally: allyType[], world?: worldType}>(worldOverview({server, world}), WORLD_OVERVIEW_DEFAULT)
   return loader.getPromise()
 }
 
-const getWorldData = (server: string, world: string) => {
+export function getWorldData(server: string, world: string) {
   return new Promise<worldType>((resolve) => {
     getWorldsOfServer(server)
         .then(({worlds}) => {
@@ -90,9 +91,25 @@ const getWorldData = (server: string, world: string) => {
   })
 }
 
-export {
-  getWorldsOfServer, WORLDS_OF_SERVER_DEFAULT,
-  getIndexPageData, INDEX_PAGE_DEFAULT,
-  getWorldOverview, WORLD_OVERVIEW_DEFAULT,
-  getWorldData,
+export function useWorldData(server?: string, world?: string) {
+  const [worldData, setWorldData] = useState<worldType>()
+
+  useEffect(() => {
+    let mounted = true
+    if(server === undefined || world === undefined) {
+      setWorldData(undefined)
+    } else {
+      getWorldData(server, world)
+          .then(data => {
+            if(mounted) {
+              setWorldData(data)
+            }
+          })
+    }
+    return () => {
+      mounted = false
+    }
+  }, [server, world])
+
+  return worldData
 }

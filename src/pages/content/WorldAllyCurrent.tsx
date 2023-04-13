@@ -1,14 +1,14 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {WorldDisplayName, worldType} from "../../modelHelper/World";
+import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import {getWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loadContent";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyCurrentTable} from "../../apiInterface/apiConf";
 import {nf} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
+import {Card, Col, Row} from "react-bootstrap";
 
 const AllyDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
   return new DatatableHeaderBuilder()
@@ -32,51 +32,47 @@ const AllyDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
 
 export default function WorldAllyCurrentPage() {
   const {server, world} = useParams()
-  const [dataWorld, setDataWorld] = useState<worldType>()
+  const worldData = useWorldData(server, world)
   const { t } = useTranslation("ui")
 
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined || world === undefined) {
-      setDataWorld(undefined)
-    } else {
-      getWorldData(server, world)
-          .then(data => {
-            if(mounted) {
-              setDataWorld(data)
-            }
-          })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server, world])
-
   return (
-      <>
-        <h1>{dataWorld && <WorldDisplayName world={dataWorld} />}</h1>
-        <h2>{t("table-title.overview")} {t("table-title.ally")}</h2>
-        <DatatableBase<allyType>
-            api={worldAllyCurrentTable({server, world})}
-            header={AllyDatatableHeader(t)}
-            cells={[
-              (a) => nf.format(a.rank),
-              (a) => <>{dataWorld && <LinkAlly ally={a} world={dataWorld} />}</>,
-              (a) => <>{dataWorld && <LinkAlly ally={a} world={dataWorld} useTag />}</>,
-              (a) => nf.format(a.points),
-              (a) => nf.format(a.member_count),
-              (a) => nf.format(a.village_count),
-              (a) => nf.format((a.member_count === 0)?(0):(a.points / a.member_count)),
-              (a) => nf.format(a.gesBash),
-              (a) => nf.format(a.offBash),
-              (a) => nf.format(a.defBash),
-            ]}
-            keyGen={a => a.allyID}
-            serverSide
-            defaultSort={["rank", SORTING_DIRECTION.ASC]}
-            saveAs={'worldAlly'}
-        />
-      </>
+      <Row className="justify-content-center">
+        <Col xs={12}>
+          <Col md={5} className={"p-lg-5 mx-auto my-1 text-center"}>
+            <h1 className={"fw-normal"}>
+              {worldData && <WorldDisplayName world={worldData} />}<br />
+              {t("table-title.overview")} {t("table-title.ally")}
+            </h1>
+          </Col>
+        </Col>
+        <Col xs={12} className={"mt-2"}>
+          <Card>
+            <Card.Body>
+              <DatatableBase<allyType>
+                  api={worldAllyCurrentTable({server, world})}
+                  header={AllyDatatableHeader(t)}
+                  cells={[
+                    (a) => nf.format(a.rank),
+                    (a) => <>{worldData && <LinkAlly ally={a} world={worldData} />}</>,
+                    (a) => <>{worldData && <LinkAlly ally={a} world={worldData} useTag />}</>,
+                    (a) => nf.format(a.points),
+                    (a) => nf.format(a.member_count),
+                    (a) => nf.format(a.village_count),
+                    (a) => nf.format((a.member_count === 0)?(0):(a.points / a.member_count)),
+                    (a) => nf.format(a.gesBash),
+                    (a) => nf.format(a.offBash),
+                    (a) => nf.format(a.defBash),
+                  ]}
+                  keyGen={a => a.allyID}
+                  serverSide
+                  defaultSort={["rank", SORTING_DIRECTION.ASC]}
+                  saveAs={'worldAlly'}
+                  responsiveTable
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
   )
 };
 

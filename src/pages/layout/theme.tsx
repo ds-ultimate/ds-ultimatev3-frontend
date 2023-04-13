@@ -1,7 +1,7 @@
 //idea from https://github.com/react-bootstrap/react-bootstrap/issues/6530#issuecomment-1385471731
 
-import {createContext, useContext, useReducer} from "react";
 import * as React from "react";
+import {createContext, useContext, useReducer} from "react";
 
 /** @enum {string} */
 export const THEME = {

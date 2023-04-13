@@ -1,8 +1,8 @@
 import {useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import {WorldDisplayName, worldType} from "../../modelHelper/World";
+import React, {useState} from "react";
+import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import {getWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loadContent";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldPlayerHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
@@ -14,30 +14,13 @@ import useDatepickerLanguage from "../../util/datepickerLanguage";
 
 export default function WorldPlayerHistoryPage() {
   const {server, world} = useParams()
-  const [worldData, setWorldData] = useState<worldType>()
+  const worldData = useWorldData(server, world)
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   const firstDay = new Date()
   firstDay.setDate(firstDay.getDate() - parseInt(process.env.REACT_APP_BACKEND_DB_SAVE_DAY ?? "1"))
   const [startDate, setStartDate] = useState<Date>(yesterday);
   const { t } = useTranslation("ui")
-
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined || world === undefined) {
-      setWorldData(undefined)
-    } else {
-      getWorldData(server, world)
-          .then(data => {
-            if(mounted) {
-              setWorldData(data)
-            }
-          })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server, world])
 
   return (
       <Row className="justify-content-center">
