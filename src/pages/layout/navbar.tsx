@@ -204,7 +204,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
       <>
         <Dropdown.Item eventKey={'de'}><DE className={"flags"}/>Deutsch</Dropdown.Item>
         <Dropdown.Item eventKey={'en'}><GB className={"flags"}/>English</Dropdown.Item>
-        <Dropdown.Item eventKey={'cz'}><CZ className={"flags"}/>Czech</Dropdown.Item>
+        <Dropdown.Item eventKey={'cs'}><CZ className={"flags"}/>Czech</Dropdown.Item>
       </>
   )
   allMenu.push(
@@ -214,6 +214,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
             {t("language")}
           </Dropdown.Toggle>
           <Dropdown.Menu>
+            {langItems}
           </Dropdown.Menu>
         </Dropdown>
       </div>

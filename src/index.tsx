@@ -9,11 +9,11 @@ import LanguageDetector from "i18next-browser-languagedetector"
 
 import trans_de_ui from "./translations/de/ui.json"
 import trans_en_ui from "./translations/en/ui.json"
-import trans_cz_ui from "./translations/cz/ui.json"
+import trans_cs_ui from "./translations/cs/ui.json"
 
 import trans_de_datatable from "./translations/de/datatable.json"
 import trans_en_datatable from "./translations/en/datatable.json"
-import trans_cz_datatable from "./translations/cz/datatable.json"
+import trans_cs_datatable from "./translations/cs/datatable.json"
 import Debugbar from "./util/Debugbar";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -43,9 +43,9 @@ i18next.use(LanguageDetector).init({
       ui: trans_en_ui,
       datatable: trans_en_datatable,
     },
-    cz: {
-      ui: trans_cz_ui,
-      datatable: trans_cz_datatable,
+    cs: {
+      ui: trans_cs_ui,
+      datatable: trans_cs_datatable,
     },
   },
 });

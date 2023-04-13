@@ -31,7 +31,7 @@ foreach($filesIn as $fIn) {
         if($langIn != $langOut) continue;
         $dataOut = json_decode(file_get_contents($fOut));
         
-        $allow_errors = $langIn == "fr";
+        $allow_errors = $langIn == "fr" || $langIn == "cz";
         recursive_map_keys($dataIn, $dataOut, $ns);
         
         file_put_contents($fOut, json_encode($dataOut, JSON_PRETTY_PRINT));

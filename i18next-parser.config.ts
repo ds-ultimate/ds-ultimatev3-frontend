@@ -43,7 +43,7 @@ export default {
   lineEnding: 'auto',
   // Control the line ending. See options at https://github.com/ryanve/eol
 
-  locales: ['de', 'en', 'cz', 'fr'],
+  locales: ['de', 'en', 'cs', 'fr'],
   // An array of the locales in your applications
 
   namespaceSeparator: ':',

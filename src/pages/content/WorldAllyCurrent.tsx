@@ -5,32 +5,29 @@ import {useTranslation} from "react-i18next";
 import {getWorldData} from "../../apiInterface/loadContent";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyCurrentTable} from "../../apiInterface/apiConf";
-import DatatableHeader from "../../util/datatables/DatatableHeader";
 import {nf} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {TFunction} from "i18next";
+import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 
 const AllyDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
-  return (
-      <thead>
-      <tr>
-        <th colSpan={7}>{t('table-title.general')}</th>
-        <th colSpan={3}>{t('table-title.bashStats')}</th>
-      </tr>
-      <tr>
-        <DatatableHeader sortBy={"rank"}>{t('table.rank')}</DatatableHeader>
-        <DatatableHeader sortBy={"name"}>{t('table.name')}</DatatableHeader>
-        <DatatableHeader sortBy={"tag"}>{t('table.tag')}</DatatableHeader>
-        <DatatableHeader sortBy={"points"} sortDescDefault>{t('table.points')}</DatatableHeader>
-        <DatatableHeader sortBy={"member_count"} sortDescDefault>{t('table.members')}</DatatableHeader>
-        <DatatableHeader sortBy={"village_count"} sortDescDefault>{t('table.villages')}</DatatableHeader>
-        <DatatableHeader>{t('table.avgPlayer')}</DatatableHeader>
-        <DatatableHeader sortBy={"gesBash"} sortDescDefault>{t('table.bashGes')}</DatatableHeader>
-        <DatatableHeader sortBy={"offBash"} sortDescDefault>{t('table.bashOff')}</DatatableHeader>
-        <DatatableHeader sortBy={"defBash"} sortDescDefault>{t('table.bashDef')}</DatatableHeader>
-      </tr>
-      </thead>
-  )
+  return new DatatableHeaderBuilder()
+      .addRow(row => {
+        row.addCell({colSpan: 7, useConcat: false, title: t('table-title.general')})
+        row.addCell({colSpan: 4, title: t('table-title.bashStats')})
+      })
+      .addMainRow(row => {
+        row.addCell({sortBy: "rank", title: t('table.rank')})
+        row.addCell({sortBy: "name", title: t('table.name')})
+        row.addCell({sortBy: "tag", title: t('table.tag')})
+        row.addCell({sortBy: "points", sortDescDefault: true, title: t('table.points')})
+        row.addCell({sortBy: "member_count", sortDescDefault: true, title: t('table.members')})
+        row.addCell({sortBy: "village_count", sortDescDefault: true, title: t('table.villages')})
+        row.addCell({showAt: "md", title: t('table.avgPlayer')})
+        row.addCell({showAt: "lg", sortBy: "gesBash", sortDescDefault: true, title: t('table.bashGes')})
+        row.addCell({showAt: "lg", sortBy: "offBash", sortDescDefault: true, title: t('table.bashOff')})
+        row.addCell({showAt: "lg", sortBy: "defBash", sortDescDefault: true, title: t('table.bashDef')})
+      })
 }
 
 export default function WorldAllyCurrentPage() {

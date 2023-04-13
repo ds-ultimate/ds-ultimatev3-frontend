@@ -1,6 +1,7 @@
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown, faCaretUp, faEquals} from "@fortawesome/free-solid-svg-icons";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const nf = new Intl.NumberFormat("de-DE")
 
@@ -53,11 +54,16 @@ const ShowHistory = ({name, o_dat, n_dat, invert}: {name: string, o_dat?: number
 
   // TODO use ui.old.nodata if o_dat is null inside popup
   return (
+      <OverlayTrigger
+        delay={{show: 250, hide: 400}}
+        overlay={(
+            <Tooltip>{name} {nf.format(o_dat)}</Tooltip>
+        )}>
       <span className={spanClass}>
-        Popup: {name} {nf.format(o_dat)}
-        <FontAwesomeIcon icon={fontIcon} />
+        <FontAwesomeIcon className={"me-2"} icon={fontIcon} />
         {nf.format(n_dat)}
       </span>
+      </OverlayTrigger>
   )
 }
 
