@@ -2,7 +2,15 @@
   "archive": "Archiv",
   "conquer": {
     "all": "Adelungen",
-    "daily": "Adelsrangliste Täglich"
+    "daily": "Adelsrangliste Täglich",
+    "highlight": {
+      "barbarian": "Barbarendörfer",
+      "deleted": "Löschungen",
+      "internal": "Intern",
+      "loose": "Verluste",
+      "self": "Selbst",
+      "win": "Gewinne"
+    }
   },
   "darkMode": "Darkmode",
   "index": {
@@ -29,6 +37,10 @@
     "village_count": "Alte Dörfer",
     "village_points": "Alte Punkte pro Dorf"
   },
+  "player": {
+    "barbarian": "Barbaren",
+    "deleted": "Gelöscht"
+  },
   "server": {
     "choose": "Wähle deinen Server aus",
     "code": "Code",
@@ -47,13 +59,18 @@
     "bashGes": "Insgesamt",
     "bashOff": "Angreifer",
     "bashSup": "Unterstützer",
+    "date": "Datum",
     "members": "Mitglieder",
     "name": "Name",
+    "new": "neuer",
+    "old": "alter",
+    "owner": "Besitzer",
     "player": "Spieler",
     "points": "Punkte",
     "rank": "Rang",
     "tag": "Tag",
     "village": "Dorf",
+    "villageName": "Dorfname",
     "villages": "Dörfer",
     "world": "Welt"
   },

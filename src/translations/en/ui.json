@@ -2,7 +2,15 @@
   "archive": "archive",
   "conquer": {
     "all": "Conquers",
-    "daily": "Conquer ranking daily"
+    "daily": "Conquer ranking daily",
+    "highlight": {
+      "barbarian": "barbarian",
+      "deleted": "deletions",
+      "internal": "internal",
+      "loose": "looses",
+      "self": "self",
+      "win": "gains"
+    }
   },
   "darkMode": "darkmode",
   "index": {
@@ -29,6 +37,10 @@
     "village_count": "Old Villages",
     "village_points": "Old Point per player"
   },
+  "player": {
+    "barbarian": "barbarian",
+    "deleted": "deleted"
+  },
   "server": {
     "choose": "Choose your server",
     "code": "code",
@@ -47,13 +59,18 @@
     "bashGes": "total",
     "bashOff": "Attacker",
     "bashSup": "supporter",
+    "date": "date",
     "members": "members",
     "name": "name",
+    "new": "new",
+    "old": "old",
+    "owner": "owner",
     "player": "player",
     "points": "points",
     "rank": "rank",
     "tag": "tag",
     "village": "village",
+    "villageName": "village name",
     "villages": "villages",
     "world": "world"
   },

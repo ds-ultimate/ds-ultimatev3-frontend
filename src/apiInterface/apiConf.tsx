@@ -12,23 +12,14 @@ const apiRequestGenerator = (uri: string) => {
   }
 }
 
-const indexPage = apiRequestGenerator("indexPage")
-const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
-const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
+export const indexPage = apiRequestGenerator("indexPage")
+export const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
+export const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
 
 //Datatables
-const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
-const worldPlayerCurrentTable = apiRequestGenerator("tables/worldPlayer/{server}/{world}")
-const worldAllyHistoryTable = apiRequestGenerator("tables/worldHistoryAlly/{server}/{world}")
-const worldPlayerHistoryTable = apiRequestGenerator("tables/worldHistoryPlayer/{server}/{world}")
+export const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
+export const worldPlayerCurrentTable = apiRequestGenerator("tables/worldPlayer/{server}/{world}")
+export const worldAllyHistoryTable = apiRequestGenerator("tables/worldHistoryAlly/{server}/{world}")
+export const worldPlayerHistoryTable = apiRequestGenerator("tables/worldHistoryPlayer/{server}/{world}")
+export const worldConquerTable = apiRequestGenerator("tables/worldConquer/{server}/{world}/{type}")
 
-
-export {
-  indexPage,
-  serverGetWorlds,
-  worldOverview,
-  worldAllyCurrentTable,
-  worldPlayerCurrentTable,
-  worldAllyHistoryTable,
-  worldPlayerHistoryTable
-}

@@ -2,7 +2,15 @@
   "archive": "",
   "conquer": {
     "all": "",
-    "daily": ""
+    "daily": "",
+    "highlight": {
+      "barbarian": "",
+      "deleted": "",
+      "internal": "",
+      "loose": "",
+      "self": "",
+      "win": ""
+    }
   },
   "darkMode": "",
   "index": {
@@ -29,6 +37,10 @@
     "village_count": "",
     "village_points": ""
   },
+  "player": {
+    "barbarian": "",
+    "deleted": ""
+  },
   "server": {
     "choose": "",
     "code": "",
@@ -47,13 +59,18 @@
     "bashGes": "",
     "bashOff": "",
     "bashSup": "",
+    "date": "",
     "members": "",
     "name": "",
+    "new": "",
+    "old": "",
+    "owner": "",
     "player": "",
     "points": "",
     "rank": "",
     "tag": "",
     "village": "",
+    "villageName": "",
     "villages": "",
     "world": ""
   },

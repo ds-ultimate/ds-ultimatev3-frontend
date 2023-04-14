@@ -54,6 +54,7 @@ interface paramsType<T> extends apiProps, externalCellProps<T> {
   topBarMiddle?: JSX.Element,
   topBarEnd?: JSX.Element,
   responsiveTable?: boolean,
+  striped?: boolean,
 }
 
 export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION, append: boolean) => void,
@@ -61,7 +62,7 @@ export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir:
 
 
 export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd,
-                                          cellClasses, responsiveTable, ...unusedProps}: paramsType<T>) {
+                                          cellClasses, responsiveTable, striped, ...unusedProps}: paramsType<T>) {
   // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
@@ -173,7 +174,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
             {topBarEnd}
           </Row>
           <Row className={"mb-3" + (responsiveTable?" table-responsive":"")}>
-            <Table striped hover className={responsiveTable?"nowrap":""}>
+            <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""}>
               {headerNode}
               <tbody>
               {

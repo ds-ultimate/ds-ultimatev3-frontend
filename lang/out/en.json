@@ -677,13 +677,8 @@
             "conquer": "conquers",
             "continent": "continent",
             "coordinates": "coordinates",
-            "date": "date",
             "id": "ID",
-            "new": "new",
-            "old": "old",
-            "owner": "owner",
             "playerName": "player name",
-            "villageName": "village name",
             "bashPointsRatio": "K\/P-Rate",
             "bonusType": "Bonus",
             "supDeff": "support",
@@ -707,18 +702,10 @@
             "playerOwn": "Own conquers",
             "highlight": {
                 "all": "all",
-                "barbarian": "barbarian",
-                "deleted": "deletions",
-                "internal": "internal",
-                "loose": "looses",
-                "self": "self",
-                "win": "gains",
                 "total": "total"
             }
         },
         "player": {
-            "barbarian": "barbarian",
-            "deleted": "deleted",
             "discordNotification": {
                 "addFollow": "Discordnotifications for conquers"
             }

@@ -2,7 +2,15 @@
   "archive": "Archiv",
   "conquer": {
     "all": "Dobytí",
-    "daily": "Aktuálně dobyté vesnice"
+    "daily": "Aktuálně dobyté vesnice",
+    "highlight": {
+      "barbarian": "Barbarská vesnice",
+      "deleted": "Odstranění",
+      "internal": "Interní",
+      "loose": "Ztráty",
+      "self": "Vlastní",
+      "win": "Získané"
+    }
   },
   "darkMode": "Tmavý mód",
   "index": {
@@ -29,6 +37,10 @@
     "village_count": "Starý vesnice",
     "village_points": "Starý bod na hráče"
   },
+  "player": {
+    "barbarian": "Barbarská vesnice",
+    "deleted": "Odstraněno"
+  },
   "server": {
     "choose": "Vyber svůj server",
     "code": "Server",
@@ -47,13 +59,18 @@
     "bashGes": "Celkem",
     "bashOff": "Útočník",
     "bashSup": "Podporovatel",
+    "date": "Datum",
     "members": "Členové",
     "name": "Název",
+    "new": "Nový",
+    "old": "Starý",
+    "owner": "Vlastník",
     "player": "Hráč",
     "points": "Body",
     "rank": "Pozice",
     "tag": "Tag",
     "village": "Vesnice",
+    "villageName": "Název vesnice",
     "villages": "Vesnice",
     "world": "Svět"
   },

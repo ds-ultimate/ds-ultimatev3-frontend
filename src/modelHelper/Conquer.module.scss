@@ -1,0 +1,41 @@
+@import '../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+@include media-breakpoint-down(md) {
+  .conquer-truncate {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.conquer-div {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  border: 1px solid #ccc;
+  margin-right: 0.5rem;
+}
+
+$conquerColors: (
+    "self": rgb(235, 247, 64),
+    "internal": rgb(38, 79, 242),
+    "barbarian": rgb(140, 140, 140),
+    "deleted": rgb(215, 37, 229),
+    "win": rgb(42, 175, 71),
+    "loose": rgb(226, 54, 71),
+);
+
+@each $color, $value in $conquerColors {
+  div.#{$color}Type {
+    background-color: $value;
+    @extend .conquer-div
+  }
+
+  .#{$color}Type td {
+    background-color: rgba($value, 0.2);
+  }
+}

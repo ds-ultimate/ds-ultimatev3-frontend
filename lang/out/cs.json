@@ -649,13 +649,7 @@
         "conquer": {
             "allyOwn": "Intern\u00ed \/ vlastn\u00ed dob\u00fdv\u00e1n\u00ed",
             "highlight": {
-                "all": "V\u0161echno",
-                "barbarian": "Barbarsk\u00e1 vesnice",
-                "deleted": "Odstran\u011bn\u00ed",
-                "internal": "Intern\u00ed",
-                "loose": "Ztr\u00e1ty",
-                "self": "Vlastn\u00ed",
-                "win": "Z\u00edskan\u00e9"
+                "all": "V\u0161echno"
             },
             "lost": "Ztr\u00e1ty",
             "playerOwn": "Vlastn\u00ed dobyt\u00ed",
@@ -732,8 +726,6 @@
             "workInProgress": "V sou\u010dasn\u00e9 dob\u011b je\u0161t\u011b nen\u00ed mo\u017en\u00e9"
         },
         "player": {
-            "barbarian": "Barbarsk\u00e1 vesnice",
-            "deleted": "Odstran\u011bno",
             "discordNotification": {
                 "addFollow": "Discord notifikace po dobyt\u00ed"
             }
@@ -764,17 +756,12 @@
             "conquer": "Dobyt\u00ed",
             "continent": "Kontinent",
             "coordinates": "Sou\u0159adnice",
-            "date": "Datum",
             "id": "ID",
-            "new": "Nov\u00fd",
-            "old": "Star\u00fd",
-            "owner": "Vlastn\u00edk",
             "playerName": "Jm\u00e9no hr\u00e1\u010de",
             "playerPointPercent": "Kills\/Points",
             "possibleChanges": "Mo\u017en\u00e9 budovy",
             "supDeff": "Podpora",
-            "time": "\u010cas",
-            "villageName": "N\u00e1zev vesnice"
+            "time": "\u010cas"
         },
         "tabletitel": {
             "casualWorlds": "Casual sv\u011bt",

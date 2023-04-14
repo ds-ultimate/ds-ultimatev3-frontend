@@ -682,8 +682,6 @@
     },
     "ui": {
         "player": {
-            "deleted": "Gel\u00f6scht",
-            "barbarian": "Barbaren",
             "discordNotification": {
                 "addFollow": "Discordbenachrichtigungen bei Adelungen"
             }
@@ -700,12 +698,6 @@
             "allyOwn": "Interne \/ Eigen-Adelungen",
             "highlight": {
                 "all": "Alle",
-                "self": "Selbst",
-                "internal": "Intern",
-                "barbarian": "Barbarend\u00f6rfer",
-                "deleted": "L\u00f6schungen",
-                "win": "Gewinne",
-                "loose": "Verluste",
                 "total": "Gesamt"
             }
         },
@@ -731,12 +723,7 @@
         "table": {
             "conquer": "Eroberungen",
             "allyChanges": "Stammeswechsel",
-            "date": "Datum",
             "playerName": "Spielername",
-            "old": "alter",
-            "new": "neuer",
-            "villageName": "Dorfname",
-            "owner": "Besitzer",
             "bashStats": "Besiegte Gegner",
             "bashPointsRatio": "K\/P-Rate",
             "id": "ID",

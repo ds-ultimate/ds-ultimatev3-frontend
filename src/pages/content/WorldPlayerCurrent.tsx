@@ -10,7 +10,7 @@ import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
 
-const PlayerDatatableHeader = (t: TFunction<"ui", undefined, "ui">) => {
+const PlayerDatatableHeader = (t: TFunction<"ui">) => {
   return new DatatableHeaderBuilder()
       .addRow(row => {
         row.addCell({colSpan: 6, useConcat: false, title: t('table-title.general')})
