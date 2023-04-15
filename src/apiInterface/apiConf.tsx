@@ -23,3 +23,9 @@ export const worldAllyHistoryTable = apiRequestGenerator("tables/worldHistoryAll
 export const worldPlayerHistoryTable = apiRequestGenerator("tables/worldHistoryPlayer/{server}/{world}")
 export const worldConquerTable = apiRequestGenerator("tables/worldConquer/{server}/{world}/{type}")
 
+//Bootstrap-select
+export const villageSelect = apiRequestGenerator("select/village/{world}")
+export const playerSelect = apiRequestGenerator("select/player/{world}")
+export const allySelect = apiRequestGenerator("select/ally/{world}")
+export const playerTopSelect = apiRequestGenerator("select/playerTop/{world}")
+export const allyTopSelect = apiRequestGenerator("select/allyTop/{world}")

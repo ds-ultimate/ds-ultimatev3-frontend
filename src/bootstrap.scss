@@ -41,4 +41,23 @@ and https://github.com/twbs/bootstrap/pull/38136
   }
 }
 
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint) {
+    .col#{$infix}-flex-auto {
+      flex: 1 0;
+      width: auto;
+    }
+
+    .flex#{$infix}-wrap-nowrap {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.form-check-input {
+  margin-top: 0;
+}
+
 @import "global";

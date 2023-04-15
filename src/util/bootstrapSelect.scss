@@ -1,0 +1,31 @@
+@import '../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.bootstrap-select-custom {
+  flex: 1 0 1%;
+}
+
+.bootstrap-select-custom div {
+  color: var(--bs-body-color) !important;
+}
+
+.bootstrap-select-custom>div {
+  border-style: solid;
+  border-width: var(--bs-border-width);
+  border-color: var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.input-group:not(.has-validation) > .bootstrap-select-custom:not(:last-child) > div:first-of-type,
+.input-group:not(.has-validation) > .form-floating:not(:last-child) > .bootstrap-select-custom > div:first-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .bootstrap-select-custom:not(:first-child):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) > div:first-of-type {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

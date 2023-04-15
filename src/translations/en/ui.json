@@ -8,6 +8,7 @@
       "deleted": "deletions",
       "internal": "internal",
       "loose": "looses",
+      "normal": "normal",
       "self": "self",
       "win": "gains"
     }

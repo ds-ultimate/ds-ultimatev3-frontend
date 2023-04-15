@@ -33,51 +33,58 @@ export type conquerType = conquerPureType & {
 }
 
 export enum conquerChangeType {
-  NORMAL,
-  INTERNAL,
-  SELF,
-  BARBARIAN,
-  DELETION,
-  WIN,
-  LOOSE,
+  NORMAL = 0,
+  INTERNAL = 1,
+  SELF = 2,
+  BARBARIAN = 3,
+  //DELETION = 4,
+  WIN = 5,
+  LOOSE = 6,
 }
 
-export const conquerChangeTypeSetting: Array<{className: string, title: (t: TFunction<"ui">) => string}> = [
+export const conquerChangeTypeSetting: Array<{cls_in: string, cls_act: string, title: (t: TFunction<"ui">) => string}> = [
   { //Normal
-    className: "",
-    title: (_t) => ""
+    cls_in: styles.conquerDiv,
+    cls_act: styles.conquerDiv,
+    title: (t) => t("conquer.highlight.normal")
   },
   { //Internal
-    className: styles.internalType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.internalType,
     title: (t) => t("conquer.highlight.internal")
   },
   { //Self
-    className: styles.selfType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.selfType,
     title: (t) => t("conquer.highlight.self")
   },
   { //Barbarian
-    className: styles.barbarianType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.barbarianType,
     title: (t) => t("conquer.highlight.barbarian")
   },
   { //Deletion
-    className: styles.deletedType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.deletedType,
     title: (t) => t("conquer.highlight.deleted")
   },
   { //Win
-    className: styles.winType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.winType,
     title: (t) => t("conquer.highlight.win")
   },
   { //Loose
-    className: styles.looseType,
+    cls_in: styles.conquerDiv,
+    cls_act: styles.looseType,
     title: (t) => t("conquer.highlight.loose")
   },
 ]
 
-export function getConquerType(conquer: conquerType): conquerChangeType {
-  if(conquer.new_owner === 0) return conquerChangeType.DELETION
-  if(conquer.old_owner === 0) return conquerChangeType.BARBARIAN
-  if(conquer.old_owner === conquer.new_owner) return conquerChangeType.SELF
-  if(conquer.old_ally === conquer.new_ally && conquer.old_ally !== 0) return conquerChangeType.INTERNAL
+export function getConquerType(conquer: conquerType, allowed: conquerChangeType[]): conquerChangeType {
+  //if(conquer.new_owner === 0 && allowed.includes(conquerChangeType.DELETION)) return conquerChangeType.DELETION not possible as of now
+  if(conquer.old_owner === 0 && allowed.includes(conquerChangeType.BARBARIAN)) return conquerChangeType.BARBARIAN
+  if(conquer.old_owner === conquer.new_owner && allowed.includes(conquerChangeType.SELF)) return conquerChangeType.SELF
+  if(conquer.old_ally === conquer.new_ally && conquer.old_ally !== 0 && allowed.includes(conquerChangeType.INTERNAL)) return conquerChangeType.INTERNAL
   return conquerChangeType.NORMAL
 }
 

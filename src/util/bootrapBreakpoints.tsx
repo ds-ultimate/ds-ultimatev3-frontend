@@ -2,7 +2,7 @@
 import {useEffect, useState} from 'react'
 
 export const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
-const breakpointSizes = [576, 768, 992, 1200, 1440]
+const breakpointSizes = [576, 768, 992, 1250, 1440]
 
 export type Breakpoint = typeof breakpoints[number]
 
