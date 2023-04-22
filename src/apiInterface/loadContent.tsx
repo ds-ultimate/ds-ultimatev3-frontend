@@ -1,12 +1,12 @@
 import axios, {AxiosResponse} from "axios";
-import {indexPage, serverGetWorlds, worldOverview} from "./apiConf";
-import {worldType} from "../modelHelper/World";
+import {indexPage, serverGetWorlds, worldGetExtendedData, worldOverview} from "./apiConf";
+import {worldExtendedType, worldType} from "../modelHelper/World";
 import {serverType} from "../modelHelper/Server";
 import {newsType} from "../modelHelper/News";
 import {Dict} from "../util/customTypes";
 import {playerType} from "../modelHelper/Player";
 import {allyType} from "../modelHelper/Ally";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -20,30 +20,33 @@ if(process.env.REACT_APP_API_USE_AUTH) {
  * Class for caching return values of an API endpoint
  */
 class Dataloader<T> {
-  listeners: Array<(data: T) => any> = []
-  errorVal: T
+  listeners: Array<{then: (data: T) => void, catch: (error: any) => void}> = []
   data: T | null = null
-  constructor(url: string, error: T) {
+  error: any | null = null
+  constructor(url: string) {
     this.callback = this.callback.bind(this)
     this.callbackErr = this.callbackErr.bind(this)
-    this.errorVal = error
     axios.get(url).then(this.callback).catch(this.callbackErr)
   }
 
   callback(response: AxiosResponse<any>) {
     this.data = response.data
-    this.listeners.forEach(l => l(response.data))
+    this.listeners.forEach(l => l.then(response.data))
   }
 
-  callbackErr(_error: any) {
-    this.data = this.errorVal
-    this.listeners.forEach(l => l(this.errorVal))
+  callbackErr(error: any) {
+    this.error = error
+    this.listeners.forEach(l => l.catch(error))
   }
 
   getPromise() {
-    return new Promise<T>((resolve) => {
+    return new Promise<T>((resolve, reject) => {
       if (this.data == null) {
-        this.listeners.push(resolve)
+        if(this.error == null) {
+          this.listeners.push({then: resolve, catch: reject})
+        } else {
+          reject(this.error)
+        }
       } else {
         resolve(this.data)
       }
@@ -51,65 +54,123 @@ class Dataloader<T> {
   }
 }
 
-let worldsOfServerData: Dict<Dataloader<{server?: serverType, worlds: worldType[]}>> = {}
-export const WORLDS_OF_SERVER_DEFAULT = {worlds: []}
-export function getWorldsOfServer(server: string) {
+function usePromisedData<T, V>(promise: (params: V) => Promise<T>, promiseParams: V) : [any, T | undefined] {
+  const [{error, data}, setData] = useState<{error: any, data: T | undefined}>({error: null, data: undefined})
+
+  useEffect(() => {
+    let mounted = true
+    promise(promiseParams)
+        .then(data => {
+          if(mounted) {
+            setData({data, error: null})
+          }
+        })
+        .catch(reason => {
+          setData({data: undefined, error: reason})
+        })
+    return () => {
+      mounted = false
+    }
+  }, [promise, promiseParams])
+
+  return [error, data]
+}
+
+function useDefaultedPromisedData<T, V>(promise: (params: V) => Promise<T | undefined>, promiseParams: V, datDefault: T) : [any, T] {
+  let [err, dat] = usePromisedData(promise, promiseParams)
+  if(dat === undefined) dat = datDefault
+  return [err, dat]
+}
+
+type worldsOfServerType = {server?: serverType, worlds: worldType[]}
+let worldsOfServerData: Dict<Dataloader<worldsOfServerType>> = {}
+export function getWorldsOfServer({server}: {server: string | undefined}): Promise<undefined | worldsOfServerType> {
+  if(server === undefined) {
+    return new Promise((resolve) => resolve(undefined))
+  }
   let loader = worldsOfServerData[server]
   if(loader !== undefined) {
     return loader.getPromise()
   }
-  loader = new Dataloader<{server?: serverType, worlds: worldType[]}>(serverGetWorlds({server}), WORLDS_OF_SERVER_DEFAULT)
+  loader = new Dataloader<worldsOfServerType>(serverGetWorlds({server}))
   worldsOfServerData[server] = loader
   return loader.getPromise()
 }
 
-let indexPageCache: Dataloader<{servers: serverType[], news: newsType[]}> | undefined = undefined
-export const INDEX_PAGE_DEFAULT = {servers: [], news: []}
-export function getIndexPageData(){
-  if(indexPageCache !== undefined) {
+const WORLDS_OF_SERVER_DEFAULT: worldsOfServerType = {worlds: []}
+export function useWorldsOfServer(server: string | undefined) {
+  const prom = useCallback((params: {server: string | undefined}) => getWorldsOfServer(params), [])
+  const params = useMemo(() => ({server}), [server])
+  return useDefaultedPromisedData(prom, params, WORLDS_OF_SERVER_DEFAULT)
+}
+
+type indexPageType = {servers: serverType[], news: newsType[]}
+let indexPageCache: Dataloader<indexPageType> | undefined = undefined
+export const INDEX_PAGE_DEFAULT: indexPageType = {servers: [], news: []}
+export function useIndexPageData(){
+  const prom = useCallback(() => {
+    if(indexPageCache !== undefined) {
+      return indexPageCache.getPromise()
+    }
+    indexPageCache = new Dataloader<indexPageType>(indexPage({}))
     return indexPageCache.getPromise()
-  }
-  indexPageCache = new Dataloader<{servers: serverType[], news: newsType[]}>(indexPage({}), INDEX_PAGE_DEFAULT)
-  return indexPageCache.getPromise()
+  }, [])
+  return useDefaultedPromisedData(prom, null, INDEX_PAGE_DEFAULT)
 }
 
-export const WORLD_OVERVIEW_DEFAULT = {player: [], ally: []}
-export function getWorldOverview(server: string, world: string) {
-  const loader = new Dataloader<{player: playerType[], ally: allyType[], world?: worldType}>(worldOverview({server, world}), WORLD_OVERVIEW_DEFAULT)
-  return loader.getPromise()
+type worldOverviewType = {player: playerType[], ally: allyType[], world?: worldType}
+const WORLD_OVERVIEW_DEFAULT: worldOverviewType = {player: [], ally: []}
+export function useWorldOverview(server: string | undefined, world: string | undefined) {
+  const prom = useCallback(({server, world}: {server: string | undefined, world: string | undefined}) => {
+    const loader = new Dataloader<worldOverviewType>(worldOverview({server, world}))
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world}), [server, world])
+  return useDefaultedPromisedData(prom, params, WORLD_OVERVIEW_DEFAULT)
 }
 
-export function getWorldData(server: string, world: string) {
-  return new Promise<worldType>((resolve) => {
-    getWorldsOfServer(server)
-        .then(({worlds}) => {
-          const w = worlds.find(w => w.name === world)
-          if(w) {
-            resolve(w)
-          }
-        })
-  })
-}
+export function useWorldData(server: string | undefined, world: string | undefined) {
+  const prom = useCallback(({server, world}: {server: string | undefined, world: string | undefined}) => {
+    return new Promise<worldType>((resolve, reject) => {
+      getWorldsOfServer({server})
+          .then(result => {
+            if(result === undefined || world === undefined) {
+              reject(undefined)
+              return
+            }
+            const {worlds} = result
 
-export function useWorldData(server?: string, world?: string) {
-  const [worldData, setWorldData] = useState<worldType>()
-
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined || world === undefined) {
-      setWorldData(undefined)
-    } else {
-      getWorldData(server, world)
-          .then(data => {
-            if(mounted) {
-              setWorldData(data)
+            const w = worlds.find(w => w.name === world)
+            if(w) {
+              resolve(w)
+            } else {
+              reject("world.not_found") //TODO good error handling (reject with user visible error)
             }
           })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server, world])
+          .catch(reason => {
+            console.log("FIXME: Reason:", reason) //TODO good error handling (reject with user visible error)
+            reject(reason)
+          })
+    })
+  }, [])
+  const params = useMemo(() => ({server, world}), [server, world])
+  return usePromisedData(prom, params)
+}
 
-  return worldData
+let extendedWorldData: Dict<Dataloader<worldExtendedType>> = {}
+export function useExtendedWorldData(server: string | undefined, world: string | undefined) {
+  const prom = useCallback(({server, world}: {server: string | undefined, world: string | undefined}): Promise<worldExtendedType | undefined> => {
+    if(server === undefined || world === undefined) {
+      return new Promise((resolve) => resolve(undefined))
+    }
+    let loader = extendedWorldData[server + "_" + world]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<worldExtendedType>(worldGetExtendedData({server, world}))
+    extendedWorldData[server + "_" + world] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world}), [server, world])
+  return usePromisedData(prom, params)
 }

@@ -8,20 +8,25 @@ import {worldAllyHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import DatePicker from "react-datepicker"
-import {AllyDatatableHeader} from "./WorldAllyCurrent";
+import {useAllyDatatableHeader} from "./WorldAllyCurrent";
 import StatsPage from "../layout/StatsPage";
 import {Col} from "react-bootstrap";
 import useDatepickerLanguage from "../../util/datepickerLanguage";
+import ErrorPage from "../layout/ErrorPage";
 
 export default function WorldAllyHistoryPage() {
   const {server, world} = useParams()
-  const worldData = useWorldData(server, world)
+  const [worldErr, worldData] = useWorldData(server, world)
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   const firstDay = new Date()
   firstDay.setDate(firstDay.getDate() - parseInt(process.env.REACT_APP_BACKEND_DB_SAVE_DAY ?? "1"))
   const [startDate, setStartDate] = useState<Date>(yesterday);
   const { t } = useTranslation("ui")
+  const datepickerLang = useDatepickerLanguage()
+  const allyHeader = useAllyDatatableHeader()
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   return <StatsPage
       title={
@@ -33,7 +38,7 @@ export default function WorldAllyHistoryPage() {
       table={
         <DatatableBase<[allyType, allyType | null]>
             api={worldAllyHistoryTable({server, world})}
-            header={AllyDatatableHeader(t)}
+            header={allyHeader}
             cells={[
               (a) => <ShowHistory name={t("old.rank")} o_dat={a[1]?.rank} n_dat={a[0].rank} invert />,
               (a) => <>{worldData && <LinkAlly ally={a[0]} world={worldData} />}</>,
@@ -61,10 +66,11 @@ export default function WorldAllyHistoryPage() {
                       minDate={firstDay}
                       maxDate={yesterday}
                       className={"form-control"}
-                      locale={useDatepickerLanguage()}
+                      locale={datepickerLang}
                   />
                 </Col>
             )}
+            searching
         />
       }
   />

@@ -8,7 +8,7 @@
       "deleted": "Odstranění",
       "internal": "Interní",
       "loose": "Ztráty",
-      "normal": "",
+      "normal": "normal",
       "self": "Vlastní",
       "win": "Získané"
     }
@@ -70,6 +70,7 @@
     "points": "Body",
     "rank": "Pozice",
     "tag": "Tag",
+    "total": "count",
     "village": "Vesnice",
     "villageName": "Název vesnice",
     "villages": "Vesnice",

@@ -76,14 +76,25 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
     if(serverCode === undefined) {
       setServerWorlds([])
     } else {
-      getWorldsOfServer(serverCode)
+      getWorldsOfServer({server: serverCode})
           .then(data => {
             if(mounted) {
-              const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
-              setServerWorlds(data.worlds
-                  .filter(d => d.active != null)
-                  .sort((w1, w2) => typeSort(w2) - typeSort(w1))
-              )
+              if(data === undefined) {
+                //server not found has to be handled by main page
+                setServerWorlds([])
+              } else {
+                const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
+                setServerWorlds(data.worlds
+                    .filter(d => d.active != null)
+                    .sort((w1, w2) => typeSort(w2) - typeSort(w1))
+                )
+              }
+            }
+          })
+          .catch(() => {
+            //ignore here more or less since this has to be handled by the main page
+            if(mounted) {
+              setServerWorlds([])
             }
           })
     }

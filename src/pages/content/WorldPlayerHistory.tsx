@@ -7,20 +7,25 @@ import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableB
 import {worldPlayerHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import DatePicker from "react-datepicker"
-import {PlayerDatatableHeader} from "./WorldPlayerCurrent";
+import {usePlayerDatatableHeader} from "./WorldPlayerCurrent";
 import {LinkPlayer, LinkPlayerAlly, playerPureType, playerType} from "../../modelHelper/Player";
 import {Card, Col, Row} from "react-bootstrap";
 import useDatepickerLanguage from "../../util/datepickerLanguage";
+import ErrorPage from "../layout/ErrorPage";
 
 export default function WorldPlayerHistoryPage() {
   const {server, world} = useParams()
-  const worldData = useWorldData(server, world)
+  const [worldErr, worldData] = useWorldData(server, world)
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   const firstDay = new Date()
   firstDay.setDate(firstDay.getDate() - parseInt(process.env.REACT_APP_BACKEND_DB_SAVE_DAY ?? "1"))
   const [startDate, setStartDate] = useState<Date>(yesterday);
   const { t } = useTranslation("ui")
+  const datepickerLang = useDatepickerLanguage()
+  const playerHeader = usePlayerDatatableHeader()
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   return (
       <Row className="justify-content-center">
@@ -37,7 +42,7 @@ export default function WorldPlayerHistoryPage() {
             <Card.Body>
               <DatatableBase<[playerType, playerPureType | null]>
                   api={worldPlayerHistoryTable({server, world})}
-                  header={PlayerDatatableHeader(t)}
+                  header={playerHeader}
                   cells={[
                     (p) => <ShowHistory name={t("old.rank")} o_dat={p[1]?.rank} n_dat={p[0].rank} invert />,
                     (p) => <>{worldData && <LinkPlayer player={p[0]} world={worldData} />}</>,
@@ -64,11 +69,12 @@ export default function WorldPlayerHistoryPage() {
                             minDate={firstDay}
                             maxDate={yesterday}
                             className={"form-control"}
-                            locale={useDatepickerLanguage()}
+                            locale={datepickerLang}
                         />
                       </Col>
                   )}
                   responsiveTable
+                  searching
               />
             </Card.Body>
           </Card>

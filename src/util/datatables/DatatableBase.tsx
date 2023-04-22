@@ -48,21 +48,22 @@ export interface coreProps<T> extends apiProps, internalCellProps<T> {
 
 interface paramsType<T> extends apiProps, externalCellProps<T> {
   header: DatatableHeaderBuilder,
-  serverSide?: boolean,
+  serverSide: boolean,
   defaultSort?: [sort_type, SORTING_DIRECTION],
   saveAs: string,
   topBarMiddle?: JSX.Element,
   topBarEnd?: JSX.Element,
   responsiveTable?: boolean,
   striped?: boolean,
+  searching?: boolean | ((data: T, search: string) => boolean),
 }
 
 export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION, append: boolean) => void,
   curSortBy?: Array<[sort_type, SORTING_DIRECTION]>}>({})
 
 
-export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd,
-                                          cellClasses, responsiveTable, striped, ...unusedProps}: paramsType<T>) {
+export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
+                                           responsiveTable, striped, searching, ...unusedProps}: paramsType<T>) {
   // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
@@ -161,7 +162,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
               </InputGroup>
             </Col>
             {topBarMiddle}
-            <Col xs={12} md={"auto"} className={"ms-md-auto mb-2"}>
+            {searching && <Col xs={12} md={"auto"} className={"ms-md-auto mb-2"}>
               <InputGroup>
                 <InputGroup.Text>{t('sSearch')}</InputGroup.Text>
                 <Form.Control
@@ -170,7 +171,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
                     onChange={searchChangeCallback}
                 />
               </InputGroup>
-            </Col>
+            </Col>}
             {topBarEnd}
           </Row>
           <Row className={"mb-3" + (responsiveTable?" table-responsive":"")}>
@@ -185,6 +186,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
                     />:
                     <DatatableCoreClientSide<T>
                         sort={sort as Array<[number, SORTING_DIRECTION]>}
+                        searchCB={(searching !== true && searching !== false)?searching:undefined}
                         {...coreProps}
                     />
               }

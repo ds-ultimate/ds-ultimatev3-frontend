@@ -1,8 +1,8 @@
 import {Link, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {WorldDisplayName, WorldState, worldType} from "../../modelHelper/World";
 import {ServerFlag, serverType} from "../../modelHelper/Server";
-import {getWorldsOfServer, WORLDS_OF_SERVER_DEFAULT} from "../../apiInterface/loadContent";
+import {useWorldsOfServer} from "../../apiInterface/loadContent";
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../../util/routes";
@@ -10,9 +10,9 @@ import {nf} from "../../util/UtilFunctions";
 import {Button, Card, Col, Collapse, Row, Table} from "react-bootstrap";
 
 import styles from "./Server.module.scss"
+import ErrorPage from "../layout/ErrorPage";
 
 function WorldTypeSection({data, header, server, type}: {data: worldType[], header: string, server?: serverType, type: string}) {
-  //TODO: 404 Page
   const { t } = useTranslation("ui")
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const activeData = data.filter(w => w.active)
@@ -89,25 +89,10 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
 
 export default function ServerPage() {
   const {server} = useParams()
-  const [serverWorlds, setServerWorlds] = useState<{server?: serverType, worlds: worldType[]}>({worlds: []})
+  const [serverErr, serverWorlds] = useWorldsOfServer(server)
   const { t } = useTranslation("ui")
 
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined) {
-      setServerWorlds(WORLDS_OF_SERVER_DEFAULT)
-    } else {
-      getWorldsOfServer(server)
-          .then(data => {
-            if(mounted) {
-              setServerWorlds(data)
-            }
-          })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server])
+  if(serverErr) return <ErrorPage error={serverErr} />
 
   return (
       <Row className="justify-content-center">

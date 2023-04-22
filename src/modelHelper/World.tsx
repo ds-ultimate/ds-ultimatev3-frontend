@@ -19,6 +19,25 @@ type worldType = {
   sortType: string,
 }
 
+export type worldExtendedType = {
+  firstConquer: number,
+  config: worldConfigType,
+  buildings: worldBuildingType,
+  units: worldUnitType,
+}
+
+type worldConfigType = {
+  //TODO for later
+}
+
+type worldBuildingType = {
+  //TODO for later
+}
+
+type worldUnitType = {
+  //TODO for later
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DummyFunction = () => {
   const { t } = useTranslation("ui")

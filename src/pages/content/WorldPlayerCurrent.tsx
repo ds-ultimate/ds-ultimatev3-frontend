@@ -6,34 +6,41 @@ import {useWorldData} from "../../apiInterface/loadContent";
 import {LinkPlayer, LinkPlayerAlly, playerType} from "../../modelHelper/Player";
 import {nf} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
-import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
+import ErrorPage from "../layout/ErrorPage";
+import React, {useMemo} from "react";
 
-const PlayerDatatableHeader = (t: TFunction<"ui">) => {
-  return new DatatableHeaderBuilder()
-      .addRow(row => {
-        row.addCell({colSpan: 6, useConcat: false, title: t('table-title.general')})
-        row.addCell({colSpan: 4, title: t('table-title.bashStats')})
-      })
-      .addMainRow(row => {
-        row.addCell({sortBy: "rank", title: t('table.rank')})
-        row.addCell({sortBy: "name", title: t('table.name')})
-        row.addCell({sortBy: "allyLatest__name", title: t('table.ally')})
-        row.addCell({sortBy: "points", sortDescDefault: true, title: t('table.points')})
-        row.addCell({sortBy: "village_count", sortDescDefault: true, title: t('table.villages')})
-        row.addCell({showAt: "md", title: t('table.avgVillage')})
-        row.addCell({showAt: "lg", sortBy: "gesBash", sortDescDefault: true, title: t('table.bashGes')})
-        row.addCell({showAt: "lg", sortBy: "offBash", sortDescDefault: true, title: t('table.bashOff')})
-        row.addCell({showAt: "lg", sortBy: "defBash", sortDescDefault: true, title: t('table.bashDef')})
-        row.addCell({showAt: "lg", sortBy: "supBash", sortDescDefault: true, title: t('table.bashSup')})
-      })
+export function usePlayerDatatableHeader() {
+  const {t} = useTranslation("ui")
+  return useMemo(() => {
+    return new DatatableHeaderBuilder()
+        .addRow(row => {
+          row.addCell({colSpan: 6, useConcat: false, title: t('table-title.general')})
+          row.addCell({colSpan: 4, title: t('table-title.bashStats')})
+        })
+        .addMainRow(row => {
+          row.addCell({sortBy: "rank", title: t('table.rank')})
+          row.addCell({sortBy: "name", title: t('table.name')})
+          row.addCell({sortBy: "allyLatest__name", title: t('table.ally')})
+          row.addCell({sortBy: "points", sortDescDefault: true, title: t('table.points')})
+          row.addCell({sortBy: "village_count", sortDescDefault: true, title: t('table.villages')})
+          row.addCell({showAt: "md", title: t('table.avgVillage')})
+          row.addCell({showAt: "lg", sortBy: "gesBash", sortDescDefault: true, title: t('table.bashGes')})
+          row.addCell({showAt: "lg", sortBy: "offBash", sortDescDefault: true, title: t('table.bashOff')})
+          row.addCell({showAt: "lg", sortBy: "defBash", sortDescDefault: true, title: t('table.bashDef')})
+          row.addCell({showAt: "lg", sortBy: "supBash", sortDescDefault: true, title: t('table.bashSup')})
+        })
+  }, [t])
 }
 
 export default function WorldPlayerCurrentPage() {
   const {server, world} = useParams()
-  const worldData = useWorldData(server, world)
-  const { t } = useTranslation("ui")
+  const [worldErr, worldData] = useWorldData(server, world)
+  const {t} = useTranslation("ui")
+  const playerHeader = usePlayerDatatableHeader()
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   return <StatsPage
       title={
@@ -45,7 +52,7 @@ export default function WorldPlayerCurrentPage() {
       table={
         <DatatableBase<playerType>
             api={worldPlayerCurrentTable({server, world})}
-            header={PlayerDatatableHeader(t)}
+            header={playerHeader}
             cells={[
               (p) => nf.format(p.rank),
               (p) => <>{worldData && <LinkPlayer player={p} world={worldData} />}</>,
@@ -64,9 +71,9 @@ export default function WorldPlayerCurrentPage() {
             defaultSort={["rank", SORTING_DIRECTION.ASC]}
             saveAs={'worldPlayer'}
             responsiveTable
+            searching
         />
       }
   />
 };
 
-export {PlayerDatatableHeader}

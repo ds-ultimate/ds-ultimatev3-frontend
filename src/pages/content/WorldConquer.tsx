@@ -5,6 +5,8 @@ import {useWorldData} from "../../apiInterface/loadContent";
 import ConquerPage, {FILTER_OPTIONS} from "../layout/ConquerPage";
 import {conquerChangeType} from "../../modelHelper/Conquer";
 import {worldConquerTable} from "../../apiInterface/apiConf";
+import ErrorPage from "../layout/ErrorPage";
+import React from "react";
 
 const highlightPossible: conquerChangeType[] = [
   conquerChangeType.SELF,
@@ -32,14 +34,15 @@ const conquerTypeFilterPossible = [
 export default function WorldConquerPage() {
   const {server, world, type} = useParams()
   const {t} = useTranslation("ui")
-  const worldData = useWorldData(server, world)
+  const [worldErr, worldData] = useWorldData(server, world)
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   let typeName: string
   if(type === "all") {
     typeName = t("conquer.all")
   } else {
-    //TODO 404 here
-    return <>404</>
+    return <ErrorPage error={"conquererr"} />
   }
 
   const who = <>{worldData && <WorldDisplayName world={worldData} />}</>

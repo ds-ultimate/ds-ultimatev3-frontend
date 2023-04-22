@@ -15,6 +15,7 @@ const apiRequestGenerator = (uri: string) => {
 export const indexPage = apiRequestGenerator("indexPage")
 export const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
 export const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
+export const worldGetExtendedData = apiRequestGenerator("worldExtendedData/{server}/{world}")
 
 //Datatables
 export const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
@@ -22,6 +23,8 @@ export const worldPlayerCurrentTable = apiRequestGenerator("tables/worldPlayer/{
 export const worldAllyHistoryTable = apiRequestGenerator("tables/worldHistoryAlly/{server}/{world}")
 export const worldPlayerHistoryTable = apiRequestGenerator("tables/worldHistoryPlayer/{server}/{world}")
 export const worldConquerTable = apiRequestGenerator("tables/worldConquer/{server}/{world}/{type}")
+export const worldDailyPlayerConquerTable = apiRequestGenerator("tables/worldConquerDailyPlayer/{server}/{world}")
+export const worldDailyAllyConquerTable = apiRequestGenerator("tables/worldConquerDailyAlly/{server}/{world}")
 
 //Bootstrap-select
 export const villageSelect = apiRequestGenerator("select/village/{world}")

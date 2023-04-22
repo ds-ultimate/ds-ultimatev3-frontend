@@ -43,7 +43,7 @@ const LinkPlayerAlly = ({player, world}: {player: playerType, world: worldType})
       <>
         {player.allyLatest__tag?(
             <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (player.ally_id + "")})}>
-              [<DecodeName name={player.allyLatest__tag} />]
+              {" "}[<DecodeName name={player.allyLatest__tag} />]
             </Link>
         ):"-"}
       </>

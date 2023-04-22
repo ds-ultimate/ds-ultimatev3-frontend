@@ -8,8 +8,11 @@ import {useTranslation} from "react-i18next";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {nf} from "../../util/UtilFunctions";
 import {
-  conquerChangeType, conquerChangeTypeSetting, ConquerTime,
-  conquerType, getConquerType,
+  conquerChangeType,
+  conquerChangeTypeSetting,
+  ConquerTime,
+  conquerType,
+  getConquerType,
   LinkConquerNew,
   LinkConquerOld,
   LinkConquerVillage
@@ -22,6 +25,7 @@ import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import usePersistentState from "../../util/persitentState";
 import {Dict} from "../../util/customTypes";
 import {worldType} from "../../modelHelper/World";
+import ErrorPage from "./ErrorPage";
 
 type extLayoutParams = {
   typeName: ReactNode,
@@ -120,11 +124,11 @@ function useConquerHighlightComponent(highlightPossible: conquerChangeType[], sa
   )]
 }
 
-function useConquerFilterComponent(filterPossible: string[], conqTypePossible: conquerChangeType[], worldData: worldType | undefined): [Dict<string>, ReactNode] {
+function useConquerFilterComponent(filterPossible: string[], conquerTypePossible: conquerChangeType[], worldData: worldType | undefined): [Dict<string>, ReactNode] {
   const { t } = useTranslation("ui")
   const [activeFilters , setActiveFilters] = useState<Dict<string>>(() => {
     const result: Dict<string> = {}
-    conqTypePossible.forEach(value => result[value] = "1")
+    conquerTypePossible.forEach(value => result[value] = "1")
     return result
   })
   const filterOptions = [
@@ -158,7 +162,7 @@ function useConquerFilterComponent(filterPossible: string[], conqTypePossible: c
 
   return [activeFilters, (<>
         <Row className={"mb-2"}>
-          {conqTypePossible.map(value => <Col key={value} xs={"auto"} className={"nowrap"}>
+          {conquerTypePossible.map(value => <Col key={value} xs={"auto"} className={"nowrap"}>
             <InputGroup className={"flex-wrap-nowrap"}>
               <InputGroup.Checkbox
                   checked={activeFilters[value] === "1"}
@@ -189,11 +193,13 @@ function useConquerFilterComponent(filterPossible: string[], conqTypePossible: c
 
 export default function ConquerPage({typeName, who, conquerSave, highlightPossible, filterPossible, conquerTypeFilterPossible, api}: pageParams) {
   const {server, world} = useParams()
-  const worldData = useWorldData(server, world)
+  const [worldErr, worldData] = useWorldData(server, world)
   const { t } = useTranslation("ui")
   const [showFilters, setShowFilters] = useState(false)
   const [allowedHighlight, highlighting] = useConquerHighlightComponent(highlightPossible, "conquer.hi_" + conquerSave)
   const [activeFilter, filterComponent] = useConquerFilterComponent(filterPossible, conquerTypeFilterPossible, worldData)
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   return <ConquerPageLayout
       typeName={typeName}
@@ -223,6 +229,7 @@ export default function ConquerPage({typeName, who, conquerSave, highlightPossib
               </Button>
             </Col>}
             api_params={{filter: activeFilter}}
+            searching
         />
       }
       filters={showFilters && filterComponent}

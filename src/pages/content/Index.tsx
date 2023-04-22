@@ -1,32 +1,20 @@
-import {useEffect, useState} from "react";
-import {ServerFlag, serverType} from "../../modelHelper/Server";
-import {newsType} from "../../modelHelper/News";
+import React from "react";
+import {ServerFlag} from "../../modelHelper/Server";
 import {useTranslation} from "react-i18next";
-import {getIndexPageData} from "../../apiInterface/loadContent";
+import {useIndexPageData} from "../../apiInterface/loadContent";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
 import {SERVER} from "../../util/routes";
 import {Card, Carousel, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./Index.module.scss"
+import ErrorPage from "../layout/ErrorPage";
 
 export default function IndexPage() {
-  const [data, setData] = useState<{ servers: serverType[], news: newsType[] }>({servers: [], news: []})
+  const [dataErr, data] = useIndexPageData()
   const [t, i18n] = useTranslation("ui")
 
-  useEffect(() => {
-    let mounted = true
-    getIndexPageData()
-        .then(data => {
-          if(mounted) {
-            setData(data)
-          }
-        })
-
-    return () => {
-      mounted = false
-    }
-  }, [])
+  if(dataErr) return <ErrorPage error={dataErr} />
 
   let news: JSX.Element | undefined = undefined
   if(data.news) {

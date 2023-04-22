@@ -1,14 +1,14 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {LinkPlayer, playerType} from "../../modelHelper/Player";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
-import {getWorldOverview, WORLD_OVERVIEW_DEFAULT} from "../../apiInterface/loadContent";
+import {useWorldOverview} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {nf} from "../../util/UtilFunctions";
 import {Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./World.module.scss"
+import ErrorPage from "../layout/ErrorPage";
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
   //TODO: 404 Page actually all of them
@@ -79,25 +79,10 @@ function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worl
 
 export default function WorldPage() {
   const {server, world} = useParams()
-  const [worldOverview, setWorldOverview] = useState<{player: playerType[], ally: allyType[], world?: worldType}>(WORLD_OVERVIEW_DEFAULT)
-
-  useEffect(() => {
-    let mounted = true
-    if(server === undefined || world === undefined) {
-      setWorldOverview(WORLD_OVERVIEW_DEFAULT)
-    } else {
-      getWorldOverview(server, world)
-          .then(data => {
-            if(mounted) {
-              setWorldOverview(data)
-            }
-          })
-    }
-    return () => {
-      mounted = false
-    }
-  }, [server, world])
+  const [worldErr, worldOverview] = useWorldOverview(server, world)
   const worldData = worldOverview.world
+
+  if(worldErr) return <ErrorPage error={worldErr} />
 
   return (
       <Row className="justify-content-center">
