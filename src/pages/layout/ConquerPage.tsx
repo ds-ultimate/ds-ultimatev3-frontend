@@ -158,7 +158,6 @@ function useConquerFilterComponent(filterPossible: string[], conquerTypePossible
     }
     return clone
   }, [])
-  console.log(activeFilters)
 
   return [activeFilters, (<>
         <Row className={"mb-2"}>

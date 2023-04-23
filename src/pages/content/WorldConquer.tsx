@@ -42,6 +42,7 @@ export default function WorldConquerPage() {
   if(type === "all") {
     typeName = t("conquer.all")
   } else {
+    //TODO localized error messages see TODO in backend for ideas
     return <ErrorPage error={"conquererr"} />
   }
 

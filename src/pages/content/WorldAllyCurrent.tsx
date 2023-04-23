@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loadContent";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyCurrentTable} from "../../apiInterface/apiConf";
-import {nf} from "../../util/UtilFunctions";
+import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
@@ -57,13 +57,13 @@ export default function WorldAllyCurrentPage() {
               (a) => nf.format(a.rank),
               (a) => <>{worldData && <LinkAlly ally={a} world={worldData} />}</>,
               (a) => <>{worldData && <LinkAlly ally={a} world={worldData} useTag />}</>,
-              (a) => nf.format(a.points),
+              (a) => thousandsFormat(a.points),
               (a) => nf.format(a.member_count),
               (a) => nf.format(a.village_count),
-              (a) => nf.format((a.member_count === 0)?(0):(a.points / a.member_count)),
-              (a) => nf.format(a.gesBash),
-              (a) => nf.format(a.offBash),
-              (a) => nf.format(a.defBash),
+              (a) => thousandsFormat((a.member_count === 0)?(0):(a.points / a.member_count)),
+              (a) => thousandsFormat(a.gesBash),
+              (a) => thousandsFormat(a.offBash),
+              (a) => thousandsFormat(a.defBash),
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={a => a.allyID}

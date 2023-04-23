@@ -4,7 +4,7 @@ import {LinkPlayer, playerType} from "../../modelHelper/Player";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {useWorldOverview} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
-import {nf} from "../../util/UtilFunctions";
+import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./World.module.scss"
@@ -31,7 +31,7 @@ function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, 
                 <tr key={p.playerID}>
                   <th>{nf.format(p.rank)}</th>
                   <td><LinkPlayer player={p} world={worldData} withAlly /></td>
-                  <td>{nf.format(p.points)}</td>
+                  <td>{thousandsFormat(p.points)}</td>
                   <td>{nf.format(p.village_count)}</td>
                 </tr>
             )
@@ -65,7 +65,7 @@ function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worl
                   <th>{nf.format(a.rank)}</th>
                   <td><LinkAlly ally={a} world={worldData} /></td>
                   <td><LinkAlly ally={a} world={worldData} useTag /></td>
-                  <td>{nf.format(a.points)}</td>
+                  <td>{thousandsFormat(a.points)}</td>
                   <td>{nf.format(a.member_count)}</td>
                   <td>{nf.format(a.village_count)}</td>
                 </tr>

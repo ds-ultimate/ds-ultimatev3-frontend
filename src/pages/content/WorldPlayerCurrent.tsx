@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useWorldData} from "../../apiInterface/loadContent";
 import {LinkPlayer, LinkPlayerAlly, playerType} from "../../modelHelper/Player";
-import {nf} from "../../util/UtilFunctions";
+import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
@@ -57,13 +57,13 @@ export default function WorldPlayerCurrentPage() {
               (p) => nf.format(p.rank),
               (p) => <>{worldData && <LinkPlayer player={p} world={worldData} />}</>,
               (p) => <>{worldData && <LinkPlayerAlly player={p} world={worldData} />}</>,
-              (p) => nf.format(p.points),
+              (p) => thousandsFormat(p.points),
               (p) => nf.format(p.village_count),
               (p) => nf.format((p.village_count === 0)?(0):(p.points / p.village_count)),
-              (p) => nf.format(p.gesBash),
-              (p) => nf.format(p.offBash),
-              (p) => nf.format(p.defBash),
-              (p) => nf.format(p.supBash),
+              (p) => thousandsFormat(p.gesBash),
+              (p) => thousandsFormat(p.offBash),
+              (p) => thousandsFormat(p.defBash),
+              (p) => thousandsFormat(p.supBash),
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={p => p.playerID}

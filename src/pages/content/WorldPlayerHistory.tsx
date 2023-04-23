@@ -47,13 +47,13 @@ export default function WorldPlayerHistoryPage() {
                     (p) => <ShowHistory name={t("old.rank")} o_dat={p[1]?.rank} n_dat={p[0].rank} invert />,
                     (p) => <>{worldData && <LinkPlayer player={p[0]} world={worldData} />}</>,
                     (p) => <>{worldData && <LinkPlayerAlly player={p[0]} world={worldData} />}</>,
-                    (p) => <ShowHistory name={t("old.points")} o_dat={p[1]?.points} n_dat={p[0].points} />,
+                    (p) => <ShowHistory name={t("old.points")} tsd_format o_dat={p[1]?.points} n_dat={p[0].points} />,
                     (p) => <ShowHistory name={t("old.village_count")} o_dat={p[1]?.village_count} n_dat={p[0].village_count} />,
                     (p) => <ShowHistory name={t("old.village_points")} o_dat={(p[1] === null)?undefined:((p[1].village_count === 0)?(0):(p[1].points / p[1].village_count))} n_dat={(p[0].village_count === 0)?(0):(p[0].points / p[0].village_count)} />,
-                    (p) => <ShowHistory name={t("old.gesBash")} o_dat={p[1]?.gesBash} n_dat={p[0].gesBash} />,
-                    (p) => <ShowHistory name={t("old.offBash")} o_dat={p[1]?.offBash} n_dat={p[0].offBash} />,
-                    (p) => <ShowHistory name={t("old.defBash")} o_dat={p[1]?.defBash} n_dat={p[0].defBash} />,
-                    (p) => <ShowHistory name={t("old.supBash")} o_dat={p[1]?.supBash} n_dat={p[0].supBash} />,
+                    (p) => <ShowHistory name={t("old.gesBash")} tsd_format o_dat={p[1]?.gesBash} n_dat={p[0].gesBash} />,
+                    (p) => <ShowHistory name={t("old.offBash")} tsd_format o_dat={p[1]?.offBash} n_dat={p[0].offBash} />,
+                    (p) => <ShowHistory name={t("old.defBash")} tsd_format o_dat={p[1]?.defBash} n_dat={p[0].defBash} />,
+                    (p) => <ShowHistory name={t("old.supBash")} tsd_format o_dat={p[1]?.supBash} n_dat={p[0].supBash} />,
                   ]}
                   cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
                   keyGen={p => p[0].playerID}

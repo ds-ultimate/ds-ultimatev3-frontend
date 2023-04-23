@@ -43,13 +43,13 @@ export default function WorldAllyHistoryPage() {
               (a) => <ShowHistory name={t("old.rank")} o_dat={a[1]?.rank} n_dat={a[0].rank} invert />,
               (a) => <>{worldData && <LinkAlly ally={a[0]} world={worldData} />}</>,
               (a) => <>{worldData && <LinkAlly ally={a[0]} world={worldData} useTag />}</>,
-              (a) => <ShowHistory name={t("old.points")} o_dat={a[1]?.points} n_dat={a[0].points} />,
+              (a) => <ShowHistory name={t("old.points")} tsd_format o_dat={a[1]?.points} n_dat={a[0].points} />,
               (a) => <ShowHistory name={t("old.member_count")} o_dat={a[1]?.member_count} n_dat={a[0].member_count} />,
               (a) => <ShowHistory name={t("old.village_count")} o_dat={a[1]?.village_count} n_dat={a[0].village_count} />,
-              (a) => <ShowHistory name={t("old.player_points")} o_dat={(a[1] === null)?undefined:((a[1].member_count === 0)?(0):(a[1].points / a[1].member_count))} n_dat={(a[0].member_count === 0)?(0):(a[0].points / a[0].member_count)} />,
-              (a) => <ShowHistory name={t("old.gesBash")} o_dat={a[1]?.gesBash} n_dat={a[0].gesBash} />,
-              (a) => <ShowHistory name={t("old.offBash")} o_dat={a[1]?.offBash} n_dat={a[0].offBash} />,
-              (a) => <ShowHistory name={t("old.defBash")} o_dat={a[1]?.defBash} n_dat={a[0].defBash} />,
+              (a) => <ShowHistory name={t("old.player_points")} tsd_format o_dat={(a[1] === null)?undefined:((a[1].member_count === 0)?(0):(a[1].points / a[1].member_count))} n_dat={(a[0].member_count === 0)?(0):(a[0].points / a[0].member_count)} />,
+              (a) => <ShowHistory name={t("old.gesBash")} tsd_format o_dat={a[1]?.gesBash} n_dat={a[0].gesBash} />,
+              (a) => <ShowHistory name={t("old.offBash")} tsd_format o_dat={a[1]?.offBash} n_dat={a[0].offBash} />,
+              (a) => <ShowHistory name={t("old.defBash")} tsd_format o_dat={a[1]?.defBash} n_dat={a[0].defBash} />,
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={a => a[0].allyID}
