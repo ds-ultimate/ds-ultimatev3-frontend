@@ -3,7 +3,7 @@ import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableB
 import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useWorldData} from "../../apiInterface/loadContent";
-import {LinkPlayer, LinkPlayerAlly, playerType} from "../../modelHelper/Player";
+import {LinkPlayer, LinkPlayerAlly, playerPureType, playerType} from "../../modelHelper/Player";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
@@ -14,7 +14,7 @@ import React, {useMemo} from "react";
 export function usePlayerDatatableHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder()
+    return new DatatableHeaderBuilder<playerType | [playerType, playerPureType | null]>()
         .addRow(row => {
           row.addCell({colSpan: 6, useConcat: false, title: t('table-title.general')})
           row.addCell({colSpan: 4, title: t('table-title.bashStats')})

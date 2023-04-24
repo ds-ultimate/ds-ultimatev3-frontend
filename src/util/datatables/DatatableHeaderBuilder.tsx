@@ -2,30 +2,31 @@ import {Key, ReactNode} from "react";
 import {Breakpoint, breakpoints} from "../bootrapBreakpoints";
 import DatatableHeader from "./DatatableHeader";
 
-type headerObject = {
+type headerObject<T> = {
   colSpan?: number,
   title: string | ReactNode,
   sortBy?: string,
+  sortCB?: ((data1: T, data2: T) => number)
   sortDescDefault?: boolean,
   showAt?: Breakpoint,
   useConcat?: boolean
 }
 
-type headerRow = headerObject[]
+type headerRow<T> = headerObject<T>[]
 
-export default class DatatableHeaderBuilder {
-  data: DatatableRowBuilder[] = []
-  mainRow: DatatableRowBuilder | undefined = undefined
+export default class DatatableHeaderBuilder<T> {
+  data: DatatableRowBuilder<T>[] = []
+  mainRow: DatatableRowBuilder<T> | undefined = undefined
   mainVisible: string[] | undefined = undefined
 
-  addRow(rowBuilder: (row: DatatableRowBuilder) => void): DatatableHeaderBuilder {
+  addRow(rowBuilder: (row: DatatableRowBuilder<T>) => void): DatatableHeaderBuilder<T> {
     const builder = new DatatableRowBuilder()
     rowBuilder(builder)
     this.data.push(builder)
     return this
   }
 
-  addMainRow(rowBuilder: (row: DatatableRowBuilder) => void): DatatableHeaderBuilder {
+  addMainRow(rowBuilder: (row: DatatableRowBuilder<T>) => void): DatatableHeaderBuilder<T> {
     const builder = new DatatableRowBuilder()
     rowBuilder(builder)
     this.data.push(builder)
@@ -97,12 +98,19 @@ export default class DatatableHeaderBuilder {
       )
     })
   }
+
+  getSortingCB() {
+    return this.mainRow?.cells.map(value => value.sortCB)
+  }
 }
 
-class DatatableRowBuilder {
-  cells: headerRow = []
+class DatatableRowBuilder<T> {
+  cells: headerRow<T> = []
 
-  addCell(cell: headerObject): DatatableRowBuilder {
+  addCell(cell: headerObject<T>): DatatableRowBuilder<T> {
+    if(cell.sortBy && cell.sortCB) {
+      throw new Error("sortby and sortcb cannot be used at the same time")
+    }
     this.cells.push(cell)
     return this
   }
@@ -130,10 +138,15 @@ class DatatableRowBuilder {
             const visible = visibility.slice(index, index + len)
             const className = (len === 1 && cellClasses)?cellClasses[index]:undefined
             index += len
+            let sortBy : string | number | undefined = value.sortBy
+            if(value.sortCB) {
+              sortBy = idx
+            }
+
             return (
                 <DatatableHeader
                     key={idx}
-                    sortBy={value.sortBy}
+                    sortBy={sortBy}
                     sortDescDefault={value.sortDescDefault}
                     showAt={visible}
                     className={className}

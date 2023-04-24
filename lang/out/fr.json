@@ -14,12 +14,6 @@
             "supBash": "Points de supporters"
         },
         "titel": {
-            "defBash": "Des ennemis vaincus comme d\u00e9fenseurs",
-            "gesBash": "Combat vaincu",
-            "offBash": "Des ennemis vaincus comme attaquants",
-            "points": "points",
-            "rank": "rang",
-            "village": "villages",
             "supBash": "Ennemis vaincus en tant que partisans"
         },
         "who": {

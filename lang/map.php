@@ -1,42 +1,60 @@
 <?php
+$languages = ["de", "en"];
 $filesIn = recursive_get_files("out");
 $filesOut = recursive_get_files("../src/translations");
 
 $replacements = [
     "ui.table-title.allyBashRanking" => "ui.tabeltitel.allyBashRanking",
     "ui.table-title.allyRanking" => "ui.tabletitel.allyRanking",
-    "ui.table-title.ally" => "ui.tabletitel.allys",
     "ui.table-title" => "ui.tabletitel",
     "ui.title" => "ui.titel",
     "ui.world.world" => "ui.world.normal",
-    "ui.table.bashDef" => "ui.table.bashDeff",
+    "ui.inGame" => "ui.ingame",
     "lightMode" => "lightmode",
     "darkMode" => "darkmode",
+    "ui.chart.title" => "chart.titel",
+    "ui.chart" => "chart",
 ];
+
 $allow_errors = false;
+$doneFiles = [];
+foreach($languages as $lang) {
+    foreach($filesIn as $fIn) {
+        if(strpos($fIn, $lang) === false) continue;
+        $doneFiles[] = $fIn;
+        doInputFile($fIn);
+    }
+}
+$allow_errors = true;
 
 foreach($filesIn as $fIn) {
-    global $allow_errors;
+    if(in_array($fIn, $doneFiles)) continue;
+    doInputFile($fIn);
+}
+
+function doInputFile($fIn) {
+    global $filesOut;
+
     $raw = substr($fIn, strlen("out/"));
     $langIn = substr($raw, 0, strrpos($raw, "."));
     $dataIn = json_decode(file_get_contents($fIn));
     echo "Doing $langIn\n";
-    
+
     foreach($filesOut as $fOut) {
         $rawO = substr($fOut, strlen("../src/translations/"));
         $p = explode("/", $rawO);
         $langOut = $p[0];
         $ns = substr($p[1], 0, strrpos($p[1], "."));
-        
+
         if($langIn != $langOut) continue;
         $dataOut = json_decode(file_get_contents($fOut));
-        
+
         $allow_errors = $langIn == "fr" || $langIn == "cz";
         recursive_map_keys($dataIn, $dataOut, $ns);
-        
+
         file_put_contents($fOut, json_encode($dataOut, JSON_PRETTY_PRINT));
     }
-    
+
     file_put_contents($fIn, json_encode($dataIn, JSON_PRETTY_PRINT));
 }
 

@@ -170,12 +170,6 @@
             "village": "Dorf"
         },
         "titel": {
-            "points": "Punkte",
-            "rank": "Rang",
-            "village": "D\u00f6rfer",
-            "gesBash": "Besiegte Gegner Insgesamt",
-            "offBash": "Besiegte Gegner als Angreifer",
-            "defBash": "Besiegte Gegner als Verteidiger",
             "supBash": "Besiegte Gegner als Unterst\u00fctzer"
         },
         "label": {
@@ -697,13 +691,11 @@
             "playerOwn": "Eigene Adelungen",
             "allyOwn": "Interne \/ Eigen-Adelungen",
             "highlight": {
-                "all": "Alle",
-                "total": "Gesamt"
+                "all": "Alle"
             }
         },
         "world": {},
         "titel": {
-            "ally": "Stamm",
             "player": "Spieler",
             "searchResults": "Suchergebnisse",
             "village": "Dorf",
@@ -712,7 +704,6 @@
             "settings": "Einstellungen"
         },
         "tabletitel": {
-            "info": "Informationen",
             "villages": "D\u00f6rfer",
             "classicWorlds": "Classic Welten",
             "speedWorlds": "Speed Runden",
@@ -721,11 +712,8 @@
             "playerHist": "Spieler Verlauf"
         },
         "table": {
-            "conquer": "Eroberungen",
-            "allyChanges": "Stammeswechsel",
             "playerName": "Spielername",
             "bashStats": "Besiegte Gegner",
-            "bashPointsRatio": "K\/P-Rate",
             "id": "ID",
             "continent": "Kontinent",
             "coordinates": "Koordinaten",
@@ -734,10 +722,7 @@
             "allyKillsPercent": "Kills\/Stamm",
             "playerPointPercent": "Kills\/Punkte",
             "time": "Zeit",
-            "possibleChanges": "Ausbaum\u00f6glichkeiten",
-            "bashAllS": "BG",
-            "bashAttS": "BGA",
-            "bashDefS": "BGD"
+            "possibleChanges": "Ausbaum\u00f6glichkeiten"
         },
         "server": {
             "title": "Server"
@@ -768,19 +753,13 @@
         },
         "villageNotExist": "Dorf existiert nicht",
         "nav": {
-            "stats": "Statistiken",
-            "map": "\u00dcbersichtskarte",
             "toggle": "Umschalten",
             "disabled": {
                 "missingConfig": "Dieses Feature ist bei der ausgew\u00e4hlten Welt nicht verf\u00fcgbar.",
                 "noWorld": "Um dieses Feature nutzen zu k\u00f6nnen, muss eine Welt ausgew\u00e4hlt werden"
-            },
-            "tops": "Bestwerte"
+            }
         },
-        "ingame": {
-            "normal": "Ingame (Normal)",
-            "guest": "Ingame (Gastzugang)"
-        },
+        "ingame": {},
         "old": {
             "nodata": "Keine Daten vorhanden"
         },
@@ -856,9 +835,7 @@
         "showLessWorlds": "weniger Welten anzeigen",
         "showPointDiff": "120er-Bereich anzeigen",
         "index": {},
-        "tabeltitel": {
-            "allyBashRanking": "Interne Basherliste"
-        },
+        "tabeltitel": {},
         "village": {
             "histUnknown": "Unbekannt",
             "histPossibilities": "M\u00f6glichkeiten",
@@ -875,7 +852,6 @@
                 "greatSiege": ":amountDef Verteidigungsst\u00e4rke. :points Einflusspunkte t\u00e4glich."
             }
         },
-        "topAt": "am",
         "otherWorldsPlayer": "Andere Welten dieses Spielers",
         "otherWorldsPlayerPopup": {
             "rank": "Max Rang",

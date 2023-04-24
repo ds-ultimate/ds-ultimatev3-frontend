@@ -1,5 +1,15 @@
 {
   "archive": "archive",
+  "chart": {
+    "title": {
+      "defBash": "Opponents defeated as defender",
+      "gesBash": "Opponents defeated as total",
+      "offBash": "Opponents defeated as attacker",
+      "points": "Points",
+      "rank": "Rank",
+      "village": "Villages"
+    }
+  },
   "conquer": {
     "all": "Conquers",
     "daily": "Conquer ranking daily",
@@ -10,6 +20,7 @@
       "loose": "looses",
       "normal": "normal",
       "self": "self",
+      "total": "total",
       "win": "gains"
     }
   },
@@ -17,11 +28,18 @@
   "index": {
     "help": "In order to use most of the functions of this site you need to choose a server and a world."
   },
+  "inGame": {
+    "guest": "Ingame (Guest access)",
+    "normal": "Ingame (User access)"
+  },
   "language": "Language",
   "lightMode": "lightmode",
   "nav": {
     "current": "Current",
-    "history": "History"
+    "history": "History",
+    "map": "Map",
+    "stats": "Stats",
+    "tops": "Top values"
   },
   "news": {
     "title": "News"
@@ -54,12 +72,18 @@
   "showMoreWorlds": "show more worlds",
   "table": {
     "ally": "tribe",
+    "allyChanges": "tribe changes",
     "avgPlayer": "Points per player",
     "avgVillage": "Points per village",
+    "bashAllS": "OD",
+    "bashAttS": "ODA",
     "bashDef": "defender",
+    "bashDefS": "ODD",
     "bashGes": "total",
     "bashOff": "Attacker",
+    "bashPointsRatio": "K/P-Rate",
     "bashSup": "supporter",
+    "conquer": "conquers",
     "date": "date",
     "members": "members",
     "name": "name",
@@ -77,10 +101,13 @@
     "world": "world"
   },
   "table-title": {
-    "ally": "tribe",
+    "allyBashRanking": "Internal list of Bashpoints",
+    "allyHist": "ally history",
     "allyRanking": "tribe ranking",
+    "allys": "tribe",
     "bashStats": "Opponents defeated",
     "general": "General",
+    "info": "Information",
     "normalWorlds": "normal worlds",
     "overview": "Overview",
     "player": "player",
@@ -89,9 +116,11 @@
     "top10": "Top 10"
   },
   "title": {
+    "ally": "Tribe",
     "search": "Search",
     "worldOverview": "World overview"
   },
+  "topAt": "at",
   "world": {
     "casual": "casual",
     "classic": "classic",

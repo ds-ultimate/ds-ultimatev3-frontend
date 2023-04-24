@@ -14,7 +14,7 @@ import {useMemo} from "react";
 export function useAllyDatatableHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder()
+    return new DatatableHeaderBuilder<allyType | [allyType, allyType | null]>()
         .addRow(row => {
           row.addCell({colSpan: 7, useConcat: false, title: t('table-title.general')})
           row.addCell({colSpan: 4, title: t('table-title.bashStats')})
@@ -46,7 +46,7 @@ export default function WorldAllyCurrentPage() {
       title={
         <>
           {worldData && <WorldDisplayName world={worldData} />}<br />
-          {t("table-title.overview")} {t("table-title.ally")}
+          {t("table-title.overview")} {t("table-title.allys")}
         </>
       }
       table={

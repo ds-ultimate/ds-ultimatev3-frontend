@@ -1,5 +1,15 @@
 {
   "archive": "Archiv",
+  "chart": {
+    "title": {
+      "defBash": "Besiegte Gegner als Verteidiger",
+      "gesBash": "Besiegte Gegner Insgesamt",
+      "offBash": "Besiegte Gegner als Angreifer",
+      "points": "Punkte",
+      "rank": "Rang",
+      "village": "Dörfer"
+    }
+  },
   "conquer": {
     "all": "Adelungen",
     "daily": "Adelsrangliste Täglich",
@@ -10,6 +20,7 @@
       "loose": "Verluste",
       "normal": "Normal",
       "self": "Selbst",
+      "total": "Gesamt",
       "win": "Gewinne"
     }
   },
@@ -17,11 +28,18 @@
   "index": {
     "help": "Um die meisten Funktionen der Seite nutzen zu können, musst du einen Server und eine Welt auswählen."
   },
+  "inGame": {
+    "guest": "Ingame (Gastzugang)",
+    "normal": "Ingame (Normal)"
+  },
   "language": "Sprache",
   "lightMode": "Lightmode",
   "nav": {
     "current": "Aktuell",
-    "history": "Verlauf"
+    "history": "Verlauf",
+    "map": "Übersichtskarte",
+    "stats": "Statistiken",
+    "tops": "Bestwerte"
   },
   "news": {
     "title": "Neuigkeiten"
@@ -54,12 +72,18 @@
   "showMoreWorlds": "mehr Welten anzeigen",
   "table": {
     "ally": "Stamm",
+    "allyChanges": "Stammeswechsel",
     "avgPlayer": "Punkte pro Spieler",
     "avgVillage": "Punkte pro Dorf",
+    "bashAllS": "BG",
+    "bashAttS": "BGA",
     "bashDef": "Verteidiger",
+    "bashDefS": "BGD",
     "bashGes": "Insgesamt",
     "bashOff": "Angreifer",
+    "bashPointsRatio": "K/P-Rate",
     "bashSup": "Unterstützer",
+    "conquer": "Eroberungen",
     "date": "Datum",
     "members": "Mitglieder",
     "name": "Name",
@@ -77,10 +101,13 @@
     "world": "Welt"
   },
   "table-title": {
-    "ally": "Stämme",
+    "allyBashRanking": "Interne Basherliste",
+    "allyHist": "Stammes Verlauf",
     "allyRanking": "Stammes-Rangliste",
+    "allys": "Stämme",
     "bashStats": "Besiegte Gegner",
     "general": "Allgemein",
+    "info": "Informationen",
     "normalWorlds": "Normale Welten",
     "overview": "Übersicht",
     "player": "Spieler",
@@ -89,9 +116,11 @@
     "top10": "Top 10"
   },
   "title": {
+    "ally": "Stamm",
     "search": "Suche",
     "worldOverview": "Weltenübersicht"
   },
+  "topAt": "am",
   "world": {
     "casual": "Casual",
     "classic": "Classic",

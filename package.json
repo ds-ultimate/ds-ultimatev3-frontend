@@ -21,9 +21,13 @@
     "react-bootstrap": "^2.7.2",
     "country-flag-icons": "^1.5.7",
     "react-select": "^5.7.2",
-    "react-select-async-paginate": "^0.7.2"
+    "react-select-async-paginate": "^0.7.2",
+    "chart.js": "^4.2.1",
+    "react-chartjs-2": "^5.2.0",
+    "chartjs-adapter-date-fns": "^3.0.0"
   },
   "devDependencies": {
+    "source-map-explorer": "^2.5.3",
     "@types/react-datepicker": "^4.8.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^18.0.0",
@@ -33,6 +37,7 @@
     "sass": "^1.61.0"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

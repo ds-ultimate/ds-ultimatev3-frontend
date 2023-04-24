@@ -70,7 +70,7 @@ function AllyLink({data, world, useTag}: {data: conquerDailyAllyType, world: wor
 function usePlayerDailyConquerHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder()
+    return new DatatableHeaderBuilder<conquerDailyPlayerType>()
         .addMainRow(row => {
           row.addCell({title: ""})
           row.addCell({title: t('table.name')})
@@ -83,7 +83,7 @@ function usePlayerDailyConquerHeader() {
 function useAllyDailyConquerHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder()
+    return new DatatableHeaderBuilder<conquerDailyAllyType>()
         .addMainRow(row => {
           row.addCell({title: ""})
           row.addCell({title: t('table.ally')})
@@ -177,7 +177,7 @@ export default function WorldConquerDailyPage() {
         <Col xs={12} lg={6} className={"mt-2"}>
           <Card>
             <Card.Body>
-              <Card.Title>{t("table-title.ally")}</Card.Title>
+              <Card.Title>{t("table-title.allys")}</Card.Title>
               <DatatableBase<conquerDailyAllyType>
                   header={allyHeader}
                   saveAs={"allyDailyConquer"}

@@ -179,12 +179,6 @@
             "supBash": "Supporter points"
         },
         "titel": {
-            "defBash": "Opponents defeated as defender",
-            "gesBash": "Opponents defeated as total",
-            "offBash": "Opponents defeated as attacker",
-            "points": "Points",
-            "rank": "Rank",
-            "village": "Villages",
             "supBash": "Opponents defeated as supporter"
         }
     },
@@ -672,23 +666,17 @@
     "ui": {
         "world": {},
         "table": {
-            "allyChanges": "tribe changes",
             "bashStats": "Opponents defeated",
-            "conquer": "conquers",
             "continent": "continent",
             "coordinates": "coordinates",
             "id": "ID",
             "playerName": "player name",
-            "bashPointsRatio": "K\/P-Rate",
             "bonusType": "Bonus",
             "supDeff": "support",
             "allyKillsPercent": "Kills\/Ally",
             "playerPointPercent": "Kills\/Points",
             "possibleChanges": "Possible buildings",
-            "time": "Time",
-            "bashAllS": "OD",
-            "bashAttS": "ODA",
-            "bashDefS": "ODD"
+            "time": "Time"
         },
         "allyChanges": {
             "all": "Tribe Changes",
@@ -701,8 +689,7 @@
             "allyOwn": "Internal \/ Own-Conquers",
             "playerOwn": "Own conquers",
             "highlight": {
-                "all": "all",
-                "total": "total"
+                "all": "all"
             }
         },
         "player": {
@@ -714,7 +701,6 @@
             "title": "server"
         },
         "tabletitel": {
-            "info": "Information",
             "villages": "Villages",
             "casualWorlds": "Casual worlds",
             "classicWorlds": "Classic worlds",
@@ -726,7 +712,6 @@
             "searchResults": "Search results",
             "village": "Village",
             "overview": "Overview",
-            "ally": "Tribe",
             "player": "Player",
             "searchLimited": "Only the first $limit entries are displayed because your search yielded too many results",
             "settings": "Settings"
@@ -757,19 +742,13 @@
         },
         "villageNotExist": "Village not exist",
         "nav": {
-            "stats": "Stats",
-            "map": "Map",
             "toggle": "Toggle",
             "disabled": {
                 "missingConfig": "This feature is not available for the selected world",
                 "noWorld": "In order to use this feature you must select a world"
-            },
-            "tops": "Top values"
+            }
         },
-        "ingame": {
-            "guest": "Ingame (Guest access)",
-            "normal": "Ingame (User access)"
-        },
+        "ingame": {},
         "old": {
             "nodata": "no data"
         },
@@ -845,9 +824,7 @@
         "showLessWorlds": "show less worlds",
         "showPointDiff": "Show 120% range",
         "index": {},
-        "tabeltitel": {
-            "allyBashRanking": "Internal list of Bashpoints"
-        },
+        "tabeltitel": {},
         "village": {
             "histPossibilities": "possibilities",
             "histUnknown": "unknown",
@@ -864,7 +841,6 @@
                 "population": ":amount popupation"
             }
         },
-        "topAt": "at",
         "otherWorldsPlayer": "other worlds of that player",
         "otherWorldsPlayerPopup": {
             "bashGes": "max Bash",

@@ -13,6 +13,7 @@ type worldType = {
   active: boolean | null,
   maintenanceMode: boolean,
   server__code: string,
+  url: string,
   hasConfig: boolean,
   hasUnits: boolean,
   hasBuildings: boolean,

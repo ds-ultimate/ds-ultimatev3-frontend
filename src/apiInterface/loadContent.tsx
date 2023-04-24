@@ -1,11 +1,11 @@
 import axios, {AxiosResponse} from "axios";
-import {indexPage, serverGetWorlds, worldGetExtendedData, worldOverview} from "./apiConf";
+import {allyBasicData, allyChartData, indexPage, serverGetWorlds, worldGetExtendedData, worldOverview} from "./apiConf";
 import {worldExtendedType, worldType} from "../modelHelper/World";
 import {serverType} from "../modelHelper/Server";
 import {newsType} from "../modelHelper/News";
 import {Dict} from "../util/customTypes";
 import {playerType} from "../modelHelper/Player";
-import {allyType} from "../modelHelper/Ally";
+import {allyBasicDataType, allyChartDataType, allyType} from "../modelHelper/Ally";
 import {useCallback, useEffect, useMemo, useState} from "react";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
@@ -157,20 +157,56 @@ export function useWorldData(server: string | undefined, world: string | undefin
   return usePromisedData(prom, params)
 }
 
-let extendedWorldData: Dict<Dataloader<worldExtendedType>> = {}
+let extendedWorldDataCache: Dict<Dataloader<worldExtendedType>> = {}
 export function useExtendedWorldData(server: string | undefined, world: string | undefined) {
-  const prom = useCallback(({server, world}: {server: string | undefined, world: string | undefined}): Promise<worldExtendedType | undefined> => {
+  const prom = useCallback(({server, world}: {server: string | undefined, world: string | undefined}): Promise<worldExtendedType> => {
     if(server === undefined || world === undefined) {
-      return new Promise((resolve) => resolve(undefined))
+      return new Promise((resolve, reject) => reject(undefined))
     }
-    let loader = extendedWorldData[server + "_" + world]
+    let loader = extendedWorldDataCache[server + "_" + world]
     if(loader !== undefined) {
       return loader.getPromise()
     }
     loader = new Dataloader<worldExtendedType>(worldGetExtendedData({server, world}))
-    extendedWorldData[server + "_" + world] = loader
+    extendedWorldDataCache[server + "_" + world] = loader
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world}), [server, world])
+  return usePromisedData(prom, params)
+}
+
+let allyDataCache: Dict<Dataloader<allyBasicDataType>> = {}
+export function useAllyData(server: string | undefined, world: string | undefined, ally: string | undefined) {
+  const prom = useCallback(({server, world, ally}: {server: string | undefined, world: string | undefined, ally: string | undefined}): Promise<allyBasicDataType> => {
+    if(server === undefined || world === undefined || ally === undefined) {
+      return new Promise((resolve, reject) => reject(undefined))
+    }
+    let loader = allyDataCache[server + "_" + world + "_" + ally]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<allyBasicDataType>(allyBasicData({server, world, ally}))
+    allyDataCache[server + "_" + world + "_" + ally] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world, ally}), [server, world, ally])
+  return usePromisedData(prom, params)
+}
+
+let allyChartDataCache: Dict<Dataloader<allyChartDataType>> = {}
+export function useAllyChartData(server: string | undefined, world: string | undefined, ally: string | undefined) {
+  const prom = useCallback(({server, world, ally}: {server: string | undefined, world: string | undefined, ally: string | undefined}): Promise<allyChartDataType> => {
+    if(server === undefined || world === undefined || ally === undefined) {
+      return new Promise((resolve, reject) => reject(undefined))
+    }
+    let loader = allyChartDataCache[server + "_" + world + "_" + ally]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<allyChartDataType>(allyChartData({server, world, ally}))
+    allyChartDataCache[server + "_" + world + "_" + ally] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world, ally}), [server, world, ally])
   return usePromisedData(prom, params)
 }

@@ -166,13 +166,7 @@
             "village": "Vesnice"
         },
         "titel": {
-            "defBash": "Pora\u017een\u00fd protivn\u00edk jako obr\u00e1nce",
-            "gesBash": "Pora\u017een\u00fd protivn\u00edk celkem",
-            "offBash": "Pora\u017een\u00fd protivn\u00edk jako \u00fato\u010dn\u00edk",
-            "points": "Body",
-            "rank": "Um\u00edst\u011bn\u00ed",
-            "supBash": "Pora\u017een\u00fd protivn\u00edk jako podporovatel",
-            "village": "Vesnice"
+            "supBash": "Pora\u017een\u00fd protivn\u00edk jako podporovatel"
         },
         "who": {
             "ally": "Kmen",
@@ -664,20 +658,14 @@
             "loadTime": "Doba na\u010d\u00edt\u00e1n\u00ed",
             "loadTimeUnit": "Sekunda"
         },
-        "ingame": {
-            "guest": "Zobrazit v hostovac\u00edm re\u017eimu",
-            "normal": "Zobrazit ve h\u0159e"
-        },
+        "ingame": {},
         "mistake": "Do\u0161lo k chyb\u011b.",
         "nav": {
             "disabled": {
                 "missingConfig": "Tato funkce nen\u00ed pro vybran\u00fd sv\u011bt k dispozici.",
                 "noWorld": "Pro pou\u017eit\u00ed t\u00e9to funkce mus\u00ed b\u00fdt vybr\u00e1n sv\u011bt."
             },
-            "map": "Mapa",
-            "stats": "Statistika",
-            "toggle": "P\u0159epnut\u00ed",
-            "tops": "Nejlep\u0161\u00ed hodnoty"
+            "toggle": "P\u0159epnut\u00ed"
         },
         "news": {},
         "noTitle": "Bez n\u00e1zvu",
@@ -741,19 +729,11 @@
         "signature": "Podpis",
         "siteNotFound": "Str\u00e1nka nebyla nalezena",
         "sorting": "T\u0159\u00edd\u011bn\u00ed",
-        "tabeltitel": {
-            "allyBashRanking": "Intern\u00ed seznam \u00fato\u010dn\u00fdch bod\u016f"
-        },
+        "tabeltitel": {},
         "table": {
-            "allyChanges": "Kmenov\u00e9 zm\u011bny",
             "allyKillsPercent": "\u00dato\u010dn\u00e9 body kmene",
-            "bashAllS": "Obrann\u00e9 body",
-            "bashAttS": "\u00dato\u010dn\u00e9 body",
-            "bashDefS": "Body celkem",
-            "bashPointsRatio": "K\/P-Rate",
             "bashStats": "Pora\u017een\u00fd protivn\u00edk",
             "bonusType": "Bonus",
-            "conquer": "Dobyt\u00ed",
             "continent": "Kontinent",
             "coordinates": "Sou\u0159adnice",
             "id": "ID",
@@ -767,13 +747,11 @@
             "casualWorlds": "Casual sv\u011bt",
             "classicWorlds": "Classic sv\u011bt",
             "history": "Historie stavby",
-            "info": "Informace",
             "playerHist": "Historie hr\u00e1\u010de",
             "speedWorlds": "Speed kolo",
             "villages": "Vesnice"
         },
         "titel": {
-            "ally": "Kmen",
             "overview": "P\u0159ehled",
             "player": "Hr\u00e1\u010d",
             "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
@@ -781,7 +759,6 @@
             "settings": "Nastaven\u00ed",
             "village": "Vesnice"
         },
-        "topAt": "v",
         "unit": {
             "archer": "Lu\u010di\u0161tn\u00edk",
             "axe": "Sekern\u00edk",

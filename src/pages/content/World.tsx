@@ -46,7 +46,7 @@ function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worl
   const { t } = useTranslation("ui")
   return (
       <Card.Body className={"table-responsive"}>
-        <Card.Title as={"h2"}>{t('table-title.top10') + " " + t('table-title.ally')}</Card.Title>
+        <Card.Title as={"h2"}>{t('table-title.top10') + " " + t('table-title.allys')}</Card.Title>
         <Table hover striped className={"table-responsive w-100 " + styles.playerTable}>
           <thead>
           <tr>

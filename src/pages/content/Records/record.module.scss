@@ -1,0 +1,17 @@
+@import '../../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+//Styles for various records (Player / Ally / Village)
+.tblStretched td, .tblStretched th {
+  text-align: center;
+}
+
+.tblStretched td:last-child, .tblStretched th:last-child {
+  text-align: right;
+}
+
+.tblStretched td:first-child, .tblStretched th:first-child {
+  text-align: left;
+}

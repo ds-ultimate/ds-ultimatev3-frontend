@@ -55,7 +55,7 @@ export const FILTER_OPTIONS = {
 }
 
 const ConquerDatatableHeader = (t: TFunction<"ui">) => {
-  return new DatatableHeaderBuilder()
+  return new DatatableHeaderBuilder<conquerType>()
       .addMainRow(row => {
         row.addCell({sortBy: "village__name", title: t('table.villageName')})
         row.addCell({sortBy: "old_owner_name", title: (t('table.old') + " " + t('table.owner'))})

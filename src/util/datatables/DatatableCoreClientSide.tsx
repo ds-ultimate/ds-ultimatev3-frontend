@@ -5,11 +5,12 @@ import DatatableBodyRender from "./DatatableBodyRenderer";
 
 interface paramsType<T> extends coreProps<T> {
   sort: Array<[number, SORTING_DIRECTION]>,
+  sortCB?: Array<((data1: T, data2: T) => number) | undefined>,
   searchCB?: ((data: T, search: string) => boolean),
 }
 
 export default function DatatableCoreClientSide<T>({api, page, limit, itemCntCallback, sort, search, api_params,
-                                                     searchCB, ...bodyProps}: paramsType<T>) {
+                                                     sortCB, searchCB, ...bodyProps}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
 
   useEffect(() => {
@@ -44,9 +45,26 @@ export default function DatatableCoreClientSide<T>({api, page, limit, itemCntCal
 
   const sorted = useMemo(() => {
     if(filtered === undefined) return undefined
-    //TODO sorting -> misses a good idea how to get from generics to actual comparable type. Maybe use comp fkt defined in header?
-    return filtered.slice()
-  }, [filtered])
+    const sorted = filtered.slice()
+    if(sort.length > 0 && sortCB) {
+      sorted.sort((a, b) => {
+        for(let i = 0; i < sort.length; i++) {
+          const sCallback = sortCB[sort[i][0]]
+          if(sCallback) {
+            let res = sCallback(a, b)
+            if(sort[i][1] === SORTING_DIRECTION.DESC) {
+              res *= -1
+            }
+            if(res !== 0) {
+              return res
+            }
+          }
+        }
+        return 0
+      })
+    }
+    return sorted
+  }, [filtered, sort, sortCB])
 
   const paged = useMemo(() => {
     if(sorted === undefined) return undefined

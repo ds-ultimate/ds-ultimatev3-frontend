@@ -1,5 +1,15 @@
 {
   "archive": "Archiv",
+  "chart": {
+    "title": {
+      "defBash": "Poražený protivník jako obránce",
+      "gesBash": "Poražený protivník celkem",
+      "offBash": "Poražený protivník jako útočník",
+      "points": "Body",
+      "rank": "Umístění",
+      "village": "Vesnice"
+    }
+  },
   "conquer": {
     "all": "Dobytí",
     "daily": "Aktuálně dobyté vesnice",
@@ -10,6 +20,7 @@
       "loose": "Ztráty",
       "normal": "normal",
       "self": "Vlastní",
+      "total": "",
       "win": "Získané"
     }
   },
@@ -17,11 +28,18 @@
   "index": {
     "help": "Chcete-li používat většinu funkcí webu, musíte si vybrat server a svět."
   },
+  "inGame": {
+    "guest": "Zobrazit v hostovacím režimu",
+    "normal": "Zobrazit ve hře"
+  },
   "language": "Jazyk",
   "lightMode": "Světlý mód",
   "nav": {
     "current": "Aktuální",
-    "history": "Historie"
+    "history": "Historie",
+    "map": "Mapa",
+    "stats": "Statistika",
+    "tops": "Nejlepší hodnoty"
   },
   "news": {
     "title": "Novinky"
@@ -54,12 +72,18 @@
   "showMoreWorlds": "Zobrazit více světů",
   "table": {
     "ally": "Kmen",
+    "allyChanges": "Kmenové změny",
     "avgPlayer": "Body na hráče",
     "avgVillage": "Body na vesnici",
+    "bashAllS": "Obranné body",
+    "bashAttS": "Útočné body",
     "bashDef": "Obránce",
+    "bashDefS": "Body celkem",
     "bashGes": "Celkem",
     "bashOff": "Útočník",
+    "bashPointsRatio": "K/P-Rate",
     "bashSup": "Podporovatel",
+    "conquer": "Dobytí",
     "date": "Datum",
     "members": "Členové",
     "name": "Název",
@@ -70,17 +94,20 @@
     "points": "Body",
     "rank": "Pozice",
     "tag": "Tag",
-    "total": "count",
+    "total": "",
     "village": "Vesnice",
     "villageName": "Název vesnice",
     "villages": "Vesnice",
     "world": "Svět"
   },
   "table-title": {
-    "ally": "Kmen",
+    "allyBashRanking": "Interní seznam útočných bodů",
+    "allyHist": "",
     "allyRanking": "Kmenové umístění",
+    "allys": "Kmen",
     "bashStats": "Poražený protivník",
     "general": "Obecné",
+    "info": "Informace",
     "normalWorlds": "Normální svět",
     "overview": "Přehled",
     "player": "Hráč",
@@ -89,9 +116,11 @@
     "top10": "Top 10"
   },
   "title": {
+    "ally": "Kmen",
     "search": "Vyhledat",
     "worldOverview": "Přehled světů"
   },
+  "topAt": "v",
   "world": {
     "casual": "Casual",
     "classic": "Classic",

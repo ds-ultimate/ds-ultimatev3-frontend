@@ -1,5 +1,15 @@
 {
   "archive": "",
+  "chart": {
+    "title": {
+      "defBash": "Des ennemis vaincus comme défenseurs",
+      "gesBash": "Combat vaincu",
+      "offBash": "Des ennemis vaincus comme attaquants",
+      "points": "points",
+      "rank": "rang",
+      "village": "villages"
+    }
+  },
   "conquer": {
     "all": "",
     "daily": "",
@@ -10,6 +20,7 @@
       "loose": "",
       "normal": "",
       "self": "",
+      "total": "",
       "win": ""
     }
   },
@@ -17,11 +28,18 @@
   "index": {
     "help": ""
   },
+  "inGame": {
+    "guest": "",
+    "normal": ""
+  },
   "language": "",
   "lightMode": "",
   "nav": {
     "current": "",
-    "history": ""
+    "history": "",
+    "map": "",
+    "stats": "",
+    "tops": ""
   },
   "news": {
     "title": ""
@@ -54,12 +72,18 @@
   "showMoreWorlds": "",
   "table": {
     "ally": "",
+    "allyChanges": "",
     "avgPlayer": "",
     "avgVillage": "",
+    "bashAllS": "",
+    "bashAttS": "",
     "bashDef": "",
+    "bashDefS": "",
     "bashGes": "",
     "bashOff": "",
+    "bashPointsRatio": "",
     "bashSup": "",
+    "conquer": "",
     "date": "",
     "members": "",
     "name": "",
@@ -77,10 +101,13 @@
     "world": ""
   },
   "table-title": {
-    "ally": "",
+    "allyBashRanking": "",
+    "allyHist": "",
     "allyRanking": "",
+    "allys": "",
     "bashStats": "",
     "general": "",
+    "info": "",
     "normalWorlds": "",
     "overview": "",
     "player": "",
@@ -89,9 +116,11 @@
     "top10": ""
   },
   "title": {
+    "ally": "",
     "search": "",
     "worldOverview": ""
   },
+  "topAt": "",
   "world": {
     "casual": "",
     "classic": "",

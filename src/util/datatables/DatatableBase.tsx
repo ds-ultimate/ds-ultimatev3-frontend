@@ -47,7 +47,7 @@ export interface coreProps<T> extends apiProps, internalCellProps<T> {
 }
 
 interface paramsType<T> extends apiProps, externalCellProps<T> {
-  header: DatatableHeaderBuilder,
+  header: DatatableHeaderBuilder<T>,
   serverSide: boolean,
   defaultSort?: [sort_type, SORTING_DIRECTION],
   saveAs: string,
@@ -64,7 +64,6 @@ export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir:
 
 export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
                                            responsiveTable, striped, searching, ...unusedProps}: paramsType<T>) {
-  // TODO think how to do optional filtering
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
       usePersistentState<persistentStateType, volatileStateType>("datatable." + saveAs,
@@ -136,8 +135,8 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
   const lengthMenu_post = lengthMenu.substring(lengthMenu_idx + "_MENU_".length)
 
   const curBreakpoint = useBreakpointIdx()
-  const [headerNode, colVisible, colInvisible, headerNames] = useMemo(() => {
-    return [header.buildNodes(cellClasses), header.getScreenVisibilityMapping(), header.getOffVisibilityMapping(), header.getNames()]
+  const [headerNode, colVisible, colInvisible, headerNames, headerSortCB] = useMemo(() => {
+    return [header.buildNodes(cellClasses), header.getScreenVisibilityMapping(), header.getOffVisibilityMapping(), header.getNames(), header.getSortingCB()]
   }, [header, cellClasses])
   const visibleCells = colVisible[curBreakpoint]
   const invisibleCells = colInvisible[curBreakpoint]
@@ -187,6 +186,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
                     <DatatableCoreClientSide<T>
                         sort={sort as Array<[number, SORTING_DIRECTION]>}
                         searchCB={(searching !== true && searching !== false)?searching:undefined}
+                        sortCB={headerSortCB}
                         {...coreProps}
                     />
               }

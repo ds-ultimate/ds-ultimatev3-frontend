@@ -7,7 +7,7 @@ import {Breakpoint, breakpoints, useBreakpointIdx} from "../bootrapBreakpoints";
 
 type paramsType = {
   children: ReactNode
-  sortBy?: string
+  sortBy?: string | number
   sortDescDefault?: boolean
   showAt: Breakpoint[]
   className?: string
@@ -32,7 +32,7 @@ export default function DatatableHeader({children, sortBy, sortDescDefault, show
   }
 
   let sortingIcon: ReactNode = undefined
-  if(sortBy) {
+  if(sortBy !== undefined) {
     const curSortFound = curSortBy?.find(([elm, _dir]) => elm === sortBy)
     if(curSortFound) {
       if(curSortFound[1] === SORTING_DIRECTION.ASC) {
