@@ -1,4 +1,9 @@
 {
+  "allyChanges": {
+    "all": "Stammeswechsel",
+    "new": "Stammesbeitritte",
+    "old": "Stammesaustritte"
+  },
   "archive": "Archiv",
   "chart": {
     "title": {
@@ -12,6 +17,7 @@
   },
   "conquer": {
     "all": "Adelungen",
+    "allyOwn": "Interne / Eigen-Adelungen",
     "daily": "Adelsrangliste Täglich",
     "highlight": {
       "barbarian": "Barbarendörfer",
@@ -22,7 +28,9 @@
       "self": "Selbst",
       "total": "Gesamt",
       "win": "Gewinne"
-    }
+    },
+    "lost": "Verluste",
+    "won": "Gewinne"
   },
   "darkMode": "Darkmode",
   "index": {
@@ -91,6 +99,7 @@
     "old": "alter",
     "owner": "Besitzer",
     "player": "Spieler",
+    "playerName": "Spielername",
     "points": "Punkte",
     "rank": "Rang",
     "tag": "Tag",

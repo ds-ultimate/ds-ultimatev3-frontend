@@ -1,4 +1,9 @@
 {
+  "allyChanges": {
+    "all": "",
+    "new": "",
+    "old": ""
+  },
   "archive": "",
   "chart": {
     "title": {
@@ -12,6 +17,7 @@
   },
   "conquer": {
     "all": "",
+    "allyOwn": "",
     "daily": "",
     "highlight": {
       "barbarian": "",
@@ -22,7 +28,9 @@
       "self": "",
       "total": "",
       "win": ""
-    }
+    },
+    "lost": "",
+    "won": ""
   },
   "darkMode": "",
   "index": {
@@ -91,6 +99,7 @@
     "old": "",
     "owner": "",
     "player": "",
+    "playerName": "",
     "points": "",
     "rank": "",
     "tag": "",

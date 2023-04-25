@@ -201,7 +201,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
               className="me-2"
               aria-label="Search"
           />
-          <Button variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>{t('title.search')}</Button>
+          <Button variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-light"}>{t('title.search')}</Button>
         </Form>
     )
     //TODO: implement search
@@ -223,10 +223,10 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   allMenu.push(
       <div key={"langDropdown-lg"} className={"d-none d-lg-inline"}>
         <Dropdown className={"ms-2"} onSelect={selectLang}>
-          <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-primary"}>
+          <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-light"}>
             {t("language")}
           </Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu className={"dropdown-menu-end"}>
             {langItems}
           </Dropdown.Menu>
         </Dropdown>

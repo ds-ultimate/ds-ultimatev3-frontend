@@ -1,4 +1,9 @@
 {
+  "allyChanges": {
+    "all": "Změna kmene",
+    "new": "Tribe accessions",
+    "old": "Tribe exits"
+  },
   "archive": "Archiv",
   "chart": {
     "title": {
@@ -12,6 +17,7 @@
   },
   "conquer": {
     "all": "Dobytí",
+    "allyOwn": "Interní / vlastní dobývání",
     "daily": "Aktuálně dobyté vesnice",
     "highlight": {
       "barbarian": "Barbarská vesnice",
@@ -22,7 +28,9 @@
       "self": "Vlastní",
       "total": "",
       "win": "Získané"
-    }
+    },
+    "lost": "Ztráty",
+    "won": "Dobytí"
   },
   "darkMode": "Tmavý mód",
   "index": {
@@ -91,6 +99,7 @@
     "old": "Starý",
     "owner": "Vlastník",
     "player": "Hráč",
+    "playerName": "Jméno hráče",
     "points": "Body",
     "rank": "Pozice",
     "tag": "Tag",

@@ -3,9 +3,10 @@ import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
 import {ALLY_INFO, PLAYER_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
+import {useTranslation} from "react-i18next";
 
 
-type playerPureType = {
+export type playerPureType = {
   playerID: number,
   name: string,
   ally_id: number,
@@ -22,12 +23,12 @@ type playerPureType = {
   gesBashRank: number,
 }
 
-type playerType = playerPureType & {
+export type playerType = playerPureType & {
   allyLatest__tag: string | null,
   allyLatest__name: string | null,
 }
 
-const LinkPlayer = ({player, world, withAlly}: {player: playerType, world: worldType, withAlly?: boolean}) => {
+export function LinkPlayer({player, world, withAlly}: {player: playerType, world: worldType, withAlly?: boolean}) {
   return (
       <>
         <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (player.playerID + "")})}>
@@ -38,7 +39,7 @@ const LinkPlayer = ({player, world, withAlly}: {player: playerType, world: world
   )
 }
 
-const LinkPlayerAlly = ({player, world}: {player: playerType, world: worldType}) => {
+export function LinkPlayerAlly({player, world}: {player: playerType, world: worldType}) {
   return (
       <>
         {player.allyLatest__tag?(
@@ -50,5 +51,18 @@ const LinkPlayerAlly = ({player, world}: {player: playerType, world: worldType})
   )
 }
 
-export type {playerType, playerPureType}
-export {LinkPlayer, LinkPlayerAlly}
+export function LinkPlayerGeneric({owner, owner_name, world}: {owner: number, owner_name: string | null, world: worldType}) {
+  const { t } = useTranslation("ui")
+  if(owner === 0) {
+    return <>{t("player.barbarian")}</>
+  }
+  if(owner_name === null) {
+    return <>{t("player.deleted")}</>
+  }
+
+  return (
+      <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (owner + "")})}>
+        <DecodeName name={owner_name} />
+      </Link>
+  )
+}

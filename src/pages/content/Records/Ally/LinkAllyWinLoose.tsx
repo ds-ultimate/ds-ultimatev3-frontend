@@ -71,13 +71,13 @@ export function LinkAllyAllyChanges({ally_id, world, allyChanges}: paramTypesAll
         </CustomTooltip>
         {" ( "}
         <CustomTooltip overlay={<Tooltip>{t("conquer.highlight.win")}</Tooltip>}>
-          <Link to={formatRoute(ALLY_ALLY_CHANGES, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "win"})} className={"text-success"}>
+          <Link to={formatRoute(ALLY_ALLY_CHANGES, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "new"})} className={"text-success"}>
             {nf.format(allyChanges.new)}
           </Link>
         </CustomTooltip>
         {" - "}
         <CustomTooltip overlay={<Tooltip>{t("conquer.highlight.loose")}</Tooltip>}>
-          <Link to={formatRoute(ALLY_ALLY_CHANGES, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "loose"})} className={"text-danger"}>
+          <Link to={formatRoute(ALLY_ALLY_CHANGES, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "old"})} className={"text-danger"}>
             {nf.format(allyChanges.old)}
           </Link>
         </CustomTooltip>

@@ -680,16 +680,9 @@
                 "addFollow": "Discordbenachrichtigungen bei Adelungen"
             }
         },
-        "allyChanges": {
-            "all": "Stammeswechsel",
-            "old": "Stammesaustritte",
-            "new": "Stammesbeitritte"
-        },
+        "allyChanges": {},
         "conquer": {
-            "lost": "Verluste",
-            "won": "Gewinne",
             "playerOwn": "Eigene Adelungen",
-            "allyOwn": "Interne \/ Eigen-Adelungen",
             "highlight": {
                 "all": "Alle"
             }
@@ -712,7 +705,6 @@
             "playerHist": "Spieler Verlauf"
         },
         "table": {
-            "playerName": "Spielername",
             "bashStats": "Besiegte Gegner",
             "id": "ID",
             "continent": "Kontinent",

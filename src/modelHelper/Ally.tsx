@@ -4,6 +4,7 @@ import {formatRoute} from "../util/router";
 import {ALLY_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
+import {useTranslation} from "react-i18next";
 
 export type allyType = {
   allyID: number,
@@ -87,5 +88,27 @@ export function LinkAlly ({ally, world, useTag}: {ally: allyType, world: worldTy
           )}
         </Link>
       </>
+  )
+}
+
+export function LinkAllyGeneric({ally, ally_tag, ally_name, world, useTag}: {ally: number, ally_tag: string | null,
+  ally_name: string | null, world: worldType, useTag?: boolean}) {
+  const { t } = useTranslation("ui")
+  if(ally === 0) {
+    if(useTag) return null
+    return <>-</>
+  }
+  if(ally_tag === null || ally_name === null) {
+    return (
+        <>
+          {useTag?<>[{t("player.deleted")}]</>:t("player.deleted")}
+        </>
+    )
+  }
+
+  return (
+      <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (ally + "")})}>
+        {useTag?<>[<DecodeName name={ally_tag} />]</>:<DecodeName name={ally_name} />}
+      </Link>
   )
 }

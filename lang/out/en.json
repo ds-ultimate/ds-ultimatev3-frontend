@@ -670,7 +670,6 @@
             "continent": "continent",
             "coordinates": "coordinates",
             "id": "ID",
-            "playerName": "player name",
             "bonusType": "Bonus",
             "supDeff": "support",
             "allyKillsPercent": "Kills\/Ally",
@@ -678,15 +677,8 @@
             "possibleChanges": "Possible buildings",
             "time": "Time"
         },
-        "allyChanges": {
-            "all": "Tribe Changes",
-            "new": "Tribe accessions",
-            "old": "Tribe exits"
-        },
+        "allyChanges": {},
         "conquer": {
-            "lost": "Loose",
-            "won": "Gain",
-            "allyOwn": "Internal \/ Own-Conquers",
             "playerOwn": "Own conquers",
             "highlight": {
                 "all": "all"

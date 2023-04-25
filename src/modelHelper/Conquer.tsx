@@ -6,6 +6,8 @@ import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import styles from "./Conquer.module.scss"
 import {TFunction} from "i18next";
+import {LinkAllyGeneric} from "./Ally";
+import {LinkPlayerGeneric} from "./Player";
 
 
 export type conquerPureType = {
@@ -102,55 +104,20 @@ export function getConquerType(conquer: conquerType, allowed: conquerChangeType[
   return conquerChangeType.NORMAL
 }
 
-function LinkConquerPlayer({owner, owner_name, world}: {owner: number, owner_name: string | null, world: worldType}) {
-  const { t } = useTranslation("ui")
-  if(owner === 0) {
-    return <>{t("player.barbarian")}</>
-  }
-  if(owner_name === null) {
-    return <>{t("player.deleted")}</>
-  }
-
-  return (
-      <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (owner + "")})}>
-        <DecodeName name={owner_name} />
-      </Link>
-  )
-}
-
-function LinkConquerAlly({ally, ally_tag, ally_name, world, useTag}: {ally: number, ally_tag: string | null,
-      ally_name: string | null, world: worldType, useTag?: boolean}) {
-  const { t } = useTranslation("ui")
-  if(ally === 0) return null
-  if(ally_tag === null || ally_name === null) {
-    return (
-        <>
-          {useTag?<>[{t("player.deleted")}]</>:t("player.deleted")}
-        </>
-    )
-  }
-
-  return (
-      <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (ally + "")})}>
-        {useTag?<>[<DecodeName name={ally_tag} />]</>:<DecodeName name={ally_name} />}
-      </Link>
-  )
-}
-
 export function LinkConquerOldPlayer({conquer, world}: {conquer: conquerType, world: worldType}) {
-  return <LinkConquerPlayer owner={conquer.old_owner} owner_name={conquer.old_owner_name} world={world} />
+  return <LinkPlayerGeneric owner={conquer.old_owner} owner_name={conquer.old_owner_name} world={world} />
 }
 
 export function LinkConquerNewPlayer({conquer, world}: {conquer: conquerType, world: worldType}) {
-  return <LinkConquerPlayer owner={conquer.new_owner} owner_name={conquer.new_owner_name} world={world} />
+  return <LinkPlayerGeneric owner={conquer.new_owner} owner_name={conquer.new_owner_name} world={world} />
 }
 
 export function LinkConquerOldAlly({conquer, world, useTag}: {conquer: conquerType, world: worldType, useTag?: boolean}) {
-  return <LinkConquerAlly ally={conquer.old_ally} ally_tag={conquer.old_ally_tag} ally_name={conquer.old_ally_name} world={world} useTag={useTag} />
+  return <LinkAllyGeneric ally={conquer.old_ally} ally_tag={conquer.old_ally_tag} ally_name={conquer.old_ally_name} world={world} useTag={useTag} />
 }
 
 export function LinkConquerNewAlly({conquer, world, useTag}: {conquer: conquerType, world: worldType, useTag?: boolean}) {
-  return <LinkConquerAlly ally={conquer.new_ally} ally_tag={conquer.new_ally_tag} ally_name={conquer.new_ally_name} world={world} useTag={useTag} />
+  return <LinkAllyGeneric ally={conquer.new_ally} ally_tag={conquer.new_ally_tag} ally_name={conquer.new_ally_name} world={world} useTag={useTag} />
 }
 
 export function LinkConquerOld({conquer, world}: {conquer: conquerType, world: worldType}) {

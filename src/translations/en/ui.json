@@ -1,4 +1,9 @@
 {
+  "allyChanges": {
+    "all": "Tribe Changes",
+    "new": "Tribe accessions",
+    "old": "Tribe exits"
+  },
   "archive": "archive",
   "chart": {
     "title": {
@@ -12,6 +17,7 @@
   },
   "conquer": {
     "all": "Conquers",
+    "allyOwn": "Internal / Own-Conquers",
     "daily": "Conquer ranking daily",
     "highlight": {
       "barbarian": "barbarian",
@@ -22,7 +28,9 @@
       "self": "self",
       "total": "total",
       "win": "gains"
-    }
+    },
+    "lost": "Loose",
+    "won": "Gain"
   },
   "darkMode": "darkmode",
   "index": {
@@ -91,6 +99,7 @@
     "old": "old",
     "owner": "owner",
     "player": "player",
+    "playerName": "player name",
     "points": "points",
     "rank": "rank",
     "tag": "tag",

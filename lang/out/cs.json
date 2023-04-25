@@ -612,11 +612,7 @@
             "deleted": "Odstran\u011bno",
             "noAlly": "Bez kmenu"
         },
-        "allyChanges": {
-            "all": "Zm\u011bna kmene",
-            "new": "Tribe accessions",
-            "old": "Tribe exits"
-        },
+        "allyChanges": {},
         "buildings": {
             "barracks": "Kas\u00e1rny",
             "church": "Kostel",
@@ -641,13 +637,10 @@
         },
         "columns": "Sloupce",
         "conquer": {
-            "allyOwn": "Intern\u00ed \/ vlastn\u00ed dob\u00fdv\u00e1n\u00ed",
             "highlight": {
                 "all": "V\u0161echno"
             },
-            "lost": "Ztr\u00e1ty",
-            "playerOwn": "Vlastn\u00ed dobyt\u00ed",
-            "won": "Dobyt\u00ed"
+            "playerOwn": "Vlastn\u00ed dobyt\u00ed"
         },
         "follow": {
             "attackplanner": "Sleduje seznam \u00fatok\u016f",
@@ -737,7 +730,6 @@
             "continent": "Kontinent",
             "coordinates": "Sou\u0159adnice",
             "id": "ID",
-            "playerName": "Jm\u00e9no hr\u00e1\u010de",
             "playerPointPercent": "Kills\/Points",
             "possibleChanges": "Mo\u017en\u00e9 budovy",
             "supDeff": "Podpora",
