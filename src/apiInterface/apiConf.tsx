@@ -30,6 +30,7 @@ export const worldDailyPlayerConquerTable = apiRequestGenerator("tables/worldCon
 export const worldDailyAllyConquerTable = apiRequestGenerator("tables/worldConquerDailyAlly/{server}/{world}")
 export const allyPlayerTable = apiRequestGenerator("tables/allyPlayer/{server}/{world}/{ally}")
 export const allyAllyHistoryTable = apiRequestGenerator("tables/allyAllyHistory/{server}/{world}/{ally}")
+export const allyConquerTable = apiRequestGenerator("tables/allyConquer/{server}/{world}/{type}/{ally}")
 
 //Bootstrap-select
 export const villageSelect = apiRequestGenerator("select/village/{world}")

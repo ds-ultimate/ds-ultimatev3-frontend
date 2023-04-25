@@ -1,13 +1,13 @@
 import {useTranslation} from "react-i18next";
 
-import React, {useCallback, useMemo} from "react";
-import DatatableHeaderBuilder from "../../../util/datatables/DatatableHeaderBuilder";
+import React, {useMemo} from "react";
+import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import {Card, Col, Row} from "react-bootstrap";
-import {LinkPlayer, LinkPlayerAlly, playerType} from "../../../modelHelper/Player";
-import DatatableBase, {SORTING_DIRECTION} from "../../../util/datatables/DatatableBase";
-import {nf, thousandsFormat} from "../../../util/UtilFunctions";
-import {allyPlayerTable} from "../../../apiInterface/apiConf";
-import {worldType} from "../../../modelHelper/World";
+import {LinkPlayer, LinkPlayerAlly, playerType} from "../../../../modelHelper/Player";
+import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import {nf, thousandsFormat} from "../../../../util/UtilFunctions";
+import {allyPlayerTable} from "../../../../apiInterface/apiConf";
+import {worldType} from "../../../../modelHelper/World";
 
 type paramType = {
   ally_id: number,

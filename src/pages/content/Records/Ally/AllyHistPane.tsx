@@ -1,14 +1,14 @@
 import {useTranslation} from "react-i18next";
 
-import {allyType} from "../../../modelHelper/Ally";
-import {worldType} from "../../../modelHelper/World";
-import {dateFormatLocal, dateFormatYMD, DecodeName, ShowHistory} from "../../../util/UtilFunctions";
+import {allyType} from "../../../../modelHelper/Ally";
+import {worldType} from "../../../../modelHelper/World";
+import {dateFormatLocal, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
 import React, {useMemo} from "react";
-import DatatableHeaderBuilder from "../../../util/datatables/DatatableHeaderBuilder";
-import DatatableBase, {SORTING_DIRECTION} from "../../../util/datatables/DatatableBase";
-import {allyAllyHistoryTable} from "../../../apiInterface/apiConf";
+import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
+import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import {allyAllyHistoryTable} from "../../../../apiInterface/apiConf";
 import {Card, Col, Row} from "react-bootstrap";
-import {LinkAllyInGame} from "./Util";
+import {LinkAllyInGame} from "../Util";
 
 type paramType = {
   ally_id: number,

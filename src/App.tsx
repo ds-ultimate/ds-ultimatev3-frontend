@@ -15,7 +15,8 @@ import WorldAllyCurrentPage from "./pages/content/WorldAllyCurrent";
 import WorldAllyHistoryPage from "./pages/content/WorldAllyHistory";
 import WorldConquerPage from "./pages/content/WorldConquer";
 import WorldConquerDailyPage from "./pages/content/WorldConquerDaily";
-import AllyPage from "./pages/content/Records/Ally";
+import AllyPage from "./pages/content/Records/Ally/Ally";
+import AllyConquerPage from "./pages/content/Records/Ally/AllyConquer";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -37,6 +38,7 @@ function App() {
               <Route path={RouteHolder.WORLD_CONQUER} element={<WorldConquerPage />}/>
               <Route path={RouteHolder.WORLD_CONQUER_DAILY} element={<WorldConquerDailyPage />}/>
               <Route path={RouteHolder.ALLY_INFO} element={<AllyPage />}/>
+              <Route path={RouteHolder.ALLY_CONQUER} element={<AllyConquerPage />}/>
             </Route>
           </Routes>
         </Suspense>

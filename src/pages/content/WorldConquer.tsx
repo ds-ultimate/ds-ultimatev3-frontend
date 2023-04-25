@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useWorldData} from "../../apiInterface/loadContent";
 import ConquerPage, {FILTER_OPTIONS} from "../layout/ConquerPage";
-import {conquerChangeType} from "../../modelHelper/Conquer";
+import {conquerChangeType, highlightRefType} from "../../modelHelper/Conquer";
 import {worldConquerTable} from "../../apiInterface/apiConf";
 import ErrorPage from "../layout/ErrorPage";
 import React from "react";
@@ -54,6 +54,7 @@ export default function WorldConquerPage() {
       highlightPossible={highlightPossible}
       filterPossible={filterPossible}
       conquerTypeFilterPossible={conquerTypeFilterPossible}
+      highlightRef={[highlightRefType.VILLAGE, 0]}
       api={worldConquerTable({server, world, type})}
   />
 };

@@ -1,12 +1,12 @@
 import {useTranslation} from "react-i18next";
 import {Card, Col, Row} from "react-bootstrap";
-import ErrorPage from "../../layout/ErrorPage";
-import {allyBasicDataType} from "../../../modelHelper/Ally";
-import {worldType} from "../../../modelHelper/World";
+import ErrorPage from "../../../layout/ErrorPage";
+import {allyBasicDataType} from "../../../../modelHelper/Ally";
+import {worldType} from "../../../../modelHelper/World";
 import React, {ReactNode, useState} from "react";
-import {useAllyChartData} from "../../../apiInterface/loadContent";
+import {useAllyChartData} from "../../../../apiInterface/loadContent";
 import 'chartjs-adapter-date-fns';
-import CustomChart, {chartDataType} from "../../../util/CustomChart";
+import CustomChart, {chartDataType} from "../../../../util/CustomChart";
 
 
 export default function AllyCharts({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {

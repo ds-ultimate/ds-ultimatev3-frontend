@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
-import {formatRoute} from "../../../util/router";
-import {ALLY_ALLY_CHANGES, ALLY_CONQUER} from "../../../util/routes";
-import {CustomTooltip, nf} from "../../../util/UtilFunctions";
-import {worldType} from "../../../modelHelper/World";
+import {formatRoute} from "../../../../util/router";
+import {ALLY_ALLY_CHANGES, ALLY_CONQUER} from "../../../../util/routes";
+import {CustomTooltip, nf} from "../../../../util/UtilFunctions";
+import {worldType} from "../../../../modelHelper/World";
 import {Tooltip} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
 
@@ -29,19 +29,19 @@ export function LinkAllyConquer({ally_id, world, conquer}: paramTypesAllyConquer
         </CustomTooltip>
         {" ( "}
         <CustomTooltip overlay={<Tooltip>{t("conquer.highlight.win")}</Tooltip>}>
-          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "win"})} className={"text-success"}>
+          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "new"})} className={"text-success"}>
             {nf.format(conquer.new)}
           </Link>
         </CustomTooltip>
         {" - "}
         <CustomTooltip overlay={<Tooltip>{t("conquer.highlight.self")}</Tooltip>}>
-          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "self"})} className={"text-info"}>
+          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "own"})} className={"text-info"}>
             {nf.format(conquer.own)}
           </Link>
         </CustomTooltip>
         {" - "}
         <CustomTooltip overlay={<Tooltip>{t("conquer.highlight.loose")}</Tooltip>}>
-          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "loose"})} className={"text-danger"}>
+          <Link to={formatRoute(ALLY_CONQUER, {server: world.server__code, world: world.name, ally: (ally_id + ""), type: "old"})} className={"text-danger"}>
             {nf.format(conquer.old)}
           </Link>
         </CustomTooltip>

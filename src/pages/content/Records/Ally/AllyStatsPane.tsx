@@ -1,15 +1,15 @@
 import {useTranslation} from "react-i18next";
 import {Card, Col, Row} from "react-bootstrap";
 
-import {allyType} from "../../../modelHelper/Ally";
-import {worldType} from "../../../modelHelper/World";
-import {DecodeName, nf, thousandsFormat} from "../../../util/UtilFunctions";
+import {allyType} from "../../../../modelHelper/Ally";
+import {worldType} from "../../../../modelHelper/World";
+import {DecodeName, nf, thousandsFormat} from "../../../../util/UtilFunctions";
 import {LinkAllyAllyChanges, LinkAllyConquer} from "./LinkAllyWinLoose";
 import {Link} from "react-router-dom";
-import {formatRoute} from "../../../util/router";
-import {ALLY_BASH_RANKING} from "../../../util/routes";
+import {formatRoute} from "../../../../util/router";
+import {ALLY_BASH_RANKING} from "../../../../util/routes";
 
-import {LinkAllyInGame, ResponsiveRecordTable} from "./Util";
+import {LinkAllyInGame, ResponsiveRecordTable} from "../Util";
 
 type paramType = {
   data: allyType,

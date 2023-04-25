@@ -42,6 +42,12 @@ export enum conquerChangeType {
   LOOSE = 6,
 }
 
+export enum highlightRefType {
+  ALLY,
+  PLAYER,
+  VILLAGE
+}
+
 export const conquerChangeTypeSetting: Array<{cls_in: string, cls_act: string, title: (t: TFunction<"ui">) => string}> = [
   { //Normal
     cls_in: styles.conquerDiv,
@@ -80,7 +86,15 @@ export const conquerChangeTypeSetting: Array<{cls_in: string, cls_act: string, t
   },
 ]
 
-export function getConquerType(conquer: conquerType, allowed: conquerChangeType[]): conquerChangeType {
+export function getConquerType(conquer: conquerType, allowed: conquerChangeType[], ref: [highlightRefType, number]): conquerChangeType {
+  if(ref[0] === highlightRefType.PLAYER) {
+    if(conquer.old_owner !== ref[1] && conquer.new_owner === ref[1] && allowed.includes(conquerChangeType.WIN)) return conquerChangeType.WIN
+    if(conquer.old_owner === ref[1] && conquer.new_owner !== ref[1] && allowed.includes(conquerChangeType.LOOSE)) return conquerChangeType.LOOSE
+  }
+  if(ref[0] === highlightRefType.ALLY) {
+    if(conquer.old_ally !== ref[1] && conquer.new_ally === ref[1] && allowed.includes(conquerChangeType.WIN)) return conquerChangeType.WIN
+    if(conquer.old_ally === ref[1] && conquer.new_ally !== ref[1] && allowed.includes(conquerChangeType.LOOSE)) return conquerChangeType.LOOSE
+  }
   //if(conquer.new_owner === 0 && allowed.includes(conquerChangeType.DELETION)) return conquerChangeType.DELETION not possible as of now
   if(conquer.old_owner === 0 && allowed.includes(conquerChangeType.BARBARIAN)) return conquerChangeType.BARBARIAN
   if(conquer.old_owner === conquer.new_owner && allowed.includes(conquerChangeType.SELF)) return conquerChangeType.SELF
@@ -195,7 +209,7 @@ export function ConquerTime({conquer}: {conquer: conquerType}) {
           {p(dTime.getHours())}:{p(dTime.getMinutes())}:{p(dTime.getSeconds())}
         </div>
         <div className={"d-md-inline-block"}>
-          {p(dTime.getDay())}-{p(dTime.getMonth())}-{p(dTime.getFullYear())}
+          {p(dTime.getDate())}-{p(dTime.getMonth() + 1)}-{p(dTime.getFullYear())}
         </div>
       </>
   )

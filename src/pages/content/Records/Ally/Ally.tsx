@@ -1,16 +1,16 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {useAllyData, useWorldData} from "../../../apiInterface/loadContent";
-import {DecodeName} from "../../../util/UtilFunctions";
+import {useAllyData, useWorldData} from "../../../../apiInterface/loadContent";
+import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
-import ErrorPage from "../../layout/ErrorPage";
+import ErrorPage from "../../../layout/ErrorPage";
 import AllyStatsPane from "./AllyStatsPane";
 import AllyTopStatsPane from "./AllyTopStatsPane";
-import {allyBasicDataType} from "../../../modelHelper/Ally";
-import {worldType} from "../../../modelHelper/World";
+import {allyBasicDataType} from "../../../../modelHelper/Ally";
+import {worldType} from "../../../../modelHelper/World";
 import React from "react";
 import AllyHistPane from "./AllyHistPane";
-import {overviewMap} from "../../../apiInterface/apiConf";
+import {overviewMap} from "../../../../apiInterface/apiConf";
 import AllyCharts from "./AllyCharts";
 import AllyPlayer from "./AllyPlayer";
 
@@ -67,8 +67,6 @@ function DeletedAllyElement({allyData, worldData}: {allyData: allyBasicDataType,
 }
 
 function ActiveAllyElement({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {
-  const {t} = useTranslation("ui")
-
   if(! allyData.cur) return <ErrorPage error={"internalerr"} />
   return (
       <>

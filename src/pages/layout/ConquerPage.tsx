@@ -1,4 +1,4 @@
-import React, {ReactNode, useCallback, useState} from 'react';
+import React, {ReactNode, useCallback, useMemo, useState} from 'react';
 import {Button, Card, Col, InputGroup, Row} from "react-bootstrap";
 import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
@@ -12,7 +12,7 @@ import {
   conquerChangeTypeSetting,
   ConquerTime,
   conquerType,
-  getConquerType,
+  getConquerType, highlightRefType,
   LinkConquerNew,
   LinkConquerOld,
   LinkConquerVillage
@@ -42,6 +42,7 @@ type pageParams = extLayoutParams & {
   conquerSave: string,
   api: string
   highlightPossible: conquerChangeType[],
+  highlightRef: [highlightRefType, number],
   conquerTypeFilterPossible: conquerChangeType[],
   filterPossible: string[],
 }
@@ -131,13 +132,19 @@ function useConquerFilterComponent(filterPossible: string[], conquerTypePossible
     conquerTypePossible.forEach(value => result[value] = "1")
     return result
   })
-  const filterOptions = [
-    {k: "v", title: t("table.village"), api: villageSelect},
-    {k: "op", title: t("table.old") + " " + t("table.owner"), api: playerTopSelect},
-    {k: "oa", title: t("table.old") + " " + t("table.ally"), api: allyTopSelect},
-    {k: "np", title: t("table.new") + " " + t("table.owner"), api: playerTopSelect},
-    {k: "na", title: t("table.new") + " " + t("table.ally"), api: allyTopSelect},
-  ]
+
+  const filteredFilterOptions = useMemo(() => {
+    const filterOptions = [
+      {k: "v", title: t("table.village"), api: villageSelect},
+      {k: "op", title: t("table.old") + " " + t("table.owner"), api: playerTopSelect},
+      {k: "oa", title: t("table.old") + " " + t("table.ally"), api: allyTopSelect},
+      {k: "np", title: t("table.new") + " " + t("table.owner"), api: playerTopSelect},
+      {k: "na", title: t("table.new") + " " + t("table.ally"), api: allyTopSelect},
+    ]
+
+    return filterOptions.filter(value => filterPossible.includes(value.k))
+  }, [t, filterPossible])
+
   const toggleFilter = useCallback((old: Dict<string>, val: string) => {
     const clone: Dict<string> = {...old}
 
@@ -173,7 +180,7 @@ function useConquerFilterComponent(filterPossible: string[], conquerTypePossible
           </Col>)}
         </Row>
         <Row className={"mb-4"}>
-          {filterOptions.map((value, index) => { return (
+          {filteredFilterOptions.map((value, index) => { return (
               <Col key={value.k} xs={12} md={6} lg={4} className={"mb-2 col-xxl-flex-auto" + (index === 0?"":" ms-xxl-1")}>
                 <InputGroup className={"flex-wrap-nowrap"}>
                   <InputGroup.Text>{value.title}</InputGroup.Text>
@@ -190,7 +197,7 @@ function useConquerFilterComponent(filterPossible: string[], conquerTypePossible
   )]
 }
 
-export default function ConquerPage({typeName, who, conquerSave, highlightPossible, filterPossible, conquerTypeFilterPossible, api}: pageParams) {
+export default function ConquerPage({typeName, who, conquerSave, highlightPossible, highlightRef, filterPossible, conquerTypeFilterPossible, api}: pageParams) {
   const {server, world} = useParams()
   const [worldErr, worldData] = useWorldData(server, world)
   const { t } = useTranslation("ui")
@@ -218,7 +225,7 @@ export default function ConquerPage({typeName, who, conquerSave, highlightPossib
             keyGen={c => c.id}
             serverSide
             defaultSort={["timestamp", SORTING_DIRECTION.DESC]}
-            rowClassGen={(c) => conquerChangeTypeSetting[getConquerType(c, allowedHighlight)].cls_act}
+            rowClassGen={(c) => conquerChangeTypeSetting[getConquerType(c, allowedHighlight, highlightRef)].cls_act}
             saveAs={conquerSave}
             responsiveTable
             striped={false}
