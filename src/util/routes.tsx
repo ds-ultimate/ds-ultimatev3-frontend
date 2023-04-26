@@ -13,6 +13,6 @@ export const VILLAGE_INFO = '/:server/:world/village/:village' //TODO
 export const PLAYER_INFO = '/:server/:world/player/:player' //TODO
 export const ALLY_INFO = '/:server/:world/ally/:ally'
 
-export const ALLY_BASH_RANKING = '/:server/:world/ally/:ally/bashRanking' //TODO
+export const ALLY_BASH_RANKING = '/:server/:world/ally/:ally/bashRanking'
 export const ALLY_CONQUER = '/:server/:world/ally/conquer/:type/:ally'
 export const ALLY_ALLY_CHANGES = '/:server/:world/ally/allyChanges/:type/:ally'

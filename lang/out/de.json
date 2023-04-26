@@ -711,8 +711,6 @@
             "coordinates": "Koordinaten",
             "bonusType": "Bonus",
             "supDeff": "Unterst\u00fctzung",
-            "allyKillsPercent": "Kills\/Stamm",
-            "playerPointPercent": "Kills\/Punkte",
             "time": "Zeit",
             "possibleChanges": "Ausbaum\u00f6glichkeiten"
         },

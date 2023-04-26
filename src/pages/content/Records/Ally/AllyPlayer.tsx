@@ -54,7 +54,7 @@ export default function AllyPlayer({ally_id, worldData}: paramType) {
   )
 }
 
-function filterPlayerCallback(c: playerType, search: string) {
+export function filterPlayerCallback(c: playerType, search: string) {
   return c.name.includes(search) ||
       (c.allyLatest__name !== null && c.allyLatest__name.includes(search)) ||
       (c.allyLatest__tag !== null && c.allyLatest__tag.includes(search))

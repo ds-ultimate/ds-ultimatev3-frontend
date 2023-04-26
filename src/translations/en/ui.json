@@ -81,6 +81,7 @@
   "table": {
     "ally": "tribe",
     "allyChanges": "tribe changes",
+    "allyKillsPercent": "Kills/Ally",
     "avgPlayer": "Points per player",
     "avgVillage": "Points per village",
     "bashAllS": "OD",
@@ -100,6 +101,7 @@
     "owner": "owner",
     "player": "player",
     "playerName": "player name",
+    "playerPointPercent": "Kills/Points",
     "points": "points",
     "rank": "rank",
     "tag": "tag",

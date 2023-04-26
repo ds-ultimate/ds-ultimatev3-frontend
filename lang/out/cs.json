@@ -724,13 +724,11 @@
         "sorting": "T\u0159\u00edd\u011bn\u00ed",
         "tabeltitel": {},
         "table": {
-            "allyKillsPercent": "\u00dato\u010dn\u00e9 body kmene",
             "bashStats": "Pora\u017een\u00fd protivn\u00edk",
             "bonusType": "Bonus",
             "continent": "Kontinent",
             "coordinates": "Sou\u0159adnice",
             "id": "ID",
-            "playerPointPercent": "Kills\/Points",
             "possibleChanges": "Mo\u017en\u00e9 budovy",
             "supDeff": "Podpora",
             "time": "\u010cas"

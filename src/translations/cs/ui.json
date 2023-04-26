@@ -81,6 +81,7 @@
   "table": {
     "ally": "Kmen",
     "allyChanges": "Kmenové změny",
+    "allyKillsPercent": "Útočné body kmene",
     "avgPlayer": "Body na hráče",
     "avgVillage": "Body na vesnici",
     "bashAllS": "Obranné body",
@@ -100,6 +101,7 @@
     "owner": "Vlastník",
     "player": "Hráč",
     "playerName": "Jméno hráče",
+    "playerPointPercent": "Kills/Points",
     "points": "Body",
     "rank": "Pozice",
     "tag": "Tag",

@@ -81,6 +81,7 @@
   "table": {
     "ally": "",
     "allyChanges": "",
+    "allyKillsPercent": "",
     "avgPlayer": "",
     "avgVillage": "",
     "bashAllS": "",
@@ -100,6 +101,7 @@
     "owner": "",
     "player": "",
     "playerName": "",
+    "playerPointPercent": "",
     "points": "",
     "rank": "",
     "tag": "",

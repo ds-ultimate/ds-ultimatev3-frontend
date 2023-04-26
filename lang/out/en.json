@@ -672,8 +672,6 @@
             "id": "ID",
             "bonusType": "Bonus",
             "supDeff": "support",
-            "allyKillsPercent": "Kills\/Ally",
-            "playerPointPercent": "Kills\/Points",
             "possibleChanges": "Possible buildings",
             "time": "Time"
         },

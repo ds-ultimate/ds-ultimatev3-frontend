@@ -18,6 +18,7 @@ import WorldConquerDailyPage from "./pages/content/WorldConquerDaily";
 import AllyPage from "./pages/content/Records/Ally/Ally";
 import AllyConquerPage from "./pages/content/Records/Ally/AllyConquer";
 import AllyAllyChangePage from "./pages/content/Records/Ally/AllyAllyChange";
+import AllyBashRankingPage from "./pages/content/Records/Ally/AllyBashRanking";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -41,6 +42,7 @@ function App() {
               <Route path={RouteHolder.ALLY_INFO} element={<AllyPage />}/>
               <Route path={RouteHolder.ALLY_CONQUER} element={<AllyConquerPage />}/>
               <Route path={RouteHolder.ALLY_ALLY_CHANGES} element={<AllyAllyChangePage />}/>
+              <Route path={RouteHolder.ALLY_BASH_RANKING} element={<AllyBashRankingPage />}/>
             </Route>
           </Routes>
         </Suspense>

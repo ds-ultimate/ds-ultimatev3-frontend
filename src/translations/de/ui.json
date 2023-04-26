@@ -81,6 +81,7 @@
   "table": {
     "ally": "Stamm",
     "allyChanges": "Stammeswechsel",
+    "allyKillsPercent": "Kills/Stamm",
     "avgPlayer": "Punkte pro Spieler",
     "avgVillage": "Punkte pro Dorf",
     "bashAllS": "BG",
@@ -100,6 +101,7 @@
     "owner": "Besitzer",
     "player": "Spieler",
     "playerName": "Spielername",
+    "playerPointPercent": "Kills/Punkte",
     "points": "Punkte",
     "rank": "Rang",
     "tag": "Tag",
