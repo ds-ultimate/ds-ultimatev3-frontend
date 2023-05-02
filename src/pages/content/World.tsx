@@ -11,7 +11,6 @@ import styles from "./World.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
-  //TODO: 404 Page actually all of them
   const { t } = useTranslation("ui")
   return (
       <Card.Body className={"table-responsive"}>
