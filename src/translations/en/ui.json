@@ -12,6 +12,7 @@
       "offBash": "Opponents defeated as attacker",
       "points": "Points",
       "rank": "Rank",
+      "supBash": "Opponents defeated as supporter",
       "village": "Villages"
     }
   },
@@ -64,6 +65,13 @@
     "village_count": "Old Villages",
     "village_points": "Old Point per player"
   },
+  "otherWorldsPlayer": "other worlds of that player",
+  "otherWorldsPlayerPopup": {
+    "bashGes": "max Bash",
+    "points": "max points",
+    "rank": "max rank",
+    "villages": "max villages"
+  },
   "player": {
     "barbarian": "barbarian",
     "deleted": "deleted"
@@ -92,8 +100,13 @@
     "bashOff": "Attacker",
     "bashPointsRatio": "K/P-Rate",
     "bashSup": "supporter",
+    "bashSupS": "ODS",
+    "bonusType": "Bonus",
     "conquer": "conquers",
+    "continent": "continent",
+    "coordinates": "coordinates",
     "date": "date",
+    "id": "ID",
     "members": "members",
     "name": "name",
     "new": "new",
@@ -122,16 +135,32 @@
     "normalWorlds": "normal worlds",
     "overview": "Overview",
     "player": "player",
+    "playerHist": "player history",
     "playerRanking": "player ranking",
     "specialWorlds": "Special worlds",
     "top10": "Top 10"
   },
   "title": {
     "ally": "Tribe",
+    "player": "Player",
     "search": "Search",
     "worldOverview": "World overview"
   },
   "topAt": "at",
+  "village": {
+    "bonus": {
+      "allResources": ":amount for each resource type",
+      "clay": ":amount clay",
+      "fastBarracks": ":amount faster barracks",
+      "fastStable": ":amount faster stable",
+      "fastWorkshop": ":amount faster workshop",
+      "greatSiege": ":amountDef defense strength. :points influencepoints daily.",
+      "iron": ":amount iron",
+      "merchants": ":amount merchants & storage",
+      "population": ":amount popupation",
+      "wood": ":amount wood"
+    }
+  },
   "world": {
     "casual": "casual",
     "classic": "classic",

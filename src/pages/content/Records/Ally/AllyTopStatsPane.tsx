@@ -42,7 +42,7 @@ export default function AllyTopStatsPane({data, worldData, conquer, allyChanges,
             {worldData && <LinkAllyInGame worldData={worldData} ally_id={data.allyID} guestMode>{t("inGame.guest")}</LinkAllyInGame>}
           </span>}
         </Col>
-        <ResponsiveRecordTable title={t("table-title.general")} tableData={[
+        <ResponsiveRecordTable title={t("table-title.general")} breakpoint={"xl"} tableData={[
           ["rank", t("table.rank"), <TopElement val={nf.format(data.rank_top)} date={data.rank_date} />],
           ["name", t("table.name"), <DecodeName name={data.name} />],
           ["tag", t("table.tag"), <DecodeName name={data.tag} />],
@@ -54,7 +54,7 @@ export default function AllyTopStatsPane({data, worldData, conquer, allyChanges,
           ["conquer", t("table.conquer"), (worldData && <LinkAllyConquer ally_id={data.allyID} world={worldData} conquer={conquer} />)],
           ["allyChanges", t("table.allyChanges"), (worldData && <LinkAllyAllyChanges ally_id={data.allyID} world={worldData} allyChanges={allyChanges} />)],
         ]} />
-        <ResponsiveRecordTable title={
+        <ResponsiveRecordTable breakpoint={"xl"} title={
           <>
             {t("table-title.bashStats")}
             {worldData && <span className={"float-end"}>

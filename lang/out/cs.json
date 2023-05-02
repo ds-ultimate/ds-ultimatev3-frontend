@@ -165,9 +165,7 @@
             "supBash": "Body podporovatele",
             "village": "Vesnice"
         },
-        "titel": {
-            "supBash": "Pora\u017een\u00fd protivn\u00edk jako podporovatel"
-        },
+        "titel": {},
         "who": {
             "ally": "Kmen",
             "player": "Hr\u00e1\u010d",
@@ -668,13 +666,7 @@
         "old": {
             "nodata": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje"
         },
-        "otherWorldsPlayer": "Dal\u0161\u00ed sv\u011bty tohoto hr\u00e1\u010de",
-        "otherWorldsPlayerPopup": {
-            "bashGes": "Maxim\u00e1ln\u00ed \u00fato\u010dn\u00e9 body",
-            "points": "Maxim\u00e1ln\u00ed body",
-            "rank": "Maxim\u00e1ln\u00ed rank",
-            "villages": "Maximum vesnic"
-        },
+        "otherWorldsPlayerPopup": {},
         "own": {
             "animatedMap": "Vlastn\u00ed animovan\u00e9 mapy",
             "attackplanner": "Vlastn\u00ed pl\u00e1ny \u00fatoku",
@@ -725,10 +717,6 @@
         "tabeltitel": {},
         "table": {
             "bashStats": "Pora\u017een\u00fd protivn\u00edk",
-            "bonusType": "Bonus",
-            "continent": "Kontinent",
-            "coordinates": "Sou\u0159adnice",
-            "id": "ID",
             "possibleChanges": "Mo\u017en\u00e9 budovy",
             "supDeff": "Podpora",
             "time": "\u010cas"
@@ -737,13 +725,11 @@
             "casualWorlds": "Casual sv\u011bt",
             "classicWorlds": "Classic sv\u011bt",
             "history": "Historie stavby",
-            "playerHist": "Historie hr\u00e1\u010de",
             "speedWorlds": "Speed kolo",
             "villages": "Vesnice"
         },
         "titel": {
             "overview": "P\u0159ehled",
-            "player": "Hr\u00e1\u010d",
             "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
             "searchResults": "V\u00fdsledky hled\u00e1n\u00ed",
             "settings": "Nastaven\u00ed",

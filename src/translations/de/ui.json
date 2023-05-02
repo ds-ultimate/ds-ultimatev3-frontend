@@ -12,6 +12,7 @@
       "offBash": "Besiegte Gegner als Angreifer",
       "points": "Punkte",
       "rank": "Rang",
+      "supBash": "Besiegte Gegner als Unterstützer",
       "village": "Dörfer"
     }
   },
@@ -64,6 +65,13 @@
     "village_count": "Alte Dörfer",
     "village_points": "Alte Punkte pro Dorf"
   },
+  "otherWorldsPlayer": "Andere Welten dieses Spielers",
+  "otherWorldsPlayerPopup": {
+    "bashGes": "Max Bash",
+    "points": "Max Punkte",
+    "rank": "Max Rang",
+    "villages": "Max Dörfer"
+  },
   "player": {
     "barbarian": "Barbaren",
     "deleted": "Gelöscht"
@@ -92,8 +100,13 @@
     "bashOff": "Angreifer",
     "bashPointsRatio": "K/P-Rate",
     "bashSup": "Unterstützer",
+    "bashSupS": "BGS",
+    "bonusType": "Bonus",
     "conquer": "Eroberungen",
+    "continent": "Kontinent",
+    "coordinates": "Koordinaten",
     "date": "Datum",
+    "id": "ID",
     "members": "Mitglieder",
     "name": "Name",
     "new": "neuer",
@@ -122,16 +135,32 @@
     "normalWorlds": "Normale Welten",
     "overview": "Übersicht",
     "player": "Spieler",
+    "playerHist": "Spieler Verlauf",
     "playerRanking": "Spieler-Rangliste",
     "specialWorlds": "Spezial Welten",
     "top10": "Top 10"
   },
   "title": {
     "ally": "Stamm",
+    "player": "Spieler",
     "search": "Suche",
     "worldOverview": "Weltenübersicht"
   },
   "topAt": "am",
+  "village": {
+    "bonus": {
+      "allResources": ":amount auf alle Rohstoffe",
+      "clay": ":amount Lehm",
+      "fastBarracks": ":amount schnellere Kaserne",
+      "fastStable": ":amount schnellerer Stall",
+      "fastWorkshop": ":amount schnellere Werkstatt",
+      "greatSiege": ":amountDef Verteidigungsstärke. :points Einflusspunkte täglich.",
+      "iron": ":amount Eisen",
+      "merchants": ":amount Händler & Speicher",
+      "population": ":amount Bevölkerung",
+      "wood": ":amount Holz"
+    }
+  },
   "world": {
     "casual": "Casual",
     "classic": "Classic",

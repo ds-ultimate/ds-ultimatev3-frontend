@@ -169,9 +169,7 @@
             "player": "Spieler",
             "village": "Dorf"
         },
-        "titel": {
-            "supBash": "Besiegte Gegner als Unterst\u00fctzer"
-        },
+        "titel": {},
         "label": {
             "points": "Punkte",
             "rank": "Rang",
@@ -689,7 +687,6 @@
         },
         "world": {},
         "titel": {
-            "player": "Spieler",
             "searchResults": "Suchergebnisse",
             "village": "Dorf",
             "overview": "\u00dcbersicht",
@@ -701,15 +698,10 @@
             "classicWorlds": "Classic Welten",
             "speedWorlds": "Speed Runden",
             "casualWorlds": "Casual Welten",
-            "history": "Ausbauverlauf",
-            "playerHist": "Spieler Verlauf"
+            "history": "Ausbauverlauf"
         },
         "table": {
             "bashStats": "Besiegte Gegner",
-            "id": "ID",
-            "continent": "Kontinent",
-            "coordinates": "Koordinaten",
-            "bonusType": "Bonus",
             "supDeff": "Unterst\u00fctzung",
             "time": "Zeit",
             "possibleChanges": "Ausbaum\u00f6glichkeiten"
@@ -829,26 +821,9 @@
         "village": {
             "histUnknown": "Unbekannt",
             "histPossibilities": "M\u00f6glichkeiten",
-            "bonus": {
-                "wood": ":amount Holz",
-                "clay": ":amount Lehm",
-                "iron": ":amount Eisen",
-                "population": ":amount Bev\u00f6lkerung",
-                "fastBarracks": ":amount schnellere Kaserne",
-                "fastStable": ":amount schnellerer Stall",
-                "fastWorkshop": ":amount schnellere Werkstatt",
-                "allResources": ":amount auf alle Rohstoffe",
-                "merchants": ":amount H\u00e4ndler & Speicher",
-                "greatSiege": ":amountDef Verteidigungsst\u00e4rke. :points Einflusspunkte t\u00e4glich."
-            }
+            "bonus": {}
         },
-        "otherWorldsPlayer": "Andere Welten dieses Spielers",
-        "otherWorldsPlayerPopup": {
-            "rank": "Max Rang",
-            "villages": "Max D\u00f6rfer",
-            "points": "Max Punkte",
-            "bashGes": "Max Bash"
-        },
+        "otherWorldsPlayerPopup": {},
         "sigPreview": "Vorschau",
         "errors": {
             "404": {

@@ -1,7 +1,7 @@
 import {worldType} from "./World";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
-import {ALLY_INFO, PLAYER_INFO, VILLAGE_INFO} from "../util/routes";
+import {VILLAGE_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import styles from "./Conquer.module.scss"

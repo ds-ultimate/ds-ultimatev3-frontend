@@ -8,15 +8,15 @@ import {formatRoute} from "../../util/router";
 import {Button, Dropdown, Form, Nav, Navbar as ReactNav, NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import {
-  INDEX,
-  SERVER,
-  WORLD,
-  WORLD_ALLY_CUR,
-  WORLD_ALLY_HIST,
-  WORLD_CONQUER,
-  WORLD_CONQUER_DAILY,
-  WORLD_PLAYER_CUR,
-  WORLD_PLAYER_HIST
+    INDEX,
+    SERVER,
+    WORLD,
+    WORLD_ALLY_CUR,
+    WORLD_ALLY_HIST,
+    WORLD_CONQUER,
+    WORLD_CONQUER_DAILY,
+    WORLD_PLAYER_CUR,
+    WORLD_PLAYER_HIST
 } from "../../util/routes";
 import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
 

@@ -7,11 +7,11 @@ import styles from "./AllyChangePage.module.scss"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import {
-  AllyChangeTime,
-  allyChangeType,
-  LinkAllyChangeNew,
-  LinkAllyChangeOld,
-  LinkAllyChangePlayer
+    AllyChangeTime,
+    allyChangeType,
+    LinkAllyChangeNew,
+    LinkAllyChangeOld,
+    LinkAllyChangePlayer
 } from "../../../modelHelper/AllyChange";
 import DatatableHeaderBuilder from "../../../util/datatables/DatatableHeaderBuilder";
 import BootstrapSelect from "../../../util/bootstrapSelect";

@@ -1,17 +1,17 @@
 import {useTranslation} from "react-i18next";
 import {Row} from "react-bootstrap";
 import ErrorPage from "../../../layout/ErrorPage";
-import {allyBasicDataType} from "../../../../modelHelper/Ally";
+import {playerBasicDataType} from "../../../../modelHelper/Player";
 import {worldType} from "../../../../modelHelper/World";
-import {useAllyChartData} from "../../../../apiInterface/loadContent";
+import {usePlayerChartData} from "../../../../apiInterface/loadContent";
 import {ChartSection} from "../Util";
 
 
-export default function AllyCharts({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {
+export default function PlayerCharts({playerData, worldData}: {playerData: playerBasicDataType, worldData: worldType | undefined}) {
   const {t} = useTranslation("ui")
-  const [chartErr, chartData] = useAllyChartData(worldData?.server__code, worldData?.name, allyData.cur?.allyID + "")
+  const [chartErr, chartData] = usePlayerChartData(worldData?.server__code, worldData?.name, playerData.cur?.playerID + "")
 
-  if(! allyData.cur) return <ErrorPage error={"internalerr"} />
+  if(! playerData.cur) return <ErrorPage error={"internalerr"} />
   if(chartErr) return <ErrorPage error={chartErr} />
 
   return (
@@ -29,6 +29,7 @@ export default function AllyCharts({allyData, worldData}: {allyData: allyBasicDa
             [false, chartData.bash.gesBash, t("chart.title.gesBash")],
             [false, chartData.bash.offBash, t("chart.title.offBash")],
             [false, chartData.bash.defBash, t("chart.title.defBash")],
+            [false, chartData.bash.supBash, t("chart.title.supBash")],
           ]}
           title={t('table-title.bashStats')}
         />}

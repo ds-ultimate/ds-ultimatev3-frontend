@@ -12,6 +12,7 @@
       "offBash": "Poražený protivník jako útočník",
       "points": "Body",
       "rank": "Umístění",
+      "supBash": "Poražený protivník jako podporovatel",
       "village": "Vesnice"
     }
   },
@@ -64,6 +65,13 @@
     "village_count": "Starý vesnice",
     "village_points": "Starý bod na hráče"
   },
+  "otherWorldsPlayer": "Další světy tohoto hráče",
+  "otherWorldsPlayerPopup": {
+    "bashGes": "Maximální útočné body",
+    "points": "Maximální body",
+    "rank": "Maximální rank",
+    "villages": "Maximum vesnic"
+  },
   "player": {
     "barbarian": "Barbarská vesnice",
     "deleted": "Odstraněno"
@@ -92,8 +100,13 @@
     "bashOff": "Útočník",
     "bashPointsRatio": "K/P-Rate",
     "bashSup": "Podporovatel",
+    "bashSupS": "",
+    "bonusType": "Bonus",
     "conquer": "Dobytí",
+    "continent": "Kontinent",
+    "coordinates": "Souřadnice",
     "date": "Datum",
+    "id": "ID",
     "members": "Členové",
     "name": "Název",
     "new": "Nový",
@@ -122,16 +135,32 @@
     "normalWorlds": "Normální svět",
     "overview": "Přehled",
     "player": "Hráč",
+    "playerHist": "Historie hráče",
     "playerRanking": "Hráč umístění",
     "specialWorlds": "Speciální světy",
     "top10": "Top 10"
   },
   "title": {
     "ally": "Kmen",
+    "player": "Hráč",
     "search": "Vyhledat",
     "worldOverview": "Přehled světů"
   },
   "topAt": "v",
+  "village": {
+    "bonus": {
+      "allResources": "",
+      "clay": "",
+      "fastBarracks": "",
+      "fastStable": "",
+      "fastWorkshop": "",
+      "greatSiege": "",
+      "iron": "",
+      "merchants": "",
+      "population": "",
+      "wood": ""
+    }
+  },
   "world": {
     "casual": "Casual",
     "classic": "Classic",

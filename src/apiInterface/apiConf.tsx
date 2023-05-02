@@ -19,6 +19,9 @@ export const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}
 export const worldGetExtendedData = apiRequestGenerator("worldExtendedData/{server}/{world}")
 export const allyBasicData = apiRequestGenerator("allyBasicData/{server}/{world}/{ally}")
 export const allyChartData = apiRequestGenerator("allyChartData/{server}/{world}/{ally}")
+export const playerBasicData = apiRequestGenerator("playerBasicData/{server}/{world}/{player}")
+export const playerChartData = apiRequestGenerator("playerChartData/{server}/{world}/{player}")
+export const playerWorldPopup = apiRequestGenerator("playerWorldPopup/{world_id}/{player}")
 
 //Datatables
 export const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
@@ -32,6 +35,8 @@ export const allyPlayerTable = apiRequestGenerator("tables/allyPlayer/{server}/{
 export const allyAllyHistoryTable = apiRequestGenerator("tables/allyAllyHistory/{server}/{world}/{ally}")
 export const allyConquerTable = apiRequestGenerator("tables/allyConquer/{server}/{world}/{type}/{ally}")
 export const allyAllyChangeTable = apiRequestGenerator("tables/allyAllyChange/{server}/{world}/{type}/{ally}")
+export const playerVillageTable = apiRequestGenerator("tables/playerVillage/{server}/{world}/{player}")
+export const playerPlayerHistoryTable = apiRequestGenerator("tables/playerPlayerHistory/{server}/{world}/{player}")
 
 //Bootstrap-select
 export const villageSelect = apiRequestGenerator("select/village/{world}")
@@ -44,4 +49,3 @@ export const allyTopSelect = apiRequestGenerator("select/allyTop/{world}")
 export const overviewMap = apiRequestGenerator("maps/{server}/{world}/{type}-{id}.{ext}")
 export const overviewMapSized = apiRequestGenerator("maps/{server}/{world}/{type}-{id}-{width}-{height}.{ext}")
 //TODO add maptop10 maptop10 player when adding map tool. Should use same as viewing a custom map
-

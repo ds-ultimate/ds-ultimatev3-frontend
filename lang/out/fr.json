@@ -13,9 +13,7 @@
             "village": "villages",
             "supBash": "Points de supporters"
         },
-        "titel": {
-            "supBash": "Ennemis vaincus en tant que partisans"
-        },
+        "titel": {},
         "who": {
             "ally": "coffre",
             "player": "joueur",

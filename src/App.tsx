@@ -19,6 +19,7 @@ import AllyPage from "./pages/content/Records/Ally/Ally";
 import AllyConquerPage from "./pages/content/Records/Ally/AllyConquer";
 import AllyAllyChangePage from "./pages/content/Records/Ally/AllyAllyChange";
 import AllyBashRankingPage from "./pages/content/Records/Ally/AllyBashRanking";
+import PlayerPage from "./pages/content/Records/Player/Player";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -43,6 +44,7 @@ function App() {
               <Route path={RouteHolder.ALLY_CONQUER} element={<AllyConquerPage />}/>
               <Route path={RouteHolder.ALLY_ALLY_CHANGES} element={<AllyAllyChangePage />}/>
               <Route path={RouteHolder.ALLY_BASH_RANKING} element={<AllyBashRankingPage />}/>
+              <Route path={RouteHolder.PLAYER_INFO} element={<PlayerPage />}/>
             </Route>
           </Routes>
         </Suspense>

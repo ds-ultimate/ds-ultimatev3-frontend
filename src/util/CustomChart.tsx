@@ -4,6 +4,7 @@ import React from "react";
 import useDatepickerLanguage from "./datepickerLanguage";
 import {CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, TimeScale, Tooltip} from "chart.js";
 import {Col} from "react-bootstrap";
+import 'chartjs-adapter-date-fns';
 
 ChartJS.register(
     TimeScale,

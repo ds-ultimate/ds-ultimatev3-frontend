@@ -1,10 +1,19 @@
 import axios, {AxiosResponse} from "axios";
-import {allyBasicData, allyChartData, indexPage, serverGetWorlds, worldGetExtendedData, worldOverview} from "./apiConf";
+import {
+  allyBasicData,
+  allyChartData,
+  indexPage,
+  playerBasicData,
+  playerChartData,
+  serverGetWorlds,
+  worldGetExtendedData,
+  worldOverview
+} from "./apiConf";
 import {worldExtendedType, worldType} from "../modelHelper/World";
 import {serverType} from "../modelHelper/Server";
 import {newsType} from "../modelHelper/News";
 import {Dict} from "../util/customTypes";
-import {playerType} from "../modelHelper/Player";
+import {playerBasicDataType, playerChartDataType, playerType} from "../modelHelper/Player";
 import {allyBasicDataType, allyChartDataType, allyType} from "../modelHelper/Ally";
 import {useCallback, useEffect, useMemo, useState} from "react";
 
@@ -208,5 +217,41 @@ export function useAllyChartData(server: string | undefined, world: string | und
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, ally}), [server, world, ally])
+  return usePromisedData(prom, params)
+}
+
+let playerDataCache: Dict<Dataloader<playerBasicDataType>> = {}
+export function usePlayerData(server: string | undefined, world: string | undefined, player: string | undefined) {
+  const prom = useCallback(({server, world, player}: {server: string | undefined, world: string | undefined, player: string | undefined}): Promise<playerBasicDataType> => {
+    if(server === undefined || world === undefined || player === undefined) {
+      return new Promise((resolve, reject) => reject(undefined))
+    }
+    let loader = playerDataCache[server + "_" + world + "_" + player]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<playerBasicDataType>(playerBasicData({server, world, player}))
+    playerDataCache[server + "_" + world + "_" + player] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world, player}), [server, world, player])
+  return usePromisedData(prom, params)
+}
+
+let playerChartDataCache: Dict<Dataloader<playerChartDataType>> = {}
+export function usePlayerChartData(server: string | undefined, world: string | undefined, player: string | undefined) {
+  const prom = useCallback(({server, world, player}: {server: string | undefined, world: string | undefined, player: string | undefined}): Promise<playerChartDataType> => {
+    if(server === undefined || world === undefined || player === undefined) {
+      return new Promise((resolve, reject) => reject(undefined))
+    }
+    let loader = playerChartDataCache[server + "_" + world + "_" + player]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<playerChartDataType>(playerChartData({server, world, player}))
+    playerChartDataCache[server + "_" + world + "_" + player] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world, player}), [server, world, player])
   return usePromisedData(prom, params)
 }

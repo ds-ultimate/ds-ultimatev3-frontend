@@ -8,14 +8,15 @@ import {useTranslation} from "react-i18next";
 import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {nf} from "../../util/UtilFunctions";
 import {
-  conquerChangeType,
-  conquerChangeTypeSetting,
-  ConquerTime,
-  conquerType,
-  getConquerType, highlightRefType,
-  LinkConquerNew,
-  LinkConquerOld,
-  LinkConquerVillage
+    conquerChangeType,
+    conquerChangeTypeSetting,
+    ConquerTime,
+    conquerType,
+    getConquerType,
+    highlightRefType,
+    LinkConquerNew,
+    LinkConquerOld,
+    LinkConquerVillage
 } from "../../modelHelper/Conquer";
 import styles from "./ConquerPage.module.scss"
 import BootstrapSelect from "../../util/bootstrapSelect";

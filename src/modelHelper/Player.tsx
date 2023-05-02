@@ -4,6 +4,7 @@ import {formatRoute} from "../util/router";
 import {ALLY_INFO, PLAYER_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
+import {chartDataType} from "../util/CustomChart";
 
 
 export type playerPureType = {
@@ -26,6 +27,62 @@ export type playerPureType = {
 export type playerType = playerPureType & {
   allyLatest__tag: string | null,
   allyLatest__name: string | null,
+}
+
+export type playerTopType = {
+  playerID: number,
+  name: string,
+  village_count_top: number,
+  village_count_date: string,
+  points_top: number,
+  points_date: string,
+  rank_top: number,
+  rank_date: string,
+  offBash_top: number,
+  offBash_date: string,
+  offBashRank_top: number,
+  offBashRank_date: string,
+  defBash_top: number,
+  defBash_date: string,
+  defBashRank_top: number,
+  defBashRank_date: string,
+  supBash_top: number,
+  supBash_date: string,
+  supBashRank_top: number,
+  supBashRank_date: string,
+  gesBash_top: number,
+  gesBash_date: string,
+  gesBashRank_top: number,
+  gesBashRank_date: string,
+}
+
+export type playerBasicDataType = {
+  cur: playerType | null,
+  top: playerTopType | null,
+  conquer: {
+    old: number,
+    new: number,
+    own: number,
+    total: number,
+  },
+  changes: {
+    total: number,
+  },
+  otherServers: number[], //world IDs
+}
+
+export type playerChartDataType = {
+  general: {
+    points: chartDataType,
+    rank: chartDataType,
+    village: chartDataType,
+  },
+  bash: {
+    gesBash: chartDataType,
+    offBash: chartDataType,
+    defBash: chartDataType,
+    supBash: chartDataType,
+  },
 }
 
 export function LinkPlayer({player, world, withAlly}: {player: playerType, world: worldType, withAlly?: boolean}) {

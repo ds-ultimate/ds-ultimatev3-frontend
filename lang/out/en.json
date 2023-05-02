@@ -178,9 +178,7 @@
             "village": "Villages",
             "supBash": "Supporter points"
         },
-        "titel": {
-            "supBash": "Opponents defeated as supporter"
-        }
+        "titel": {}
     },
     "datatable": {
         "sInfoEmpty": "Showing 0 to 0 of 0 entries",
@@ -667,10 +665,6 @@
         "world": {},
         "table": {
             "bashStats": "Opponents defeated",
-            "continent": "continent",
-            "coordinates": "coordinates",
-            "id": "ID",
-            "bonusType": "Bonus",
             "supDeff": "support",
             "possibleChanges": "Possible buildings",
             "time": "Time"
@@ -695,14 +689,12 @@
             "casualWorlds": "Casual worlds",
             "classicWorlds": "Classic worlds",
             "speedWorlds": "Speed worlds",
-            "history": "Build history",
-            "playerHist": "player history"
+            "history": "Build history"
         },
         "titel": {
             "searchResults": "Search results",
             "village": "Village",
             "overview": "Overview",
-            "player": "Player",
             "searchLimited": "Only the first $limit entries are displayed because your search yielded too many results",
             "settings": "Settings"
         },
@@ -818,26 +810,9 @@
         "village": {
             "histPossibilities": "possibilities",
             "histUnknown": "unknown",
-            "bonus": {
-                "wood": ":amount wood",
-                "clay": ":amount clay",
-                "iron": ":amount iron",
-                "allResources": ":amount for each resource type",
-                "fastBarracks": ":amount faster barracks",
-                "fastStable": ":amount faster stable",
-                "fastWorkshop": ":amount faster workshop",
-                "greatSiege": ":amountDef defense strength. :points influencepoints daily.",
-                "merchants": ":amount merchants & storage",
-                "population": ":amount popupation"
-            }
+            "bonus": {}
         },
-        "otherWorldsPlayer": "other worlds of that player",
-        "otherWorldsPlayerPopup": {
-            "bashGes": "max Bash",
-            "points": "max points",
-            "rank": "max rank",
-            "villages": "max villages"
-        },
+        "otherWorldsPlayerPopup": {},
         "sigPreview": "Preview",
         "errors": {
             "404": {

@@ -12,6 +12,7 @@
       "offBash": "Des ennemis vaincus comme attaquants",
       "points": "points",
       "rank": "rang",
+      "supBash": "Ennemis vaincus en tant que partisans",
       "village": "villages"
     }
   },
@@ -64,6 +65,13 @@
     "village_count": "",
     "village_points": ""
   },
+  "otherWorldsPlayer": "",
+  "otherWorldsPlayerPopup": {
+    "bashGes": "",
+    "points": "",
+    "rank": "",
+    "villages": ""
+  },
   "player": {
     "barbarian": "",
     "deleted": ""
@@ -92,8 +100,13 @@
     "bashOff": "",
     "bashPointsRatio": "",
     "bashSup": "",
+    "bashSupS": "",
+    "bonusType": "",
     "conquer": "",
+    "continent": "",
+    "coordinates": "",
     "date": "",
+    "id": "",
     "members": "",
     "name": "",
     "new": "",
@@ -122,16 +135,32 @@
     "normalWorlds": "",
     "overview": "",
     "player": "",
+    "playerHist": "",
     "playerRanking": "",
     "specialWorlds": "",
     "top10": ""
   },
   "title": {
     "ally": "",
+    "player": "",
     "search": "",
     "worldOverview": ""
   },
   "topAt": "",
+  "village": {
+    "bonus": {
+      "allResources": "",
+      "clay": "",
+      "fastBarracks": "",
+      "fastStable": "",
+      "fastWorkshop": "",
+      "greatSiege": "",
+      "iron": "",
+      "merchants": "",
+      "population": "",
+      "wood": ""
+    }
+  },
   "world": {
     "casual": "",
     "classic": "",
