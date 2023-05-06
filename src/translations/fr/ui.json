@@ -86,6 +86,8 @@
     "worlds": ""
   },
   "showMoreWorlds": "",
+  "signature": "",
+  "sigPreview": "",
   "table": {
     "ally": "",
     "allyChanges": "",

@@ -8,6 +8,7 @@ import {LinkPlayerInGame, ResponsiveMultiRecordTable, ResponsiveRecordTable, Top
 import {DecodeName, nf, thousandsFormat} from "../../../../util/UtilFunctions";
 import {LinkPlayerAllyChanges, LinkPlayerConquer} from "./LinkPlayerWinLoose";
 import {OtherWorldElement} from "./PlayerStatsPane";
+import PlayerSignature from "./PlayerSignature";
 
 type paramType = {
   data: playerTopType,
@@ -98,40 +99,7 @@ export default function PlayerTopStatsPane({data, worldData, conquer, allyChange
           ))}
         </Col>}
         <Col>
-          {/*TODO Signature.... */}
-          {/*
-<div class="row">
-    @isset($playerOtherServers)
-JS Code see player.blade
-        <div class="col-12 mt-3 mb-3">
-            <h4 class="card-title">{{ __('ui.otherWorldsPlayer')}}</h4>
-            @foreach($playerOtherServers->getWorlds() as $worldModel)
-                <div class="otherworld d-inline-block mt-1 position-relative" data-worldid="{{ $worldModel->id }}">
-                    {!! \App\Util\BasicFunctions::linkPlayer($worldModel, $data->playerID, \App\Util\BasicFunctions::escape($worldModel->shortName()), 'btn btn-primary btn-sm' . (($worldModel->name == $worldData->name)?(' active'):('')), true) !!}
-                    <div class="otherworld-popup popover fade bs-popover-bottom d-none" style="top: 100%">
-                        <div class="arrow m-0" style="left: calc(50% - 0.5rem)"></div>
-                        <div class="popover-body text-nowrap">
-                            <h1><i class="fas fa-spinner fa-spin"></i></h1>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @endisset
-    <div class="col">
-        <a href="javascript:void(0)" class="text-secondary font-weight-bold" onclick="$('#signatureContentTop').toggle()">{{ ucfirst(__('ui.signature')) }}</a>
-    </div>
-</div>
-<div id="signatureContentTop" class="input-group mt-2 float-right" style="display: none;">
-    <div class="input-group-prepend">
-        <a class="btn btn-primary" target="_blank" href="{{ route('api.signature', [$worldData->server->code, $worldData->name, 'player', $data->playerID]) }}">{{ __('ui.sigPreview') }}</a>
-    </div>
-    <input id="signatureTop" type="text" class="form-control" value="[url={{ route('player', [$worldData->server->code, $worldData->name, $data->playerID]) }}][img]{{ route('api.signature', [$worldData->server->code, $worldData->name, 'player', $data->playerID]) }}[/img][/url]">
-    <div class="input-group-append">
-        <span class="input-group-text" style="cursor:pointer" onclick="copy('signatureTop')"><i class="far fa-copy"></i></span>
-    </div>
-</div>
-          */}
+          {worldData && <PlayerSignature worldData={worldData} player_id={data.playerID}/>}
         </Col>
       </Row>
   )

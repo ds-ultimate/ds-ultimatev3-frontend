@@ -86,6 +86,8 @@
     "worlds": "worlds"
   },
   "showMoreWorlds": "show more worlds",
+  "signature": "signature",
+  "sigPreview": "Preview",
   "table": {
     "ally": "tribe",
     "allyChanges": "tribe changes",

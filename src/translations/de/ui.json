@@ -86,6 +86,8 @@
     "worlds": "Welten"
   },
   "showMoreWorlds": "mehr Welten anzeigen",
+  "signature": "Signatur",
+  "sigPreview": "Vorschau",
   "table": {
     "ally": "Stamm",
     "allyChanges": "Stammeswechsel",

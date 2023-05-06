@@ -15,6 +15,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import {playerWorldPopup} from "../../../../apiInterface/apiConf";
+import PlayerSignature from "./PlayerSignature";
 
 type paramType = {
   data: playerType,
@@ -105,58 +106,7 @@ export default function PlayerStatsPane({data, worldData, conquer, allyChanges, 
           ))}
         </Col>}
         <Col>
-          {/*TODO Signature.... */}
-          {/*
-<div class="row">
-    <div class="col">
-        <a href="javascript:void(0)" class="text-secondary font-weight-bold" onclick="$('#signatureContent').toggle()">{{ ucfirst(__('ui.signature')) }}</a>
-    </div>
-    <div class="col">
-    @auth
-        @can('discord_bot_beta')
-        @if($data->follows()->where(['user_id' => Auth::user()->id, 'world_id' => $worldData->id])->count() > 0)
-            <div class="float-right"><a id="follow-icon" style="cursor:pointer; text-shadow: 0 0 15px #000;" onclick="changeFollow()" class="fas fa-star text-warning">{{__('ui.player.discordNotification.addFollow')}}</a></div>
-        @else
-            <div class="float-right"><a id="follow-icon" style="cursor:pointer" onclick="changeFollow()" class="far fa-star text-muted">{{__('ui.player.discordNotification.addFollow')}}</a></div>
-        @endif
-        @endcan
-    @endauth
-    </div>
-</div>
-<div id="signatureContent" class="input-group mt-2 float-right" style="display: none;">
-    <div class="input-group-prepend">
-        <a class="btn btn-primary" target="_blank" href="{{ route('api.signature', [$worldData->server->code, $worldData->name, 'player', $data->playerID]) }}">{{ __('ui.sigPreview') }}</a>
-    </div>
-    <input id="signature" type="text" class="form-control" value="[url={{ route('player', [$worldData->server->code, $worldData->name, $data->playerID]) }}][img]{{ route('api.signature', [$worldData->server->code, $worldData->name, 'player', $data->playerID]) }}[/img][/url]" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-        <span class="input-group-text" style="cursor:pointer" onclick="copy('signature')"><i class="far fa-copy"></i></span>
-    </div>
-</div>
-    <script>
-        @auth
-        @can('discord_bot_beta')
-        function changeFollow() {
-            var icon = $('#follow-icon');
-            axios.post('{{ route('web.follow') }}',{
-                model: 'Player',
-                id: '{{ $playerData->playerID }}',
-                world: '{{ $worldData->id }}',
-            })
-                .then((response) => {
-                    if(icon.hasClass('far')){
-                        icon.removeClass('far text-muted').addClass('fas text-warning').attr('style','cursor:pointer; text-shadow: 0 0 15px #000;');
-                    }else {
-                        icon.removeClass('fas text-warning').addClass('far text-muted').attr('style', 'cursor:pointer;');
-                    }
-                })
-                .catch((error) => {
-
-                });
-        }
-        @endcan('discord_bot_beta')
-        @endauth
-    </script>
-          */}
+          {worldData && <PlayerSignature worldData={worldData} player_id={data.playerID}/>}
         </Col>
       </Row>
   )

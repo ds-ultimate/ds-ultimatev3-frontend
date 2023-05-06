@@ -795,7 +795,6 @@
             "church_f": "first church",
             "university": "university"
         },
-        "signature": "signature",
         "sorting": "Sorting",
         "columns": "Columns",
         "numberLines": "Number lines",
@@ -813,7 +812,6 @@
             "bonus": {}
         },
         "otherWorldsPlayerPopup": {},
-        "sigPreview": "Preview",
         "errors": {
             "404": {
                 "noServer": "We couldn't find any data about the server ':server'",

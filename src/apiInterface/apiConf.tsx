@@ -1,6 +1,7 @@
 import {Dict} from "../util/customTypes";
 
-const BASE_PATH: string = process.env.REACT_APP_API_URL as string
+const API_BASE_PATH: string = process.env.REACT_APP_API_URL as string
+const APP_BASE_PATH: string = process.env.REACT_APP_BASE_URL as string
 
 const apiRequestGenerator = (uri: string) => {
   return (params: Dict<string>) => {
@@ -8,7 +9,17 @@ const apiRequestGenerator = (uri: string) => {
     Object.keys(params).forEach((pName) => {
       result = result.replace("{" + pName + "}", params[pName] as string)
     })
-    return BASE_PATH + result
+    return API_BASE_PATH + result
+  }
+}
+
+const requestGenerator = (uri: string) => {
+  return (params: Dict<string>) => {
+    let result = uri
+    Object.keys(params).forEach((pName) => {
+      result = result.replace("{" + pName + "}", params[pName] as string)
+    })
+    return APP_BASE_PATH + result
   }
 }
 
@@ -49,3 +60,6 @@ export const allyTopSelect = apiRequestGenerator("select/allyTop/{world}")
 export const overviewMap = apiRequestGenerator("maps/{server}/{world}/{type}-{id}.{ext}")
 export const overviewMapSized = apiRequestGenerator("maps/{server}/{world}/{type}-{id}-{width}-{height}.{ext}")
 //TODO add maptop10 maptop10 player when adding map tool. Should use same as viewing a custom map
+
+//TODO backend code for signature + proxy & cache that lives in frontend container / env
+export const playerSignature = requestGenerator("api/{server}/{world}/signature/player/{player}")

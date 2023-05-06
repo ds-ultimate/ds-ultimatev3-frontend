@@ -86,6 +86,8 @@
     "worlds": "Světy"
   },
   "showMoreWorlds": "Zobrazit více světů",
+  "signature": "Podpis",
+  "sigPreview": "Náhled",
   "table": {
     "ally": "Kmen",
     "allyChanges": "Kmenové změny",
