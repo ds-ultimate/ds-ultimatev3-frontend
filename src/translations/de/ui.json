@@ -151,16 +151,16 @@
   "topAt": "am",
   "village": {
     "bonus": {
-      "allResources": ":amount auf alle Rohstoffe",
-      "clay": ":amount Lehm",
-      "fastBarracks": ":amount schnellere Kaserne",
-      "fastStable": ":amount schnellerer Stall",
-      "fastWorkshop": ":amount schnellere Werkstatt",
-      "greatSiege": ":amountDef Verteidigungsstärke. :points Einflusspunkte täglich.",
-      "iron": ":amount Eisen",
-      "merchants": ":amount Händler & Speicher",
-      "population": ":amount Bevölkerung",
-      "wood": ":amount Holz"
+      "allResources": "{{amount}} auf alle Rohstoffe",
+      "clay": "{{amount}} Lehm",
+      "fastBarracks": "{{amount}} schnellere Kaserne",
+      "fastStable": "{{amount}} schnellerer Stall",
+      "fastWorkshop": "{{amount}} schnellere Werkstatt",
+      "greatSiege": "{{amountDef}} Verteidigungsstärke. {{points}} Einflusspunkte täglich.",
+      "iron": "{{amount}} Eisen",
+      "merchants": "{{amount}} Händler & Speicher",
+      "population": "{{amount}} Bevölkerung",
+      "wood": "{{amount}} Holz"
     }
   },
   "world": {

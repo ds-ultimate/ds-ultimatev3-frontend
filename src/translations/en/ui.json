@@ -151,16 +151,16 @@
   "topAt": "at",
   "village": {
     "bonus": {
-      "allResources": ":amount for each resource type",
-      "clay": ":amount clay",
-      "fastBarracks": ":amount faster barracks",
-      "fastStable": ":amount faster stable",
-      "fastWorkshop": ":amount faster workshop",
-      "greatSiege": ":amountDef defense strength. :points influencepoints daily.",
-      "iron": ":amount iron",
-      "merchants": ":amount merchants & storage",
-      "population": ":amount popupation",
-      "wood": ":amount wood"
+      "allResources": "{{amount}} for each resource type",
+      "clay": "{{amount}} clay",
+      "fastBarracks": "{{amount}} faster barracks",
+      "fastStable": "{{amount}} faster stable",
+      "fastWorkshop": "{{amount}} faster workshop",
+      "greatSiege": "{{amountDef}} defense strength. {{points}} influencepoints daily.",
+      "iron": "{{amount}} iron",
+      "merchants": "{{amount}} merchants & storage",
+      "population": "{{amount}} popupation",
+      "wood": "{{amount}} wood"
     }
   },
   "world": {
