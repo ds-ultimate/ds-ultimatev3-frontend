@@ -69,7 +69,6 @@ export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: str
       fontIcon = faEquals
   }
 
-  // TODO use ui.old.nodata if o_dat is null inside popup
   return (
       <CustomTooltip
           delayShow={0}

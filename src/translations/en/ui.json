@@ -31,6 +31,7 @@
       "win": "gains"
     },
     "lost": "Loose",
+    "playerOwn": "Own conquers",
     "won": "Gain"
   },
   "darkMode": "darkmode",

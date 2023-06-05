@@ -31,6 +31,7 @@
       "win": "Získané"
     },
     "lost": "Ztráty",
+    "playerOwn": "Vlastní dobytí",
     "won": "Dobytí"
   },
   "darkMode": "Tmavý mód",

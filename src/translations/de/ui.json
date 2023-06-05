@@ -31,6 +31,7 @@
       "win": "Gewinne"
     },
     "lost": "Verluste",
+    "playerOwn": "Selbst Adelungen",
     "won": "Gewinne"
   },
   "darkMode": "Darkmode",

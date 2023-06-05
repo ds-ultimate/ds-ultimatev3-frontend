@@ -31,6 +31,7 @@
       "win": ""
     },
     "lost": "",
+    "playerOwn": "",
     "won": ""
   },
   "darkMode": "",

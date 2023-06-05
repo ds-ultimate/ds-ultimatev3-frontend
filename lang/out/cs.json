@@ -637,8 +637,7 @@
         "conquer": {
             "highlight": {
                 "all": "V\u0161echno"
-            },
-            "playerOwn": "Vlastn\u00ed dobyt\u00ed"
+            }
         },
         "follow": {
             "attackplanner": "Sleduje seznam \u00fatok\u016f",

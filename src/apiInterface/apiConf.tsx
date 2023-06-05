@@ -48,6 +48,8 @@ export const allyConquerTable = apiRequestGenerator("tables/allyConquer/{server}
 export const allyAllyChangeTable = apiRequestGenerator("tables/allyAllyChange/{server}/{world}/{type}/{ally}")
 export const playerVillageTable = apiRequestGenerator("tables/playerVillage/{server}/{world}/{player}")
 export const playerPlayerHistoryTable = apiRequestGenerator("tables/playerPlayerHistory/{server}/{world}/{player}")
+export const playerConquerTable = apiRequestGenerator("tables/playerConquer/{server}/{world}/{type}/{player}")
+export const playerAllyChangeTable = apiRequestGenerator("tables/playerAllyChange/{server}/{world}/{type}/{player}")
 
 //Bootstrap-select
 export const villageSelect = apiRequestGenerator("select/village/{world}")

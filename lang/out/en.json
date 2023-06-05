@@ -671,7 +671,6 @@
         },
         "allyChanges": {},
         "conquer": {
-            "playerOwn": "Own conquers",
             "highlight": {
                 "all": "all"
             }
