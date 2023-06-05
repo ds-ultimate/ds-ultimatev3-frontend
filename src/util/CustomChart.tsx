@@ -5,6 +5,7 @@ import useDatepickerLanguage from "./datepickerLanguage";
 import {CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, TimeScale, Tooltip} from "chart.js";
 import {Col} from "react-bootstrap";
 import 'chartjs-adapter-date-fns';
+import format from "date-fns/format";
 
 ChartJS.register(
     TimeScale,
@@ -24,7 +25,6 @@ type paramTypes = {
 
 export default function CustomChart({data, inverted}: paramTypes) {
   const dateLocale = useDatepickerLanguage()
-  //TODO figure out how to use 24h format...
 
   return (
       <Col xs={12} className={"pl-2 mt-2 position-relative"} style={{height: "250px"}}>
@@ -34,6 +34,11 @@ export default function CustomChart({data, inverted}: paramTypes) {
           scales: {
             x: {
               type: 'time',
+              /*time: {
+                displayFormats: {
+                  This can change the x-Axis labels see: https://www.chartjs.org/docs/next/axes/cartesian/time.html#display-formats
+                },
+              },*/
               adapters: {
                 date: {
                   locale: dateLocale
@@ -54,7 +59,15 @@ export default function CustomChart({data, inverted}: paramTypes) {
           plugins: {
             tooltip: {
               callbacks: {
-                label: tooltipItem => " " + thousandsFormat(+(tooltipItem.formattedValue.replace(/\D/g,'')))
+                title: tooltipItems => {
+                  const firstItem = tooltipItems[0]
+                  if(firstItem === undefined) return undefined
+                  const timestamp = (firstItem.parsed as {x: number, y: number}).x
+                  return format(timestamp, "dd.MM.yyyy HH:mm")
+                },
+                label: tooltipItem => {
+                  return " " + thousandsFormat((tooltipItem.raw as {x: number, y: number}).y)
+                }
               }
             }
           }
