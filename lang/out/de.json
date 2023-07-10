@@ -687,23 +687,18 @@
         "world": {},
         "titel": {
             "searchResults": "Suchergebnisse",
-            "village": "Dorf",
             "overview": "\u00dcbersicht",
             "searchLimited": "Es werden nur die ersten $limit Eintr\u00e4ge angezeigt, weil ihre Suche zu viele Ergebnisse lieferte",
             "settings": "Einstellungen"
         },
         "tabletitel": {
-            "villages": "D\u00f6rfer",
             "classicWorlds": "Classic Welten",
             "speedWorlds": "Speed Runden",
-            "casualWorlds": "Casual Welten",
-            "history": "Ausbauverlauf"
+            "casualWorlds": "Casual Welten"
         },
         "table": {
             "bashStats": "Besiegte Gegner",
-            "supDeff": "Unterst\u00fctzung",
-            "time": "Zeit",
-            "possibleChanges": "Ausbaum\u00f6glichkeiten"
+            "supDeff": "Unterst\u00fctzung"
         },
         "server": {
             "title": "Server"
@@ -783,28 +778,7 @@
             "map": "Gefolgte Karten",
             "attackplanner": "Gefolgte Angriffspl\u00e4ne"
         },
-        "buildings": {
-            "main": "Hauptgeb\u00e4ude",
-            "stable": "Stall",
-            "garage": "Werkstatt",
-            "church": "Kirche",
-            "watchtower": "Wachturm",
-            "snob": "Adelshof",
-            "smith": "Schmiede",
-            "place": "Versammlungsplatz",
-            "statue": "Statue",
-            "market": "Markt",
-            "wood": "Holzf\u00e4ller",
-            "stone": "Lehmgrube",
-            "iron": "Eisenmine",
-            "farm": "Bauernhof",
-            "storage": "Speicher",
-            "hide": "Versteck",
-            "wall": "Wall",
-            "barracks": "Kaserne",
-            "church_f": "Erste Kirche",
-            "university": "Universit\u00e4t"
-        },
+        "buildings": {},
         "sorting": "Sortierung",
         "columns": "Spalten",
         "numberLines": "Zeilen nummerieren",
@@ -817,8 +791,6 @@
         "index": {},
         "tabeltitel": {},
         "village": {
-            "histUnknown": "Unbekannt",
-            "histPossibilities": "M\u00f6glichkeiten",
             "bonus": {}
         },
         "otherWorldsPlayerPopup": {},

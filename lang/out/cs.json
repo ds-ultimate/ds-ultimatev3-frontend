@@ -611,28 +611,7 @@
             "noAlly": "Bez kmenu"
         },
         "allyChanges": {},
-        "buildings": {
-            "barracks": "Kas\u00e1rny",
-            "church": "Kostel",
-            "church_f": "Prvn\u00ed kostel",
-            "farm": "Selsk\u00e1 dv\u016fr",
-            "garage": "D\u00edlna",
-            "hide": "Skr\u00fd\u0161",
-            "iron": "\u017delezn\u00fd d\u016fl",
-            "main": "Hlavn\u00ed budova",
-            "market": "Tr\u017ei\u0161t\u011b",
-            "place": "N\u00e1dvo\u0159\u00ed",
-            "smith": "Kov\u00e1rna",
-            "snob": "Pansk\u00fd dv\u016fr",
-            "stable": "St\u00e1je",
-            "statue": "Socha",
-            "stone": "Lom na t\u011b\u017ebu hl\u00edny",
-            "storage": "Skladi\u0161t\u011b",
-            "university": "Univerzita",
-            "wall": "Opevn\u011bn\u00ed",
-            "watchtower": "Str\u00e1\u017en\u00ed v\u011b\u017e",
-            "wood": "D\u0159evorubec"
-        },
+        "buildings": {},
         "columns": "Sloupce",
         "conquer": {
             "highlight": {
@@ -714,23 +693,18 @@
         "tabeltitel": {},
         "table": {
             "bashStats": "Pora\u017een\u00fd protivn\u00edk",
-            "possibleChanges": "Mo\u017en\u00e9 budovy",
-            "supDeff": "Podpora",
-            "time": "\u010cas"
+            "supDeff": "Podpora"
         },
         "tabletitel": {
             "casualWorlds": "Casual sv\u011bt",
             "classicWorlds": "Classic sv\u011bt",
-            "history": "Historie stavby",
-            "speedWorlds": "Speed kolo",
-            "villages": "Vesnice"
+            "speedWorlds": "Speed kolo"
         },
         "titel": {
             "overview": "P\u0159ehled",
             "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
             "searchResults": "V\u00fdsledky hled\u00e1n\u00ed",
-            "settings": "Nastaven\u00ed",
-            "village": "Vesnice"
+            "settings": "Nastaven\u00ed"
         },
         "unit": {
             "archer": "Lu\u010di\u0161tn\u00edk",
@@ -746,10 +720,7 @@
             "spy": "\u0160peh",
             "sword": "\u0160erm\u00ed\u0159"
         },
-        "village": {
-            "histPossibilities": "Mo\u017enosti",
-            "histUnknown": "Nezn\u00e1m\u00e9"
-        },
+        "village": {},
         "villageNotExist": "Vesnice neexistuje",
         "world": {},
         "errors": {

@@ -665,9 +665,7 @@
         "world": {},
         "table": {
             "bashStats": "Opponents defeated",
-            "supDeff": "support",
-            "possibleChanges": "Possible buildings",
-            "time": "Time"
+            "supDeff": "support"
         },
         "allyChanges": {},
         "conquer": {
@@ -684,15 +682,12 @@
             "title": "server"
         },
         "tabletitel": {
-            "villages": "Villages",
             "casualWorlds": "Casual worlds",
             "classicWorlds": "Classic worlds",
-            "speedWorlds": "Speed worlds",
-            "history": "Build history"
+            "speedWorlds": "Speed worlds"
         },
         "titel": {
             "searchResults": "Search results",
-            "village": "Village",
             "overview": "Overview",
             "searchLimited": "Only the first $limit entries are displayed because your search yielded too many results",
             "settings": "Settings"
@@ -772,28 +767,7 @@
             "attackplanner": "Follows attacklists",
             "map": "Follows maps"
         },
-        "buildings": {
-            "barracks": "barracks",
-            "church": "church",
-            "farm": "farm",
-            "garage": "garage",
-            "hide": "hide",
-            "iron": "iron",
-            "main": "main",
-            "market": "market",
-            "place": "place",
-            "smith": "smith",
-            "snob": "snob",
-            "stable": "stable",
-            "statue": "statue",
-            "stone": "clay",
-            "storage": "storage",
-            "wall": "wall",
-            "watchtower": "watchtower",
-            "wood": "wood",
-            "church_f": "first church",
-            "university": "university"
-        },
+        "buildings": {},
         "sorting": "Sorting",
         "columns": "Columns",
         "numberLines": "Number lines",
@@ -806,8 +780,6 @@
         "index": {},
         "tabeltitel": {},
         "village": {
-            "histPossibilities": "possibilities",
-            "histUnknown": "unknown",
             "bonus": {}
         },
         "otherWorldsPlayerPopup": {},

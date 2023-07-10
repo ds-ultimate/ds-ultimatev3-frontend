@@ -5,7 +5,7 @@ import {
   indexPage,
   playerBasicData,
   playerChartData,
-  serverGetWorlds,
+  serverGetWorlds, villageBasicData,
   worldGetExtendedData,
   worldOverview
 } from "./apiConf";
@@ -16,6 +16,7 @@ import {Dict} from "../util/customTypes";
 import {playerBasicDataType, playerChartDataType, playerType} from "../modelHelper/Player";
 import {allyBasicDataType, allyChartDataType, allyType} from "../modelHelper/Ally";
 import {useCallback, useEffect, useMemo, useState} from "react";
+import {villageBasicDataType} from "../modelHelper/Village";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -253,5 +254,23 @@ export function usePlayerChartData(server: string | undefined, world: string | u
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, player}), [server, world, player])
+  return usePromisedData(prom, params)
+}
+
+let villageDataCache: Dict<Dataloader<villageBasicDataType>> = {}
+export function useVillageData(server: string | undefined, world: string | undefined, village: string | undefined) {
+  const prom = useCallback(({server, world, village}: {server: string | undefined, world: string | undefined, village: string | undefined}): Promise<villageBasicDataType> => {
+    if(server === undefined || world === undefined || village === undefined) {
+      return new Promise((resolve, reject) => reject(undefined))
+    }
+    let loader = villageDataCache[server + "_" + world + "_" + village]
+    if(loader !== undefined) {
+      return loader.getPromise()
+    }
+    loader = new Dataloader<villageBasicDataType>(villageBasicData({server, world, village}))
+    villageDataCache[server + "_" + world + "_" + village] = loader
+    return loader.getPromise()
+  }, [])
+  const params = useMemo(() => ({server, world, village}), [server, world, village])
   return usePromisedData(prom, params)
 }

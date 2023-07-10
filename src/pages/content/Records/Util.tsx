@@ -29,6 +29,17 @@ export function LinkPlayerInGame({player_id, worldData, guestMode, children}: {p
   )
 }
 
+export function LinkVillageInGame({village_id, worldData, guestMode, children}: {village_id: number, worldData: worldType, guestMode?: boolean, children: ReactNode}) {
+  const guestPart = guestMode?"guest":"game"
+  const href = `${worldData.url}/${guestPart}.php?screen=info_village&id=${village_id}`
+
+  return (
+      <a href={href} target={"_blank"} className={"btn btn-primary btn-sm ms-1"} rel={"noreferrer"}>
+        {children}
+      </a>
+  )
+}
+
 export function TopElement({val, date, bp}: {val: ReactNode, date: string, bp?: string}) {
   const {t} = useTranslation("ui")
   bp = bp ?? "xl"
@@ -49,12 +60,12 @@ export function TopElement({val, date, bp}: {val: ReactNode, date: string, bp?: 
   )
 }
 
-export function ChartSection({charts, title}: {charts: Array<[boolean, chartDataType, ReactNode]>, title: ReactNode}) {
+export function ChartSection({charts, title, single}: {charts: Array<[boolean, chartDataType, ReactNode]>, title: ReactNode, single?:boolean}) {
   const [selected, setSelected] = useState(0)
   const [inverted, selectedChart] = charts[selected]
 
   return (
-      <Col xs={12} lg={6} className={"mt-3"}>
+      <Col xs={12} lg={single?12:6} className={"mt-3"}>
         <Card>
           <Card.Body>
             <Card.Title as={"h4"}>{title}</Card.Title>

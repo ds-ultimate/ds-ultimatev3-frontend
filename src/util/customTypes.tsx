@@ -1,6 +1,7 @@
 
-interface Dict<T> {
+export interface Dict<T> {
   [key: string]: T | undefined;
 }
-
-export type {Dict}
+export interface NumDict<T> {
+  [key: number]: T | undefined;
+}

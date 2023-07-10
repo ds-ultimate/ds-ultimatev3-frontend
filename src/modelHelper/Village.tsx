@@ -2,8 +2,9 @@ import {useTranslation} from "react-i18next";
 import {worldType} from "./World";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
-import {VILLAGE_INFO} from "../util/routes";
+import {PLAYER_INFO, VILLAGE_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
+import {chartDataType} from "../util/CustomChart";
 
 export type villagePureType = {
   villageID: number,
@@ -16,17 +17,26 @@ export type villagePureType = {
 }
 
 export type villageType = villagePureType & {
+  playerLatest__name: string | null,
 }
 
-export function villageCoordinates(vil: villageType) {
+export type villageBasicDataType = {
+  data: villageType,
+  history: chartDataType
+  conquer: {
+    total: number,
+  }
+}
+
+export function villageCoordinates(vil: villagePureType) {
   return `${vil.x}|${vil.y}`
 }
 
-export function villageContinent(vil: villageType) {
+export function villageContinent(vil: villagePureType) {
   return Math.round(vil.y / 100)*10 + Math.round(vil.x / 100)
 }
 
-export function LinkVillage({village, world}: {village: villageType, world: worldType}) {
+export function LinkVillage({village, world}: {village: villagePureType, world: worldType}) {
   return (
       <>
         <Link to={formatRoute(VILLAGE_INFO, {server: world.server__code, world: world.name, village: (village.villageID + "")})}>
@@ -36,7 +46,19 @@ export function LinkVillage({village, world}: {village: villageType, world: worl
   )
 }
 
-export function VillageBonusText({vil}: {vil: villageType}) {
+export function LinkVillageOwner({village, world}: {village: villageType, world: worldType}) {
+  return (
+      <>
+        {village.playerLatest__name?(
+            <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (village.owner + "")})}>
+              <DecodeName name={village.playerLatest__name} />
+            </Link>
+        ):"-"}
+      </>
+  )
+}
+
+export function VillageBonusText({vil}: {vil: villagePureType}) {
   const {t} = useTranslation("ui")
   let result = "-"
 

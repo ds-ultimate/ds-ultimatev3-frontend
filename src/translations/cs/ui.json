@@ -5,6 +5,28 @@
     "old": "Tribe exits"
   },
   "archive": "Archiv",
+  "buildings": {
+    "barracks": "Kasárny",
+    "church": "Kostel",
+    "church_f": "První kostel",
+    "farm": "Selská dvůr",
+    "garage": "Dílna",
+    "hide": "Skrýš",
+    "iron": "Železný důl",
+    "main": "Hlavní budova",
+    "market": "Tržiště",
+    "place": "Nádvoří",
+    "smith": "Kovárna",
+    "snob": "Panský dvůr",
+    "stable": "Stáje",
+    "statue": "Socha",
+    "stone": "Lom na těžbu hlíny",
+    "storage": "Skladiště",
+    "university": "Univerzita",
+    "wall": "Opevnění",
+    "watchtower": "Strážní věž",
+    "wood": "Dřevorubec"
+  },
   "chart": {
     "title": {
       "defBash": "Poražený protivník jako obránce",
@@ -119,8 +141,10 @@
     "playerName": "Jméno hráče",
     "playerPointPercent": "Kills/Points",
     "points": "Body",
+    "possibleChanges": "Možné budovy",
     "rank": "Pozice",
     "tag": "Tag",
+    "time": "Čas",
     "total": "",
     "village": "Vesnice",
     "villageName": "Název vesnice",
@@ -134,6 +158,7 @@
     "allys": "Kmen",
     "bashStats": "Poražený protivník",
     "general": "Obecné",
+    "history": "Historie stavby",
     "info": "Informace",
     "normalWorlds": "Normální svět",
     "overview": "Přehled",
@@ -141,12 +166,14 @@
     "playerHist": "Historie hráče",
     "playerRanking": "Hráč umístění",
     "specialWorlds": "Speciální světy",
-    "top10": "Top 10"
+    "top10": "Top 10",
+    "villages": "Vesnice"
   },
   "title": {
     "ally": "Kmen",
     "player": "Hráč",
     "search": "Vyhledat",
+    "village": "Vesnice",
     "worldOverview": "Přehled světů"
   },
   "topAt": "v",
@@ -162,7 +189,9 @@
       "merchants": "",
       "population": "",
       "wood": ""
-    }
+    },
+    "histPossibilities": "Možnosti",
+    "histUnknown": "Neznámé"
   },
   "world": {
     "casual": "Casual",

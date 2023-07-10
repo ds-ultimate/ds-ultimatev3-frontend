@@ -33,6 +33,7 @@ export const allyChartData = apiRequestGenerator("allyChartData/{server}/{world}
 export const playerBasicData = apiRequestGenerator("playerBasicData/{server}/{world}/{player}")
 export const playerChartData = apiRequestGenerator("playerChartData/{server}/{world}/{player}")
 export const playerWorldPopup = apiRequestGenerator("playerWorldPopup/{world_id}/{player}")
+export const villageBasicData = apiRequestGenerator("villageBasicData/{server}/{world}/{village}")
 
 //Datatables
 export const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
@@ -50,6 +51,8 @@ export const playerVillageTable = apiRequestGenerator("tables/playerVillage/{ser
 export const playerPlayerHistoryTable = apiRequestGenerator("tables/playerPlayerHistory/{server}/{world}/{player}")
 export const playerConquerTable = apiRequestGenerator("tables/playerConquer/{server}/{world}/{type}/{player}")
 export const playerAllyChangeTable = apiRequestGenerator("tables/playerAllyChange/{server}/{world}/{type}/{player}")
+export const villageConquerTable = apiRequestGenerator("tables/villageConquer/{server}/{world}/{type}/{village}")
+
 
 //Bootstrap-select
 export const villageSelect = apiRequestGenerator("select/village/{world}")

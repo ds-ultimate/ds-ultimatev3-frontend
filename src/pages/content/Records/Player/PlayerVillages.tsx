@@ -8,11 +8,10 @@ import {nf} from "../../../../util/UtilFunctions";
 import {playerVillageTable} from "../../../../apiInterface/apiConf";
 import {worldType} from "../../../../modelHelper/World";
 import {
-    LinkVillage,
-    VillageBonusText,
-    villageContinent,
-    villageCoordinates,
-    villageType
+  LinkVillage,
+  VillageBonusText,
+  villageContinent,
+  villageCoordinates, villagePureType,
 } from "../../../../modelHelper/Village";
 
 type paramType = {
@@ -29,8 +28,8 @@ export default function PlayerVillages({player_id, worldData}: paramType) {
         <Col xs={12} className={"mt-3"}>
           <Card>
             <Card.Body>
-              <Card.Title as={"h4"}>{t("table-title.player")}</Card.Title>
-              <DatatableBase<villageType>
+              <Card.Title as={"h4"}>{t("table-title.villages")}</Card.Title>
+              <DatatableBase<villagePureType>
                   api={playerVillageTable({server: worldData.server__code, world: worldData.name, player: (player_id + "")})}
                   header={villageHeader}
                   cells={[
@@ -56,7 +55,7 @@ export default function PlayerVillages({player_id, worldData}: paramType) {
   )
 }
 
-export function filterVillageCallback(c: villageType, search: string) {
+export function filterVillageCallback(c: villagePureType, search: string) {
   return c.name.includes(search) ||
       villageCoordinates(c).includes(search) ||
       ("K" + villageContinent(c)).includes(search)
@@ -65,7 +64,7 @@ export function filterVillageCallback(c: villageType, search: string) {
 function usePlayerVillageHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder<villageType>()
+    return new DatatableHeaderBuilder<villagePureType>()
         .addMainRow(row => {
           row.addCell({title: t('table.id'),
             sortCB: ((data1, data2) => data1.villageID - data2.villageID)})

@@ -22,6 +22,8 @@ import AllyBashRankingPage from "./pages/content/Records/Ally/AllyBashRanking";
 import PlayerPage from "./pages/content/Records/Player/Player";
 import PlayerConquerPage from "./pages/content/Records/Player/PlayerConquer";
 import PlayerAllyChangePage from "./pages/content/Records/Player/PlayerAllyChange";
+import VillagePage from "./pages/content/Records/Village/Village";
+import VillageConquerPage from "./pages/content/Records/Village/VillageConquer";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -49,6 +51,8 @@ function App() {
               <Route path={RouteHolder.PLAYER_INFO} element={<PlayerPage />}/>
               <Route path={RouteHolder.PlAYER_CONQUER} element={<PlayerConquerPage />}/>
               <Route path={RouteHolder.PLAYER_ALLY_CHANGES} element={<PlayerAllyChangePage />}/>
+              <Route path={RouteHolder.VILLAGE_INFO} element={<VillagePage />}/>
+              <Route path={RouteHolder.VILLAGE_CONQUER} element={<VillageConquerPage />}/>
             </Route>
           </Routes>
         </Suspense>

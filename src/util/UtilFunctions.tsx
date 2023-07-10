@@ -2,6 +2,7 @@ import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown, faCaretUp, faEquals} from "@fortawesome/free-solid-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import {Placement} from "react-bootstrap/types";
 
 export const nf = new Intl.NumberFormat("de-DE")
 
@@ -84,13 +85,21 @@ export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: str
   )
 }
 
-export function CustomTooltip({delayShow, delayHide, overlay, children}: {delayShow?: number, delayHide?: number, overlay: JSX.Element, children: JSX.Element}) {
+export function CustomTooltip({delayShow, delayHide, overlay, placement, children}:
+      {delayShow?: number, delayHide?: number, overlay: JSX.Element, placement?: Placement, children: JSX.Element}) {
   const delS = delayShow ?? 200
   const delH = delayHide ?? 400
+  const place = placement ?? "top"
 
   return (
       <OverlayTrigger
           delay={{show: delS, hide: delH}}
+          placement={place}
+          defaultShow={false}
+          onHide={undefined}
+          onToggle={undefined}
+          trigger={["focus", "hover"]}
+          popperConfig={undefined}
           overlay={overlay}>
         {children}
       </OverlayTrigger>
