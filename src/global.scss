@@ -27,6 +27,24 @@
   margin-top: 5rem;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.footer-nav .nav-link {
+  padding: var(--bs-nav-link-padding-y) 0.25em;
+}
+
+.footer-nav :first-child {
+  margin-left: auto;
+}
+
+.footer-nav :last-child {
+  margin-right: auto;
+}
+
 @include media-breakpoint-up(xl) {
   .container {
     max-width: inherit;
