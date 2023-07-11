@@ -16,7 +16,7 @@ export default function Footer() {
     ["b", BUGREPORT_PAGE, t("bugreport")],
   ]
 
-  return <>
+  return (
     <Nav className={"footer-bg footer-nav"}>
       {data.map(d => <React.Fragment key={d[0]}>
         <Nav.Item>
@@ -32,5 +32,5 @@ export default function Footer() {
         </Nav.Link>
       </Nav.Item>
     </Nav>
-  </>
+  )
 }

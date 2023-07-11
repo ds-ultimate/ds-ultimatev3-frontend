@@ -2,6 +2,7 @@ import axios, {AxiosResponse} from "axios";
 import {
   allyBasicData,
   allyChartData,
+  changelogPage,
   indexPage,
   playerBasicData,
   playerChartData,
@@ -17,6 +18,7 @@ import {playerBasicDataType, playerChartDataType, playerType} from "../modelHelp
 import {allyBasicDataType, allyChartDataType, allyType} from "../modelHelper/Ally";
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {villageBasicDataType} from "../modelHelper/Village";
+import {changelogType} from "../modelHelper/Changelog";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -126,6 +128,18 @@ export function useIndexPageData(){
     return indexPageCache.getPromise()
   }, [])
   return useDefaultedPromisedData(prom, null, INDEX_PAGE_DEFAULT)
+}
+
+let changelogPageCache: Dataloader<Array<changelogType>> | undefined = undefined
+export function useChangelogPageData(){
+  const prom = useCallback(() => {
+    if(changelogPageCache !== undefined) {
+      return changelogPageCache.getPromise()
+    }
+    changelogPageCache = new Dataloader<Array<changelogType>>(changelogPage({}))
+    return changelogPageCache.getPromise()
+  }, [])
+  return useDefaultedPromisedData(prom, null, [])
 }
 
 type worldOverviewType = {player: playerType[], ally: allyType[], world?: worldType}

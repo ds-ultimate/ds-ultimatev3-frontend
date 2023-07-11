@@ -25,6 +25,7 @@ const requestGenerator = (uri: string) => {
 
 //Various data
 export const indexPage = apiRequestGenerator("indexPage")
+export const changelogPage = apiRequestGenerator("changelogPage")
 export const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
 export const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
 export const worldGetExtendedData = apiRequestGenerator("worldExtendedData/{server}/{world}")

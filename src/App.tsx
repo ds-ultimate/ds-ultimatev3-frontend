@@ -24,6 +24,7 @@ import PlayerConquerPage from "./pages/content/Records/Player/PlayerConquer";
 import PlayerAllyChangePage from "./pages/content/Records/Player/PlayerAllyChange";
 import VillagePage from "./pages/content/Records/Village/Village";
 import VillageConquerPage from "./pages/content/Records/Village/VillageConquer";
+import ChangelogPage from "./pages/content/Changelog";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -53,6 +54,8 @@ function App() {
               <Route path={RouteHolder.PLAYER_ALLY_CHANGES} element={<PlayerAllyChangePage />}/>
               <Route path={RouteHolder.VILLAGE_INFO} element={<VillagePage />}/>
               <Route path={RouteHolder.VILLAGE_CONQUER} element={<VillageConquerPage />}/>
+
+              <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
             </Route>
           </Routes>
         </Suspense>
