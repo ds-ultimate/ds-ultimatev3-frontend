@@ -23,4 +23,3 @@ export const VILLAGE_CONQUER = '/:server/:world/village/conquer/:type/:village'
 export const LEGAL_PAGE = '/impressum'
 export const CHANGELOG_PAGE = '/changelog'
 export const TEAM_PAGE = '/team'
-export const BUGREPORT_PAGE = '/form/bugreport' //TODO

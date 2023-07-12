@@ -2,7 +2,7 @@ import {Nav, NavItem} from "react-bootstrap";
 import React, {Key} from "react";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
-import {BUGREPORT_PAGE, CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../../util/routes";
+import {CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../../util/routes";
 import {useTranslation} from "react-i18next";
 
 
@@ -13,7 +13,6 @@ export default function Footer() {
     ["l", LEGAL_PAGE, t("footer.legalPage")],
     ["c", CHANGELOG_PAGE, t("footer.changelog")],
     ["t", TEAM_PAGE, t("footer.team")],
-    ["b", BUGREPORT_PAGE, t("footer.bugreport")],
   ]
 
   return (
