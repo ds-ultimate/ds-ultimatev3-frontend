@@ -57,6 +57,12 @@
     "won": "Gewinne"
   },
   "darkMode": "Darkmode",
+  "footer": {
+    "bugreport": "Fehler melden",
+    "changelog": "Changelog",
+    "legalPage": "Impressum",
+    "team": "Team"
+  },
   "index": {
     "help": "Um die meisten Funktionen der Seite nutzen zu können, musst du einen Server und eine Welt auswählen."
   },
@@ -168,6 +174,11 @@
     "specialWorlds": "Spezial Welten",
     "top10": "Top 10",
     "villages": "Dörfer"
+  },
+  "team": {
+    "header": "Das DS-Ultimate Team",
+    "specialThanks": "Besonderer Dank an",
+    "subheader": "DS-Ultimate ist ein Projekt das von uns in der Freizeit weiter entwickelt und verbessert wird."
   },
   "title": {
     "ally": "Stamm",

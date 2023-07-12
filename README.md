@@ -1,3 +1,45 @@
+![Website](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fds-ultimate.de%2F)
+
+# DS-Ultimate
+
+This is the sourcecode of the Website [ds-ultimate.de](https://ds-ultimate.de/)
+
+DS-Ultimate is an external statistic and tool site for the game Tribal Wars
+
+(de) [Die-Stämme](https://www.die-staemme.de)
+
+(en) [Tribal Wars](https://www.tribalwars.net)
+
+## Team
+[Team Seite](http://ds-ultimate.de/team)
+* [@Nehozz](https://github.com/Nehozz)
+* [@extremeCrazyCoder](https://github.com/extremeCrazyCoder)
+* [@skatecram](https://github.com/skatecram)
+
+
+## Contact
+
+You can reach us via:
+- Die Stämme [Forum](https://forum.die-staemme.de/index.php?threads/die-neue-ds-ultimate-webseite.192322/)
+- via [Discord](https://discord.com/invite/PPwyZYk)
+- via github issue
+
+## Frameworks
+The Backend uses [Laravel](https://github.com/laravel/laravel)
+
+The Frontend uses [React](https://github.com/facebook/react)
+
+## Open Source Libraries
+Libraries will only be listed here if they are not part of the package.json
+- The Dark-Theme is based on [forevolve/bootstrap-dark](https://github.com/forevolve/bootstrap-dark)
+- The GIF-Generator uses [lvandeve/lodepng](https://github.com/lvandeve/lodepng)
+- The Changelog is based on [bootstrap-timeline](https://bootstrapthemes.co/item/bootstrap-timeline/)
+- Captcha based on [Lokno/click-captcha](https://github.com/Lokno/click-captcha)
+- AttackPlanner Sounds by [wavsource](https://www.wavsource.com/)
+
+The list above might not be complete if there is something missing please contact me (e.g. via Issue)
+
+[//]: # (TODO: integrate the scripts below into an howto part of the readme, because it should be possible to run the frontend locally without backend)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -14,11 +56,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -28,19 +65,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -57,6 +57,12 @@
     "won": ""
   },
   "darkMode": "",
+  "footer": {
+    "bugreport": "",
+    "changelog": "",
+    "legalPage": "",
+    "team": ""
+  },
   "index": {
     "help": ""
   },
@@ -168,6 +174,11 @@
     "specialWorlds": "",
     "top10": "",
     "villages": ""
+  },
+  "team": {
+    "header": "",
+    "specialThanks": "",
+    "subheader": ""
   },
   "title": {
     "ally": "",

@@ -57,6 +57,12 @@
     "won": "Gain"
   },
   "darkMode": "darkmode",
+  "footer": {
+    "bugreport": "report a bug",
+    "changelog": "changelog",
+    "legalPage": "legal page",
+    "team": "team"
+  },
   "index": {
     "help": "In order to use most of the functions of this site you need to choose a server and a world."
   },
@@ -168,6 +174,11 @@
     "specialWorlds": "Special worlds",
     "top10": "Top 10",
     "villages": "Villages"
+  },
+  "team": {
+    "header": "The DS-Ultimate team",
+    "specialThanks": "Special thanks to",
+    "subheader": "DS-Ultimate is a project that we develop and improve in our free time"
   },
   "title": {
     "ally": "Tribe",

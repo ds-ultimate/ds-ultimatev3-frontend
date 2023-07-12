@@ -1,7 +1,6 @@
 import {worldExtendedType} from "../../modelHelper/World";
 import {NumDict} from "../customTypes";
 import {useTranslation} from "react-i18next";
-import {get_icon} from "./Icon";
 
 const BUILDINGS: Array<{
   'name': string,

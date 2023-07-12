@@ -7,13 +7,13 @@ import {useTranslation} from "react-i18next";
 
 
 export default function Footer() {
-  const [t, i18n] = useTranslation("ui")
+  const { t } = useTranslation("ui")
 
   const data: Array<[Key, string, string]> = [
-    ["l", LEGAL_PAGE, t("legalPage")],
-    ["c", CHANGELOG_PAGE, t("changelog")],
-    ["t", TEAM_PAGE, t("team")],
-    ["b", BUGREPORT_PAGE, t("bugreport")],
+    ["l", LEGAL_PAGE, t("footer.legalPage")],
+    ["c", CHANGELOG_PAGE, t("footer.changelog")],
+    ["t", TEAM_PAGE, t("footer.team")],
+    ["b", BUGREPORT_PAGE, t("footer.bugreport")],
   ]
 
   return (

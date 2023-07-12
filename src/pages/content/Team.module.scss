@@ -1,0 +1,35 @@
+@import '../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.cardTeam .avatar {
+  display: block;
+  margin-top: -60px;
+  overflow: hidden;
+  width: 120px;
+}
+
+.cardTeam {
+  font-weight: 400;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  border-top-left-radius: calc(5rem - 1px);
+  background-color: $card-bg;
+  text-align: center;
+}
+
+.cardImgTop {
+  width: 100%;
+  border-top-left-radius: calc(5rem - 1px);
+  height: 200px;
+}
+
+.flags {
+  width: 2.666666em;
+  line-height: 2em;
+}
+
+.description {
+  padding: 1.25em;
+}

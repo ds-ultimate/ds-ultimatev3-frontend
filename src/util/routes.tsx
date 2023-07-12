@@ -20,7 +20,7 @@ export const PlAYER_CONQUER = '/:server/:world/player/conquer/:type/:player'
 export const PLAYER_ALLY_CHANGES = '/:server/:world/player/allyChanges/:type/:player'
 export const VILLAGE_CONQUER = '/:server/:world/village/conquer/:type/:village'
 
-export const LEGAL_PAGE = '/impressum' //TODO
-export const CHANGELOG_PAGE = '/changelog' //TODO
-export const TEAM_PAGE = '/team' //TODO
+export const LEGAL_PAGE = '/impressum'
+export const CHANGELOG_PAGE = '/changelog'
+export const TEAM_PAGE = '/team'
 export const BUGREPORT_PAGE = '/form/bugreport' //TODO
