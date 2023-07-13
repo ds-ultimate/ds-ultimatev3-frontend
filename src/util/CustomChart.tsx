@@ -19,7 +19,7 @@ ChartJS.register(
 export type chartDataType = Array<[string, number]>
 
 type paramTypes = {
-  data: chartDataType,
+  data: chartDataType | undefined,
   inverted?: boolean,
 }
 
@@ -74,7 +74,7 @@ export default function CustomChart({data, inverted}: paramTypes) {
         }} data={{
           datasets: [
             {
-              data: data.map(([d, v]) => ({x: d, y: v})),
+              data: data?data.map(([d, v]) => ({x: d, y: v})):[],
               borderColor: 'rgb(255, 99, 132)',
               backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },

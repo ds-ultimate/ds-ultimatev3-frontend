@@ -27,15 +27,15 @@ import VillageConquerPage from "./pages/content/Records/Village/VillageConquer";
 import ChangelogPage from "./pages/content/Changelog";
 import LegalPage from "./pages/content/LegalPage";
 import TeamPage from "./pages/content/Team";
+import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
-//TODO better fallback for loading
 
 function App() {
   return (
       <BrowserRouter basename={process.env.REACT_APP_BASE_DIR}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<ForcedLoadingScreen />}>
           <Routes>
             <Route path={'/'} element={<RootLayout />}>
               <Route path={RouteHolder.INDEX} element={<IndexPage />}/>

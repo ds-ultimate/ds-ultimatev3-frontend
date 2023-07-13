@@ -16,22 +16,22 @@ export default function AllyCharts({allyData, worldData}: {allyData: allyBasicDa
 
   return (
       <Row className={"justify-content-center"}>
-        {chartData && <ChartSection
+        <ChartSection
           charts={[
-            [false, chartData.general.points, t("chart.title.points")],
-            [true, chartData.general.rank, t("chart.title.rank")],
-            [false, chartData.general.village, t("chart.title.village")],
+            [false, chartData?.general.points, t("chart.title.points")],
+            [true, chartData?.general.rank, t("chart.title.rank")],
+            [false, chartData?.general.village, t("chart.title.village")],
           ]}
           title={t('table-title.general')}
-        />}
-        {chartData && <ChartSection
+        />
+        <ChartSection
           charts={[
-            [false, chartData.bash.gesBash, t("chart.title.gesBash")],
-            [false, chartData.bash.offBash, t("chart.title.offBash")],
-            [false, chartData.bash.defBash, t("chart.title.defBash")],
+            [false, chartData?.bash.gesBash, t("chart.title.gesBash")],
+            [false, chartData?.bash.offBash, t("chart.title.offBash")],
+            [false, chartData?.bash.defBash, t("chart.title.defBash")],
           ]}
           title={t('table-title.bashStats')}
-        />}
+        />
       </Row>
   )
 }

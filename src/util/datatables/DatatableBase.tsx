@@ -9,6 +9,7 @@ import {Dict} from "../customTypes";
 import {Col, Form, InputGroup, Row, Table} from "react-bootstrap";
 import DatatableHeaderBuilder from "./DatatableHeaderBuilder";
 import {useBreakpointIdx} from "../bootrapBreakpoints";
+import LoadingScreen from "../../pages/layout/LoadingScreen";
 
 
 export enum SORTING_DIRECTION {
@@ -147,62 +148,64 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
 
   return (
       <div>
-        <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort}}>
-          <Row className={"mb-2"}>
-            <Col xs={12} md={"auto"} className={"mb-2"}>
-              <InputGroup>
-                {lengthMenu_pre && <InputGroup.Text>{lengthMenu_pre}</InputGroup.Text>}
-                <Form.Select onChange={limitSelectCallback} defaultValue={limit}>
-                  {[10, 25, 50, 100].map(l => (
-                      <option key={l}>{l}</option>
-                  ))}
-                </Form.Select>
-                {lengthMenu_post && <InputGroup.Text>{lengthMenu_post}</InputGroup.Text>}
-              </InputGroup>
-            </Col>
-            {topBarMiddle}
-            {searching && <Col xs={12} md={"auto"} className={"ms-md-auto mb-2"}>
-              <InputGroup>
-                <InputGroup.Text>{t('sSearch')}</InputGroup.Text>
-                <Form.Control
+        <LoadingScreen>
+          <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort}}>
+            <Row className={"mb-2"}>
+              <Col xs={12} md={"auto"} className={"mb-2"}>
+                <InputGroup>
+                  {lengthMenu_pre && <InputGroup.Text>{lengthMenu_pre}</InputGroup.Text>}
+                  <Form.Select onChange={limitSelectCallback} defaultValue={limit}>
+                    {[10, 25, 50, 100].map(l => (
+                        <option key={l}>{l}</option>
+                    ))}
+                  </Form.Select>
+                  {lengthMenu_post && <InputGroup.Text>{lengthMenu_post}</InputGroup.Text>}
+                </InputGroup>
+              </Col>
+              {topBarMiddle}
+              {searching && <Col xs={12} md={"auto"} className={"ms-md-auto mb-2"}>
+                <InputGroup>
+                  <InputGroup.Text>{t('sSearch')}</InputGroup.Text>
+                  <Form.Control
                     placeholder={t('sSearch') ?? undefined}
                     aria-label={t('sSearch') ?? undefined}
                     onChange={searchChangeCallback}
-                />
-              </InputGroup>
-            </Col>}
-            {topBarEnd}
-          </Row>
-          <Row className={"mb-3" + (responsiveTable?" table-responsive":"")}>
-            <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""}>
-              {headerNode}
-              <tbody>
-              {
-                serverSide?
-                    <DatatableCoreServerSide<T>
-                        sort={sort as Array<[string, SORTING_DIRECTION]>}
-                        {...coreProps}
-                    />:
-                    <DatatableCoreClientSide<T>
-                        sort={sort as Array<[number, SORTING_DIRECTION]>}
-                        searchCB={(searching !== true && searching !== false)?searching:undefined}
-                        sortCB={headerSortCB}
-                        {...coreProps}
-                    />
-              }
-              </tbody>
-            </Table>
-          </Row>
-          <Row>
-            <Col xs={"auto"} className={"mb-2"}>
-              {t('sInfo', {start: nf.format(page*limit + 1), end: nf.format(Math.min((page+1) * limit, filteredCount)), total: nf.format(filteredCount)})}
-              {filteredCount !== totalCount && (" " + t('sInfoFiltered', {max: nf.format(totalCount)}))}
-            </Col>
-            <Col xs={"auto"} className={"ms-auto mb-2"}>
-              <Pagination pageCnt={Math.ceil(filteredCount / limit)} page={page} changePage={changePage} />
-            </Col>
-          </Row>
-        </DatatableContext.Provider>
+                  />
+                </InputGroup>
+              </Col>}
+              {topBarEnd}
+            </Row>
+            <Row className={"mb-3" + (responsiveTable?" table-responsive":"")}>
+              <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""}>
+                {headerNode}
+                <tbody>
+                {
+                  serverSide?
+                      <DatatableCoreServerSide<T>
+                          sort={sort as Array<[string, SORTING_DIRECTION]>}
+                          {...coreProps}
+                      />:
+                      <DatatableCoreClientSide<T>
+                          sort={sort as Array<[number, SORTING_DIRECTION]>}
+                          searchCB={(searching !== true && searching !== false)?searching:undefined}
+                          sortCB={headerSortCB}
+                          {...coreProps}
+                      />
+                }
+                </tbody>
+              </Table>
+            </Row>
+            <Row>
+              <Col xs={"auto"} className={"mb-2"}>
+                {t('sInfo', {start: nf.format(page*limit + 1), end: nf.format(Math.min((page+1) * limit, filteredCount)), total: nf.format(filteredCount)})}
+                {filteredCount !== totalCount && (" " + t('sInfoFiltered', {max: nf.format(totalCount)}))}
+              </Col>
+              <Col xs={"auto"} className={"ms-auto mb-2"}>
+                <Pagination pageCnt={Math.ceil(filteredCount / limit)} page={page} changePage={changePage} />
+              </Col>
+            </Row>
+          </DatatableContext.Provider>
+        </LoadingScreen>
       </div>
   )
 }

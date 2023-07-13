@@ -16,23 +16,23 @@ export default function PlayerCharts({playerData, worldData}: {playerData: playe
 
   return (
       <Row className={"justify-content-center"}>
-        {chartData && <ChartSection
+        <ChartSection
           charts={[
-            [false, chartData.general.points, t("chart.title.points")],
-            [true, chartData.general.rank, t("chart.title.rank")],
-            [false, chartData.general.village, t("chart.title.village")],
+            [false, chartData?.general.points, t("chart.title.points")],
+            [true, chartData?.general.rank, t("chart.title.rank")],
+            [false, chartData?.general.village, t("chart.title.village")],
           ]}
           title={t('table-title.general')}
-        />}
-        {chartData && <ChartSection
+        />
+        <ChartSection
           charts={[
-            [false, chartData.bash.gesBash, t("chart.title.gesBash")],
-            [false, chartData.bash.offBash, t("chart.title.offBash")],
-            [false, chartData.bash.defBash, t("chart.title.defBash")],
-            [false, chartData.bash.supBash, t("chart.title.supBash")],
+            [false, chartData?.bash.gesBash, t("chart.title.gesBash")],
+            [false, chartData?.bash.offBash, t("chart.title.offBash")],
+            [false, chartData?.bash.defBash, t("chart.title.defBash")],
+            [false, chartData?.bash.supBash, t("chart.title.supBash")],
           ]}
           title={t('table-title.bashStats')}
-        />}
+        />
       </Row>
   )
 }

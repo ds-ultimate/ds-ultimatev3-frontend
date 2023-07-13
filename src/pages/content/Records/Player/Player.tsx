@@ -13,6 +13,7 @@ import {overviewMap} from "../../../../apiInterface/apiConf";
 import PlayerCharts from "./PlayerCharts";
 import PlayerVillages from "./PlayerVillages";
 import {playerBasicDataType} from "../../../../modelHelper/Player";
+import LoadingScreen from "../../../layout/LoadingScreen";
 
 
 export default function PlayerPage() {
@@ -76,7 +77,9 @@ function ActivePlayerElement({playerData, worldData}: {playerData: playerBasicDa
   return (
       <>
         <StatsTabContainer playerData={playerData} worldData={worldData} />
-        <PlayerCharts playerData={playerData} worldData={worldData} />
+        <LoadingScreen darken>
+          <PlayerCharts playerData={playerData} worldData={worldData} />
+        </LoadingScreen>
         {worldData && <PlayerVillages player_id={playerData.cur.playerID} worldData={worldData} />}
       </>
   )

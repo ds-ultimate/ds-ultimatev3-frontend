@@ -16,9 +16,10 @@ import {newsType} from "../modelHelper/News";
 import {Dict} from "../util/customTypes";
 import {playerBasicDataType, playerChartDataType, playerType} from "../modelHelper/Player";
 import {allyBasicDataType, allyChartDataType, allyType} from "../modelHelper/Ally";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {villageBasicDataType} from "../modelHelper/Village";
 import {changelogType} from "../modelHelper/Changelog";
+import {LoadingScreenContext} from "../pages/layout/LoadingScreen";
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -66,30 +67,34 @@ class Dataloader<T> {
   }
 }
 
-function usePromisedData<T, V>(promise: (params: V) => Promise<T>, promiseParams: V) : [any, T | undefined] {
+function usePromisedData<T, V>(promise: (params: V) => Promise<T>, promiseParams: V, loadId: string) : [any, T | undefined] {
   const [{error, data}, setData] = useState<{error: any, data: T | undefined}>({error: null, data: undefined})
+  const setLoading = useContext(LoadingScreenContext)
 
   useEffect(() => {
     let mounted = true
+    setLoading(true, loadId)
     promise(promiseParams)
         .then(data => {
+          setLoading(false, loadId)
           if(mounted) {
             setData({data, error: null})
           }
         })
         .catch(reason => {
+          setLoading(false, loadId)
           setData({data: undefined, error: reason})
         })
     return () => {
       mounted = false
     }
-  }, [promise, promiseParams])
+  }, [promise, promiseParams, setLoading, loadId])
 
   return [error, data]
 }
 
-function useDefaultedPromisedData<T, V>(promise: (params: V) => Promise<T | undefined>, promiseParams: V, datDefault: T) : [any, T] {
-  let [err, dat] = usePromisedData(promise, promiseParams)
+function useDefaultedPromisedData<T, V>(promise: (params: V) => Promise<T | undefined>, promiseParams: V, datDefault: T, loadId: string) : [any, T] {
+  let [err, dat] = usePromisedData(promise, promiseParams, loadId)
   if(dat === undefined) dat = datDefault
   return [err, dat]
 }
@@ -113,7 +118,7 @@ const WORLDS_OF_SERVER_DEFAULT: worldsOfServerType = {worlds: []}
 export function useWorldsOfServer(server: string | undefined) {
   const prom = useCallback((params: {server: string | undefined}) => getWorldsOfServer(params), [])
   const params = useMemo(() => ({server}), [server])
-  return useDefaultedPromisedData(prom, params, WORLDS_OF_SERVER_DEFAULT)
+  return useDefaultedPromisedData(prom, params, WORLDS_OF_SERVER_DEFAULT, "worldPage")
 }
 
 type indexPageType = {servers: serverType[], news: newsType[]}
@@ -127,7 +132,7 @@ export function useIndexPageData(){
     indexPageCache = new Dataloader<indexPageType>(indexPage({}))
     return indexPageCache.getPromise()
   }, [])
-  return useDefaultedPromisedData(prom, null, INDEX_PAGE_DEFAULT)
+  return useDefaultedPromisedData(prom, null, INDEX_PAGE_DEFAULT, "indexPage")
 }
 
 let changelogPageCache: Dataloader<Array<changelogType>> | undefined = undefined
@@ -139,7 +144,7 @@ export function useChangelogPageData(){
     changelogPageCache = new Dataloader<Array<changelogType>>(changelogPage({}))
     return changelogPageCache.getPromise()
   }, [])
-  return useDefaultedPromisedData(prom, null, [])
+  return useDefaultedPromisedData(prom, null, [], "changelogPage")
 }
 
 type worldOverviewType = {player: playerType[], ally: allyType[], world?: worldType}
@@ -150,7 +155,7 @@ export function useWorldOverview(server: string | undefined, world: string | und
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world}), [server, world])
-  return useDefaultedPromisedData(prom, params, WORLD_OVERVIEW_DEFAULT)
+  return useDefaultedPromisedData(prom, params, WORLD_OVERVIEW_DEFAULT, "worldOverviewPage")
 }
 
 export function useWorldData(server: string | undefined, world: string | undefined) {
@@ -178,7 +183,7 @@ export function useWorldData(server: string | undefined, world: string | undefin
     })
   }, [])
   const params = useMemo(() => ({server, world}), [server, world])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "worldData")
 }
 
 let extendedWorldDataCache: Dict<Dataloader<worldExtendedType>> = {}
@@ -196,7 +201,7 @@ export function useExtendedWorldData(server: string | undefined, world: string |
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world}), [server, world])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "extendedWorldData")
 }
 
 let allyDataCache: Dict<Dataloader<allyBasicDataType>> = {}
@@ -214,7 +219,7 @@ export function useAllyData(server: string | undefined, world: string | undefine
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, ally}), [server, world, ally])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "allyData")
 }
 
 let allyChartDataCache: Dict<Dataloader<allyChartDataType>> = {}
@@ -232,7 +237,7 @@ export function useAllyChartData(server: string | undefined, world: string | und
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, ally}), [server, world, ally])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "allyChartData")
 }
 
 let playerDataCache: Dict<Dataloader<playerBasicDataType>> = {}
@@ -250,7 +255,7 @@ export function usePlayerData(server: string | undefined, world: string | undefi
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, player}), [server, world, player])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "playerData")
 }
 
 let playerChartDataCache: Dict<Dataloader<playerChartDataType>> = {}
@@ -268,7 +273,7 @@ export function usePlayerChartData(server: string | undefined, world: string | u
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, player}), [server, world, player])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "playerChartData")
 }
 
 let villageDataCache: Dict<Dataloader<villageBasicDataType>> = {}
@@ -286,5 +291,5 @@ export function useVillageData(server: string | undefined, world: string | undef
     return loader.getPromise()
   }, [])
   const params = useMemo(() => ({server, world, village}), [server, world, village])
-  return usePromisedData(prom, params)
+  return usePromisedData(prom, params, "villageData")
 }

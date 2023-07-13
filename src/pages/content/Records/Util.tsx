@@ -60,7 +60,7 @@ export function TopElement({val, date, bp}: {val: ReactNode, date: string, bp?: 
   )
 }
 
-export function ChartSection({charts, title, single}: {charts: Array<[boolean, chartDataType, ReactNode]>, title: ReactNode, single?:boolean}) {
+export function ChartSection({charts, title, single}: {charts: Array<[boolean, chartDataType | undefined, ReactNode]>, title: ReactNode, single?:boolean}) {
   const [selected, setSelected] = useState(0)
   const [inverted, selectedChart] = charts[selected]
 

@@ -13,6 +13,7 @@ import AllyHistPane from "./AllyHistPane";
 import {overviewMap} from "../../../../apiInterface/apiConf";
 import AllyCharts from "./AllyCharts";
 import AllyPlayer from "./AllyPlayer";
+import LoadingScreen from "../../../layout/LoadingScreen";
 
 export default function AllyPage() {
   const {server, world, ally} = useParams()
@@ -71,7 +72,9 @@ function ActiveAllyElement({allyData, worldData}: {allyData: allyBasicDataType, 
   return (
       <>
         <StatsTabContainer allyData={allyData} worldData={worldData} />
-        <AllyCharts allyData={allyData} worldData={worldData} />
+        <LoadingScreen darken>
+          <AllyCharts allyData={allyData} worldData={worldData} />
+        </LoadingScreen>
         {worldData && <AllyPlayer ally_id={allyData.cur.allyID} worldData={worldData} />}
       </>
   )
