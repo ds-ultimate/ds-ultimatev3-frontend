@@ -735,7 +735,6 @@
             "renderedAnimatedMap": "Own rendered animated maps"
         },
         "noTitle": "No title",
-        "siteNotFound": "Site not found",
         "notAllowed": "Forbidden",
         "notAllowedDesc": "You are not allowed to view this Page",
         "personalSettings": {
@@ -785,12 +784,6 @@
         "otherWorldsPlayerPopup": {},
         "errors": {
             "404": {
-                "noServer": "We couldn't find any data about the server ':server'",
-                "noWorld": "We couldn't find any data about the world ':world'",
-                "unknownType": "Unknown type ':type'",
-                "allyNotFound": "The tribe with the id ':ally' could not be found at world ':world'",
-                "playerNotFound": "The player with the id ':player' could not be found at world ':world'",
-                "villageNotFound": "The village with the id ':village' could not be found at world ':world'",
                 "widthTooSmall": "The width of the image is too small",
                 "heightTooSmall": "The height of the image is too small",
                 "noRoundFound": "There doesn't seem to be an active round currently on ':world'",

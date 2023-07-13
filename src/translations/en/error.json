@@ -1,0 +1,12 @@
+{
+  "404": {
+    "allyNotFound": "The tribe with the id '{{ally}}' could not be found at world '{{world}}'",
+    "generic": "This site could not be found",
+    "noServer": "We couldn't find any data about the server '{{server}}'",
+    "noWorld": "We couldn't find any data about the world '{{world}}'",
+    "playerNotFound": "The player with the id '{{player}}' could not be found at world '{{world}}'",
+    "title": "Site not found",
+    "unknownType": "Unknown type '{{type}}'",
+    "villageNotFound": "The village with the id '{{village}}' could not be found at world '{{world}}'"
+  }
+}

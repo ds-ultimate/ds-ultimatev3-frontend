@@ -14,6 +14,11 @@ import trans_cs_ui from "./translations/cs/ui.json"
 import trans_de_datatable from "./translations/de/datatable.json"
 import trans_en_datatable from "./translations/en/datatable.json"
 import trans_cs_datatable from "./translations/cs/datatable.json"
+
+import trans_de_error from "./translations/de/error.json"
+import trans_en_error from "./translations/en/error.json"
+import trans_cs_error from "./translations/cs/error.json"
+
 import Debugbar from "./util/Debugbar";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,7 +34,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // noinspection JSIgnoredPromiseFromCall
 i18next.use(LanguageDetector).init({
-  interpolation: { escapeValue: false },  // React already does escaping
+  interpolation: {
+    escapeValue: false, // React already handles escaping
+  },
   detection: {
     order: ['localStorage', 'navigator'],
     caches: ['localStorage']
@@ -38,14 +45,17 @@ i18next.use(LanguageDetector).init({
     de: {
       ui: trans_de_ui,
       datatable: trans_de_datatable,
+      error: trans_de_error,
     },
     en: {
       ui: trans_en_ui,
       datatable: trans_en_datatable,
+      error: trans_en_error,
     },
     cs: {
       ui: trans_cs_ui,
       datatable: trans_cs_datatable,
+      error: trans_cs_error,
     },
   },
 });

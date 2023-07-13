@@ -1,0 +1,12 @@
+{
+  "404": {
+    "allyNotFound": "Der Stamm mit der id '{{ally}}' konnte auf Welt '{{world}}' nicht gefunden werden",
+    "generic": "Diese Seite konnte nicht gefunden werden",
+    "noServer": "Keine Daten über den Server '{{server}}' vorhanden.",
+    "noWorld": "Keine Daten über die Welt '{{world}}' vorhanden.",
+    "playerNotFound": "Der Spieler mit der id '{{player}}' konnte auf Welt '{{world}}' nicht gefunden werden",
+    "title": "Seite nicht gefunden",
+    "unknownType": "Unbekannter typ '{{type}}'",
+    "villageNotFound": "Das Dorf mit der id '{{village}}' konnte auf Welt '{{world}}' nicht gefunden werden"
+  }
+}

@@ -14,6 +14,8 @@ $replacements = [
     "darkMode" => "darkmode",
     "ui.chart.title" => "chart.titel",
     "ui.chart" => "chart",
+    "error.404.title" => "ui.siteNotFound",
+    "error" => "ui.errors",
 ];
 
 $allow_errors = false;

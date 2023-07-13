@@ -60,6 +60,7 @@ function App() {
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>
               <Route path={RouteHolder.TEAM_PAGE} element={<TeamPage />}/>
+              {/*<Route component={NotFound} /> // without path*/}
             </Route>
           </Routes>
         </Suspense>

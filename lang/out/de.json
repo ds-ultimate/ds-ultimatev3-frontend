@@ -746,7 +746,6 @@
             "renderedAnimatedMap": "Eigene fertige animierte Karten"
         },
         "noTitle": "Kein Titel",
-        "siteNotFound": "Seite nicht gefunden",
         "notAllowed": "Unzul\u00e4ssig",
         "notAllowedDesc": "Du darfst diese Seite nicht betreten.",
         "personalSettings": {
@@ -796,12 +795,6 @@
         "otherWorldsPlayerPopup": {},
         "errors": {
             "404": {
-                "noServer": "Keine Daten \u00fcber den Server ':server' vorhanden.",
-                "noWorld": "Keine Daten \u00fcber die Welt ':world' vorhanden.",
-                "unknownType": "Unbekannter typ ':type'",
-                "allyNotFound": "Der Stamm mit der id ':ally' konnte auf Welt ':world' nicht gefunden werden",
-                "playerNotFound": "Der Spieler mit der id ':player' konnte auf Welt ':world' nicht gefunden werden",
-                "villageNotFound": "Das Dorf mit der id ':village' konnte auf Welt ':world' nicht gefunden werden",
                 "widthTooSmall": "Die Breite des Bildes ist zu klein",
                 "heightTooSmall": "Die H\u00f6he des Bildes ist zu klein",
                 "noRoundFound": "Aktuell l\u00e4uft auf der Welt ':world' keine Runde.",
