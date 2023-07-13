@@ -31,6 +31,7 @@ The Frontend uses [React](https://github.com/facebook/react)
 
 ## Open Source Libraries
 Libraries will only be listed here if they are not part of the package.json
+- Font [Nunito](https://fonts.google.com/specimen/Nunito/tester)
 - The Dark-Theme is based on [forevolve/bootstrap-dark](https://github.com/forevolve/bootstrap-dark)
 - The GIF-Generator uses [lvandeve/lodepng](https://github.com/lvandeve/lodepng)
 - The Changelog is based on [bootstrap-timeline](https://bootstrapthemes.co/item/bootstrap-timeline/)
