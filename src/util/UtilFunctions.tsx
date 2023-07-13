@@ -24,7 +24,7 @@ export function thousandsFormat(num: number) {
   }
 
   const suffix = thousandsSuffixes[exp];
-  const num_digits = Math.max(Math.floor(Math.log10(num + 0.01)), 0);
+  const num_digits = Math.min(Math.max(Math.floor(Math.log10(num + 0.01)), 0), 2);
   const result = num.toFixed(2 - num_digits)
   return result + " " + suffix;
 }
