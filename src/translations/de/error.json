@@ -1,4 +1,8 @@
 {
+  "403": {
+    "generic": "Du darfst diese Seite nicht betreten.",
+    "title": "Unzulässig"
+  },
   "404": {
     "allyNotFound": "Der Stamm mit der id '{{ally}}' konnte auf Welt '{{world}}' nicht gefunden werden",
     "generic": "Diese Seite konnte nicht gefunden werden",

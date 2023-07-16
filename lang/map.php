@@ -15,6 +15,8 @@ $replacements = [
     "ui.chart.title" => "chart.titel",
     "ui.chart" => "chart",
     "error.404.title" => "ui.siteNotFound",
+    "error.403.title" => "ui.notAllowed",
+    "error.403.generic" => "ui.notAllowedDesc",
     "error" => "ui.errors",
 ];
 

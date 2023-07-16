@@ -1,4 +1,8 @@
 {
+  "403": {
+    "generic": "You are not allowed to view this Page",
+    "title": "Forbidden"
+  },
   "404": {
     "allyNotFound": "The tribe with the id '{{ally}}' could not be found at world '{{world}}'",
     "generic": "This site could not be found",

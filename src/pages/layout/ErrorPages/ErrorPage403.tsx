@@ -4,15 +4,15 @@ import {Card, Col, Row} from "react-bootstrap";
 import {extractMessage} from "./ErrorTypes";
 
 
-export default function ErrorPage404({error}: {error: AxiosError}) {
+export default function ErrorPage403({error}: {error: AxiosError}) {
   const { t } = useTranslation("error")
-  //TODO log 404 at ? (create a concept for monitoring errors)
+  //TODO log 403 at ? (create a concept for monitoring errors)
 
-  let message = extractMessage(t("404.generic"), error, t)
+  let message = extractMessage(t("403.generic"), error, t)
   return (
       <Row className={"justify-content-center p-3"}>
         <Col xs={12} className={"p-lg-5 mx-auto my-1 text-center"}>
-          <h1 className={"fw-normal"}>404 {t("404.title")}</h1>
+          <h1 className={"fw-normal"}>404 {t("403.title")}</h1>
         </Col>
         <Col xs={12}>
           <Card>
@@ -25,13 +25,8 @@ export default function ErrorPage404({error}: {error: AxiosError}) {
   )
 }
 
-const DummyFunction = () => {
-  const { t } = useTranslation("error")
+/*const DummyFunction = () => {
+  const {t} = useTranslation("error")
   //tell translation interface that we need these
-  t("404.noServer")
-  t("404.noWorld")
-  t("404.allyNotFound")
-  t("404.playerNotFound")
-  t("404.villageNotFound")
-  t("404.unknownType")
-}
+  This will be used in the future
+}*/

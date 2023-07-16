@@ -1,4 +1,8 @@
 {
+  "403": {
+    "generic": "Nejste oprávněni zobrazit tuto stránku.",
+    "title": "Nepřípustné"
+  },
   "404": {
     "allyNotFound": "",
     "generic": "",

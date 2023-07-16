@@ -735,8 +735,6 @@
             "renderedAnimatedMap": "Own rendered animated maps"
         },
         "noTitle": "No title",
-        "notAllowed": "Forbidden",
-        "notAllowedDesc": "You are not allowed to view this Page",
         "personalSettings": {
             "title": "Settings",
             "profile": "Profile",
