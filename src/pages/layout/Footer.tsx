@@ -1,13 +1,15 @@
 import {Nav, NavItem} from "react-bootstrap";
-import React, {Key} from "react";
+import React, {Key, useContext} from "react";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
 import {CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../../util/routes";
 import {useTranslation} from "react-i18next";
+import {ResetCookieConsentContext} from "./CookieConsent"
 
 
 export default function Footer() {
   const { t } = useTranslation("ui")
+  const resetCookieConsent = useContext(ResetCookieConsentContext)
 
   const data: Array<[Key, string, string]> = [
     ["l", LEGAL_PAGE, t("footer.legalPage")],
@@ -17,6 +19,11 @@ export default function Footer() {
 
   return (
     <Nav className={"footer-bg footer-nav"}>
+      <Nav.Item>
+        <Nav.Link as={"button"} onClick={resetCookieConsent}>
+          <small>{t("footer.cookie")}</small>
+        </Nav.Link>
+      </Nav.Item>
       {data.map(d => <React.Fragment key={d[0]}>
         <Nav.Item>
           <Nav.Link as={Link} to={formatRoute(d[1], {})}>

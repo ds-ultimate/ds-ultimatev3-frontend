@@ -56,9 +56,18 @@
     "playerOwn": "",
     "won": ""
   },
+  "cookie": {
+    "acceptAll": "",
+    "acceptSelected": "",
+    "errorReports": "",
+    "essential": "",
+    "matomo": "",
+    "title": ""
+  },
   "darkMode": "",
   "footer": {
     "changelog": "",
+    "cookie": "",
     "legalPage": "",
     "team": ""
   },

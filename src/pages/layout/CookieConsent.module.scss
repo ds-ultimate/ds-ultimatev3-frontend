@@ -1,0 +1,23 @@
+@import '../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.cookieContainer {
+  position: relative;
+}
+
+.cookieDiv {
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0000007F;
+  display: flex;
+}
+
+.cookeDialog {
+  margin: auto;
+  border-radius: 5px;
+  padding: 1em;
+}

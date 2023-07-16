@@ -27,9 +27,9 @@ import "react-datepicker/dist/react-datepicker.css";
 //TODO: index.html -> import icons / Initial title / check everything
 //TODO: manifest.json -> rewrite this
 //TODO: robots.txt copy from current
-//TODO: matomo
+//TODO: matomo -> based on cookie settings
 //TODO: upload web vitals to matomo / own service
-//TODO: automatic exception reporting
+//TODO: automatic exception reporting -> based on cookie settings
 //TODO: workflow for compile & upload
 
 // noinspection JSIgnoredPromiseFromCall

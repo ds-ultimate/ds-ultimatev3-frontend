@@ -56,9 +56,18 @@
     "playerOwn": "Selbst Adelungen",
     "won": "Gewinne"
   },
+  "cookie": {
+    "acceptAll": "Alle akzeptieren",
+    "acceptSelected": "Ausgewählte akzeptieren",
+    "errorReports": "Automatische Fehlerberichte",
+    "essential": "Essentielle Funktionen",
+    "matomo": "Matomo Analytics",
+    "title": "Einwilligung zu Cookies & Datenverarbeitung"
+  },
   "darkMode": "Darkmode",
   "footer": {
     "changelog": "Changelog",
+    "cookie": "Cookie Einstellungen",
     "legalPage": "Impressum",
     "team": "Team"
   },

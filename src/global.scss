@@ -85,7 +85,7 @@ table {
     border-top: 1px solid black;
   }
 
-  .container {
+  .container, .container-bg {
     background-color: rgba(245, 245, 245, 0.87);
   }
 }
@@ -103,7 +103,7 @@ table {
     @extend .dark-img-bg;
   }
 
-  .container {
+  .container, .container-bg {
     background-color: rgba(37, 37, 37, 0.95) !important;
   }
 }

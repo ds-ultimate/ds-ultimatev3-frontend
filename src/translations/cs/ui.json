@@ -56,9 +56,18 @@
     "playerOwn": "Vlastní dobytí",
     "won": "Dobytí"
   },
+  "cookie": {
+    "acceptAll": "",
+    "acceptSelected": "",
+    "errorReports": "",
+    "essential": "",
+    "matomo": "",
+    "title": ""
+  },
   "darkMode": "Tmavý mód",
   "footer": {
     "changelog": "",
+    "cookie": "",
     "legalPage": "",
     "team": ""
   },

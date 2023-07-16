@@ -56,9 +56,18 @@
     "playerOwn": "Own conquers",
     "won": "Gain"
   },
+  "cookie": {
+    "acceptAll": "accept all",
+    "acceptSelected": "accept selected",
+    "errorReports": "automated error reports",
+    "essential": "essential functions",
+    "matomo": "Matomo analytics",
+    "title": "Consent to Cookies & Data processing"
+  },
   "darkMode": "darkmode",
   "footer": {
     "changelog": "changelog",
+    "cookie": "cookie preferences",
     "legalPage": "legal page",
     "team": "team"
   },

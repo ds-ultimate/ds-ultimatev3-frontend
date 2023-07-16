@@ -1,12 +1,12 @@
 import styles from "./LoadingScreen.module.scss"
-import {createContext, CSSProperties, useCallback, useState} from "react";
+import {createContext, CSSProperties, ReactNode, useCallback, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 
 export const LoadingScreenContext = createContext<(val: boolean, id: string) => void>((b, id) => {})
 
-export default function LoadingScreen({children, style, darken}: {children: JSX.Element, style?: CSSProperties, darken?: boolean}) {
+export default function LoadingScreen({children, style, className, darken}: {children?: ReactNode[] | ReactNode, style?: CSSProperties, className?: string, darken?: boolean}) {
   const [loading, setLoading] = useState<string[]>([])
   const loadingHelper = useCallback((val: boolean, id: string) => {
     if(val) {
@@ -23,7 +23,7 @@ export default function LoadingScreen({children, style, darken}: {children: JSX.
   }, [setLoading]);
 
   return (
-      <div className={styles.loadingContainer} style={style}>
+      <div className={styles.loadingContainer + (className?" "+className:"")} style={style}>
         {loading.length > 0 && <div className={styles.loadingDiv + " pt-5" + (darken?" " + styles.loadingDivDarken:"")}>
           <div className={styles.loadingSpin}>
             <FontAwesomeIcon icon={faSpinner} spin/>
