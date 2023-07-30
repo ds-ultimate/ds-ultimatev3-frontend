@@ -6,15 +6,16 @@ import {Card, Col, Table} from "react-bootstrap";
 import styles from "./record.module.scss";
 import {useBreakpointUp} from "../../../util/bootrapBreakpoints";
 import CustomChart, {chartDataType} from "../../../util/CustomChart";
+import {MatomoLink} from "../../../matomo"
 
 export function LinkAllyInGame({ally_id, worldData, guestMode, children}: {ally_id: number, worldData: worldType, guestMode?: boolean, children: ReactNode}) {
   const guestPart = guestMode?"guest":"game"
   const href = `${worldData.url}/${guestPart}.php?screen=info_ally&id=${ally_id}`
 
   return (
-      <a href={href} target={"_blank"} className={"btn btn-primary btn-sm ms-1"} rel={"noreferrer"}>
+      <MatomoLink as={"a"} params={{href, target: "_blank", className: "btn btn-primary btn-sm ms-1", rel: "noreferrer"}}>
         {children}
-      </a>
+      </MatomoLink>
   )
 }
 
@@ -23,9 +24,9 @@ export function LinkPlayerInGame({player_id, worldData, guestMode, children}: {p
   const href = `${worldData.url}/${guestPart}.php?screen=info_player&id=${player_id}`
 
   return (
-      <a href={href} target={"_blank"} className={"btn btn-primary btn-sm ms-1"} rel={"noreferrer"}>
+      <MatomoLink as={"a"} params={{href, target: "_blank", className: "btn btn-primary btn-sm ms-1", rel: "noreferrer"}}>
         {children}
-      </a>
+      </MatomoLink>
   )
 }
 
@@ -34,9 +35,9 @@ export function LinkVillageInGame({village_id, worldData, guestMode, children}: 
   const href = `${worldData.url}/${guestPart}.php?screen=info_village&id=${village_id}`
 
   return (
-      <a href={href} target={"_blank"} className={"btn btn-primary btn-sm ms-1"} rel={"noreferrer"}>
+      <MatomoLink as={"a"} params={{href, target: "_blank", className: "btn btn-primary btn-sm ms-1", rel: "noreferrer"}}>
         {children}
-      </a>
+      </MatomoLink>
   )
 }
 

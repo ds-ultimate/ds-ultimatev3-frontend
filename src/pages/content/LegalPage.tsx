@@ -3,6 +3,7 @@ import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
 import {INDEX} from "../../util/routes";
+import {MatomoLink} from "../../matomo"
 
 export default function LegalPage() {
   return (
@@ -29,14 +30,14 @@ export default function LegalPage() {
         Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br />
         Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br />
         <br />
-        Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der <a href="https://www.kanzlei-hasselbach.de/standorte/bonn/">Kanzlei Hasselbach, Bonn</a>
+        Impressum vom <MatomoLink as={"a"} params={{href: 'https://www.impressum-generator.de'}} >Impressum Generator</MatomoLink> der <MatomoLink as={"a"} params={{href: "https://www.kanzlei-hasselbach.de/standorte/bonn/"}}>Kanzlei Hasselbach, Bonn</MatomoLink>
         <br />
         <br />
         <h4><u>Datenschutzerklärung Matomo:</u></h4>
         <br />
         <b>Zweck der Datenverarbeitung</b>
         <p>
-          Diese Webseite verwendet <a href="https://matomo.org">Matomo</a>, eine Open Source, selbstgehostete Software um anonyme Nutzungsdaten für diese Webseite zu sammeln.
+          Diese Webseite verwendet <MatomoLink as={"a"} params={{href:"https://matomo.org"}}>Matomo</MatomoLink>, eine Open Source, selbstgehostete Software um anonyme Nutzungsdaten für diese Webseite zu sammeln.
           <br />
           Die Daten zum Verhalten der Besucher werden gesammelt um eventuelle Probleme wie nicht gefundene Seiten, Suchmaschinenprobleme oder unbeliebte Seiten herauszufinden. Sobald die Daten (Anzahl der Besucher die Fehlerseiten oder nur eine Seite sehen, usw.) verarbeitet werden, erzeugt Matomo Berichte für die Webseitenbetreiber, damit diese darauf reagieren können. (Layoutveränderungen, neue Inhalte, usw.)
           <br />
@@ -76,7 +77,7 @@ export default function LegalPage() {
           Die persönlichen Daten werden gesendet an:
           <ul>
             <li>Uns (das Team von <Link to={formatRoute(INDEX)}>DS-Ultimate</Link>)</li>
-            <li><a href="https://www.netcup.de/">Netcup</a> (Hoster des Servers)</li>
+            <li><MatomoLink as={"a"} params={{href: "https://www.netcup.de/"}}>Netcup</MatomoLink> (Hoster des Servers)</li>
           </ul>
         </p>
         <br />

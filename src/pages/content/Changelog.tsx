@@ -7,6 +7,7 @@ import {faClock} from "@fortawesome/free-solid-svg-icons";
 import {ChangelogIcon, changelogType} from "../../modelHelper/Changelog";
 import ErrorPage from "../layout/ErrorPage";
 import {useChangelogPageData} from "../../apiInterface/loadContent";
+import {MatomoLink} from "../../matomo"
 
 export default function ChangelogPage() {
   const [dataErr, data] = useChangelogPageData()
@@ -60,9 +61,9 @@ function Timeline({data}: {data: changelogType[]}) {
                       </p>
                       {d.repository_html_url && (
                           <p className={"float-end"}>
-                            <a className={"link-black"} style={{color: "black", fontSize: "1.75em"}} href={d.repository_html_url} target="_blank" rel={"noreferrer"}>
+                            <MatomoLink as={"a"} params={{className: "link-black", style: {color: "black", fontSize: "1.75em"}, href: d.repository_html_url, target: "_blank", rel: "noreferrer"}}>
                               <FontAwesomeIcon icon={faGithub} />
-                            </a>
+                            </MatomoLink>
                           </p>
                       )}
                     </div>

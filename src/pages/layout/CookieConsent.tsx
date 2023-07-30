@@ -11,8 +11,7 @@ export const ResetCookieConsentContext = createContext<() => void>(() => {})
 const all = ["matomo", "errorReports"]
 
 export default function CookieConsent({children, style, className}: {children?: ReactNode[] | ReactNode, style?: CSSProperties, className?: string}) {
-  const [[consented], _all, setConsented] =
-      usePersistentState<[string[], boolean], null>("cookie-consent", [[[], false], null])
+  const [consented, setConsented] = usePersistentState<[string[], boolean]>("cookie-consent", [[], false])
   const { t } = useTranslation("ui")
 
   const resetConsent = useCallback(() => {

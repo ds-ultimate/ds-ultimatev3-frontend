@@ -7,47 +7,30 @@ function isCallback<T, P extends Array<any>>(maybeFunction: T | ((...args: P) =>
 
 type setState<S> = (value: S | ((oldState: S) => S)) => void
 
-export default function usePersistentState<P, V>(
+export default function usePersistentState<P>(
     key: string,
-    initialValue: [P, V]
-): [[P, V], setState<[P, V]>, setState<P>, setState<V>] {
-  const [state, setInternalState] = useState<[P, V]>(() => {
+    initialValue: P | (() => P)
+): [P, setState<P>] {
+  const [state, setInternalState] = useState<P>(() => {
     const value = localStorage.getItem(key)
-    if (!value) return initialValue
-    return [JSON.parse(value), initialValue[1]]
+    if (!value) {
+      const initVal = isCallback(initialValue)?initialValue():initialValue
+      localStorage.setItem(key, JSON.stringify(initVal))
+      return initVal
+    }
+    return (JSON.parse(value)) as P
   })
 
-  const setState = useCallback((value: [P, V] | ((oldState: [P, V]) => [P, V])) => {
-    setInternalState(oldState => {
-      let newVal = value
-      if(isCallback(newVal)) {
-        newVal = newVal(oldState)
-      }
-      localStorage.setItem(key, JSON.stringify(newVal[0]))
-      return newVal
-    })
-  }, [key])
-
   const setPersistent = useCallback((value: P | ((oldState: P) => P)) => {
-    setInternalState(([oldP, oldV]) => {
+    setInternalState(oldP => {
       let newVal = value
       if(isCallback(newVal)) {
         newVal = newVal(oldP)
       }
       localStorage.setItem(key, JSON.stringify(newVal))
-      return [newVal, oldV]
+      return newVal
     })
   }, [key])
 
-  const setVolatile = useCallback((value: V | ((oldState: V) => V)) => {
-    setInternalState(([oldP, oldV]) => {
-      let newVal = value
-      if(isCallback(newVal)) {
-        newVal = newVal(oldV)
-      }
-      return [oldP, newVal]
-    })
-  }, [])
-
-  return [state, setState, setPersistent, setVolatile]
+  return [state, setPersistent]
 }

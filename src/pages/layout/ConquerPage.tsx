@@ -111,7 +111,7 @@ function toggleInArray<T>(arr: T[], dat: T) {
 
 function useConquerHighlightComponent(highlightPossible: conquerChangeType[], saveAt: string): [conquerChangeType[], ReactNode] {
   const { t } = useTranslation("ui")
-  const [[, allowedHighlight], , ,setAllowedHighlight] = usePersistentState(saveAt, [null, highlightPossible])
+  const [allowedHighlight, setAllowedHighlight] = usePersistentState<conquerChangeType[]>(saveAt, highlightPossible)
 
   return [allowedHighlight, (
       <Row className={"mb-2"}>

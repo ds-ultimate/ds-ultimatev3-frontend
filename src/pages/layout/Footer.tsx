@@ -5,6 +5,7 @@ import {formatRoute} from "../../util/router";
 import {CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../../util/routes";
 import {useTranslation} from "react-i18next";
 import {ResetCookieConsentContext} from "./CookieConsent"
+import {MatomoLink} from "../../matomo"
 
 
 export default function Footer() {
@@ -33,9 +34,9 @@ export default function Footer() {
         <NavItem><small className={"nav-link"}>-</small></NavItem>
       </React.Fragment>)}
       <Nav.Item>
-        <Nav.Link as={"a"} href={"https://discord.gg/g3AqvaWhkg"}>
+        <MatomoLink as={Nav.Link} params={{as: "a", href: "https://discord.gg/g3AqvaWhkg"}}>
           <small>Discord</small>
-        </Nav.Link>
+        </MatomoLink>
       </Nav.Item>
     </Nav>
   )

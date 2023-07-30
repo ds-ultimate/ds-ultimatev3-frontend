@@ -4,7 +4,7 @@ import DatatableCoreClientSide from "./DatatableCoreClientSide";
 import Pagination from "./Pagination";
 import {useTranslation} from "react-i18next";
 import {nf} from "../UtilFunctions";
-import usePersistentState from "../persitentState";
+import useMixedState from "../mixedState";
 import {Dict} from "../customTypes";
 import {Col, Form, InputGroup, Row, Table} from "react-bootstrap";
 import DatatableHeaderBuilder from "./DatatableHeaderBuilder";
@@ -67,7 +67,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
                                            responsiveTable, striped, searching, ...unusedProps}: paramsType<T>) {
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
-      usePersistentState<persistentStateType, volatileStateType>("datatable." + saveAs,
+      useMixedState<persistentStateType, volatileStateType>("datatable." + saveAs,
           [{limit: 10, sort: (defaultSort)?[defaultSort]:[]}, {page: 0, totalCount: 1, filteredCount: 1}])
 
   const itemCntCallback = useCallback((totalCount: number, filteredCount: number) => {

@@ -27,7 +27,6 @@ import "react-datepicker/dist/react-datepicker.css";
 //TODO: index.html -> import icons / Initial title / check everything
 //TODO: manifest.json -> rewrite this
 //TODO: robots.txt copy from current
-//TODO: matomo -> based on cookie settings
 //TODO: upload web vitals to matomo / own service
 //TODO: automatic exception reporting -> based on cookie settings
 //TODO: workflow for compile & upload
@@ -64,12 +63,12 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <App/>
-      <Debugbar />
-    </I18nextProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+      <I18nextProvider i18n={i18next}>
+        <App/>
+        <Debugbar />
+      </I18nextProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../../util/routes";
 import {nf} from "../../util/UtilFunctions";
-import {Button, Card, Col, Collapse, Row, Table} from "react-bootstrap";
+import {Button, Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./Server.module.scss"
 import ErrorPage from "../layout/ErrorPage";
@@ -36,12 +36,12 @@ function WorldTypeSection({data, header, server, type}: {data: worldType[], head
                           onClick={() => setIsOpen((old_open) => !old_open)}
                   >{t('showMoreWorlds')}</Button>
                 </Col>
-                <Collapse in={isOpen}>
+                {isOpen &&
                   <div id={type + "-inactive-col"}>
                     <Card.Title as={"h2"}>{header + ' ' + t('archive')}:</Card.Title>
                     <WorldTable data={inactiveData} server={server}/>
                   </div>
-                </Collapse>
+                }
               </>
             }
           </Card.Body>

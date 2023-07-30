@@ -9,6 +9,7 @@ import {Card, Carousel, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./Index.module.scss"
 import ErrorPage from "../layout/ErrorPage";
+import MatomoLink from "../../matomo/MatomoLink"
 
 export default function IndexPage() {
   const [dataErr, data] = useIndexPageData()
@@ -48,7 +49,7 @@ export default function IndexPage() {
           <tr key={s.code}>
             <td><ServerFlag server={s} /></td>
             <td>{s.code}</td>
-            <td className={styles.dsLinkTruncate}><a href={s.url}>{s.url}</a></td>
+            <td className={styles.dsLinkTruncate}><MatomoLink as={"a"} params={{href: s.url}}>{s.url}</MatomoLink></td>
             <td>{s.world_cnt}</td>
             <td><Link to={formatRoute(SERVER, {server: s.code})} className={"btn btn-primary btn-sm"}>{t('server.show')}</Link></td>
           </tr>
