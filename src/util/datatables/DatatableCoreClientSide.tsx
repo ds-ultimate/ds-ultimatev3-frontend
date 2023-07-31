@@ -3,6 +3,7 @@ import axios from "axios";
 import {coreProps, SORTING_DIRECTION} from "./DatatableBase";
 import DatatableBodyRender from "./DatatableBodyRenderer";
 import {LoadingScreenContext} from "../../pages/layout/LoadingScreen";
+import {useErrorBoundary} from "react-error-boundary"
 
 interface paramsType<T> extends coreProps<T> {
   sort: Array<[number, SORTING_DIRECTION]>,
@@ -14,28 +15,28 @@ export default function DatatableCoreClientSide<T>({api, page, limit, itemCntCal
                                                      sortCB, searchCB, ...bodyProps}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
   const setLoading = useContext(LoadingScreenContext)
+  const { showBoundary } = useErrorBoundary()
 
   useEffect(() => {
     let mounted = true
-    setLoading(true, "ServerCore")
+    setLoading(true, "ClientCore")
 
     axios.get(api, {params: api_params})
         .then((resp) => {
-          setLoading(false, "ServerCore")
+          setLoading(false, "ClientCore")
           if(mounted) {
             setData(resp.data.data)
             itemCntCallback(resp.data.data.length, resp.data.data.length)
           }
         })
         .catch((reason) => {
-          setLoading(false, "ServerCore")
-          //TODO show error to user
-          console.log(reason)
+          setLoading(false, "ClientCore")
+          showBoundary(reason)
         })
     return () => {
       mounted = false
     }
-  }, [api, api_params, itemCntCallback, setLoading])
+  }, [api, api_params, itemCntCallback, setLoading, showBoundary])
 
   const filtered = useMemo(() => {
     if(data === undefined) return undefined

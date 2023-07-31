@@ -4,6 +4,7 @@ import {useCallback, useState} from "react";
 import axios from "axios";
 
 import "./bootstrapSelect.scss"
+import {useErrorBoundary} from "react-error-boundary"
 
 type OptionType = {
   value: number,
@@ -28,6 +29,8 @@ type loadType = {
 
 export default function BootstrapSelect({onChange, api, initialValue}: bootstrapSelectOptions) {
   const [value, onChangeInt] = useState<OptionType | null>(initialValue ?? null);
+  const { showBoundary } = useErrorBoundary()
+
   const loadOptions = useCallback((search: string, loadedOptions: any, additional: additionalProps | undefined) => {
     if(api === undefined) {
       return {
@@ -53,11 +56,10 @@ export default function BootstrapSelect({onChange, api, initialValue}: bootstrap
           },
         })
       }).catch(reason => {
-        console.log(reason)
-        //TODO error handling
+        showBoundary(reason)
       })
     })
-  }, [api])
+  }, [showBoundary, api])
 
   return (
       <AsyncPaginate

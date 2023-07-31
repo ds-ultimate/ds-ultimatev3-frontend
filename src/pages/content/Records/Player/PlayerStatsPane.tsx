@@ -16,6 +16,7 @@ import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import {playerWorldPopup} from "../../../../apiInterface/apiConf";
 import PlayerSignature from "./PlayerSignature";
+import {useErrorBoundary} from "react-error-boundary"
 
 type paramType = {
   data: playerType,
@@ -116,6 +117,7 @@ export function OtherWorldElement({world, player_id}: {world: worldType | undefi
   const [popupData, setPopupData] = useState<{top: playerTopType} | undefined>(undefined)
   const [loading, setLoading] = useState<boolean>(false)
   const {t} = useTranslation("ui")
+  const { showBoundary } = useErrorBoundary()
 
   const popupContent = useMemo(() => {
     if(popupData === undefined) {
@@ -141,10 +143,10 @@ export function OtherWorldElement({world, player_id}: {world: worldType | undefi
             setPopupData(value.data)
           })
           .catch(reason => {
-            //TODO frontend error handling
+            showBoundary(reason)
           })
     }
-  }, [world, player_id, popupData, loading])
+  }, [world, player_id, popupData, loading, showBoundary])
 
   if(world === undefined) {
     return null

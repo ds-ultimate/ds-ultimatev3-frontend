@@ -23,6 +23,9 @@ const requestGenerator = (uri: string) => {
   }
 }
 
+
+export const errorReporting = apiRequestGenerator("error")
+
 //Various data
 export const indexPage = apiRequestGenerator("indexPage")
 export const changelogPage = apiRequestGenerator("changelogPage")

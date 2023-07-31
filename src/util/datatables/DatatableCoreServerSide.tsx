@@ -3,6 +3,7 @@ import axios from "axios";
 import {coreProps, SORTING_DIRECTION} from "./DatatableBase";
 import DatatableBodyRender from "./DatatableBodyRenderer";
 import {LoadingScreenContext} from "../../pages/layout/LoadingScreen";
+import {useErrorBoundary} from "react-error-boundary"
 
 interface paramsType<T> extends coreProps<T> {
   sort: Array<[string, SORTING_DIRECTION]>,
@@ -12,6 +13,7 @@ export default function DatatableCoreServerSide<T>({api, page, limit, itemCntCal
                                                    ...bodyProps}: paramsType<T>) {
   const [data, setData] = useState<T[]>()
   const setLoading = useContext(LoadingScreenContext)
+  const { showBoundary } = useErrorBoundary()
 
   useEffect(() => {
     let mounted = true
@@ -28,13 +30,12 @@ export default function DatatableCoreServerSide<T>({api, page, limit, itemCntCal
         })
         .catch((reason) => {
           setLoading(false, "ServerCore")
-          //TODO show error to user
-          console.log(reason)
+          showBoundary(reason)
         })
     return () => {
       mounted = false
     }
-  }, [api, page, limit, itemCntCallback, sort, search, api_params, setLoading])
+  }, [api, page, limit, itemCntCallback, sort, search, api_params, setLoading, showBoundary])
 
   return <DatatableBodyRender data={data} {...bodyProps}/>
 }

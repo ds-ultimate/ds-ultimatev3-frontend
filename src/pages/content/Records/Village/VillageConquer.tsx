@@ -7,6 +7,7 @@ import {useVillageData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
 import {villageConquerTable} from "../../../../apiInterface/apiConf";
 import {DecodeName} from "../../../../util/UtilFunctions";
+import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 
 const highlightPossible: conquerChangeType[] = [
   conquerChangeType.SELF,
@@ -41,8 +42,13 @@ export default function VillageConquerPage() {
   if(type === "all") {
     typeName = t("conquer.all")
   } else {
-    //TODO localized error messages see TODO in backend for ideas
-    return <ErrorPage error={"conquererr"} />
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.unknownType",
+      p: {type},
+    }
+    return <ErrorPage error={errData} />
   }
 
   const who = <>{villageData?.data && <DecodeName name={villageData.data.name} />}</>

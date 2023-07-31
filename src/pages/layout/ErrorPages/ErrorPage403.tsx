@@ -1,12 +1,11 @@
 import {AxiosError} from "axios";
 import {useTranslation} from "react-i18next";
 import {Card, Col, Row} from "react-bootstrap";
-import {extractMessage} from "./ErrorTypes";
+import {extractMessage, FrontendError} from "./ErrorTypes";
 
 
-export default function ErrorPage403({error}: {error: AxiosError}) {
+export default function ErrorPage403({error}: {error: AxiosError | FrontendError}) {
   const { t } = useTranslation("error")
-  //TODO log 403 at ? (create a concept for monitoring errors)
 
   let message = extractMessage(t("403.generic"), error, t)
   return (

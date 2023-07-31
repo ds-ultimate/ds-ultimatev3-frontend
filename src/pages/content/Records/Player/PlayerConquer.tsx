@@ -7,6 +7,7 @@ import {usePlayerData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
 import {playerConquerTable} from "../../../../apiInterface/apiConf";
 import {DecodeName} from "../../../../util/UtilFunctions";
+import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 
 const highlightPossible: conquerChangeType[] = [
   conquerChangeType.SELF,
@@ -56,8 +57,13 @@ export default function PlayerConquerPage() {
     typeName = t("conquer.playerOwn")
     reducedFilters = filterPossible.filter(value => value !== FILTER_OPTIONS.OLD_PLAYER && value !== FILTER_OPTIONS.NEW_PLAYER)
   } else {
-    //TODO localized error messages see TODO in backend for ideas
-    return <ErrorPage error={"conquererr"} />
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.unknownType",
+      p: {type},
+    }
+    return <ErrorPage error={errData} />
   }
 
   const who = <>{playerData?.cur && <DecodeName name={playerData.cur.name} />}</>

@@ -7,6 +7,7 @@ import {conquerChangeType, highlightRefType} from "../../modelHelper/Conquer";
 import {worldConquerTable} from "../../apiInterface/apiConf";
 import ErrorPage from "../layout/ErrorPage";
 import React from "react";
+import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
 
 const highlightPossible: conquerChangeType[] = [
   conquerChangeType.SELF,
@@ -42,8 +43,13 @@ export default function WorldConquerPage() {
   if(type === "all") {
     typeName = t("conquer.all")
   } else {
-    //TODO localized error messages see TODO in backend for ideas
-    return <ErrorPage error={"conquererr"} />
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.unknownType",
+      p: {type},
+    }
+    return <ErrorPage error={errData} />
   }
 
   const who = <>{worldData && <WorldDisplayName world={worldData} />}</>

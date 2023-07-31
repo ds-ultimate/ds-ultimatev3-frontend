@@ -10,7 +10,7 @@ const delay = (ms: number) => new Promise(
 export function sendTrackingPayload(data: MatomoContextType, payload: Dict<string>) {
   return axios.post(data.trackUrl, {}, {params: payload, headers: {Authorization: null}})
       .catch(reason => {
-        //TODO log error somewhere
+        //TODO log error somewhere or just disable matomo for that session (needs to be decided)
         console.log("Tracking error", reason)
       })
 }
