@@ -4,6 +4,13 @@ import ErrorPage403 from "./ErrorPages/ErrorPage403";
 import {errorReporting} from "../../apiInterface/apiConf"
 import {FrontendError} from "./ErrorPages/ErrorTypes"
 
+export const GenericFrontendError: FrontendError = {
+  isFrontend: true,
+  code: 500,
+  k: "500.generic", //TODO translations for this
+  p: {},
+}
+
 export default function ErrorPage({error}: {error: any}) {
   //TODO this page should act as a hub for: Maintenance Mode (world / global)
   //503 world -> translated (503.worldDown with p:{world:string}) ; 503 global without translation

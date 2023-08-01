@@ -6,6 +6,7 @@ import ErrorPage from "../../../layout/ErrorPage";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import AllyChangePage, {FILTER_OPTIONS} from "../AllyChangePage";
 import {playerAllyChangeTable} from "../../../../apiInterface/apiConf";
+import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 
 const filterPossible = [
   FILTER_OPTIONS.OLD_ALLY,
@@ -24,7 +25,13 @@ export default function PlayerAllyChangePage() {
     typeName = t("allyChanges.all")
     reducedFilters = filterPossible.slice()
   } else {
-    return <ErrorPage error={"allyChangeErr"} />
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.unknownType",
+      p: {type},
+    }
+    return <ErrorPage error={errData} />
   }
 
   const who = <>{<DecodeName name={playerData?.cur?.name ?? playerData?.top?.name ?? ""} />}</>

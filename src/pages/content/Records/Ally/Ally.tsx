@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {useAllyData, useWorldData} from "../../../../apiInterface/loadContent";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
-import ErrorPage from "../../../layout/ErrorPage";
+import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import AllyStatsPane from "./AllyStatsPane";
 import AllyTopStatsPane from "./AllyTopStatsPane";
 import {allyBasicDataType} from "../../../../modelHelper/Ally";
@@ -56,7 +56,7 @@ export default function AllyPage() {
 }
 
 function DeletedAllyElement({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {
-  if(! allyData.top) return <ErrorPage error={"internalerr"} />
+  if(! allyData.top) return <ErrorPage error={GenericFrontendError} />
   return (
       <Card>
         <Card.Body>
@@ -68,7 +68,7 @@ function DeletedAllyElement({allyData, worldData}: {allyData: allyBasicDataType,
 }
 
 function ActiveAllyElement({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {
-  if(! allyData.cur) return <ErrorPage error={"internalerr"} />
+  if(! allyData.cur) return <ErrorPage error={GenericFrontendError} />
   return (
       <>
         <StatsTabContainer allyData={allyData} worldData={worldData} />
@@ -83,7 +83,7 @@ function ActiveAllyElement({allyData, worldData}: {allyData: allyBasicDataType, 
 function StatsTabContainer({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {
   const {t} = useTranslation("ui")
 
-  if(! allyData.cur) return <ErrorPage error={"internalerr"} />
+  if(! allyData.cur) return <ErrorPage error={GenericFrontendError} />
   return (
       <Card>
         <Tab.Container defaultActiveKey={"stats"}>

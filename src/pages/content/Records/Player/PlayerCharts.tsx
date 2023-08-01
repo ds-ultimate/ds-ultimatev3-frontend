@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
 import {Row} from "react-bootstrap";
-import ErrorPage from "../../../layout/ErrorPage";
+import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import {playerBasicDataType} from "../../../../modelHelper/Player";
 import {worldType} from "../../../../modelHelper/World";
 import {usePlayerChartData} from "../../../../apiInterface/loadContent";
@@ -11,7 +11,7 @@ export default function PlayerCharts({playerData, worldData}: {playerData: playe
   const {t} = useTranslation("ui")
   const [chartErr, chartData] = usePlayerChartData(worldData?.server__code, worldData?.name, playerData.cur?.playerID + "")
 
-  if(! playerData.cur) return <ErrorPage error={"internalerr"} />
+  if(! playerData.cur) return <ErrorPage error={GenericFrontendError} />
   if(chartErr) return <ErrorPage error={chartErr} />
 
   return (

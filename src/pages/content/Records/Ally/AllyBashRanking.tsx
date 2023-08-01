@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import React, {useMemo} from "react";
 import {useAllyData, useWorldData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
-import {DecodeName, nf, thousandsFormat} from "../../../../util/UtilFunctions";
+import {DecodeName, nf, rawDecodeName, thousandsFormat} from "../../../../util/UtilFunctions";
 import {allyPlayerTable} from "../../../../apiInterface/apiConf";
 import {Card, Col, Row} from "react-bootstrap";
 import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
@@ -11,6 +11,7 @@ import {LinkPlayer, playerType} from "../../../../modelHelper/Player";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import {filterPlayerCallback} from "./AllyPlayer";
 import {allyType} from "../../../../modelHelper/Ally";
+import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 
 export default function AllyBashRankingPage() {
   const {server, world, ally} = useParams()
@@ -21,7 +22,15 @@ export default function AllyBashRankingPage() {
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(allyErr) return <ErrorPage error={allyErr} />
-  if(allyData?.top && allyData.cur === undefined) return <ErrorPage error={"allyNotFound"} />
+  if(allyData?.top && allyData.cur === null) {
+    const err: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.allyDisbanded",
+      p: {world: (server??"") + (world??""), ally: rawDecodeName(allyData.top.name)},
+    }
+    return <ErrorPage error={err} />
+  }
 
   return (
       <Row className="justify-content-center">

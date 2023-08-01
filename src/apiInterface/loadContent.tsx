@@ -20,6 +20,7 @@ import {useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {villageBasicDataType} from "../modelHelper/Village";
 import {changelogType} from "../modelHelper/Changelog";
 import {LoadingScreenContext} from "../pages/layout/LoadingScreen";
+import {FrontendError} from "../pages/layout/ErrorPages/ErrorTypes"
 
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
@@ -173,11 +174,16 @@ export function useWorldData(server: string | undefined, world: string | undefin
             if(w) {
               resolve(w)
             } else {
-              reject("world.not_found") //TODO good error handling (reject with user visible error)
+              const error: FrontendError = {
+                isFrontend: true,
+                code: 404,
+                k: "404.noWorld",
+                p: {world: server + world}
+              }
+              reject(error)
             }
           })
           .catch(reason => {
-            console.log("FIXME: Reason:", reason) //TODO good error handling (reject with user visible error)
             reject(reason)
           })
     })

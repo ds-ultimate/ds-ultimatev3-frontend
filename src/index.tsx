@@ -24,6 +24,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 //TODO: icons with different sizes
 //TODO: index.html -> import icons / Initial title / check everything
+//TODO: set the title based on the current page (just document.title)
 //TODO: manifest.json -> rewrite this
 //TODO: robots.txt copy from current
 //TODO: workflow for compile & upload

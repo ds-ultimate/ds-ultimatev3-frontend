@@ -6,10 +6,15 @@ import {Placement} from "react-bootstrap/types";
 
 export const nf = new Intl.NumberFormat("de-DE")
 
+
+export function rawDecodeName(name: string) {
+  return decodeURIComponent(name).replaceAll("+", " ")
+}
+
 export function DecodeName({name}: {name: string}) {
   return (
       <>
-        {decodeURIComponent(name).replaceAll("+", " ")}
+        {rawDecodeName(name)}
       </>
   )
 }

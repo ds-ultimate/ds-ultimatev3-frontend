@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {usePlayerData, useWorldData, useWorldsOfServer} from "../../../../apiInterface/loadContent";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
-import ErrorPage from "../../../layout/ErrorPage";
+import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import PlayerStatsPane from "./PlayerStatsPane";
 import PlayerTopStatsPane from "./PlayerTopStatsPane";
 import {worldType} from "../../../../modelHelper/World";
@@ -58,7 +58,7 @@ export default function PlayerPage() {
 function DeletedPlayerElement({playerData, worldData}: {playerData: playerBasicDataType, worldData: worldType | undefined}) {
   const [serWorldsErr, serWorld] = useWorldsOfServer(worldData?.server__code)
 
-  if(! playerData.top) return <ErrorPage error={"internalerr"} />
+  if(! playerData.top) return <ErrorPage error={GenericFrontendError} />
   if(serWorldsErr) return <ErrorPage error={serWorldsErr} />
 
   return (
@@ -73,7 +73,7 @@ function DeletedPlayerElement({playerData, worldData}: {playerData: playerBasicD
 }
 
 function ActivePlayerElement({playerData, worldData}: {playerData: playerBasicDataType, worldData: worldType | undefined}) {
-  if(! playerData.cur) return <ErrorPage error={"internalerr"} />
+  if(! playerData.cur) return <ErrorPage error={GenericFrontendError} />
   return (
       <>
         <StatsTabContainer playerData={playerData} worldData={worldData} />
@@ -90,7 +90,7 @@ function StatsTabContainer({playerData, worldData}: {playerData: playerBasicData
   const [serWorldsErr, serWorld] = useWorldsOfServer(worldData?.server__code)
 
   if(serWorldsErr) return <ErrorPage error={serWorldsErr} />
-  if(! playerData.cur) return <ErrorPage error={"internalerr"} />
+  if(! playerData.cur) return <ErrorPage error={GenericFrontendError} />
 
   return (
       <Card>

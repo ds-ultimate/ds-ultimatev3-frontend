@@ -4,6 +4,7 @@
     "title": "Forbidden"
   },
   "404": {
+    "allyDisbanded": "The tribe '{{ally}}' has been disbanded at world '{{world}}'",
     "allyNotFound": "The tribe with the id '{{ally}}' could not be found at world '{{world}}'",
     "generic": "This site could not be found",
     "noServer": "We couldn't find any data about the server '{{server}}'",

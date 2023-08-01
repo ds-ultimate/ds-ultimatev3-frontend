@@ -5,17 +5,23 @@ import styles from "./CookieConsent.module.scss"
 import {useTranslation} from "react-i18next"
 
 
-const CookieConsentContext = createContext<[string[], boolean]>([[], false])
+enum ConsentVersion {
+  V1,
+}
+
+const CURRENT_VERSION = ConsentVersion.V1
+
+const CookieConsentContext = createContext<[string[], boolean, ConsentVersion]>([[], false, CURRENT_VERSION])
 export const ResetCookieConsentContext = createContext<() => void>(() => {})
 
 const all = ["matomo", "errorReports"]
 
 export default function CookieConsent({children, style, className}: {children?: ReactNode[] | ReactNode, style?: CSSProperties, className?: string}) {
-  const [consented, setConsented] = usePersistentState<[string[], boolean]>("cookie-consent", [[], false])
+  const [consented, setConsented] = usePersistentState<[string[], boolean, ConsentVersion]>("cookie-consent", [[], false, CURRENT_VERSION])
   const { t } = useTranslation("ui")
 
   const resetConsent = useCallback(() => {
-    setConsented(old => [old[0], false])
+    setConsented(old => [old[0], false, CURRENT_VERSION])
   }, [setConsented])
   const setConsent = useCallback((id: string, val: boolean | undefined) => {
     setConsented((prevState) => {
@@ -27,12 +33,16 @@ export default function CookieConsent({children, style, className}: {children?: 
         if (!newState.includes(id)) {
           newState.push(id)
         }
-        return [newState, prevState[1]]
+        return [newState, prevState[1], CURRENT_VERSION]
       } else {
-        return [prevState[0].filter(v => v !== id), prevState[1]]
+        return [prevState[0].filter(v => v !== id), prevState[1], CURRENT_VERSION]
       }
     })
   }, [setConsented])
+
+  if(consented[2] !== CURRENT_VERSION && consented[1]) {
+    resetConsent()
+  }
 
   return (
       <div className={styles.cookieContainer + (className?" "+className:"")} style={style}>
@@ -46,8 +56,8 @@ export default function CookieConsent({children, style, className}: {children?: 
                 <Form.Check type={"switch"} checked={consented[0].includes("errorReports")} onChange={() => setConsent("errorReports", undefined)} label={t("cookie.errorReports")}/>
                 <Form.Check type={"switch"} checked={consented[0].includes("matomo")} onChange={() => setConsent("matomo", undefined)} label={t("cookie.matomo")}/>
                 <div className={"mt-3 d-flex"}>
-                  <Button onClick={() => setConsented([all, true])} variant={"success"} className={"me-2"}>{t("cookie.acceptAll")}</Button>
-                  <Button onClick={() => setConsented(old => [old[0], true])} variant={"warning"} className={"ms-auto"}>{t("cookie.acceptSelected")}</Button>
+                  <Button onClick={() => setConsented([all, true, CURRENT_VERSION])} variant={"success"} className={"me-2"}>{t("cookie.acceptAll")}</Button>
+                  <Button onClick={() => setConsented(old => [old[0], true, CURRENT_VERSION])} variant={"warning"} className={"ms-auto"}>{t("cookie.acceptSelected")}</Button>
                 </div>
               </Form>
             </Card.Body>

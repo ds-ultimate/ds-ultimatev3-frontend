@@ -4,6 +4,7 @@
     "title": "Unzulässig"
   },
   "404": {
+    "allyDisbanded": "Der Stamm '{{ally}}' wurde auf Welt '{{world}}' aufgelöst",
     "allyNotFound": "Der Stamm mit der id '{{ally}}' konnte auf Welt '{{world}}' nicht gefunden werden",
     "generic": "Diese Seite konnte nicht gefunden werden",
     "noServer": "Keine Daten über den Server '{{server}}' vorhanden.",

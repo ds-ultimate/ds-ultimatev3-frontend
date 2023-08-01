@@ -30,6 +30,7 @@ const DummyFunction = () => {
   t("404.noServer")
   t("404.noWorld")
   t("404.allyNotFound")
+  t("404.allyDisbanded")
   t("404.playerNotFound")
   t("404.villageNotFound")
   t("404.unknownType")
