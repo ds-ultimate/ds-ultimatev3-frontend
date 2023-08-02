@@ -13,5 +13,14 @@
     "title": "",
     "unknownType": "",
     "villageNotFound": ""
+  },
+  "500": {
+    "generic": "",
+    "title": ""
+  },
+  "503": {
+    "generic": "",
+    "title": "",
+    "world": ""
   }
 }

@@ -4,6 +4,8 @@ import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {faBan, faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {Dict} from "../util/customTypes";
 import {worldConfigType} from "./WorldConfig";
+import {CustomTooltip} from "../util/UtilFunctions"
+import {Tooltip} from "react-bootstrap"
 
 export type worldType = {
   id: number,
@@ -75,21 +77,29 @@ export function WorldDisplayName({world}: {world: worldType}) {
 }
 
 export function WorldState({world}: {world: worldType}) {
+  const { t } = useTranslation("ui")
+
   let spanClass: string
   let fontIcon: IconProp
+  let tooltipText: string
   if(world.active == null) {
     spanClass = "text-danger"
     fontIcon = faBan
+    tooltipText = t("world.state.inactive")
   } else if(world.active) {
     spanClass = "text-success"
     fontIcon = faCheck
+    tooltipText = t("world.state.active")
   } else {
     spanClass = "text-danger"
     fontIcon = faTimes
+    tooltipText = t("world.state.disabled")
   }
   return (
-      <span className={spanClass} >
-      <FontAwesomeIcon icon={fontIcon} />
-      </span>
+      <CustomTooltip overlay={<Tooltip>{tooltipText}</Tooltip>}>
+        <span className={spanClass} >
+          <FontAwesomeIcon icon={fontIcon} />
+        </span>
+      </CustomTooltip>
   )
 }

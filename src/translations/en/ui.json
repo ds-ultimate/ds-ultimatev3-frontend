@@ -216,6 +216,11 @@
     "casual": "casual",
     "classic": "classic",
     "speed": "speed",
+    "state": {
+      "active": "active",
+      "disabled": "disabled",
+      "inactive": "inactive"
+    },
     "world": "world"
   }
 }

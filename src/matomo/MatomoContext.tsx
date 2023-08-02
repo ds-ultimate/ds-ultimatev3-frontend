@@ -10,6 +10,7 @@ export type MatomoContextType = {
   siteId: number,
   userId: string,
   pageViewId: string,
+  disable: () => void,
 }
 
 export default createContext<undefined | MatomoContextType>(undefined)

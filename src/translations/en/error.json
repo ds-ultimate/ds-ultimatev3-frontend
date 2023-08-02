@@ -13,5 +13,14 @@
     "title": "Site not found",
     "unknownType": "Unknown type '{{type}}'",
     "villageNotFound": "The village with the id '{{village}}' could not be found at world '{{world}}'"
+  },
+  "500": {
+    "generic": "An error occured. Please consider reporting this (together with steps to reproduce it) to the developers.",
+    "title": "Error"
+  },
+  "503": {
+    "generic": "We are currently conducting maintenance. You can get more information on our Discord at #update:",
+    "title": "Maintenance",
+    "world": "The world {{world}} is currently not accessible due to maintenance"
   }
 }

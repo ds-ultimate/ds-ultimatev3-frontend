@@ -216,6 +216,11 @@
     "casual": "",
     "classic": "",
     "speed": "",
+    "state": {
+      "active": "",
+      "disabled": "",
+      "inactive": ""
+    },
     "world": ""
   }
 }

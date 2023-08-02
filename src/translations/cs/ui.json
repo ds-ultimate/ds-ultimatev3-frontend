@@ -216,6 +216,11 @@
     "casual": "Casual",
     "classic": "Classic",
     "speed": "Rychlost",
+    "state": {
+      "active": "",
+      "disabled": "",
+      "inactive": ""
+    },
     "world": "Svět"
   }
 }

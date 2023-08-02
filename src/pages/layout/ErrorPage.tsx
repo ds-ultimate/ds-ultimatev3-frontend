@@ -3,19 +3,20 @@ import ErrorPage404 from "./ErrorPages/ErrorPage404";
 import ErrorPage403 from "./ErrorPages/ErrorPage403";
 import {errorReporting} from "../../apiInterface/apiConf"
 import {FrontendError} from "./ErrorPages/ErrorTypes"
+import ErrorPage500 from "./ErrorPages/ErrorPage500"
+import {Card, Col, Row} from "react-bootstrap"
+import {useTranslation} from "react-i18next"
 
 export const GenericFrontendError: FrontendError = {
   isFrontend: true,
   code: 500,
-  k: "500.generic", //TODO translations for this
+  k: "500.generic",
   p: {},
 }
 
 export default function ErrorPage({error}: {error: any}) {
-  //TODO this page should act as a hub for: Maintenance Mode (world / global)
-  //503 world -> translated (503.worldDown with p:{world:string}) ; 503 global without translation
+  const { t } = useTranslation("error")
 
-  //TODO rewrite all default messages
   if(error.isAxiosError) {
     const err = error as AxiosError
     if(err.response) {
@@ -25,17 +26,13 @@ export default function ErrorPage({error}: {error: any}) {
       if(err.response.status === 404) {
         return <ErrorPage404 error={err} />
       }
+      if(err.response.status === 500) {
+        return <ErrorPage500 error={err} />
+      }
+      if(err.response.status === 503) {
+        return <ErrorPage500 error={err} />
+      }
     }
-    console.log(error)
-
-    return (
-        <>
-          Something went somewhere wrong :/<br />
-          {err.response?.status + ""}<br />
-          {err.isAxiosError + ""}<br />
-          {/* TODO use custom return type for our errors here (also laravel errors) */}
-        </>
-    )
   }
   if(error.isFrontend) {
     const err = error as FrontendError
@@ -45,23 +42,24 @@ export default function ErrorPage({error}: {error: any}) {
     if(err.code === 404) {
       return <ErrorPage404 error={err} />
     }
-    console.log(error)
-
-    return (
-        <>
-          Something went somewhere wrong :/<br />
-          {err.code + ""}<br />
-          {/* TODO use custom return type for our errors here (also laravel errors) */}
-        </>
-    )
+    if(err.code === 500) {
+      return <ErrorPage404 error={err} />
+    }
   }
-  console.log(error)
 
   return (
-      <>
-        Something went somewhere wrong :/<br />
-        The error page is still under construction
-      </>
+      <Row className={"justify-content-center p-3"}>
+        <Col xs={12} className={"p-lg-5 mx-auto my-1 text-center"}>
+          <h1 className={"fw-normal"}>{t("500.title")}</h1>
+        </Col>
+        <Col xs={12}>
+          <Card>
+            <Card.Body className={"text-center"}>
+              {t("500.generic")}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
   )
 }
 

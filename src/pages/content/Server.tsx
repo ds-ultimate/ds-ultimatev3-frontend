@@ -70,7 +70,7 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
                   {server && (<ServerFlag server={server} />)}
                   <Link to={formatRoute(WORLD, {server: w.server__code, world: w.name})}><WorldDisplayName world={w} /></Link>
                   <small className={"text-muted"}>({w.server__code + w.name})</small>
-                  <WorldState world={w} />{/* TODO worldstate only for admins? */}
+                  <WorldState world={w} />
                 </td>
                 <td><Link to={formatRoute(WORLD_PLAYER_CUR, {server: w.server__code, world: w.name})}>
                   {nf.format(w.player_count)}
