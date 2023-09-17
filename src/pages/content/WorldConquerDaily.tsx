@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 import ErrorPage from "../layout/ErrorPage";
 import DatePicker from "react-datepicker";
 import useDatepickerLanguage from "../../util/datepickerLanguage";
-import DatatableBase from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT} from "../../util/datatables/DatatableBase";
 import {worldDailyAllyConquerTable, worldDailyPlayerConquerTable} from "../../apiInterface/apiConf";
 import {DecodeName, nf} from "../../util/UtilFunctions";
 import {formatRoute} from "../../util/router";
@@ -166,7 +166,7 @@ export default function WorldConquerDailyPage() {
                   ]}
                   keyGen={(c) => c.playerID}
                   responsiveTable
-                  serverSide={false}
+                  variant={DATATABLE_VARIANT.CLIENT_SIDE}
                   striped
                   searching={filterPlayerCallback}
                   api_params={{date: `${dateToShow.getFullYear()}-${dateToShow.getMonth()}-${dateToShow.getDate()}`}}
@@ -190,7 +190,7 @@ export default function WorldConquerDailyPage() {
                   ]}
                   keyGen={(c) => c.allyID}
                   responsiveTable
-                  serverSide={false}
+                  variant={DATATABLE_VARIANT.CLIENT_SIDE}
                   striped
                   searching={filterAllyCallback}
                   api_params={{date: `${dateToShow.getFullYear()}-${dateToShow.getMonth()}-${dateToShow.getDate()}`}}

@@ -2,10 +2,10 @@ import {useTranslation} from "react-i18next";
 
 import {allyType} from "../../../../modelHelper/Ally";
 import {worldType} from "../../../../modelHelper/World";
-import {dateFormatLocal, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
+import {dateFormatLocal_YMD, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
 import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
-import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
 import {allyAllyHistoryTable} from "../../../../apiInterface/apiConf";
 import {Card, Col, Row} from "react-bootstrap";
 import {LinkAllyInGame} from "../Util";
@@ -42,7 +42,7 @@ export default function AllyHistPane({ally_id, worldData}: paramType) {
               saveAs={"allyHistory"}
               api={allyAllyHistoryTable({server: worldData.server__code, world: worldData.name, ally: (ally_id + "")})}
               cells={[
-                (a) => dateFormatLocal(new Date(a.date)),
+                (a) => dateFormatLocal_YMD(new Date(a.date)),
                 (a) => <DecodeName name={a.cur.tag} />,
                 (a) => <ShowHistory name={t('table.rank')} o_dat={a.last?.rank} n_dat={a.cur.rank} invert />,
                 (a) => <ShowHistory name={t('table.members')} o_dat={a.last?.member_count} n_dat={a.cur.member_count} />,
@@ -54,7 +54,7 @@ export default function AllyHistPane({ally_id, worldData}: paramType) {
               ]}
               keyGen={(c) => dateFormatYMD(new Date(c.date))}
               responsiveTable
-              serverSide={false}
+              variant={DATATABLE_VARIANT.CLIENT_SIDE}
               defaultSort={[0, SORTING_DIRECTION.DESC]}
               striped
           />

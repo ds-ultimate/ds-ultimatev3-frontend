@@ -1,10 +1,10 @@
 import MatomoContext from "./MatomoContext"
-import {ComponentType, ReactNode, useCallback, useContext} from "react"
+import {ComponentType, FunctionComponent, ReactNode, useCallback, useContext} from "react"
 import {getBasicTrackingData, sendTrackingPayload} from "./TrackUtil"
 
 
 type linkProps<P> = {
-  as: string | ComponentType<P>,
+  as: string | ComponentType<P> | FunctionComponent<P>,
   children: ReactNode | ReactNode[],
   isDownload?: boolean,
   params: P,

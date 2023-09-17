@@ -1,10 +1,10 @@
 import {useTranslation} from "react-i18next";
 
 import {worldType} from "../../../../modelHelper/World";
-import {dateFormatLocal, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
+import {dateFormatLocal_YMD, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
 import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
-import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
 import {playerPlayerHistoryTable} from "../../../../apiInterface/apiConf";
 import {Card, Col, Row} from "react-bootstrap";
 import {LinkPlayerInGame} from "../Util";
@@ -42,7 +42,7 @@ export default function PlayerHistPane({player_id, worldData}: paramType) {
               saveAs={"playerHistory"}
               api={playerPlayerHistoryTable({server: worldData.server__code, world: worldData.name, player: (player_id + "")})}
               cells={[
-                (p) => dateFormatLocal(new Date(p.date)),
+                (p) => dateFormatLocal_YMD(new Date(p.date)),
                 (p) => <DecodeName name={p.cur.name} />,
                 (p) => <LinkPlayerAlly player={p.cur} world={worldData} /> ,
                 (p) => <ShowHistory name={t('table.rank')} o_dat={p.last?.rank} n_dat={p.cur.rank} invert />,
@@ -55,7 +55,7 @@ export default function PlayerHistPane({player_id, worldData}: paramType) {
               ]}
               keyGen={(c) => dateFormatYMD(new Date(c.date))}
               responsiveTable
-              serverSide={false}
+              variant={DATATABLE_VARIANT.CLIENT_SIDE}
               defaultSort={[0, SORTING_DIRECTION.DESC]}
               striped
           />

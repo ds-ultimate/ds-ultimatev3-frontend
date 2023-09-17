@@ -6,7 +6,7 @@ import ErrorPage from "../../../layout/ErrorPage";
 import {DecodeName, nf, rawDecodeName, thousandsFormat} from "../../../../util/UtilFunctions";
 import {allyPlayerTable} from "../../../../apiInterface/apiConf";
 import {Card, Col, Row} from "react-bootstrap";
-import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
 import {LinkPlayer, playerType} from "../../../../modelHelper/Player";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import {filterPlayerCallback} from "./AllyPlayer";
@@ -71,7 +71,7 @@ export default function AllyBashRankingPage() {
                 ]}
                 cellClasses={["", "", "", "text-end", "text-end", "text-end", "text-end", "text-end"]}
                 keyGen={p => p.playerID}
-                serverSide={false}
+                variant={DATATABLE_VARIANT.CLIENT_SIDE}
                 defaultSort={[2, SORTING_DIRECTION.DESC]}
                 saveAs={'allyPlayerBashRanking'}
                 responsiveTable

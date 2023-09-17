@@ -5,18 +5,18 @@ import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder
 import {useParams} from "react-router-dom";
 import {useWorldData} from "../../apiInterface/loadContent";
 import {useTranslation} from "react-i18next";
-import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {nf} from "../../util/UtilFunctions";
 import {
-    conquerChangeType,
-    conquerChangeTypeSetting,
-    ConquerTime,
-    conquerType,
-    getConquerType,
-    highlightRefType,
-    LinkConquerNew,
-    LinkConquerOld,
-    LinkConquerVillage
+  conquerChangeType,
+  conquerChangeTypeSetting,
+  ConquerTime,
+  conquerType,
+  getConquerType,
+  highlightRefType,
+  LinkConquerNew,
+  LinkConquerOld,
+  LinkConquerVillage
 } from "../../modelHelper/Conquer";
 import styles from "./ConquerPage.module.scss"
 import BootstrapSelect from "../../util/bootstrapSelect";
@@ -224,7 +224,7 @@ export default function ConquerPage({typeName, who, conquerSave, highlightPossib
               (c) => <ConquerTime conquer={c} />,
             ]}
             keyGen={c => c.id}
-            serverSide
+            variant={DATATABLE_VARIANT.SERVER_SIDE}
             defaultSort={["timestamp", SORTING_DIRECTION.DESC]}
             rowClassGen={(c) => conquerChangeTypeSetting[getConquerType(c, allowedHighlight, highlightRef)].cls_act}
             saveAs={conquerSave}

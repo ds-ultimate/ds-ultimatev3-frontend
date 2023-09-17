@@ -22,6 +22,8 @@ import {changelogType} from "../modelHelper/Changelog";
 import {LoadingScreenContext} from "../pages/layout/LoadingScreen";
 import {FrontendError} from "../pages/layout/ErrorPages/ErrorTypes"
 
+//TODO cache everything returned from these routes (persistent in indexed_db)
+
 if(process.env.REACT_APP_API_USE_AUTH) {
   const auth = {
     username: process.env.REACT_APP_API_AUTH_USER,

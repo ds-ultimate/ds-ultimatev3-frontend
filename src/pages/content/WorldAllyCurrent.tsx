@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loadContent";
-import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyCurrentTable} from "../../apiInterface/apiConf";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
@@ -67,7 +67,7 @@ export default function WorldAllyCurrentPage() {
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={a => a.allyID}
-            serverSide
+            variant={DATATABLE_VARIANT.SERVER_SIDE}
             defaultSort={["rank", SORTING_DIRECTION.ASC]}
             saveAs={'worldAlly'}
             responsiveTable

@@ -6,7 +6,15 @@ import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 export const LoadingScreenContext = createContext<(val: boolean, id: string) => void>((b, id) => {})
 
-export default function LoadingScreen({children, style, className, darken}: {children?: ReactNode[] | ReactNode, style?: CSSProperties, className?: string, darken?: boolean}) {
+type screenProps = {
+  children?: ReactNode[] | ReactNode,
+  style?: CSSProperties,
+  className?: string,
+  darken?: boolean,
+  big?: boolean
+}
+
+export default function LoadingScreen({children, style, className, darken, big}: screenProps) {
   const [loading, setLoading] = useState<string[]>([])
   const loadingHelper = useCallback((val: boolean, id: string) => {
     if(val) {
@@ -25,7 +33,7 @@ export default function LoadingScreen({children, style, className, darken}: {chi
   return (
       <div className={styles.loadingContainer + (className?" "+className:"")} style={style}>
         {loading.length > 0 && <div className={styles.loadingDiv + " pt-5" + (darken?" " + styles.loadingDivDarken:"")}>
-          <div className={styles.loadingSpin}>
+          <div className={big?styles.loadingSpinBig:styles.loadingSpin}>
             <FontAwesomeIcon icon={faSpinner} spin/>
           </div>
         </div>}

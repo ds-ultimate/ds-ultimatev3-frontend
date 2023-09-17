@@ -1,6 +1,6 @@
 import {AxiosError} from "axios";
 import {useTranslation} from "react-i18next";
-import {Card, Col, Nav, Row} from "react-bootstrap";
+import {Card, Col, Row} from "react-bootstrap";
 import {extractMessage, FrontendError} from "./ErrorTypes";
 import {MatomoLink} from "../../../matomo"
 import React from "react"

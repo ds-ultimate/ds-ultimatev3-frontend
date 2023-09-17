@@ -8,7 +8,7 @@ interface bodyProps<T> extends internalCellProps<T> {
   data: T[] | undefined,
 }
 
-interface rowProps<T> extends internalCellProps<T> {
+interface rowProps<T> extends Omit<internalCellProps<T>, "keyGen"> {
   d: T,
 }
 
@@ -16,20 +16,20 @@ export default  function DatatableBodyRender<T>({data, keyGen, ...cellProps}: bo
   return (
       <>
         {data?.map(d => {
-          return <DatatableRowRender key={keyGen(d)} d={d} keyGen={keyGen} {...cellProps}/>
+          return <DatatableRowRender key={keyGen(d)} d={d} {...cellProps}/>
         })}
       </>
   )
 }
 
-function DatatableRowRender<T>({d, cellClasses, rowClassGen, keyGen, visibleCells, invisibleCells, cells, headerNames}: rowProps<T>) {
+function DatatableRowRender<T>({d, cellClasses, rowClassGen, rowOnClick, visibleCells, invisibleCells, cells, headerNames}: rowProps<T>) {
   const [extended, setExtended] = useState(false)
   const extendEnabled = invisibleCells.length > 0
   const realExtended = extended && extendEnabled
 
   return (
       <>
-        <tr className={rowClassGen?rowClassGen(d):undefined}>
+        <tr className={rowClassGen?rowClassGen(d):undefined} onClick={rowOnClick?(evt => rowOnClick(d, evt)):undefined}>
           {visibleCells.map((cIdx, vIdx) => {
             if(vIdx === 0 && extendEnabled) {
               return (

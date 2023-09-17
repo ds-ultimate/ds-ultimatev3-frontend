@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import {Card, Col, Row} from "react-bootstrap";
-import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
 import {nf} from "../../../../util/UtilFunctions";
 import {playerVillageTable} from "../../../../apiInterface/apiConf";
 import {worldType} from "../../../../modelHelper/World";
@@ -42,7 +42,7 @@ export default function PlayerVillages({player_id, worldData}: paramType) {
                   ]}
                   cellClasses={["", "", "text-end", "text-end", "text-end", "text-end"]}
                   keyGen={v => v.villageID}
-                  serverSide={false}
+                  variant={DATATABLE_VARIANT.CLIENT_SIDE}
                   defaultSort={[0, SORTING_DIRECTION.ASC]}
                   saveAs={'playerVillage'}
                   responsiveTable

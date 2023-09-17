@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useWorldData} from "../../apiInterface/loadContent";
@@ -67,7 +67,7 @@ export default function WorldPlayerCurrentPage() {
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={p => p.playerID}
-            serverSide
+            variant={DATATABLE_VARIANT.SERVER_SIDE}
             defaultSort={["rank", SORTING_DIRECTION.ASC]}
             saveAs={'worldPlayer'}
             responsiveTable

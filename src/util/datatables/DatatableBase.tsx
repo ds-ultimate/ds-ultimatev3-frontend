@@ -1,4 +1,4 @@
-import React, {ChangeEvent, createContext, Key, ReactNode, useCallback, useMemo} from "react";
+import React, {ChangeEvent, createContext, Key, MouseEvent, ReactNode, useCallback, useMemo} from "react";
 import DatatableCoreServerSide from "./DatatableCoreServerSide";
 import DatatableCoreClientSide from "./DatatableCoreClientSide";
 import Pagination from "./Pagination";
@@ -10,6 +10,7 @@ import {Col, Form, InputGroup, Row, Table} from "react-bootstrap";
 import DatatableHeaderBuilder from "./DatatableHeaderBuilder";
 import {useBreakpointIdx} from "../bootrapBreakpoints";
 import LoadingScreen from "../../pages/layout/LoadingScreen";
+import DatatableCoreData from "./DatatableCoreData";
 
 
 export enum SORTING_DIRECTION {
@@ -17,12 +18,18 @@ export enum SORTING_DIRECTION {
   DESC,
 }
 
+export enum DATATABLE_VARIANT {
+  SERVER_SIDE,
+  CLIENT_SIDE,
+  DATA,
+}
+
 type sort_type = string | number
 type sort_arr_type = Array<[sort_type, SORTING_DIRECTION]>
 type persistentStateType = {limit: number, sort: sort_arr_type}
 type volatileStateType = {page: number, totalCount: number, filteredCount: number, search?: string}
 
-interface apiProps {
+export interface apiProps {
   api: string,
   api_params?: Dict<any>,
 }
@@ -31,7 +38,8 @@ interface externalCellProps<T> {
   cells: Array<(data: T) => string | JSX.Element>,
   keyGen: (data: T) => Key,
   rowClassGen?: (data: T) => string | undefined,
-  cellClasses?: string[]
+  rowOnClick?: (data: T, evt: MouseEvent<HTMLTableRowElement>) => void,
+  cellClasses?: string[],
 }
 
 export interface internalCellProps<T> extends externalCellProps<T> {
@@ -40,16 +48,16 @@ export interface internalCellProps<T> extends externalCellProps<T> {
   headerNames: ReactNode[],
 }
 
-export interface coreProps<T> extends apiProps, internalCellProps<T> {
+export interface coreProps<T> extends internalCellProps<T> {
   page: number,
   limit: number,
   itemCntCallback: (totalCount: number, filteredCount: number)=> void,
   search?: string,
 }
 
-interface paramsType<T> extends apiProps, externalCellProps<T> {
+interface paramsType<T> extends Partial<apiProps>, externalCellProps<T> {
   header: DatatableHeaderBuilder<T>,
-  serverSide: boolean,
+  variant: DATATABLE_VARIANT,
   defaultSort?: [sort_type, SORTING_DIRECTION],
   saveAs: string,
   topBarMiddle?: JSX.Element,
@@ -57,13 +65,14 @@ interface paramsType<T> extends apiProps, externalCellProps<T> {
   responsiveTable?: boolean,
   striped?: boolean,
   searching?: boolean | ((data: T, search: string) => boolean),
+  data?: T[],
 }
 
 export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir: SORTING_DIRECTION, append: boolean) => void,
   curSortBy?: Array<[sort_type, SORTING_DIRECTION]>}>({})
 
 
-export default function DatatableBase<T>({header, serverSide, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
+export default function DatatableBase<T>({header, variant, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
                                            responsiveTable, striped, searching, ...unusedProps}: paramsType<T>) {
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
@@ -142,13 +151,56 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
   const visibleCells = colVisible[curBreakpoint]
   const invisibleCells = colInvisible[curBreakpoint]
 
-  const coreProps = {
+  const {data, api, api_params, ...coreProps} = {
     page, visibleCells, invisibleCells, headerNames, itemCntCallback, limit, search, cellClasses, ...unusedProps
   }
 
+  let coreElement: ReactNode = undefined
+  if(variant === DATATABLE_VARIANT.SERVER_SIDE) {
+    if(!api) {
+      throw new Error("Api is undefined with type server side!")
+    }
+    coreElement = (
+        <DatatableCoreServerSide<T>
+            api={api}
+            api_params={api_params}
+            sort={sort as Array<[string, SORTING_DIRECTION]>}
+            {...coreProps}
+        />
+    )
+  } else if (variant === DATATABLE_VARIANT.CLIENT_SIDE) {
+    if(!api) {
+      throw new Error("Api is undefined with type client side!")
+    }
+    coreElement = (
+        <DatatableCoreClientSide<T>
+            api={api}
+            api_params={api_params}
+            sort={sort as Array<[number, SORTING_DIRECTION]>}
+            searchCB={(searching !== true && searching !== false)?searching:undefined}
+            sortCB={headerSortCB}
+            {...coreProps}
+        />
+    )
+  } else if(variant === DATATABLE_VARIANT.DATA) {
+    if(!data) {
+      throw new Error("Data is undefined with type data!")
+    }
+    coreElement = (
+        <DatatableCoreData<T>
+            data={data}
+            sort={sort as Array<[number, SORTING_DIRECTION]>}
+            searchCB={(searching !== true && searching !== false)?searching:undefined}
+            sortCB={headerSortCB}
+            {...coreProps}
+        />
+    )
+  }
+
+
   return (
       <div>
-        <LoadingScreen>
+        <LoadingScreen big>
           <DatatableContext.Provider value={{setSortBy: sortingCallback, curSortBy: sort}}>
             <Row className={"mb-2"}>
               <Col xs={12} md={"auto"} className={"mb-2"}>
@@ -179,19 +231,7 @@ export default function DatatableBase<T>({header, serverSide, defaultSort, saveA
               <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""}>
                 {headerNode}
                 <tbody>
-                {
-                  serverSide?
-                      <DatatableCoreServerSide<T>
-                          sort={sort as Array<[string, SORTING_DIRECTION]>}
-                          {...coreProps}
-                      />:
-                      <DatatableCoreClientSide<T>
-                          sort={sort as Array<[number, SORTING_DIRECTION]>}
-                          searchCB={(searching !== true && searching !== false)?searching:undefined}
-                          sortCB={headerSortCB}
-                          {...coreProps}
-                      />
-                }
+                {coreElement}
                 </tbody>
               </Table>
             </Row>

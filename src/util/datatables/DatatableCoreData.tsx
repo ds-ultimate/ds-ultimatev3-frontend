@@ -1,43 +1,16 @@
-import {useContext, useEffect, useMemo, useState} from "react";
-import axios from "axios";
-import {apiProps, coreProps, SORTING_DIRECTION} from "./DatatableBase";
+import {useMemo} from "react";
+import {coreProps, SORTING_DIRECTION} from "./DatatableBase";
 import DatatableBodyRender from "./DatatableBodyRenderer";
-import {LoadingScreenContext} from "../../pages/layout/LoadingScreen";
-import {useErrorBoundary} from "react-error-boundary"
 
-interface paramsType<T> extends coreProps<T>, apiProps {
+interface paramsType<T> extends coreProps<T> {
+  data: T[],
   sort: Array<[number, SORTING_DIRECTION]>,
   sortCB?: Array<((data1: T, data2: T) => number) | undefined>,
   searchCB?: ((data: T, search: string) => boolean),
 }
 
-export default function DatatableCoreClientSide<T>({api, page, limit, itemCntCallback, sort, search, api_params,
-                                                     sortCB, searchCB, ...bodyProps}: paramsType<T>) {
-  const [data, setData] = useState<T[]>()
-  const setLoading = useContext(LoadingScreenContext)
-  const { showBoundary } = useErrorBoundary()
-
-  useEffect(() => {
-    let mounted = true
-    setLoading(true, "ClientCore")
-
-    axios.get(api, {params: api_params})
-        .then((resp) => {
-          setLoading(false, "ClientCore")
-          if(mounted) {
-            setData(resp.data.data)
-            itemCntCallback(resp.data.data.length, resp.data.data.length)
-          }
-        })
-        .catch((reason) => {
-          setLoading(false, "ClientCore")
-          showBoundary(reason)
-        })
-    return () => {
-      mounted = false
-    }
-  }, [api, api_params, itemCntCallback, setLoading, showBoundary])
-
+export default function DatatableCoreData<T>({data, page, limit, itemCntCallback, sort, search,
+                                               sortCB, searchCB, ...bodyProps}: paramsType<T>) {
   const filtered = useMemo(() => {
     if(data === undefined) return undefined
     if(searchCB === undefined || search === undefined) {

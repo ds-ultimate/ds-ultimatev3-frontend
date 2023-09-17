@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loadContent";
-import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldPlayerHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import DatePicker from "react-datepicker"
@@ -57,7 +57,7 @@ export default function WorldPlayerHistoryPage() {
                   ]}
                   cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
                   keyGen={p => p[0].playerID}
-                  serverSide
+                  variant={DATATABLE_VARIANT.SERVER_SIDE}
                   defaultSort={["rank", SORTING_DIRECTION.ASC]}
                   saveAs={'worldPlayerHist'}
                   api_params={{day: dateFormatYMD(startDate)}}

@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loadContent";
-import DatatableBase, {SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
@@ -53,7 +53,7 @@ export default function WorldAllyHistoryPage() {
             ]}
             cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
             keyGen={a => a[0].allyID}
-            serverSide
+            variant={DATATABLE_VARIANT.SERVER_SIDE}
             defaultSort={["rank", SORTING_DIRECTION.ASC]}
             saveAs={'worldAllyHist'}
             responsiveTable

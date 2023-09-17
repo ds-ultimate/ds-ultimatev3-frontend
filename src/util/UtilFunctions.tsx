@@ -118,9 +118,20 @@ export function dateFormatYMD(date: Date) {
   return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
 }
 
-export function dateFormatLocal(date: Date) {
+export function dateFormatLocal_YMD(date: Date) {
   const d = date.getDate();
   const m = date.getMonth() + 1; //Month from 0 to 11
   const y = date.getFullYear();
   return '' + (d <= 9 ? '0' + d : d) + '.' + (m<=9 ? '0' + m : m) + '.' + y;
+}
+
+export function dateFormatYMD_HMS(date: Date) {
+  const s = date.getSeconds();
+  const min = date.getMinutes();
+  const h = date.getHours();
+  const d = date.getDate();
+  const mon = date.getMonth() + 1; //Month from 0 to 11
+  const y = date.getFullYear();
+  const hms = '' + (h <= 9 ? '0' + h : h)+ ':' + (min <= 9 ? '0' + min : min)+ ':' + (s <= 9 ? '0' + s : s)
+  return '' + y + '-' + (mon<=9 ? '0' + mon : mon) + '-' + (d <= 9 ? '0' + d : d) + ' ' + hms;
 }

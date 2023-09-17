@@ -4,7 +4,7 @@ import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import {Card, Col, Row} from "react-bootstrap";
 import {LinkPlayer, LinkPlayerAlly, playerType} from "../../../../modelHelper/Player";
-import DatatableBase, {SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
 import {nf, thousandsFormat} from "../../../../util/UtilFunctions";
 import {allyPlayerTable} from "../../../../apiInterface/apiConf";
 import {worldType} from "../../../../modelHelper/World";
@@ -41,7 +41,7 @@ export default function AllyPlayer({ally_id, worldData}: paramType) {
                   ]}
                   cellClasses={["", "", "", "text-end", "text-end", "", "text-end", "text-end", "text-end", "text-end"]}
                   keyGen={p => p.playerID}
-                  serverSide={false}
+                  variant={DATATABLE_VARIANT.CLIENT_SIDE}
                   defaultSort={[0, SORTING_DIRECTION.ASC]}
                   saveAs={'allyPlayer'}
                   responsiveTable

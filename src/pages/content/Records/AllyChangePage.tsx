@@ -20,7 +20,7 @@ import {allyTopSelect, playerTopSelect} from "../../../apiInterface/apiConf";
 import {worldType} from "../../../modelHelper/World";
 import ErrorPage from "../../layout/ErrorPage";
 import {useWorldData} from "../../../apiInterface/loadContent";
-import DatatableBase, {SORTING_DIRECTION} from "../../../util/datatables/DatatableBase";
+import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../util/datatables/DatatableBase";
 import {thousandsFormat} from "../../../util/UtilFunctions";
 
 type extLayoutParams = {
@@ -154,7 +154,7 @@ export default function AllyChangePage({typeName, who, allyChangeSave, filterPos
             ]}
             cellClasses={["", "", "", "", "text-end"]}
             keyGen={a => a.created_at + "_"  + a.player_id}
-            serverSide
+            variant={DATATABLE_VARIANT.SERVER_SIDE}
             defaultSort={["created_at", SORTING_DIRECTION.DESC]}
             saveAs={allyChangeSave}
             responsiveTable

@@ -1,11 +1,11 @@
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
-import {coreProps, SORTING_DIRECTION} from "./DatatableBase";
+import {apiProps, coreProps, SORTING_DIRECTION} from "./DatatableBase";
 import DatatableBodyRender from "./DatatableBodyRenderer";
 import {LoadingScreenContext} from "../../pages/layout/LoadingScreen";
 import {useErrorBoundary} from "react-error-boundary"
 
-interface paramsType<T> extends coreProps<T> {
+interface paramsType<T> extends coreProps<T>, apiProps {
   sort: Array<[string, SORTING_DIRECTION]>,
 }
 
