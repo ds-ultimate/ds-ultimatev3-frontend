@@ -17,7 +17,7 @@ export default function RootLayout() {
           <ErrorBoundaryConsented>
             <Matomo>
               <Navbar serverCode={server} worldName={world}/>
-              <LoadingScreen style={{flexGrow: 3}} darken>
+              <LoadingScreen style={{flexGrow: 3}} darken big>
                 <main>
                   <Container>
                     <Outlet />

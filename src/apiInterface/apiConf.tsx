@@ -39,6 +39,10 @@ export const playerChartData = apiRequestGenerator("playerChartData/{server}/{wo
 export const playerWorldPopup = apiRequestGenerator("playerWorldPopup/{world_id}/{player}")
 export const villageBasicData = apiRequestGenerator("villageBasicData/{server}/{world}/{village}")
 
+
+export const searchNormal = apiRequestGenerator("basicSearch")
+export const searchExtended = apiRequestGenerator("extendedSearch")
+
 //Datatables
 export const worldAllyCurrentTable = apiRequestGenerator("tables/worldAlly/{server}/{world}")
 export const worldPlayerCurrentTable = apiRequestGenerator("tables/worldPlayer/{server}/{world}")

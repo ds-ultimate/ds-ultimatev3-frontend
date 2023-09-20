@@ -1,6 +1,8 @@
 
 export const INDEX = '/'
 export const SERVER = '/:server'
+export const SEARCH = '/search/:server/:type/:search'
+export const SEARCH_EMPTY = '/search/:server/:type'
 export const WORLD = '/:server/:world'
 export const WORLD_PLAYER_CUR = '/:server/:world/players'
 export const WORLD_PLAYER_HIST = '/:server/:world/players/ranks'

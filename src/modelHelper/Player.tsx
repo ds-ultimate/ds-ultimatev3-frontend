@@ -96,6 +96,16 @@ export function LinkPlayer({player, world, withAlly}: {player: playerType, world
   )
 }
 
+export function LinkPlayerTop({player, world}: {player: playerTopType, world: worldType}) {
+  return (
+      <>
+        <Link to={formatRoute(PLAYER_INFO, {server: world.server__code, world: world.name, player: (player.playerID + "")})}>
+          <DecodeName name={player.name} />
+        </Link>
+      </>
+  )
+}
+
 export function LinkPlayerAlly({player, world}: {player: playerType, world: worldType}) {
   return (
       <>

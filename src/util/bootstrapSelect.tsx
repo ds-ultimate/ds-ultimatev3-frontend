@@ -73,6 +73,16 @@ export default function BootstrapSelect({onChange, api, initialValue}: bootstrap
             page: 0,
           }}
           className={"bootstrap-select-custom"}
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary25: "var(--bs-select-active-color-dark)",
+              primary: "var(--bs-select-active-color-dark)",
+              neutral80: "var(--bs-body-color)",
+              neutral20: "var(--bs-select-opt-disabled-color)",
+            }
+          })}
       />
   )
 }

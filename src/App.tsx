@@ -28,6 +28,8 @@ import ChangelogPage from "./pages/content/Changelog";
 import LegalPage from "./pages/content/LegalPage";
 import TeamPage from "./pages/content/Team";
 import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
+import ErrorPage from "./pages/layout/ErrorPage"
+import SearchPage from "./pages/content/Search"
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */
@@ -40,6 +42,8 @@ function App() {
             <Route path={'/'} element={<RootLayout />}>
               <Route path={RouteHolder.INDEX} element={<IndexPage />}/>
               <Route path={RouteHolder.SERVER} element={<ServerPage />}/>
+              <Route path={RouteHolder.SEARCH} element={<SearchPage />}/>
+              <Route path={RouteHolder.SEARCH_EMPTY} element={<SearchPage />}/>
               <Route path={RouteHolder.WORLD} element={<WorldPage />}/>
               <Route path={RouteHolder.WORLD_PLAYER_CUR} element={<WorldPlayerCurrentPage />}/>
               <Route path={RouteHolder.WORLD_PLAYER_HIST} element={<WorldPlayerHistoryPage />}/>
@@ -60,7 +64,12 @@ function App() {
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>
               <Route path={RouteHolder.TEAM_PAGE} element={<TeamPage />}/>
-              {/*<Route component={NotFound} /> // without path*/}
+              <Route path={"*"} element={<ErrorPage error={{
+                isFrontend: true,
+                code: 404,
+                k: "404.generic",
+                p: {},
+              }} />} />
             </Route>
           </Routes>
         </Suspense>

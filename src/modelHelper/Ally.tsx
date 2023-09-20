@@ -91,6 +91,20 @@ export function LinkAlly ({ally, world, useTag}: {ally: allyType, world: worldTy
   )
 }
 
+export function LinkAllyTop ({ally, world, useTag}: {ally: allyTopType, world: worldType, useTag?: boolean}) {
+  return (
+      <>
+        <Link to={formatRoute(ALLY_INFO, {server: world.server__code, world: world.name, ally: (ally.allyID + "")})}>
+          {useTag?(
+              <DecodeName name={ally.tag} />
+          ):(
+              <DecodeName name={ally.name} />
+          )}
+        </Link>
+      </>
+  )
+}
+
 export function LinkAllyGeneric({ally, ally_tag, ally_name, world, useTag}: {ally: number, ally_tag: string | null,
   ally_name: string | null, world: worldType, useTag?: boolean}) {
   const { t } = useTranslation("ui")

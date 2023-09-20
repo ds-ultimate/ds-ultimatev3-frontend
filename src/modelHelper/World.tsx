@@ -6,6 +6,7 @@ import {Dict} from "../util/customTypes";
 import {worldConfigType} from "./WorldConfig";
 import {CustomTooltip} from "../util/UtilFunctions"
 import {Tooltip} from "react-bootstrap"
+import {TFunction} from "i18next"
 
 export type worldType = {
   id: number,
@@ -71,9 +72,13 @@ export function WorldDisplayName({world}: {world: worldType}) {
   const { t } = useTranslation("ui")
   return (
       <>
-        {(world.display_name != null)?world.display_name:t("world." + world.sortType) + " " + world.name.replace(/[^0-9]+/, "")}
+        {worldDisplayNameRaw(t, world)}
       </>
   )
+}
+
+export function worldDisplayNameRaw(t: TFunction<"ui", undefined, "ui">, world: worldType) {
+  return (world.display_name != null)?world.display_name:t("world." + world.sortType) + " " + world.name.replace(/[^0-9]+/, "")
 }
 
 export function WorldState({world}: {world: worldType}) {

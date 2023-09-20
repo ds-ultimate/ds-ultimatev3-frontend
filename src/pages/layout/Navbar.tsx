@@ -6,19 +6,22 @@ import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {Button, Dropdown, Form, Nav, Navbar as ReactNav, NavDropdown} from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {
-    INDEX,
-    SERVER,
-    WORLD,
-    WORLD_ALLY_CUR,
-    WORLD_ALLY_HIST,
-    WORLD_CONQUER,
-    WORLD_CONQUER_DAILY,
-    WORLD_PLAYER_CUR,
-    WORLD_PLAYER_HIST
+  INDEX, SEARCH,
+  SERVER,
+  WORLD,
+  WORLD_ALLY_CUR,
+  WORLD_ALLY_HIST,
+  WORLD_CONQUER,
+  WORLD_CONQUER_DAILY,
+  WORLD_PLAYER_CUR,
+  WORLD_PLAYER_HIST
 } from "../../util/routes";
 import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faUser, faUsers} from "@fortawesome/free-solid-svg-icons"
+import {faFortAwesome} from "@fortawesome/free-brands-svg-icons"
 
 /*
 
@@ -70,6 +73,9 @@ $retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
   const [serverWorlds, setServerWorlds] = useState<worldType[]>([])
   const [t, i18n] = useTranslation("ui")
+  const navigate = useNavigate()
+  const [searchContents, setSearchContents] = useState<string>("")
+  const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false)
 
   useEffect(() => {
     let mounted = true
@@ -194,19 +200,48 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
 
   if(serverCode) {
     allMenu.push(
-        <Form className="d-flex ms-lg-2" key={"search"}>
+        <Form className="d-flex ms-lg-2" key={"search"} onSubmit={evt => {
+          evt.preventDefault()
+          setNavbarExpanded(false)
+          navigate(formatRoute(SEARCH, {server: serverCode, type: "player", search: searchContents}))
+        }}>
           <Form.Control
               type="search"
               placeholder={t('title.search') ?? undefined}
               className="me-2"
               aria-label="Search"
+              value={searchContents}
+              onChange={evt => setSearchContents(evt.target.value)}
           />
-          <Button variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-light"}>{t('title.search')}</Button>
+          <Dropdown>
+            <Dropdown.Toggle variant={(getCurrentTheme() === THEME.LIGHT)?"outline-dark":"outline-light"}>
+              {t('title.search')}
+            </Dropdown.Toggle>
+
+            {/* dropdown-menu-xl-right */}
+            <Dropdown.Menu>
+              <Dropdown.Item as={Button} onClick={() => {
+                setNavbarExpanded(false)
+                navigate(formatRoute(SEARCH, {server: serverCode, type: "player", search: searchContents}))}
+              }>
+                <FontAwesomeIcon icon={faUser} /> {t("table.player")}
+              </Dropdown.Item>
+              <Dropdown.Item as={Button} onClick={() => {
+                setNavbarExpanded(false)
+                navigate(formatRoute(SEARCH, {server: serverCode, type: "ally", search: searchContents}))}
+              }>
+                <FontAwesomeIcon icon={faUsers} /> {t("table.ally")}
+              </Dropdown.Item>
+                <Dropdown.Item as={Button} onClick={() => {
+                  setNavbarExpanded(false)
+                  navigate(formatRoute(SEARCH, {server: serverCode, type: "village", search: searchContents}))}
+                }>
+                <FontAwesomeIcon icon={faFortAwesome} /> {t("table.village")}
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Form>
     )
-    //TODO: implement search
-    //TODO: search tracking
-    //TODO: mobile search
   }
 
   const selectLang = function(eventData: string | null) {
@@ -244,9 +279,9 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   //TODO: add login + user area here
 
   return (
-      <ReactNav className={"nav-bg"} expand={"lg"}>
+      <ReactNav className={"nav-bg"} expand={"lg"} expanded={navbarExpanded}>
         <ReactNav.Brand key={"toIndex"} as={Link} to={formatRoute(INDEX)}>DS-Ultimate</ReactNav.Brand>
-        <ReactNav.Toggle aria-controls="navbarScroll" />
+        <ReactNav.Toggle aria-controls="navbarScroll" onClick={() => setNavbarExpanded(old => !old)}/>
         <ReactNav.Collapse id={"navbarScroll"}>
           <Nav className={"w-100"}>
             {allMenu}

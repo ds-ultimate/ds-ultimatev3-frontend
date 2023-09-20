@@ -7,11 +7,7 @@
   flex: 1 0 1%;
 }
 
-.bootstrap-select-custom div {
-  color: var(--bs-body-color) !important;
-}
-
-.bootstrap-select-custom>div {
+.bootstrap-select-custom>div[class*="-control"] {
   border-style: solid;
   border-width: var(--bs-border-width);
   border-color: var(--bs-border-color);
@@ -19,13 +15,44 @@
   background-color: var(--bs-tertiary-bg);
 }
 
+.bootstrap-select-custom div[class*="-multiValue"] {
+  background-color: var(--bs-select-active-color-dark);
+}
+
 .input-group:not(.has-validation) > .bootstrap-select-custom:not(:last-child) > div:first-of-type,
-.input-group:not(.has-validation) > .form-floating:not(:last-child) > .bootstrap-select-custom > div:first-of-type {
+.input-group:not(.has-validation) > .form-floating:not(:last-child) > .bootstrap-select-custom > div[class*="-control"] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .bootstrap-select-custom:not(:first-child):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) > div:first-of-type {
+.input-group > .bootstrap-select-custom:not(:first-child):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) > div[class*="-control"] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.bootstrap-select-custom>div[id$='-listbox'] {
+  background-color: var(--bs-tertiary-bg);
+}
+
+@include color-mode(light) {
+  $disabled_color: #C0C0C0;
+  --bs-select-disabled-color: #{$disabled_color};
+  --bs-select-disabled-color-dark: #{darken($disabled_color, 10%)};
+  --bs-select-active-color-dark: #E6E6E6FF;
+  --bs-select-opt-disabled-color: #{$disabled_color};
+}
+
+@include color-mode(dark) {
+  $disabled_color: #3f3f3f;
+  --bs-select-disabled-color: #{$disabled_color};
+  --bs-select-disabled-color-dark: #{darken($disabled_color, 10%)};
+  --bs-select-active-color-dark: #404040;
+  --bs-select-opt-disabled-color: #{$disabled_color};
+}
+
+.bootstrap-select-custom-disabled>div[class*="-control"] {
+  background-color: var(--bs-select-disabled-color);
+}
+.bootstrap-select-custom-disabled div[class*="-multiValue"] {
+  background-color: var(--bs-select-disabled-color-dark) !important;
 }
