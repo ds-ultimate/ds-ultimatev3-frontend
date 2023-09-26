@@ -1,5 +1,6 @@
+import {cacheable} from "../apiInterface/MainDatabase"
 
-type newsType = {
+type newsType = cacheable & {
   id: number,
   order: number,
   content_de: string,

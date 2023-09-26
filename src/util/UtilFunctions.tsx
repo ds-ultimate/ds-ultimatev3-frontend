@@ -3,6 +3,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown, faCaretUp, faEquals} from "@fortawesome/free-solid-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Placement} from "react-bootstrap/types";
+import React from "react"
+import {OverlayChildren} from "react-bootstrap/Overlay"
 
 export const nf = new Intl.NumberFormat("de-DE")
 
@@ -40,7 +42,7 @@ enum history_constants {
   EQUALS,
 }
 
-export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: string, o_dat?: number, n_dat: number, invert?: boolean, tsd_format?: boolean}): JSX.Element {
+export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: string, o_dat?: number, n_dat: number, invert?: boolean, tsd_format?: boolean}): React.ReactElement {
   const formatter = (tsd_format)?thousandsFormat:nf.format
 
   if(o_dat === undefined) {
@@ -91,7 +93,7 @@ export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: str
 }
 
 export function CustomTooltip({delayShow, delayHide, overlay, placement, children}:
-      {delayShow?: number, delayHide?: number, overlay: JSX.Element, placement?: Placement, children: JSX.Element}) {
+      {delayShow?: number, delayHide?: number, overlay: OverlayChildren, placement?: Placement, children: React.ReactElement}) {
   const delS = delayShow ?? 200
   const delH = delayHide ?? 400
   const place = placement ?? "top"

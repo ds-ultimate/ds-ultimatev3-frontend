@@ -35,7 +35,7 @@ export interface apiProps {
 }
 
 interface externalCellProps<T> {
-  cells: Array<(data: T) => string | JSX.Element>,
+  cells: Array<(data: T) => string | React.ReactNode>,
   keyGen: (data: T) => Key,
   rowClassGen?: (data: T) => string | undefined,
   rowOnClick?: (data: T, evt: MouseEvent<HTMLTableRowElement>) => void,
@@ -60,8 +60,8 @@ interface paramsType<T> extends Partial<apiProps>, externalCellProps<T> {
   variant: DATATABLE_VARIANT,
   defaultSort?: [sort_type, SORTING_DIRECTION],
   saveAs: string,
-  topBarMiddle?: JSX.Element,
-  topBarEnd?: JSX.Element,
+  topBarMiddle?: React.ReactNode,
+  topBarEnd?: React.ReactNode,
   responsiveTable?: boolean,
   striped?: boolean,
   searching?: boolean | ((data: T, search: string) => boolean),

@@ -9,7 +9,7 @@ import {worldDisplayNameRaw} from "../../modelHelper/World"
 import {SearchAlly} from "./search/searchAlly"
 import {SearchPlayer} from "./search/searchPlayer"
 import Select from "react-select"
-import {useWorldsOfServer} from "../../apiInterface/loadContent"
+import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import usePersistentState from "../../util/persitentState"
 import {SearchVillage} from "./search/searchVillage"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -92,11 +92,11 @@ export default function SearchPage() {
                 <InputGroup.Radio checked={!searchActive} onChange={() => setSearchActive(false)}/>
                 <InputGroup.Text onClick={() => setSearchActive(false)}>{t("search.customWorlds")}</InputGroup.Text>
                 {worldsData && <Select
-                    options={worldsData.worlds.map(value => {return {value: value.id, label: worldDisplayNameRaw(t, value)}})}
+                    options={worldsData.map(value => {return {value: value.id, label: worldDisplayNameRaw(t, value)}})}
                     isMulti={true}
                     className={"bootstrap-select-custom" + (searchActive?" bootstrap-select-custom-disabled":"")}
                     value={searchWorlds.map(value => {
-                      const w = worldsData.worlds.find(world => world.id === value)
+                      const w = worldsData.find(world => world.id === value)
                       if(w === undefined) return undefined
                       return {value: value, label: worldDisplayNameRaw(t, w)}
                     }).filter(value => value !== undefined) as Array<{value: number, label: string}>}
@@ -124,11 +124,11 @@ export default function SearchPage() {
               </InputGroup>
               <InputGroup className={"mb-2 d-lg-none" + (searchActive?" d-none":"")}>
                 {worldsData && <Select
-                    options={worldsData.worlds.map(value => {return {value: value.id, label: worldDisplayNameRaw(t, value)}})}
+                    options={worldsData.map(value => {return {value: value.id, label: worldDisplayNameRaw(t, value)}})}
                     isMulti={true}
                     className={"bootstrap-select-custom" + (searchActive?" bootstrap-select-custom-disabled":"")}
                     value={searchWorlds.map(value => {
-                      const w = worldsData.worlds.find(world => world.id === value)
+                      const w = worldsData.find(world => world.id === value)
                       if(w === undefined) return undefined
                       return {value: value, label: worldDisplayNameRaw(t, w)}
                     }).filter(value => value !== undefined) as Array<{value: number, label: string}>}

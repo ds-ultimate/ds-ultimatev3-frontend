@@ -3,8 +3,8 @@ import {Row} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import {allyBasicDataType} from "../../../../modelHelper/Ally";
 import {worldType} from "../../../../modelHelper/World";
-import {useAllyChartData} from "../../../../apiInterface/loadContent";
 import {ChartSection} from "../Util";
+import {useAllyChartData} from "../../../../apiInterface/loaders/ally"
 
 
 export default function AllyCharts({allyData, worldData}: {allyData: allyBasicDataType, worldData: worldType | undefined}) {

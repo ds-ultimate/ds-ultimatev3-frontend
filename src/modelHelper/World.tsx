@@ -7,15 +7,22 @@ import {worldConfigType} from "./WorldConfig";
 import {CustomTooltip} from "../util/UtilFunctions"
 import {Tooltip} from "react-bootstrap"
 import {TFunction} from "i18next"
+import {cacheable} from "../apiInterface/MainDatabase"
 
-export type worldType = {
+export enum WorldActiveMode {
+  INACTIVE,
+  DISABLED,
+  ACTIVE,
+}
+
+export type worldType = cacheable & {
   id: number,
   name: string,
   display_name: string | null,
   ally_count: number,
   player_count: number,
   village_count: number,
-  active: boolean | null,
+  active: WorldActiveMode,
   maintenanceMode: boolean,
   server__code: string,
   url: string,
@@ -25,7 +32,9 @@ export type worldType = {
   sortType: string,
 }
 
-export type worldExtendedType = {
+export type worldExtendedType = cacheable & {
+  server: string,
+  world: string,
   firstConquer: number,
   config: worldConfigType,
   buildings: worldBuildingType,

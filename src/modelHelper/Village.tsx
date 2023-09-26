@@ -5,6 +5,7 @@ import {formatRoute} from "../util/router";
 import {PLAYER_INFO, VILLAGE_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
+import {cacheable} from "../apiInterface/MainDatabase"
 
 export type villagePureType = {
   villageID: number,
@@ -20,7 +21,10 @@ export type villageType = villagePureType & {
   playerLatest__name: string | null,
 }
 
-export type villageBasicDataType = {
+export type villageBasicDataType = cacheable & {
+  id: string,
+  world: string,
+  server: string,
   data: villageType,
   history: chartDataType
   conquer: {

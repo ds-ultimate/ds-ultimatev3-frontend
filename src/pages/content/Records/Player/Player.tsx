@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {usePlayerData, useWorldData, useWorldsOfServer} from "../../../../apiInterface/loadContent";
+import {useWorldData, useWorldsOfServer} from "../../../../apiInterface/loaders/world";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
@@ -14,6 +14,7 @@ import PlayerCharts from "./PlayerCharts";
 import PlayerVillages from "./PlayerVillages";
 import {playerBasicDataType} from "../../../../modelHelper/Player";
 import LoadingScreen from "../../../layout/LoadingScreen";
+import {usePlayerData} from "../../../../apiInterface/loaders/player"
 
 
 export default function PlayerPage() {
@@ -66,7 +67,7 @@ function DeletedPlayerElement({playerData, worldData}: {playerData: playerBasicD
         <Card.Body>
           <PlayerTopStatsPane data={playerData.top} worldData={worldData} conquer={playerData.conquer}
                               allyChanges={playerData.changes} otherServers={playerData.otherServers}
-                              worlds={serWorld.worlds} exists={false} />
+                              worlds={serWorld ?? []} exists={false} />
         </Card.Body>
       </Card>
   )
@@ -113,12 +114,12 @@ function StatsTabContainer({playerData, worldData}: {playerData: playerBasicData
             <Tab.Content>
               <Tab.Pane eventKey={"stats"}>
                 <PlayerStatsPane data={playerData.cur} worldData={worldData} conquer={playerData.conquer}
-                                 allyChanges={playerData.changes} otherServers={playerData.otherServers} worlds={serWorld.worlds} />
+                                 allyChanges={playerData.changes} otherServers={playerData.otherServers} worlds={serWorld ?? []} />
               </Tab.Pane>
               {playerData?.top && <Tab.Pane eventKey={"tops"}>
                 <PlayerTopStatsPane data={playerData.top} worldData={worldData} conquer={playerData.conquer}
                                     allyChanges={playerData.changes} otherServers={playerData.otherServers}
-                                    worlds={serWorld.worlds} exists={true} />
+                                    worlds={serWorld ?? []} exists={true} />
               </Tab.Pane>}
               <Tab.Pane eventKey={"hist"} mountOnEnter>
                 {worldData && <PlayerHistPane worldData={worldData} player_id={playerData.cur.playerID}/>}

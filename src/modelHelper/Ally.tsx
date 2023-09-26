@@ -5,6 +5,7 @@ import {ALLY_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
 import {useTranslation} from "react-i18next";
+import {cacheable} from "../apiInterface/MainDatabase"
 
 export type allyType = {
   allyID: number,
@@ -48,7 +49,10 @@ export type allyTopType = {
   gesBashRank_date: string,
 }
 
-export type allyBasicDataType = {
+export type allyBasicDataType = cacheable & {
+  id: string,
+  world: string,
+  server: string,
   cur: allyType | null,
   top: allyTopType | null,
   conquer: {
@@ -64,7 +68,10 @@ export type allyBasicDataType = {
   },
 }
 
-export type allyChartDataType = {
+export type allyChartDataType = cacheable & {
+  id: string,
+  world: string,
+  server: string,
   general: {
     points: chartDataType,
     rank: chartDataType,

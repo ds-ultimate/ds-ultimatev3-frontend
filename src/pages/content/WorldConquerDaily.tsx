@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {Card, Col, Row} from "react-bootstrap";
 import React, {useCallback, useMemo, useState} from "react";
-import {useExtendedWorldData, useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData, useExtendedWorldData} from "../../apiInterface/loaders/world"
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import ErrorPage from "../layout/ErrorPage";

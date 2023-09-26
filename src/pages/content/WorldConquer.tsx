@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
-import {useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loaders/world"
 import ConquerPage, {FILTER_OPTIONS} from "../layout/ConquerPage";
 import {conquerChangeType, highlightRefType} from "../../modelHelper/Conquer";
 import {worldConquerTable} from "../../apiInterface/apiConf";

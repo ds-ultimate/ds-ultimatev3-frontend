@@ -3,8 +3,8 @@ import {Row} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import {playerBasicDataType} from "../../../../modelHelper/Player";
 import {worldType} from "../../../../modelHelper/World";
-import {usePlayerChartData} from "../../../../apiInterface/loadContent";
 import {ChartSection} from "../Util";
+import {usePlayerChartData} from "../../../../apiInterface/loaders/player"
 
 
 export default function PlayerCharts({playerData, worldData}: {playerData: playerBasicDataType, worldData: worldType | undefined}) {

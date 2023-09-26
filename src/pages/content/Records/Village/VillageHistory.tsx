@@ -4,11 +4,11 @@ import React, {useMemo} from "react";
 import {Card, Col, Row, Table, Tooltip} from "react-bootstrap";
 import {worldType} from "../../../../modelHelper/World";
 import {villageBasicDataType} from "../../../../modelHelper/Village";
-import {useExtendedWorldData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
 import {getPointBuildingMap} from "../../../../util/dsHelpers/BuildingUtils";
 import {BuildingSize, getBuildingImage} from "../../../../util/dsHelpers/Icon";
 import {CustomTooltip} from "../../../../util/UtilFunctions";
+import {useExtendedWorldData} from "../../../../apiInterface/loaders/world"
 
 type paramType = {
   villageData: villageBasicDataType,

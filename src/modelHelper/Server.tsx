@@ -1,6 +1,7 @@
 import Flags from 'country-flag-icons/react/3x2'
+import {cacheable} from "../apiInterface/MainDatabase"
 
-type serverType = {
+type serverType = cacheable & {
   id: number,
   code: string,
   flag: string,

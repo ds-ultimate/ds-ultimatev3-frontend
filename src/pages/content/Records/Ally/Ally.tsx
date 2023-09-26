@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {useAllyData, useWorldData} from "../../../../apiInterface/loadContent";
+import {useWorldData} from "../../../../apiInterface/loaders/world";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
@@ -14,6 +14,7 @@ import {overviewMap} from "../../../../apiInterface/apiConf";
 import AllyCharts from "./AllyCharts";
 import AllyPlayer from "./AllyPlayer";
 import LoadingScreen from "../../../layout/LoadingScreen";
+import {useAllyData} from "../../../../apiInterface/loaders/ally"
 
 export default function AllyPage() {
   const {server, world, ally} = useParams()

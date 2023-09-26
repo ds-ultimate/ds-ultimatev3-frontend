@@ -1,9 +1,20 @@
 import {Dict} from "../util/customTypes";
+import axios from "axios"
 
 const API_BASE_PATH: string = process.env.REACT_APP_API_URL as string
 const APP_BASE_PATH: string = process.env.REACT_APP_BASE_URL as string
 
-const apiRequestGenerator = (uri: string) => {
+if(process.env.REACT_APP_API_USE_AUTH) {
+  const auth = {
+    username: process.env.REACT_APP_API_AUTH_USER,
+    password: process.env.REACT_APP_API_AUTH_PASS,
+  }
+  axios.defaults.headers.common['Authorization'] = 'Basic ' + window.btoa(auth.username + ':' + auth.password)
+}
+
+export type routeGenerator = (params: Dict<string>) => string
+
+const apiRequestGenerator: (uri: string) => routeGenerator = (uri: string) => {
   return (params: Dict<string>) => {
     let result = uri
     Object.keys(params).forEach((pName) => {
@@ -27,17 +38,18 @@ const requestGenerator = (uri: string) => {
 export const errorReporting = apiRequestGenerator("error")
 
 //Various data
-export const indexPage = apiRequestGenerator("indexPage")
-export const changelogPage = apiRequestGenerator("changelogPage")
-export const serverGetWorlds = apiRequestGenerator("serverGetWorlds/{server}")
+export const getNews = apiRequestGenerator("getNews")
+export const getServers = apiRequestGenerator("getServers")
+export const getChangelogs = apiRequestGenerator("getChangelogs")
+export const getWorlds = apiRequestGenerator("getWorlds")
 export const worldOverview = apiRequestGenerator("worldOverview/{server}/{world}")
 export const worldGetExtendedData = apiRequestGenerator("worldExtendedData/{server}/{world}")
-export const allyBasicData = apiRequestGenerator("allyBasicData/{server}/{world}/{ally}")
-export const allyChartData = apiRequestGenerator("allyChartData/{server}/{world}/{ally}")
-export const playerBasicData = apiRequestGenerator("playerBasicData/{server}/{world}/{player}")
-export const playerChartData = apiRequestGenerator("playerChartData/{server}/{world}/{player}")
+export const allyBasicData = apiRequestGenerator("allyBasicData/{server}/{world}/{id}")
+export const allyChartData = apiRequestGenerator("allyChartData/{server}/{world}/{id}")
+export const playerBasicData = apiRequestGenerator("playerBasicData/{server}/{world}/{id}")
+export const playerChartData = apiRequestGenerator("playerChartData/{server}/{world}/{id}")
 export const playerWorldPopup = apiRequestGenerator("playerWorldPopup/{world_id}/{player}")
-export const villageBasicData = apiRequestGenerator("villageBasicData/{server}/{world}/{village}")
+export const villageBasicData = apiRequestGenerator("villageBasicData/{server}/{world}/{id}")
 
 
 export const searchNormal = apiRequestGenerator("basicSearch")

@@ -5,6 +5,7 @@ import {ALLY_INFO, PLAYER_INFO} from "../util/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import {chartDataType} from "../util/CustomChart";
+import {cacheable} from "../apiInterface/MainDatabase"
 
 
 export type playerPureType = {
@@ -56,7 +57,10 @@ export type playerTopType = {
   gesBashRank_date: string,
 }
 
-export type playerBasicDataType = {
+export type playerBasicDataType = cacheable & {
+  id: string,
+  world: string,
+  server: string,
   cur: playerType | null,
   top: playerTopType | null,
   conquer: {
@@ -71,7 +75,10 @@ export type playerBasicDataType = {
   otherServers: number[], //world IDs
 }
 
-export type playerChartDataType = {
+export type playerChartDataType = cacheable & {
+  id: string,
+  world: string,
+  server: string,
   general: {
     points: chartDataType,
     rank: chartDataType,

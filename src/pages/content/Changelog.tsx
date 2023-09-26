@@ -6,16 +6,16 @@ import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import {faClock} from "@fortawesome/free-solid-svg-icons";
 import {ChangelogIcon, changelogType} from "../../modelHelper/Changelog";
 import ErrorPage from "../layout/ErrorPage";
-import {useChangelogPageData} from "../../apiInterface/loadContent";
 import {MatomoLink} from "../../matomo"
+import {useChangelog} from "../../apiInterface/loaders/changelog"
 
 export default function ChangelogPage() {
-  const [dataErr, data] = useChangelogPageData()
-  if(dataErr) return <ErrorPage error={dataErr} />
+  const [changelogErr, changelogData] = useChangelog()
+  if(changelogErr) return <ErrorPage error={changelogErr} />
 
   return (
       <div className={"pt-3"}>
-        <Timeline data={data} />
+        {changelogData && <Timeline data={changelogData} />}
       </div>
   )
 }

@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {useTranslation} from "react-i18next";
 import {WorldDisplayName} from "../../modelHelper/World";
-import {useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loaders/world"
 import {LinkPlayer, LinkPlayerAlly, playerPureType, playerType} from "../../modelHelper/Player";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";

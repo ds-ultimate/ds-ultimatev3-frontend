@@ -3,7 +3,7 @@ import {Button, Card, Col, InputGroup, Row} from "react-bootstrap";
 import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import {useParams} from "react-router-dom";
-import {useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {nf} from "../../util/UtilFunctions";

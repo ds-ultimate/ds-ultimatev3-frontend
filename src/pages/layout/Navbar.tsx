@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import {CZ, DE, GB} from 'country-flag-icons/react/3x2'
-import {getWorldsOfServer} from "../../apiInterface/loadContent";
 import {WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
@@ -22,6 +21,8 @@ import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faUser, faUsers} from "@fortawesome/free-solid-svg-icons"
 import {faFortAwesome} from "@fortawesome/free-brands-svg-icons"
+import {useActiveWorldsOfServer} from "../../apiInterface/loaders/world"
+import ErrorPage from "./ErrorPage"
 
 /*
 
@@ -71,45 +72,23 @@ $retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
  */
 
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
-  const [serverWorlds, setServerWorlds] = useState<worldType[]>([])
+  const [activeWorldsErr, activeWorlds] = useActiveWorldsOfServer(serverCode)
   const [t, i18n] = useTranslation("ui")
   const navigate = useNavigate()
   const [searchContents, setSearchContents] = useState<string>("")
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false)
 
-  useEffect(() => {
-    let mounted = true
-    if(serverCode === undefined) {
-      setServerWorlds([])
-    } else {
-      getWorldsOfServer({server: serverCode})
-          .then(data => {
-            if(mounted) {
-              if(data === undefined) {
-                //server not found has to be handled by main page
-                setServerWorlds([])
-              } else {
-                const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
-                setServerWorlds(data.worlds
-                    .filter(d => d.active != null)
-                    .sort((w1, w2) => typeSort(w2) - typeSort(w1))
-                )
-              }
-            }
-          })
-          .catch(() => {
-            //ignore here more or less since this has to be handled by the main page
-            if(mounted) {
-              setServerWorlds([])
-            }
-          })
+  const sortedWorlds = useMemo(() => {
+    if(activeWorlds === undefined) {
+      return []
     }
-    return () => {
-      mounted = false
-    }
-  }, [serverCode])
+    const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
+    return activeWorlds
+        .filter(d => d.active != null)
+        .sort((w1, w2) => typeSort(w2) - typeSort(w1))
+  }, [activeWorlds])
 
-  const allMenu: Array<JSX.Element> = []
+  const allMenu: Array<React.ReactNode> = []
 
   if(serverCode !== undefined) {
     allMenu.push(
@@ -122,7 +101,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
 
     //TODO switch base path if we are inside a tool / ...
     let basePath = WORLD
-    const serverWorldsNav = serverWorlds.map(w => {
+    const serverWorldsNav = sortedWorlds.map(w => {
       return (
           <NavDropdown.Item
               key={"serverWorldsNav_" + w.server__code + w.name}
@@ -277,6 +256,8 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   )
 
   //TODO: add login + user area here
+
+  if(activeWorldsErr) return <ErrorPage error={activeWorldsErr} />
 
   return (
       <ReactNav className={"nav-bg"} expand={"lg"} expanded={navbarExpanded}>

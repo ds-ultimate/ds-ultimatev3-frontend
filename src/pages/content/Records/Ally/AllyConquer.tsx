@@ -3,11 +3,11 @@ import {useTranslation} from "react-i18next";
 import React from "react";
 import {conquerChangeType, highlightRefType} from "../../../../modelHelper/Conquer";
 import ConquerPage, {FILTER_OPTIONS} from "../../../layout/ConquerPage";
-import {useAllyData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
 import {allyConquerTable} from "../../../../apiInterface/apiConf";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
+import {useAllyData} from "../../../../apiInterface/loaders/ally"
 
 const highlightPossible: conquerChangeType[] = [
   conquerChangeType.SELF,

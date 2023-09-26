@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {useVillageData, useWorldData} from "../../../../apiInterface/loadContent";
+import {useWorldData} from "../../../../apiInterface/loaders/world";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage from "../../../layout/ErrorPage";
@@ -11,6 +11,7 @@ import {villageBasicDataType} from "../../../../modelHelper/Village";
 import VillageStatsPane from "./VillageStatsPane";
 import VillageHistory from "./VillageHistory";
 import {ChartSection} from "../Util";
+import {useVillageData} from "../../../../apiInterface/loaders/village"
 
 
 export default function VillagePage() {

@@ -2,7 +2,7 @@ import {Link, useParams} from "react-router-dom";
 import {useState} from "react";
 import {WorldDisplayName, WorldState, worldType} from "../../modelHelper/World";
 import {ServerFlag, serverType} from "../../modelHelper/Server";
-import {useWorldsOfServer} from "../../apiInterface/loadContent";
+import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../../util/routes";
@@ -11,6 +11,7 @@ import {Button, Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./Server.module.scss"
 import ErrorPage from "../layout/ErrorPage";
+import {useServer} from "../../apiInterface/loaders/server"
 
 function WorldTypeSection({data, header, server, type}: {data: worldType[], header: string, server?: serverType, type: string}) {
   const { t } = useTranslation("ui")
@@ -89,10 +90,12 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
 
 export default function ServerPage() {
   const {server} = useParams()
-  const [serverErr, serverWorlds] = useWorldsOfServer(server)
+  const [serverErr, serverData] = useServer(server)
+  const [serverWorldsErr, serverWorlds] = useWorldsOfServer(server)
   const { t } = useTranslation("ui")
 
   if(serverErr) return <ErrorPage error={serverErr} />
+  if(serverWorldsErr) return <ErrorPage error={serverWorldsErr} />
 
   return (
       <Row className="justify-content-center">
@@ -102,15 +105,15 @@ export default function ServerPage() {
           </Col>
         </Col>
         <WorldTypeSection
-            data={serverWorlds.worlds.filter(w => w.sortType === "world").sort((w1, w2) => parseInt(w2.name) - parseInt(w1.name))}
+            data={(serverWorlds ?? []).filter(w => w.sortType === "world").sort((w1, w2) => parseInt(w2.name) - parseInt(w1.name))}
             header={t('table-title.normalWorlds')}
-            server={serverWorlds.server}
+            server={serverData}
             type={"normal"}
         />
         <WorldTypeSection
-            data={serverWorlds.worlds.filter(w => w.sortType !== "world").sort((w1, w2) => w2.id - w1.id)}
+            data={(serverWorlds ?? []).filter(w => w.sortType !== "world").sort((w1, w2) => w2.id - w1.id)}
             header={t('table-title.specialWorlds')}
-            server={serverWorlds.server}
+            server={serverData}
             type={"special"}
         />
       </Row>

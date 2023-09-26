@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import React, {useState} from "react";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import {useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loaders/world"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";

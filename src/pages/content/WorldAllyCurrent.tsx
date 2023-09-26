@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {WorldDisplayName} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
-import {useWorldData} from "../../apiInterface/loadContent";
+import {useWorldData} from "../../apiInterface/loaders/world"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {worldAllyCurrentTable} from "../../apiInterface/apiConf";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";

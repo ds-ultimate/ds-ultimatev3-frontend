@@ -6,6 +6,7 @@ import {FrontendError} from "./ErrorPages/ErrorTypes"
 import ErrorPage500 from "./ErrorPages/ErrorPage500"
 import {Card, Col, Row} from "react-bootstrap"
 import {useTranslation} from "react-i18next"
+import ErrorPage503 from "./ErrorPages/ErrorPage503"
 
 export const GenericFrontendError: FrontendError = {
   isFrontend: true,
@@ -30,7 +31,7 @@ export default function ErrorPage({error}: {error: any}) {
         return <ErrorPage500 error={err} />
       }
       if(err.response.status === 503) {
-        return <ErrorPage500 error={err} />
+        return <ErrorPage503 error={err} />
       }
     }
   }
@@ -43,10 +44,11 @@ export default function ErrorPage({error}: {error: any}) {
       return <ErrorPage404 error={err} />
     }
     if(err.code === 500) {
-      return <ErrorPage404 error={err} />
+      return <ErrorPage500 error={err} />
     }
   }
 
+  console.log(error)
   return (
       <Row className={"justify-content-center p-3"}>
         <Col xs={12} className={"p-lg-5 mx-auto my-1 text-center"}>

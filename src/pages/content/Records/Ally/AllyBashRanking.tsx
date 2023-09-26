@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import React, {useMemo} from "react";
-import {useAllyData, useWorldData} from "../../../../apiInterface/loadContent";
+import {useWorldData} from "../../../../apiInterface/loaders/world";
 import ErrorPage from "../../../layout/ErrorPage";
 import {DecodeName, nf, rawDecodeName, thousandsFormat} from "../../../../util/UtilFunctions";
 import {allyPlayerTable} from "../../../../apiInterface/apiConf";
@@ -12,6 +12,7 @@ import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderB
 import {filterPlayerCallback} from "./AllyPlayer";
 import {allyType} from "../../../../modelHelper/Ally";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
+import {useAllyData} from "../../../../apiInterface/loaders/ally"
 
 export default function AllyBashRankingPage() {
   const {server, world, ally} = useParams()

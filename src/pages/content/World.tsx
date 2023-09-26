@@ -9,6 +9,7 @@ import {Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./World.module.scss"
 import ErrorPage from "../layout/ErrorPage";
+import {useWorldData} from "../../apiInterface/loaders/world"
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
   const { t } = useTranslation("ui")
@@ -78,9 +79,10 @@ function WorldAllyTable({worldData, worldAllyData}: {worldData?: worldType, worl
 
 export default function WorldPage() {
   const {server, world} = useParams()
-  const [worldErr, worldOverview] = useWorldOverview(server, world)
-  const worldData = worldOverview.world
+  const [worldOverviewErr, worldOverview] = useWorldOverview(server, world)
+  const [worldErr, worldData] = useWorldData(server, world)
 
+  if(worldOverviewErr) return <ErrorPage error={worldOverviewErr} />
   if(worldErr) return <ErrorPage error={worldErr} />
 
   return (

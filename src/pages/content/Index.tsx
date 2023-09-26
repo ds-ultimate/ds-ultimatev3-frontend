@@ -1,7 +1,6 @@
 import React from "react";
 import {ServerFlag} from "../../modelHelper/Server";
 import {useTranslation} from "react-i18next";
-import {useIndexPageData} from "../../apiInterface/loadContent";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
 import {SERVER} from "../../util/routes";
@@ -10,20 +9,24 @@ import {Card, Carousel, Col, Row, Table} from "react-bootstrap";
 import styles from "./Index.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import MatomoLink from "../../matomo/MatomoLink"
+import {useNews} from "../../apiInterface/loaders/news"
+import {useServers} from "../../apiInterface/loaders/server"
 
 export default function IndexPage() {
-  const [dataErr, data] = useIndexPageData()
+  const [newsErr, newsData] = useNews()
+  const [serversErr, serversData] = useServers()
   const [t, i18n] = useTranslation("ui")
 
-  if(dataErr) return <ErrorPage error={dataErr} />
+  if(newsErr) return <ErrorPage error={newsErr} />
+  if(serversErr) return <ErrorPage error={serversErr} />
 
-  let news: JSX.Element | undefined = undefined
-  if(data.news) {
+  let news: React.ReactNode | undefined = undefined
+  if(newsData) {
     news = (
         <Row className="justify-content-center">
           <Col xs={12} md={10} className={"mt-1 mb-3"}>
             <Carousel className={"rounded " + styles.newsBorder}>
-              {data.news.map(n => {
+              {newsData.map(n => {
                 const n_content = (i18n.language === "de")?n.content_de:n.content_en
                 return (
                     <Carousel.Item key={n.id}>
@@ -42,9 +45,9 @@ export default function IndexPage() {
     )
   }
 
-  let servers: JSX.Element[] | undefined = undefined
-  if(data.servers) {
-    servers = data.servers.map(s => {
+  let servers: React.ReactNode | undefined = undefined
+  if(serversData) {
+    servers = serversData.map(s => {
       return (
           <tr key={s.code}>
             <td><ServerFlag server={s} /></td>

@@ -19,7 +19,7 @@ import {Dict} from "../../../util/customTypes";
 import {allyTopSelect, playerTopSelect} from "../../../apiInterface/apiConf";
 import {worldType} from "../../../modelHelper/World";
 import ErrorPage from "../../layout/ErrorPage";
-import {useWorldData} from "../../../apiInterface/loadContent";
+import {useWorldData} from "../../../apiInterface/loaders/world";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../util/datatables/DatatableBase";
 import {thousandsFormat} from "../../../util/UtilFunctions";
 

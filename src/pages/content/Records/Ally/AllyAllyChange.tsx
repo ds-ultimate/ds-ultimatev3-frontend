@@ -1,12 +1,12 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import React from "react";
-import {useAllyData} from "../../../../apiInterface/loadContent";
 import ErrorPage from "../../../layout/ErrorPage";
 import {DecodeName} from "../../../../util/UtilFunctions";
 import AllyChangePage, {FILTER_OPTIONS} from "../AllyChangePage";
 import {allyAllyChangeTable} from "../../../../apiInterface/apiConf";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
+import {useAllyData} from "../../../../apiInterface/loaders/ally"
 
 const filterPossible = [
   FILTER_OPTIONS.PLAYER,
