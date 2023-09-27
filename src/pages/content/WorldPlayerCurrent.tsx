@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
 import {useTranslation} from "react-i18next";
-import {WorldDisplayName} from "../../modelHelper/World";
+import {WorldDisplayName, worldDisplayNameRaw} from "../../modelHelper/World";
 import {useWorldData} from "../../apiInterface/loaders/world"
 import {LinkPlayer, LinkPlayerAlly, playerPureType, playerType} from "../../modelHelper/Player";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
@@ -9,7 +9,7 @@ import {worldPlayerCurrentTable} from "../../apiInterface/apiConf";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
 import ErrorPage from "../layout/ErrorPage";
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 
 export function usePlayerDatatableHeader() {
   const {t} = useTranslation("ui")
@@ -39,6 +39,12 @@ export default function WorldPlayerCurrentPage() {
   const [worldErr, worldData] = useWorldData(server, world)
   const {t} = useTranslation("ui")
   const playerHeader = usePlayerDatatableHeader()
+
+  useEffect(() => {
+    if(worldData) {
+      document.title = worldDisplayNameRaw(t, worldData) + ": " + t("title.overview") + " " + t("title.player")
+    }
+  }, [t, worldData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
 

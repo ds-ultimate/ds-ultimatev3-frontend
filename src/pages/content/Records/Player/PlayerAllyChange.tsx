@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import React from "react";
 import ErrorPage from "../../../layout/ErrorPage";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {rawDecodeName} from "../../../../util/UtilFunctions";
 import AllyChangePage, {FILTER_OPTIONS} from "../AllyChangePage";
 import {playerAllyChangeTable} from "../../../../apiInterface/apiConf";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
@@ -34,7 +34,7 @@ export default function PlayerAllyChangePage() {
     return <ErrorPage error={errData} />
   }
 
-  const who = <>{<DecodeName name={playerData?.cur?.name ?? playerData?.top?.name ?? ""} />}</>
+  const who = playerData?.cur?rawDecodeName(playerData.cur.name):(playerData?.top?rawDecodeName(playerData.top.name):undefined)
   return <>{player && <AllyChangePage
       typeName={typeName}
       who={who}

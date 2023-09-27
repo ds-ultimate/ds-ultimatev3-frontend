@@ -5,7 +5,7 @@ import {conquerChangeType, highlightRefType} from "../../../../modelHelper/Conqu
 import ConquerPage, {FILTER_OPTIONS} from "../../../layout/ConquerPage";
 import ErrorPage from "../../../layout/ErrorPage";
 import {villageConquerTable} from "../../../../apiInterface/apiConf";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {rawDecodeName} from "../../../../util/UtilFunctions";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 import {useVillageData} from "../../../../apiInterface/loaders/village"
 
@@ -51,7 +51,7 @@ export default function VillageConquerPage() {
     return <ErrorPage error={errData} />
   }
 
-  const who = <>{villageData?.data && <DecodeName name={villageData.data.name} />}</>
+  const who = villageData?.data?rawDecodeName(villageData.data.name):undefined
   return <>{village && <ConquerPage
       typeName={typeName}
       who={who}

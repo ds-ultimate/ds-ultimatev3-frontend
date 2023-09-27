@@ -5,7 +5,7 @@ import {conquerChangeType, highlightRefType} from "../../../../modelHelper/Conqu
 import ConquerPage, {FILTER_OPTIONS} from "../../../layout/ConquerPage";
 import ErrorPage from "../../../layout/ErrorPage";
 import {playerConquerTable} from "../../../../apiInterface/apiConf";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {rawDecodeName} from "../../../../util/UtilFunctions";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 import {usePlayerData} from "../../../../apiInterface/loaders/player"
 
@@ -66,7 +66,7 @@ export default function PlayerConquerPage() {
     return <ErrorPage error={errData} />
   }
 
-  const who = <>{playerData?.cur && <DecodeName name={playerData.cur.name} />}</>
+  const who = playerData?.cur?rawDecodeName(playerData.cur.name):(playerData?.top?rawDecodeName(playerData.top.name):undefined)
   return <>{player && <ConquerPage
       typeName={typeName}
       who={who}

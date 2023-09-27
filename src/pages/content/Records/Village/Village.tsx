@@ -1,11 +1,11 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../../../apiInterface/loaders/world";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {DecodeName, rawDecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage from "../../../layout/ErrorPage";
 import {worldType} from "../../../../modelHelper/World";
-import React from "react";
+import React, {useEffect} from "react";
 import {overviewMap} from "../../../../apiInterface/apiConf";
 import {villageBasicDataType} from "../../../../modelHelper/Village";
 import VillageStatsPane from "./VillageStatsPane";
@@ -19,6 +19,12 @@ export default function VillagePage() {
   const [worldErr, worldData] = useWorldData(server, world)
   const {t} = useTranslation("ui")
   const [villageErr, villageData] = useVillageData(server, world, village)
+
+  useEffect(() => {
+    if(villageData) {
+      document.title = t("title.village") + ": " + rawDecodeName(villageData.data.name)
+    }
+  }, [t, villageData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(villageErr) return <ErrorPage error={villageErr} />

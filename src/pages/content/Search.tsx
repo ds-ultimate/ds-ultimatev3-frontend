@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import {Card, Col, Form, InputGroup, Row} from "react-bootstrap";
 
 import ErrorPage from "../layout/ErrorPage";
-import React, {ChangeEvent, useCallback, useState} from "react"
+import React, {ChangeEvent, useCallback, useEffect, useState} from "react"
 import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
 import {worldDisplayNameRaw} from "../../modelHelper/World"
 import {SearchAlly} from "./search/searchAlly"
@@ -30,6 +30,10 @@ export default function SearchPage() {
   const [searchActive, setSearchActive] = useState<boolean>(true)
   const [searchWorlds, setSearchWorlds] = usePersistentState<number[]>("search." + type + "." + server, [])
   const redirect = useRedirect()
+
+  useEffect(() => {
+    document.title = t("title.search")
+  }, [t])
 
   if(worldsErr) return <ErrorPage error={worldsErr} />
 

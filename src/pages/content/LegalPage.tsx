@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
@@ -6,6 +6,10 @@ import {INDEX} from "../../util/routes";
 import {MatomoLink} from "../../matomo"
 
 export default function LegalPage() {
+  useEffect(() => {
+    document.title = "DS-Ultimate"
+  }, [])
+
   return (
       <Card.Body>
         <h1>Impressum</h1>

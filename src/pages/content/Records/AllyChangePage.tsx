@@ -1,4 +1,4 @@
-import React, {ReactNode, useCallback, useMemo, useState} from 'react';
+import React, {ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
 import {Button, Card, Col, InputGroup, Row} from "react-bootstrap";
 import {TFunction} from "i18next";
 import {useParams} from "react-router-dom";
@@ -24,8 +24,8 @@ import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../util
 import {thousandsFormat} from "../../../util/UtilFunctions";
 
 type extLayoutParams = {
-  typeName: ReactNode,
-  who: ReactNode,
+  typeName: string,
+  who: string | undefined,
 }
 
 type intLayoutParams = extLayoutParams & {
@@ -135,6 +135,12 @@ export default function AllyChangePage({typeName, who, allyChangeSave, filterPos
   const { t } = useTranslation("ui")
   const [showFilters, setShowFilters] = useState(false)
   const [activeFilter, filterComponent] = useAllyChangeFilterComponent(filterPossible, worldData)
+
+  useEffect(() => {
+    if(who !== undefined) {
+      document.title = typeName + ": " + who
+    }
+  }, [typeName, who])
 
   if(worldErr) return <ErrorPage error={worldErr} />
 

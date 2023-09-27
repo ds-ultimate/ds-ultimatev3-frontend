@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 import {useWorldData} from "../../../../apiInterface/loaders/world";
 import ErrorPage from "../../../layout/ErrorPage";
 import {DecodeName, nf, rawDecodeName, thousandsFormat} from "../../../../util/UtilFunctions";
@@ -20,6 +20,14 @@ export default function AllyBashRankingPage() {
   const {t} = useTranslation("ui")
   const [allyErr, allyData] = useAllyData(server, world, ally)
   const playerHeader = useAllyBashRankingHeader(allyData?.cur)
+
+  useEffect(() => {
+    if(allyData?.cur?.name) {
+      document.title = t("title.ally") + ": " + rawDecodeName(allyData.cur.name)
+    } else if(allyData?.top?.name) {
+      document.title = t("title.ally") + ": " + rawDecodeName(allyData.top.name)
+    }
+  }, [t, allyData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(allyErr) return <ErrorPage error={allyErr} />

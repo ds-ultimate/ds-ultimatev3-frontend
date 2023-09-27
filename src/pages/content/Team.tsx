@@ -1,4 +1,4 @@
-import React, {Key} from "react";
+import React, {Key, useEffect} from "react";
 import {Col, Row} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
 import styles from "./Team.module.scss"
@@ -14,6 +14,10 @@ import {AT, CH, DE, FlagComponent} from "country-flag-icons/react/3x2";
 
 export default function TeamPage() {
   const { t } = useTranslation("ui")
+
+  useEffect(() => {
+    document.title = "DS-Ultimate"
+  }, [])
 
   const cardData: Array<{
     k: Key

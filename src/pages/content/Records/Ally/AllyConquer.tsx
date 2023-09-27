@@ -5,7 +5,7 @@ import {conquerChangeType, highlightRefType} from "../../../../modelHelper/Conqu
 import ConquerPage, {FILTER_OPTIONS} from "../../../layout/ConquerPage";
 import ErrorPage from "../../../layout/ErrorPage";
 import {allyConquerTable} from "../../../../apiInterface/apiConf";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {rawDecodeName} from "../../../../util/UtilFunctions";
 import {FrontendError} from "../../../layout/ErrorPages/ErrorTypes"
 import {useAllyData} from "../../../../apiInterface/loaders/ally"
 
@@ -66,7 +66,7 @@ export default function AllyConquerPage() {
     return <ErrorPage error={errData} />
   }
 
-  const who = <>{allyData?.cur && <DecodeName name={allyData.cur.name} />}</>
+  const who = allyData?.cur?rawDecodeName(allyData.cur.name):(allyData?.top?rawDecodeName(allyData.top.name):undefined)
   return <>{ally && <ConquerPage
       typeName={typeName}
       who={who}

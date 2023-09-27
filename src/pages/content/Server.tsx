@@ -1,5 +1,5 @@
 import {Link, useParams} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {WorldDisplayName, WorldState, worldType} from "../../modelHelper/World";
 import {ServerFlag, serverType} from "../../modelHelper/Server";
 import {useWorldsOfServer} from "../../apiInterface/loaders/world"
@@ -93,6 +93,10 @@ export default function ServerPage() {
   const [serverErr, serverData] = useServer(server)
   const [serverWorldsErr, serverWorlds] = useWorldsOfServer(server)
   const { t } = useTranslation("ui")
+
+  useEffect(() => {
+    document.title = t("title.worldOverview")
+  }, [t])
 
   if(serverErr) return <ErrorPage error={serverErr} />
   if(serverWorldsErr) return <ErrorPage error={serverWorldsErr} />

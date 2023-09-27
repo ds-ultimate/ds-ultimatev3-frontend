@@ -1,13 +1,13 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useWorldData, useWorldsOfServer} from "../../../../apiInterface/loaders/world";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {DecodeName, rawDecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import PlayerStatsPane from "./PlayerStatsPane";
 import PlayerTopStatsPane from "./PlayerTopStatsPane";
 import {worldType} from "../../../../modelHelper/World";
-import React from "react";
+import React, {useEffect} from "react";
 import PlayerHistPane from "./PlayerHistPane";
 import {overviewMap} from "../../../../apiInterface/apiConf";
 import PlayerCharts from "./PlayerCharts";
@@ -22,6 +22,14 @@ export default function PlayerPage() {
   const [worldErr, worldData] = useWorldData(server, world)
   const {t} = useTranslation("ui")
   const [playerErr, playerData] = usePlayerData(server, world, player)
+
+  useEffect(() => {
+    if(playerData?.cur?.name) {
+      document.title = t("title.player") + ": " + rawDecodeName(playerData.cur.name)
+    } else if(playerData?.top?.name) {
+      document.title = t("title.player") + ": " + rawDecodeName(playerData.top.name)
+    }
+  }, [t, playerData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(playerErr) return <ErrorPage error={playerErr} />

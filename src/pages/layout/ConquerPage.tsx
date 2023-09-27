@@ -1,4 +1,4 @@
-import React, {ReactNode, useCallback, useMemo, useState} from 'react';
+import React, {ReactNode, useCallback, useEffect, useMemo, useState} from 'react';
 import {Button, Card, Col, InputGroup, Row} from "react-bootstrap";
 import {TFunction} from "i18next";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
@@ -29,8 +29,8 @@ import {worldType} from "../../modelHelper/World";
 import ErrorPage from "./ErrorPage";
 
 type extLayoutParams = {
-  typeName: ReactNode,
-  who: ReactNode,
+  typeName: string,
+  who: string | undefined,
 }
 
 type intLayoutParams = extLayoutParams & {
@@ -205,6 +205,12 @@ export default function ConquerPage({typeName, who, conquerSave, highlightPossib
   const [showFilters, setShowFilters] = useState(false)
   const [allowedHighlight, highlighting] = useConquerHighlightComponent(highlightPossible, "conquer.hi_" + conquerSave)
   const [activeFilter, filterComponent] = useConquerFilterComponent(filterPossible, conquerTypeFilterPossible, worldData)
+
+  useEffect(() => {
+    if(who !== undefined) {
+      document.title = typeName + ": " + who
+    }
+  }, [typeName, who])
 
   if(worldErr) return <ErrorPage error={worldErr} />
 

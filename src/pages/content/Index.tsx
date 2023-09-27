@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {ServerFlag} from "../../modelHelper/Server";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -16,6 +16,10 @@ export default function IndexPage() {
   const [newsErr, newsData] = useNews()
   const [serversErr, serversData] = useServers()
   const [t, i18n] = useTranslation("ui")
+
+  useEffect(() => {
+    document.title = "DS-Ultimate"
+  }, [])
 
   if(newsErr) return <ErrorPage error={newsErr} />
   if(serversErr) return <ErrorPage error={serversErr} />

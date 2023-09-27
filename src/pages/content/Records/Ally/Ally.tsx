@@ -1,14 +1,14 @@
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../../../apiInterface/loaders/world";
-import {DecodeName} from "../../../../util/UtilFunctions";
+import {DecodeName, rawDecodeName} from "../../../../util/UtilFunctions";
 import {Card, Col, Nav, Row, Tab} from "react-bootstrap";
 import ErrorPage, {GenericFrontendError} from "../../../layout/ErrorPage";
 import AllyStatsPane from "./AllyStatsPane";
 import AllyTopStatsPane from "./AllyTopStatsPane";
 import {allyBasicDataType} from "../../../../modelHelper/Ally";
 import {worldType} from "../../../../modelHelper/World";
-import React from "react";
+import React, {useEffect} from "react";
 import AllyHistPane from "./AllyHistPane";
 import {overviewMap} from "../../../../apiInterface/apiConf";
 import AllyCharts from "./AllyCharts";
@@ -21,6 +21,14 @@ export default function AllyPage() {
   const [worldErr, worldData] = useWorldData(server, world)
   const {t} = useTranslation("ui")
   const [allyErr, allyData] = useAllyData(server, world, ally)
+
+  useEffect(() => {
+    if(allyData?.cur?.name) {
+      document.title = t("title.ally") + ": " + rawDecodeName(allyData.cur.name)
+    } else if(allyData?.top?.name) {
+      document.title = t("title.ally") + ": " + rawDecodeName(allyData.top.name)
+    }
+  }, [t, allyData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(allyErr) return <ErrorPage error={allyErr} />

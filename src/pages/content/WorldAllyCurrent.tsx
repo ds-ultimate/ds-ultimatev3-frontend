@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {WorldDisplayName} from "../../modelHelper/World";
+import {WorldDisplayName, worldDisplayNameRaw} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loaders/world"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
@@ -9,7 +9,7 @@ import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 import StatsPage from "../layout/StatsPage";
 import ErrorPage from "../layout/ErrorPage";
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
 
 export function useAllyDatatableHeader() {
   const {t} = useTranslation("ui")
@@ -39,6 +39,12 @@ export default function WorldAllyCurrentPage() {
   const [worldErr, worldData] = useWorldData(server, world)
   const { t } = useTranslation("ui")
   const allyHeader = useAllyDatatableHeader()
+
+  useEffect(() => {
+    if(worldData) {
+      document.title = worldDisplayNameRaw(t, worldData) + ": " + t("title.overview") + " " + t("title.ally")
+    }
+  }, [t, worldData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
 

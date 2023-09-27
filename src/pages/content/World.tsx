@@ -3,13 +3,14 @@ import {useTranslation} from "react-i18next";
 import {LinkPlayer, playerType} from "../../modelHelper/Player";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import {useWorldOverview} from "../../apiInterface/loadContent";
-import {WorldDisplayName, worldType} from "../../modelHelper/World";
+import {WorldDisplayName, worldDisplayNameRaw, worldType} from "../../modelHelper/World";
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {Card, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./World.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import {useWorldData} from "../../apiInterface/loaders/world"
+import {useEffect} from "react"
 
 function WorldPlayerTable({worldData, worldPlayerData}: {worldData?: worldType, worldPlayerData: playerType[]}) {
   const { t } = useTranslation("ui")
@@ -81,6 +82,13 @@ export default function WorldPage() {
   const {server, world} = useParams()
   const [worldOverviewErr, worldOverview] = useWorldOverview(server, world)
   const [worldErr, worldData] = useWorldData(server, world)
+  const { t } = useTranslation("ui")
+
+  useEffect(() => {
+    if(worldData) {
+      document.title = worldDisplayNameRaw(t, worldData)
+    }
+  }, [t, worldData])
 
   if(worldOverviewErr) return <ErrorPage error={worldOverviewErr} />
   if(worldErr) return <ErrorPage error={worldErr} />

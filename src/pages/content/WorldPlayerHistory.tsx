@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
-import React, {useState} from "react";
-import {WorldDisplayName} from "../../modelHelper/World";
+import React, {useEffect, useState} from "react";
+import {WorldDisplayName, worldDisplayNameRaw} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {useWorldData} from "../../apiInterface/loaders/world"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/datatables/DatatableBase";
@@ -24,6 +24,12 @@ export default function WorldPlayerHistoryPage() {
   const { t } = useTranslation("ui")
   const datepickerLang = useDatepickerLanguage()
   const playerHeader = usePlayerDatatableHeader()
+
+  useEffect(() => {
+    if(worldData) {
+      document.title = worldDisplayNameRaw(t, worldData) + ": " + t("server.ranking") + " " + t("title.player")
+    }
+  }, [t, worldData])
 
   if(worldErr) return <ErrorPage error={worldErr} />
 
