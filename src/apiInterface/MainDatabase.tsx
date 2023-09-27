@@ -118,7 +118,7 @@ const upgradeDB: upgradeEvent = function() {
     worldObjStore.createIndex("server__code, active", ["server__code", "active"], {unique: false})
   }
   if(!db.objectStoreNames.contains("worldExtended")) {
-    const worldExtended = db.createObjectStore("worldExtended", {keyPath: 'id'})
+    const worldExtended = db.createObjectStore("worldExtended", {keyPath: ['world', 'server']})
     worldExtended.createIndex("cached_at", "cached_at", {unique: false})
   }
   if(!db.objectStoreNames.contains("changelog")) {
