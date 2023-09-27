@@ -698,9 +698,6 @@
             "speedWorlds": "Speed kolo"
         },
         "titel": {
-            "overview": "P\u0159ehled",
-            "searchLimited": "Zobraz\u00ed se pouze prvn\u00ed polo\u017eky $limit, proto\u017ee vyhled\u00e1v\u00e1n\u00ed vr\u00e1tilo p\u0159\u00edli\u0161 mnoho v\u00fdsledk\u016f.",
-            "searchResults": "V\u00fdsledky hled\u00e1n\u00ed",
             "settings": "Nastaven\u00ed"
         },
         "unit": {

@@ -1,6 +1,4 @@
-import {
-  worldOverview
-} from "./apiConf";
+import {worldOverview} from "./apiConf";
 import {playerType} from "../modelHelper/Player";
 import {allyType} from "../modelHelper/Ally";
 import {useCallback, useContext, useEffect, useState} from "react";

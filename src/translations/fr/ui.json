@@ -113,6 +113,13 @@
     "barbarian": "",
     "deleted": ""
   },
+  "search": {
+    "activeWorlds": "",
+    "customWorlds": "",
+    "query": "",
+    "type": "",
+    "worlds": ""
+  },
   "server": {
     "choose": "",
     "code": "",
@@ -190,8 +197,11 @@
   },
   "title": {
     "ally": "",
+    "overview": "",
     "player": "",
     "search": "",
+    "searchLimited": "",
+    "searchResults": "",
     "village": "",
     "worldOverview": ""
   },

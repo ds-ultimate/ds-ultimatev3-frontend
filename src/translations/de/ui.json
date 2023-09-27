@@ -113,6 +113,13 @@
     "barbarian": "Barbaren",
     "deleted": "Gelöscht"
   },
+  "search": {
+    "activeWorlds": "Aktive Welten",
+    "customWorlds": "Auswählen",
+    "query": "Name",
+    "type": "Typ",
+    "worlds": "Welten"
+  },
   "server": {
     "choose": "Wähle deinen Server aus",
     "code": "Code",
@@ -190,8 +197,11 @@
   },
   "title": {
     "ally": "Stamm",
+    "overview": "Übersicht",
     "player": "Spieler",
     "search": "Suche",
+    "searchLimited": "Es werden nur die ersten {{limit}} Einträge angezeigt, weil ihre Suche zu viele Ergebnisse lieferte",
+    "searchResults": "Suchergebnisse",
     "village": "Dorf",
     "worldOverview": "Weltenübersicht"
   },

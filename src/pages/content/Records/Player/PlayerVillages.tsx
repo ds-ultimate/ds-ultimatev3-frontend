@@ -11,7 +11,8 @@ import {
   LinkVillage,
   VillageBonusText,
   villageContinent,
-  villageCoordinates, villagePureType,
+  villageCoordinates,
+  villagePureType,
 } from "../../../../modelHelper/Village";
 
 type paramType = {

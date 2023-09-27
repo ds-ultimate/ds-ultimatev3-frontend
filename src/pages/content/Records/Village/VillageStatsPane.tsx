@@ -8,7 +8,8 @@ import {LinkVillageInGame, ResponsiveRecordTable} from "../Util";
 import {LinkVillageConquer} from "./LinkVillageWinLoose";
 import {
   LinkVillageOwner,
-  villageBasicDataType, VillageBonusText,
+  villageBasicDataType,
+  VillageBonusText,
   villageContinent,
   villageCoordinates,
 } from "../../../../modelHelper/Village";

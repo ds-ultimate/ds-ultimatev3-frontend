@@ -1,6 +1,6 @@
 import {villageBasicDataType} from "../../modelHelper/Village"
 import {useMemo} from "react"
-import { villageBasicData} from "../apiConf"
+import {villageBasicData} from "../apiConf"
 import {useDataloaderCallback} from "../DataloaderCallback"
 import {useCachedData} from "../cacheInterface"
 

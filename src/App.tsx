@@ -30,6 +30,7 @@ import TeamPage from "./pages/content/Team";
 import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
 import ErrorPage from "./pages/layout/ErrorPage"
 import SearchPage from "./pages/content/Search"
+
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
 */

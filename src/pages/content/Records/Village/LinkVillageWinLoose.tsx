@@ -1,4 +1,3 @@
-
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../../../util/router";
 import {VILLAGE_CONQUER} from "../../../../util/routes";

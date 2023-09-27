@@ -686,9 +686,6 @@
         },
         "world": {},
         "titel": {
-            "searchResults": "Suchergebnisse",
-            "overview": "\u00dcbersicht",
-            "searchLimited": "Es werden nur die ersten $limit Eintr\u00e4ge angezeigt, weil ihre Suche zu viele Ergebnisse lieferte",
             "settings": "Einstellungen"
         },
         "tabletitel": {

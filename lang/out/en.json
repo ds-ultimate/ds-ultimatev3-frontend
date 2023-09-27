@@ -687,9 +687,6 @@
             "speedWorlds": "Speed worlds"
         },
         "titel": {
-            "searchResults": "Search results",
-            "overview": "Overview",
-            "searchLimited": "Only the first $limit entries are displayed because your search yielded too many results",
             "settings": "Settings"
         },
         "footer": {

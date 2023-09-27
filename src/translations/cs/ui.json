@@ -113,6 +113,13 @@
     "barbarian": "Barbarská vesnice",
     "deleted": "Odstraněno"
   },
+  "search": {
+    "activeWorlds": "",
+    "customWorlds": "",
+    "query": "",
+    "type": "",
+    "worlds": ""
+  },
   "server": {
     "choose": "Vyber svůj server",
     "code": "Server",
@@ -190,8 +197,11 @@
   },
   "title": {
     "ally": "Kmen",
+    "overview": "Přehled",
     "player": "Hráč",
     "search": "Vyhledat",
+    "searchLimited": "Zobrazí se pouze první položky {{limit}}, protože vyhledávání vrátilo příliš mnoho výsledků.",
+    "searchResults": "Výsledky hledání",
     "village": "Vesnice",
     "worldOverview": "Přehled světů"
   },

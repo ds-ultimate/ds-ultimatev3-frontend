@@ -1,4 +1,3 @@
-
 import UNIT_SPEAR from './ds_images/unit/spear.png'
 import UNIT_SWORD from './ds_images/unit/sword.png'
 import UNIT_AXE from './ds_images/unit/axe.png'

@@ -7,7 +7,8 @@ import {formatRoute} from "../../util/router";
 import {Button, Dropdown, Form, Nav, Navbar as ReactNav, NavDropdown} from 'react-bootstrap';
 import {Link, useNavigate} from "react-router-dom";
 import {
-  INDEX, SEARCH,
+  INDEX,
+  SEARCH,
   SERVER,
   WORLD,
   WORLD_ALLY_CUR,

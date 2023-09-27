@@ -113,6 +113,13 @@
     "barbarian": "barbarian",
     "deleted": "deleted"
   },
+  "search": {
+    "activeWorlds": "active worlds",
+    "customWorlds": "choose",
+    "query": "search",
+    "type": "type",
+    "worlds": "worlds"
+  },
   "server": {
     "choose": "Choose your server",
     "code": "code",
@@ -190,8 +197,11 @@
   },
   "title": {
     "ally": "Tribe",
+    "overview": "Overview",
     "player": "Player",
     "search": "Search",
+    "searchLimited": "Only the first {{limit}} entries are displayed because your search yielded too many results",
+    "searchResults": "Search results",
     "village": "Village",
     "worldOverview": "World overview"
   },
