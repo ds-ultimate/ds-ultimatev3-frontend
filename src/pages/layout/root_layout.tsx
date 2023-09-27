@@ -8,6 +8,8 @@ import LoadingScreen from "./LoadingScreen";
 import CookieConsent from "./CookieConsent"
 import Matomo from "../../Matomo"
 import ErrorBoundaryConsented from "./ErrorPages/ErrorBoundaryConsented"
+import {useTranslation} from "react-i18next"
+import React, {useEffect} from "react"
 
 export default function RootLayout() {
   const {server, world} = useParams()
@@ -27,7 +29,20 @@ export default function RootLayout() {
               <Footer />
             </Matomo>
           </ErrorBoundaryConsented>
+          <LangWatcher />
         </CookieConsent>
       </CustomThemeProvider>
   )
 };
+
+function LangWatcher() {
+  const {i18n} = useTranslation()
+
+  useEffect(() => {
+    i18n.on("languageChanged", lng => {
+      document.documentElement.lang = lng
+    })
+    document.documentElement.lang = i18n.language
+  }, [i18n]);
+  return <></>
+}
