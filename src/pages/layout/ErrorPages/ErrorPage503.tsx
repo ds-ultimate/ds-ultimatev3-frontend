@@ -29,6 +29,7 @@ export default function ErrorPage503({error}: {error: AxiosError | FrontendError
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DummyFunction = () => {
   const {t} = useTranslation("error")
   //tell translation interface that we need these

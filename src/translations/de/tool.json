@@ -1,0 +1,16 @@
+{
+  "distCalc": {
+    "ally": "Stamm",
+    "days": "Tag(e)",
+    "owner": "Besitzer",
+    "points": "Punkte",
+    "startVillage": "Startdorf",
+    "targetVillage": "Zieldorf",
+    "time": "Zeit",
+    "title": "Laufzeitrechner",
+    "titleGeneral": "Allgemein",
+    "unit": "Einheit",
+    "units": "Einheiten",
+    "villageNotExist": "Dorf existiert nicht"
+  }
+}

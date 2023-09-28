@@ -19,6 +19,14 @@ export type villagePureType = {
 
 export type villageType = villagePureType & {
   playerLatest__name: string | null,
+  playerLatest__ally_id: number | null,
+  playerLatest__allyLatest__name: string | null,
+  playerLatest__allyLatest__tag: string | null,
+}
+
+export type cachedVillageType = cacheable & villageType & {
+  world: string,
+  server: string,
 }
 
 export type villageBasicDataType = cacheable & {

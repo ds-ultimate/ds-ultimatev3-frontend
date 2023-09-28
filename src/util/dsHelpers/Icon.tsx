@@ -295,3 +295,34 @@ export function getBuildingImage(name: string, size: BuildingSize, level: number
   }
   return result
 }
+
+export function getUnitIcon(name: string) {
+  switch (name) {
+    case "spear":
+      return UNIT_SPEAR
+    case "sword":
+      return UNIT_SWORD
+    case "axe":
+      return UNIT_AXE
+    case "archer":
+      return UNIT_ARCHER
+    case "spy":
+      return UNIT_SPY
+    case "light":
+      return UNIT_LIGHT
+    case "marcher":
+      return UNIT_MARCHER
+    case "heavy":
+      return UNIT_HEAVY
+    case "ram":
+      return UNIT_RAM
+    case "catapult":
+      return UNIT_CATAPULT
+    case "knight":
+      return UNIT_KNIGHT
+    case "snob":
+      return UNIT_SNOB
+    default:
+      return WB_REMOVE
+  }
+}

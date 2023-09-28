@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import RootLayout from "./pages/layout/root_layout"
 import * as RouteHolder from "./pages/routes";
+import * as ToolRouteHolder from "./pages/tools/routes";
 
 import "./bootstrap.scss"
 
@@ -30,6 +31,7 @@ import TeamPage from "./pages/content/Team";
 import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
 import ErrorPage from "./pages/layout/ErrorPage"
 import SearchPage from "./pages/content/Search"
+import DistanceCalcPage from "./pages/tools/DistanceCalc"
 
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
@@ -61,6 +63,8 @@ function App() {
               <Route path={RouteHolder.PLAYER_ALLY_CHANGES} element={<PlayerAllyChangePage />}/>
               <Route path={RouteHolder.VILLAGE_INFO} element={<VillagePage />}/>
               <Route path={RouteHolder.VILLAGE_CONQUER} element={<VillageConquerPage />}/>
+
+              <Route path={ToolRouteHolder.DISTANCE_CALC} element={<DistanceCalcPage />}/>
 
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>

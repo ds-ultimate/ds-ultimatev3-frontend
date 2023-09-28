@@ -290,12 +290,7 @@
         "user": "We can't find a user with that e-mail address."
     },
     "tool": {
-        "distCalc": {
-            "startVillage": "Origin village",
-            "targetVillage": "Target village",
-            "days": "Day(s)",
-            "title": "Distance Calculator"
-        },
+        "distCalc": {},
         "attackPlanner": {
             "attack": "Attack",
             "conquest": "Conquest",
@@ -713,7 +708,6 @@
             "spy": "Scout",
             "sword": "Sword"
         },
-        "villageNotExist": "Village not exist",
         "nav": {
             "toggle": "Toggle",
             "disabled": {

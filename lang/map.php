@@ -18,6 +18,7 @@ $replacements = [
     "error.403.title" => "ui.notAllowed",
     "error.403.generic" => "ui.notAllowedDesc",
     "error" => "ui.errors",
+    "tool.distCalc.villageNotExist" => "ui.villageNotExist",
 ];
 
 $allow_errors = false;

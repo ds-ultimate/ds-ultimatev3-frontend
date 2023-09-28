@@ -7,14 +7,14 @@ import {FrontendError} from "../pages/layout/ErrorPages/ErrorTypes"
 
 export function useCachedData<T extends cacheable>(
     tblName: string, loadId: string, loadExternalCB: () => Promise<T>,
-    key: IDBValidKey | IDBKeyRange | undefined) {
+    key: IDBValidKey | IDBKeyRange | undefined, index?: string | undefined) {
   const db = getMainDatabase()
   const prom = useCallback(() => {
     if(key === undefined) {
       return new Promise<T>((_, reject) => reject(undefined))
     }
     return new Promise<T>((resolve, reject) => {
-      db.read<T>(tblName, key)
+      db.read<T>(tblName, key, index)
           .then(value => {
             const curTime = (new Date()).getTime()
             if(value !== undefined) {
@@ -32,7 +32,7 @@ export function useCachedData<T extends cacheable>(
           })
           .catch(reason => reject(reason))
     })
-  }, [db, tblName, key, loadExternalCB])
+  }, [db, tblName, key, loadExternalCB, index])
   return usePromisedData(prom, loadId)
 }
 

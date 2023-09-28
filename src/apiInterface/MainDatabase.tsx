@@ -147,6 +147,11 @@ const upgradeDB: upgradeEvent = function() {
     const villageBasic = db.createObjectStore("villageBasic", {keyPath: ['id', 'world', 'server']})
     villageBasic.createIndex("cached_at", "cached_at", {unique: false})
   }
+  if(!db.objectStoreNames.contains("villageAllyCached")) {
+    const villageBasic = db.createObjectStore("villageAllyCached", {keyPath: ['villageID', 'world', 'server']})
+    villageBasic.createIndex("x, y, world, server", ["x", "y", "world", "server"], {unique: true})
+    villageBasic.createIndex("cached_at", "cached_at", {unique: false})
+  }
 }
 
 function removeOutdatedEntries(mainDB: MainDatabase) {
@@ -161,6 +166,7 @@ function removeOutdatedEntries(mainDB: MainDatabase) {
     {name: "playerBasic", allAtOnce: false},
     {name: "playerChart", allAtOnce: false},
     {name: "villageBasic", allAtOnce: false},
+    {name: "villageAllyCached", allAtOnce: false},
   ]
 
   stores.forEach(s => {

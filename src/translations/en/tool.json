@@ -1,0 +1,16 @@
+{
+  "distCalc": {
+    "ally": "tribe",
+    "days": "Day(s)",
+    "owner": "owner",
+    "points": "points",
+    "startVillage": "Origin village",
+    "targetVillage": "Target village",
+    "time": "time",
+    "title": "Distance Calculator",
+    "titleGeneral": "General",
+    "unit": "Unit",
+    "units": "Units",
+    "villageNotExist": "Village not exist"
+  }
+}

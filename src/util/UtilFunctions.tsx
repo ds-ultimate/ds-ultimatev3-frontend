@@ -21,6 +21,10 @@ export function DecodeName({name}: {name: string}) {
   )
 }
 
+export function truncate(dat: string, n: number){
+  return (dat.length > n) ? dat.substring(0, n-1) + '&hellip;' : dat;
+}
+
 const thousandsSuffixes = ['', 'K', 'M', 'G', 'T'];
 
 export function thousandsFormat(num: number) {

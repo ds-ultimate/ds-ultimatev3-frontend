@@ -1,0 +1,16 @@
+{
+  "distCalc": {
+    "ally": "Kmen",
+    "days": "Den/dny",
+    "owner": "Vlastník",
+    "points": "Body",
+    "startVillage": "Útočící vesnice",
+    "targetVillage": "Cílová vesnice",
+    "time": "Čas",
+    "title": "Kalkulačka vzdálenosti",
+    "titleGeneral": "Obecné",
+    "unit": "Jednotka",
+    "units": "Jednotky",
+    "villageNotExist": "Vesnice neexistuje"
+  }
+}

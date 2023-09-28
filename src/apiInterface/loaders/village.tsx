@@ -1,6 +1,6 @@
-import {villageBasicDataType} from "../../modelHelper/Village"
+import {cachedVillageType, villageBasicDataType} from "../../modelHelper/Village"
 import {useMemo} from "react"
-import {villageBasicData} from "../apiConf"
+import {villageAllyDataXY, villageBasicData} from "../apiConf"
 import {useDataloaderCallback} from "../DataloaderCallback"
 import {useCachedData} from "../cacheInterface"
 
@@ -19,3 +19,22 @@ export function useVillageData(server: string | undefined, world: string | undef
   const downloadCB = useDataloaderCallback<villageBasicDataType>(params, cacheKey, villageBasicData)
   return useCachedData<villageBasicDataType>("villageBasic", "villageData", downloadCB, dbKey)
 }
+
+export function useVillageDataAllyXY(server: string | undefined, world: string | undefined, x: string | undefined, y: string | undefined) {
+  const [params, routeP, dbKey, cacheKey] =
+      useMemo(() => {
+        if(server === undefined || world === undefined || x === undefined || y === undefined) {
+          return [undefined, undefined, undefined, ""]
+        }
+        return [
+          {world, server},
+          {x, y},
+          [x, y, world, server],
+          "villageAllyCached" + server + "_" + world + "_" + x + "_" + y,
+        ]
+      }, [server, world, x, y])
+  const downloadCB = useDataloaderCallback<cachedVillageType>(params, cacheKey, villageAllyDataXY, routeP)
+  return useCachedData<cachedVillageType>("villageAllyCached", "villageAllyCached", downloadCB,
+      dbKey, "x, y, world, server")
+}
+

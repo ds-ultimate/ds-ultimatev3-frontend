@@ -118,6 +118,7 @@ export function isValidBuilding(name: string) {
   return BUILDINGS.find(b => b.name === name) !== undefined
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DummyFunction = () => {
   const { t } = useTranslation("ui")
   //tell translation interface that we need these

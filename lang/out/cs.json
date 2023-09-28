@@ -458,12 +458,7 @@
             "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev.",
             "villageNotExist": "Vesnice neexistuje"
         },
-        "distCalc": {
-            "days": "Den\/dny",
-            "startVillage": "\u00dato\u010d\u00edc\u00ed vesnice",
-            "targetVillage": "C\u00edlov\u00e1 vesnice",
-            "title": "Kalkula\u010dka vzd\u00e1lenosti"
-        },
+        "distCalc": {},
         "map": {
             "ally": "Ozna\u010dit kmen",
             "allySelectPlaceholder": "Vybrat kmen",
@@ -715,7 +710,6 @@
             "sword": "\u0160erm\u00ed\u0159"
         },
         "village": {},
-        "villageNotExist": "Vesnice neexistuje",
         "world": {},
         "errors": {
             "404": {

@@ -1,7 +1,7 @@
 import React, {useMemo, useState} from 'react';
 
 import {CZ, DE, GB} from 'country-flag-icons/react/3x2'
-import {WorldDisplayName, worldType} from "../../modelHelper/World";
+import {WorldActiveMode, WorldDisplayName, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
 import {Button, Dropdown, Form, Nav, Navbar as ReactNav, NavDropdown} from 'react-bootstrap';
@@ -22,72 +22,36 @@ import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faUser, faUsers} from "@fortawesome/free-solid-svg-icons"
 import {faFortAwesome} from "@fortawesome/free-brands-svg-icons"
-import {useActiveWorldsOfServer} from "../../apiInterface/loaders/world"
+import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import ErrorPage from "./ErrorPage"
+import {DISTANCE_CALC} from "../tools/routes"
 
-/*
-
-$tools = [];
-if($worldArg !== null) {
-  if($worldArg->win_condition == 9) {
-    $tools[] = self::navElement('tool.greatSiegeCalc.title', 'tools.greatSiegeCalc', routeArgs: $serverCodeName);
-  }
-  if($worldArg->config != null && $worldArg->units != null) {
-    $tools[] = self::navElement('tool.distCalc.title', 'tools.distanceCalc', routeArgs: $serverCodeName);
-    $tools[] = self::navElement('tool.attackPlanner.title', 'tools.attackPlannerNew', routeArgs: $serverCodeName, nofollow: true);
-  } else {
-    $tools[] = self::navElementDisabled('tool.distCalc.title', 'ui.nav.disabled.missingConfig');
-    $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.missingConfig');
-  }
-  $tools[] = self::navElement('tool.map.title', 'tools.mapNew', routeArgs: $serverCodeName, nofollow: true);
-
-  if($worldArg->config != null && $worldArg->buildings != null) {
-    $tools[] = self::navElement('tool.pointCalc.title', 'tools.pointCalc', routeArgs: $serverCodeName);
-  } else {
-    $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.missingConfig');
-  }
-  $tools[] = self::navElement('tool.tableGenerator.title', 'tools.tableGenerator', routeArgs: $serverCodeName);
-
-  if($worldArg->config != null && $worldArg->units != null) {
-    $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index_world', routeArgs: $serverCodeName);
-  } else {
-    $tools[] = self::navElementDisabled('tool.accMgrDB.title', 'ui.nav.disabled.missingConfig');
-  }
-
-  if(AnimatedHistoryMapController::isAvailable($worldArg)) {
-    $tools[] = self::navElement('tool.animHistMap.title', 'tools.animHistMap.create', routeArgs: $serverCodeName, nofollow: true);
-  } else {
-    $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.missingConfig');
-  }
-} else {
-  $tools[] = self::navElementDisabled('tool.distCalc.title', 'ui.nav.disabled.noWorld');
-  $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.noWorld');
-  $tools[] = self::navElementDisabled('tool.map.title', 'ui.nav.disabled.noWorld');
-  $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.noWorld');
-  $tools[] = self::navElementDisabled('tool.tableGenerator.title', 'ui.nav.disabled.noWorld');
-  $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index');
-
-  $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.noWorld');
-}
-$retArray[] = self::navDropdown(title: 'ui.server.tools', subElements: $tools);
- */
 
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
-  const [activeWorldsErr, activeWorlds] = useActiveWorldsOfServer(serverCode)
+  const [serverWorldsErr, serverWorlds] = useWorldsOfServer(serverCode)
+  const [tTool] = useTranslation("tool")
   const [t, i18n] = useTranslation("ui")
   const navigate = useNavigate()
   const [searchContents, setSearchContents] = useState<string>("")
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false)
 
   const sortedWorlds = useMemo(() => {
-    if(activeWorlds === undefined) {
+    if(serverWorlds === undefined) {
       return []
     }
     const typeSort = (w1: worldType) => (w1.sortType === "world"?1:0)
-    return activeWorlds
-        .filter(d => d.active != null)
+    return serverWorlds
+        .filter(d => d.active !== WorldActiveMode.INACTIVE)
         .sort((w1, w2) => typeSort(w2) - typeSort(w1))
-  }, [activeWorlds])
+  }, [serverWorlds])
+
+  const currentWorld = useMemo(() => {
+    if(serverCode === undefined || worldName === undefined || serverWorlds === undefined) {
+      return undefined
+    }
+
+    return serverWorlds.find(w => w.server__code === serverCode && w.name === worldName)
+  }, [serverCode, worldName, serverWorlds])
 
   const allMenu: Array<React.ReactNode> = []
 
@@ -157,8 +121,64 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
         </NavDropdown>
     )
   }
+
+  const toolEntries: React.ReactElement[] = []
+  if(currentWorld !== undefined) {
+    //TODO create generator function for disabled nav elements
+    /* //TODO add this/these tool(s)
+    if($worldArg->win_condition == 9) {
+      $tools[] = self::navElement('tool.greatSiegeCalc.title', 'tools.greatSiegeCalc', routeArgs: $serverCodeName);
+    }
+     */
+    if(currentWorld.hasConfig && currentWorld.hasUnits) {
+      toolEntries.push(<NavDropdown.Item as={Link} to={formatRoute(DISTANCE_CALC, {server: serverCode, world: worldName})}>
+        {tTool("distCalc.title")}
+      </NavDropdown.Item>)
+    }
+    /* //TODO add this/these tool(s)
+    if($worldArg->config != null && $worldArg->units != null) {
+      $tools[] = self::navElement('tool.attackPlanner.title', 'tools.attackPlannerNew', routeArgs: $serverCodeName, nofollow: true);
+    } else {
+      $tools[] = self::navElementDisabled('tool.distCalc.title', 'ui.nav.disabled.missingConfig');
+      $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.missingConfig');
+    }
+    $tools[] = self::navElement('tool.map.title', 'tools.mapNew', routeArgs: $serverCodeName, nofollow: true);
+
+    if($worldArg->config != null && $worldArg->buildings != null) {
+      $tools[] = self::navElement('tool.pointCalc.title', 'tools.pointCalc', routeArgs: $serverCodeName);
+    } else {
+      $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.missingConfig');
+    }
+    $tools[] = self::navElement('tool.tableGenerator.title', 'tools.tableGenerator', routeArgs: $serverCodeName);
+
+    if($worldArg->config != null && $worldArg->units != null) {
+      $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index_world', routeArgs: $serverCodeName);
+    } else {
+      $tools[] = self::navElementDisabled('tool.accMgrDB.title', 'ui.nav.disabled.missingConfig');
+    }
+
+    if(AnimatedHistoryMapController::isAvailable($worldArg)) {
+      $tools[] = self::navElement('tool.animHistMap.title', 'tools.animHistMap.create', routeArgs: $serverCodeName, nofollow: true);
+    } else {
+      $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.missingConfig');
+    }
+     */
+  } else {
+    /* //TODO add this/these tool(s)
+    $tools[] = self::navElementDisabled('tool.distCalc.title', 'ui.nav.disabled.noWorld');
+    $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.noWorld');
+    $tools[] = self::navElementDisabled('tool.map.title', 'ui.nav.disabled.noWorld');
+    $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.noWorld');
+    $tools[] = self::navElementDisabled('tool.tableGenerator.title', 'ui.nav.disabled.noWorld');
+    $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index');
+
+    $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.noWorld');
+     */
+  }
+
   allMenu.push(
       <NavDropdown key={"toolDropdown"} title={t("server.tools")}>
+        {toolEntries}
         <NavDropdown.Item key={"TODO"} as={Link} to={"#"} disabled>TODO</NavDropdown.Item>
       </NavDropdown>
   )
@@ -258,7 +278,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
 
   //TODO: add login + user area here
 
-  if(activeWorldsErr) return <ErrorPage error={activeWorldsErr} />
+  if(serverWorldsErr) return <ErrorPage error={serverWorldsErr} />
 
   return (
       <ReactNav className={"nav-bg"} expand={"lg"} expanded={navbarExpanded}>

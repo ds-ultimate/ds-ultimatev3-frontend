@@ -301,12 +301,7 @@
         "user": "Es konnte leider kein Nutzer mit dieser E-Mail-Adresse gefunden werden."
     },
     "tool": {
-        "distCalc": {
-            "startVillage": "Startdorf",
-            "targetVillage": "Zieldorf",
-            "days": "Tag(e)",
-            "title": "Laufzeitrechner"
-        },
+        "distCalc": {},
         "attackPlanner": {
             "title": "Angriffsplaner",
             "offensive": "Offensiv",
@@ -724,7 +719,6 @@
             "knight": "Paladin",
             "snob": "Adelsgeschlecht"
         },
-        "villageNotExist": "Dorf existiert nicht",
         "nav": {
             "toggle": "Umschalten",
             "disabled": {

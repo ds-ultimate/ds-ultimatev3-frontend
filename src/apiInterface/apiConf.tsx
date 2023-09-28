@@ -50,6 +50,7 @@ export const playerBasicData = apiRequestGenerator("playerBasicData/{server}/{wo
 export const playerChartData = apiRequestGenerator("playerChartData/{server}/{world}/{id}")
 export const playerWorldPopup = apiRequestGenerator("playerWorldPopup/{world_id}/{player}")
 export const villageBasicData = apiRequestGenerator("villageBasicData/{server}/{world}/{id}")
+export const villageAllyDataXY = apiRequestGenerator("villageAllyDataXY/{server}/{world}/{x}/{y}")
 
 
 export const searchNormal = apiRequestGenerator("basicSearch")
