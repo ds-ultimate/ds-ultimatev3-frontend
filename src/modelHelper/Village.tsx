@@ -2,7 +2,7 @@ import {useTranslation} from "react-i18next";
 import {worldType} from "./World";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
-import {PLAYER_INFO, VILLAGE_INFO} from "../util/routes";
+import {PLAYER_INFO, VILLAGE_INFO} from "../pages/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
 import {cacheable} from "../apiInterface/MainDatabase"

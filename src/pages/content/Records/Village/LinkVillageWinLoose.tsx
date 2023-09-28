@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../../../util/router";
-import {VILLAGE_CONQUER} from "../../../../util/routes";
+import {VILLAGE_CONQUER} from "../../../routes";
 import {CustomTooltip, nf} from "../../../../util/UtilFunctions";
 import {worldType} from "../../../../modelHelper/World";
 import {Tooltip} from "react-bootstrap";

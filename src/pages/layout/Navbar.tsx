@@ -17,7 +17,7 @@ import {
   WORLD_CONQUER_DAILY,
   WORLD_PLAYER_CUR,
   WORLD_PLAYER_HIST
-} from "../../util/routes";
+} from "../routes";
 import {THEME, useGetCurrentTheme, useSetTheme} from "./theme";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faUser, faUsers} from "@fortawesome/free-solid-svg-icons"

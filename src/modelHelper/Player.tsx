@@ -1,7 +1,7 @@
 import {worldType} from "./World";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
-import {ALLY_INFO, PLAYER_INFO} from "../util/routes";
+import {ALLY_INFO, PLAYER_INFO} from "../pages/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import {chartDataType} from "../util/CustomChart";

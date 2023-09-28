@@ -2,7 +2,7 @@ import {Nav, NavItem} from "react-bootstrap";
 import React, {Key, useContext} from "react";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
-import {CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../../util/routes";
+import {CHANGELOG_PAGE, LEGAL_PAGE, TEAM_PAGE} from "../routes";
 import {useTranslation} from "react-i18next";
 import {ResetCookieConsentContext} from "./CookieConsent"
 import {MatomoLink} from "../../matomo"

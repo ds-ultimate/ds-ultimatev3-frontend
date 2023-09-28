@@ -3,7 +3,7 @@ import {ServerFlag} from "../../modelHelper/Server";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
-import {SERVER} from "../../util/routes";
+import {SERVER} from "../routes";
 import {Card, Carousel, Col, Row, Table} from "react-bootstrap";
 
 import styles from "./Index.module.scss"

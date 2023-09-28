@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../util/router";
-import {INDEX} from "../../util/routes";
+import {INDEX} from "../routes";
 import {MatomoLink} from "../../matomo"
 
 export default function LegalPage() {

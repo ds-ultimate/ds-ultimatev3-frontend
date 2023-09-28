@@ -9,7 +9,7 @@ import {DecodeName, nf, thousandsFormat} from "../../../../util/UtilFunctions";
 import {LinkAllyAllyChanges, LinkAllyConquer} from "./LinkAllyWinLoose";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../../../util/router";
-import {ALLY_BASH_RANKING} from "../../../../util/routes";
+import {ALLY_BASH_RANKING} from "../../../routes";
 
 type paramType = {
   data: allyTopType,

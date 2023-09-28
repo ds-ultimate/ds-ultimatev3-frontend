@@ -11,7 +11,7 @@ import DatatableBase, {DATATABLE_VARIANT} from "../../util/datatables/DatatableB
 import {worldDailyAllyConquerTable, worldDailyPlayerConquerTable} from "../../apiInterface/apiConf";
 import {DecodeName, nf} from "../../util/UtilFunctions";
 import {formatRoute} from "../../util/router";
-import {ALLY_INFO, PLAYER_INFO} from "../../util/routes";
+import {ALLY_INFO, PLAYER_INFO} from "../routes";
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder";
 
 

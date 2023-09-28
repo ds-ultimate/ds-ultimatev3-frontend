@@ -5,7 +5,7 @@ import {ServerFlag, serverType} from "../../modelHelper/Server";
 import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
 import {formatRoute} from "../../util/router";
-import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../../util/routes";
+import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../routes";
 import {nf} from "../../util/UtilFunctions";
 import {Button, Card, Col, Row, Table} from "react-bootstrap";
 

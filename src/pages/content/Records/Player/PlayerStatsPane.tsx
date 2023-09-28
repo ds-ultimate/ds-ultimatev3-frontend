@@ -9,7 +9,7 @@ import {LinkPlayerInGame, ResponsiveMultiRecordTable, ResponsiveRecordTable} fro
 import {LinkPlayerAlly, playerTopType, playerType} from "../../../../modelHelper/Player";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../../../../util/router";
-import {PLAYER_INFO} from "../../../../util/routes";
+import {PLAYER_INFO} from "../../../routes";
 import {useCallback, useMemo, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";

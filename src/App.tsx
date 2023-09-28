@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import RootLayout from "./pages/layout/root_layout"
-import * as RouteHolder from "./util/routes";
+import * as RouteHolder from "./pages/routes";
 
 import "./bootstrap.scss"
 

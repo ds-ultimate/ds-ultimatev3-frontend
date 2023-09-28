@@ -18,7 +18,7 @@ import {faFortAwesome} from "@fortawesome/free-brands-svg-icons"
 
 import "../../util/bootstrapSelect.scss"
 import {formatRoute} from "../../util/router"
-import {SEARCH} from "../../util/routes"
+import {SEARCH} from "../routes"
 
 
 export const SEARCH_LIMIT = 100
