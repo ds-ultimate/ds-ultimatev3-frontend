@@ -76,7 +76,7 @@ export function SearchPlayer({server, search, searchActive, searchWorlds}: {serv
   return (
       <>
         <Card.Title>{t("title.searchResults")}: {data.length}</Card.Title>
-        {data.length >= SEARCH_LIMIT && t("title.searchLimited")}
+        {data.length >= SEARCH_LIMIT && t("title.searchLimited", {limit: SEARCH_LIMIT})}
         <DatatableBase<playerSearchResult>
             data={data}
             header={header}

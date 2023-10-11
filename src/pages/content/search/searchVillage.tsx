@@ -86,7 +86,7 @@ export function SearchVillage({server, search, searchActive, searchWorlds}: {ser
   return (
       <>
         <Card.Title>{t("title.searchResults")}: {data.length}</Card.Title>
-        {data.length >= SEARCH_LIMIT && t("title.searchLimited")}
+        {data.length >= SEARCH_LIMIT && t("title.searchLimited", {limit: SEARCH_LIMIT})}
         <DatatableBase<villageSearchResult>
             data={data}
             header={header}

@@ -78,7 +78,7 @@ export function SearchAlly({server, search, searchActive, searchWorlds}: {server
   return (
       <>
         <Card.Title>{t("title.searchResults")}: {data.length}</Card.Title>
-        {data.length >= SEARCH_LIMIT && t("title.searchLimited")}
+        {data.length >= SEARCH_LIMIT && t("title.searchLimited", {limit: SEARCH_LIMIT})}
         <DatatableBase<allySearchResult>
             data={data}
             header={header}
