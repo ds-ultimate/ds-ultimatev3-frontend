@@ -40,7 +40,8 @@
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:dev": "NODE_ENV=development react-scripts build",
+    "build:prod": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -67,5 +68,5 @@
     "glob-parent": "^5.1.2"
   },
 
-  "homepage": "https://api.test.ds-ultimate.de/test"
+  "homepage": "https://beta.ds-ultimate.de"
 }
