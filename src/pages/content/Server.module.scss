@@ -8,9 +8,16 @@
   @include text-truncate();
 }
 
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(xl) {
   .serverTruncate {
     max-width: 220px;
+    @include text-truncate();
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .serverTruncate {
+    max-width: 300px;
     @include text-truncate();
   }
 }

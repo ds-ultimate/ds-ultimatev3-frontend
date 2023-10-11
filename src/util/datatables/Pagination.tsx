@@ -52,7 +52,7 @@ export default function Pagination({pageCnt, page, changePage}: {pageCnt: number
               <Button variant={variant} key={p[0]} className={(page + 1 === p[1])?" active":""} onClick={() => changePage(p[1] - 1)}>{p[1]}</Button>
           )
         })}
-        <Button variant={variant} onClick={() => changePage((page < pageCnt - 1)?(page + 1):pageCnt)}>{t("oPaginate_sNext")}</Button>
+        <Button variant={variant} onClick={() => changePage((page < pageCnt - 1)?(page + 1):pageCnt-1)}>{t("oPaginate_sNext")}</Button>
       </InputGroup>
   )
 }
