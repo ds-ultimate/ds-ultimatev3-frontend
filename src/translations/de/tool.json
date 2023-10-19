@@ -12,5 +12,13 @@
     "unit": "Einheit",
     "units": "Einheiten",
     "villageNotExist": "Dorf existiert nicht"
+  },
+  "pointCalc": {
+    "building": "Gebäude",
+    "constructionTime": "Bauzeit",
+    "level": "Level",
+    "points": "Punkte",
+    "population": "Bauernhofplätze",
+    "title": "Punkterechner"
   }
 }

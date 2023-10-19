@@ -12,5 +12,13 @@
     "unit": "Jednotka",
     "units": "Jednotky",
     "villageNotExist": "Vesnice neexistuje"
+  },
+  "pointCalc": {
+    "building": "",
+    "constructionTime": "",
+    "level": "",
+    "points": "",
+    "population": "",
+    "title": "Bodová kalkulačka"
   }
 }

@@ -32,6 +32,7 @@ import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
 import ErrorPage from "./pages/layout/ErrorPage"
 import SearchPage from "./pages/content/Search"
 import DistanceCalcPage from "./pages/tools/DistanceCalc"
+import PointCalcPage from "./pages/tools/PointCalc"
 
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
@@ -65,6 +66,7 @@ function App() {
               <Route path={RouteHolder.VILLAGE_CONQUER} element={<VillageConquerPage />}/>
 
               <Route path={ToolRouteHolder.DISTANCE_CALC} element={<DistanceCalcPage />}/>
+              <Route path={ToolRouteHolder.POINT_CALC} element={<PointCalcPage />}/>
 
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>

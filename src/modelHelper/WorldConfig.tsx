@@ -18,7 +18,7 @@ enum questType {
   TASK_SYSTEM = 5,
 }
 
-enum buildTimeFormulaType {
+export enum buildTimeFormulaType {
   FORMULA_2003 = 0,
   FORMULA_2011 = 1,
   FORMULA_2015 = 2,

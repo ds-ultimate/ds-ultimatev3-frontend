@@ -1,6 +1,8 @@
 import {worldExtendedType} from "../../modelHelper/World";
 import {NumDict} from "../customTypes";
 import {useTranslation} from "react-i18next";
+import {buildTimeFormulaType, worldConfigType} from "../../modelHelper/WorldConfig"
+import {range} from "../UtilFunctions"
 
 const BUILDINGS: Array<{
   'name': string,
@@ -93,6 +95,38 @@ const BUILDINGS: Array<{
 
 export const MAIN_REDUCTION = 1.05
 
+export const BUILD_TIME_FACTOR_2015 = [
+  0.095972951067676,
+  0.095972951067676,
+  0.161516436165735,
+  0.50029139641408,
+  0.956686699233349,
+  1.5081900491495,
+  2.15872239973382,
+  2.92402139950873,
+  3.8264181497567,
+  4.89346144998492,
+  6.15818184983154,
+  7.65953289967186,
+  9.443819799993,
+  11.5652774999329,
+  14.0884324499439,
+  17.0893036499556,
+  20.6580694499856,
+  24.9012377499945,
+  29.945072799976,
+  35.9387667499927,
+  43.0592063999605,
+  51.5155386999649,
+  61.5553531499961,
+  73.4716182999805,
+  87.6113783496337,
+  104.384299199706,
+  124.275985499834,
+  147.860715649921,
+  175.81797914994,
+  208.950582949914,
+]
 
 export function getPointBuildingMap(world: worldExtendedType) {
   const pointBuildingMap: NumDict<Array<[string, number]>> = {}
@@ -112,6 +146,65 @@ export function getPointBuildingMap(world: worldExtendedType) {
   })
 
   return pointBuildingMap
+}
+
+export function getBuildingData(name: string) {
+  return BUILDINGS.find(b => b.name === name)
+}
+
+export function BuildingName({nameRaw}: {nameRaw: string}) {
+  const { t } = useTranslation("ui")
+  return <>{t("buildings." + nameRaw)}</>
+}
+
+export function getBuildingPoints(name: string, level: number) {
+  const building = getBuildingData(name)
+  if(building === undefined) {
+    throw Error("Building is undefined " + name)
+  }
+  if(level === 0) return 0
+  return Math.round(building.point * Math.pow(building.point_factor, level-1))
+}
+
+export function getBuildingBuildTime(name: string, level: number, mainLevel: number, worldConfig: worldConfigType) {
+  const building = getBuildingData(name)
+  if(building === undefined) {
+    throw Error("Building is undefined " + name)
+  }
+  if(level === 0) return 0
+  return range(building.min_level, level+1).map(l => getBuildingBuildTimeSingle(name, l, mainLevel, worldConfig)).reduce((p, c) => p+c, 0)
+}
+
+export function getBuildingBuildTimeSingle(name: string, level: number, mainLevel: number, worldConfig: worldConfigType) {
+  const building = getBuildingData(name)
+  if(building === undefined) {
+    throw Error("Building is undefined " + name)
+  }
+  if(level === 0) return 0
+  const reductionFactor = Math.pow(MAIN_REDUCTION, -mainLevel)
+  if(worldConfig.game.buildtime_formula === buildTimeFormulaType.FORMULA_2003) {
+    return Math.round(building.build_time * Math.pow(building.build_time_factor, level-1) * reductionFactor)
+  } else if(worldConfig.game.buildtime_formula === buildTimeFormulaType.FORMULA_2011) {
+    if(level === 1 || level === 2) {
+      return Math.round(building.build_time * 1.18 * Math.pow(building.build_time_factor, -13) * reductionFactor)
+    }
+    return Math.round(building.build_time * 1.18 *  Math.pow(building.build_time_factor, level-1 - 14/(level-1)) * reductionFactor)
+  } else {
+    return Math.round(building.build_time * BUILD_TIME_FACTOR_2015[level-1] * reductionFactor)
+  }
+}
+
+export function getBuildingPop(name: string, level: number) {
+  const building = getBuildingData(name)
+  if(building === undefined) {
+    throw Error("Building is undefined " + name)
+  }
+  if(level === 0) return 0
+  return Math.round(building.pop * Math.pow(building.pop_factor, level-1))
+}
+
+export function getFarmSpace(level: number) {
+  return Math.floor(240 * Math.pow(100, (level - 1)/29))
 }
 
 export function isValidBuilding(name: string) {

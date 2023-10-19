@@ -569,9 +569,6 @@
             "autoZoom": "Automatischer Zoom",
             "resetDefault": "Reset"
         },
-        "pointCalc": {
-            "title": "Punkterechner"
-        },
         "tableGenerator": {
             "playerByAlly": "Alle Spieler eines Stamms",
             "villageByPlayer": "Alle D\u00f6rfer eines Spielers",

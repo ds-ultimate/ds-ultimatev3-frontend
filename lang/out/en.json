@@ -558,9 +558,6 @@
             "autoZoom": "automatic zoom",
             "resetDefault": "reset"
         },
-        "pointCalc": {
-            "title": "Points Calculator"
-        },
         "tableGenerator": {
             "playerByAlly": "All players of a tribe",
             "villageByAlly": "All villages of a tribe",

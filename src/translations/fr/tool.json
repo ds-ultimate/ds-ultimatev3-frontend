@@ -12,5 +12,13 @@
     "unit": "",
     "units": "",
     "villageNotExist": ""
+  },
+  "pointCalc": {
+    "building": "",
+    "constructionTime": "",
+    "level": "",
+    "points": "",
+    "population": "",
+    "title": ""
   }
 }

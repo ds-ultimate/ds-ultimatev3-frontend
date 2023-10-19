@@ -24,7 +24,7 @@ import {faUser, faUsers} from "@fortawesome/free-solid-svg-icons"
 import {faFortAwesome} from "@fortawesome/free-brands-svg-icons"
 import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import ErrorPage from "./ErrorPage"
-import {DISTANCE_CALC} from "../tools/routes"
+import {DISTANCE_CALC, POINT_CALC} from "../tools/routes"
 
 
 export default function Navbar({serverCode, worldName}: {serverCode?: string, worldName?: string}) {
@@ -131,7 +131,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
     }
      */
     if(currentWorld.hasConfig && currentWorld.hasUnits) {
-      toolEntries.push(<NavDropdown.Item as={Link} to={formatRoute(DISTANCE_CALC, {server: serverCode, world: worldName})}>
+      toolEntries.push(<NavDropdown.Item key={"dstClc"} as={Link} to={formatRoute(DISTANCE_CALC, {server: serverCode, world: worldName})}>
         {tTool("distCalc.title")}
       </NavDropdown.Item>)
     }
@@ -143,9 +143,15 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
       $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.missingConfig');
     }
     $tools[] = self::navElement('tool.map.title', 'tools.mapNew', routeArgs: $serverCodeName, nofollow: true);
+    */
 
+    if(currentWorld.hasConfig && currentWorld.hasUnits) {
+      toolEntries.push(<NavDropdown.Item key={"pntClc"} as={Link} to={formatRoute(POINT_CALC, {server: serverCode, world: worldName})}>
+        {tTool("pointCalc.title")}
+      </NavDropdown.Item>)
+    }
+    /* //TODO add this/these tool(s)
     if($worldArg->config != null && $worldArg->buildings != null) {
-      $tools[] = self::navElement('tool.pointCalc.title', 'tools.pointCalc', routeArgs: $serverCodeName);
     } else {
       $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.missingConfig');
     }

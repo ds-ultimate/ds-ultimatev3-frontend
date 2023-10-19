@@ -586,9 +586,6 @@
             "withoutTitle": "Tato mapa sv\u011bta nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto je v\u017edy pou\u017eita jako v\u00fdchoz\u00ed, kdy\u017e kliknete na \"Mapa sv\u011bta\". Chcete-li s n\u00ed vytvo\u0159it novou mapu sv\u011bta, je t\u0159eba j\u00ed p\u0159i\u0159adit n\u00e1zev.",
             "zoom": "Zv\u011bt\u0161en\u00ed"
         },
-        "pointCalc": {
-            "title": "Bodov\u00e1 kalkula\u010dka"
-        },
         "tableGenerator": {
             "maxSing": "F\u00f3rum akceptuje max. 1000 znak\u016f \"[\".<br>Proto byl v\u00fdstup rozd\u011blen do n\u011bkolika tabulek.",
             "playerByAlly": "V\u0161ichni hr\u00e1\u010di kmene",

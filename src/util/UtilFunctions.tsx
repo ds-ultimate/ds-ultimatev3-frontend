@@ -25,6 +25,12 @@ export function truncate(dat: string, n: number){
   return (dat.length > n) ? dat.substring(0, n-1) + '&hellip;' : dat;
 }
 
+export function range(min: number, max: number, stepSize?: number) {
+  const step = stepSize ?? 1
+  let result = [...Array((max - min) / step).keys()]
+  return result.map(n => n * step + min)
+}
+
 const thousandsSuffixes = ['', 'K', 'M', 'G', 'T'];
 
 export function thousandsFormat(num: number) {
