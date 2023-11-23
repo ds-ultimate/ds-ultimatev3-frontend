@@ -1,0 +1,39 @@
+@import '../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.mainContainer {
+  display: flex;
+  flex-grow: 3;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.mainContainer>.navbar {
+  position: absolute;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.rootContainer {
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+
+  height: 100vh;
+  overflow: auto;
+}
+
+@include color-mode(light) {
+  .rootContainer {
+    background: url(./../../../img/background/background-light.jpg) no-repeat center center fixed;
+  }
+}
+
+@include color-mode(dark) {
+  .rootContainer {
+    background: url(./../../../img/background/background-dark.jpg) no-repeat center center fixed;
+  }
+}

@@ -126,7 +126,6 @@
     "dsLink": "Die Stämme Link",
     "ranking": "Rangliste",
     "show": "Auswählen",
-    "tools": "Tools",
     "worlds": "Welten"
   },
   "showMoreWorlds": "mehr Welten anzeigen",
@@ -202,6 +201,7 @@
     "search": "Suche",
     "searchLimited": "Es werden nur die ersten {{limit}} Einträge angezeigt, weil ihre Suche zu viele Ergebnisse lieferte",
     "searchResults": "Suchergebnisse",
+    "serverOverview": "Serverübersicht",
     "village": "Dorf",
     "worldOverview": "Weltenübersicht"
   },

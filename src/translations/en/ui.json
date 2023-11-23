@@ -126,7 +126,6 @@
     "dsLink": "Tribal Wars link",
     "ranking": "Ranking",
     "show": "Choose",
-    "tools": "Tools",
     "worlds": "worlds"
   },
   "showMoreWorlds": "show more worlds",
@@ -202,6 +201,7 @@
     "search": "Search",
     "searchLimited": "Only the first {{limit}} entries are displayed because your search yielded too many results",
     "searchResults": "Search results",
+    "serverOverview": "Server overview",
     "village": "Village",
     "worldOverview": "World overview"
   },

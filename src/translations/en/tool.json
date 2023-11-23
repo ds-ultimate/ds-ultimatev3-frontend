@@ -1,4 +1,8 @@
 {
+  "disabled": {
+    "missingConfig": "This feature is not available for the selected world",
+    "noWorld": "In order to use this feature you must select a world"
+  },
   "distCalc": {
     "ally": "tribe",
     "days": "Day(s)",
@@ -13,6 +17,7 @@
     "units": "Units",
     "villageNotExist": "Village not exist"
   },
+  "navGroupTitle": "Tools",
   "pointCalc": {
     "building": "Building",
     "constructionTime": "Construction Time",

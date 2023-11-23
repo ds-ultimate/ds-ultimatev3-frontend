@@ -45,7 +45,7 @@ export default function CookieConsent({children, style, className}: {children?: 
   }
 
   return (
-      <div className={styles.cookieContainer + (className?" "+className:"")} style={style}>
+      <div className={className} style={style}>
         {!consented[1] && <div className={styles.cookieDiv + " pt-5"}>
           <div className={styles.cookeDialog + " container-bg"}>
           <Card>

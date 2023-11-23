@@ -622,10 +622,7 @@
         "ingame": {},
         "mistake": "Do\u0161lo k chyb\u011b.",
         "nav": {
-            "disabled": {
-                "missingConfig": "Tato funkce nen\u00ed pro vybran\u00fd sv\u011bt k dispozici.",
-                "noWorld": "Pro pou\u017eit\u00ed t\u00e9to funkce mus\u00ed b\u00fdt vybr\u00e1n sv\u011bt."
-            },
+            "disabled": {},
             "toggle": "P\u0159epnut\u00ed"
         },
         "news": {},

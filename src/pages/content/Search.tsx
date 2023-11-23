@@ -87,7 +87,7 @@ export default function SearchPage() {
               </InputGroup>
               <InputGroup className={"mb-2"}>
                 <InputGroup.Text>{t("search.query")}</InputGroup.Text>
-                <Form.Control value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => redirect(null, event.target.value)} />
+                <Form.Control value={search ?? ""} onChange={(event: ChangeEvent<HTMLInputElement>) => redirect(null, event.target.value)} />
               </InputGroup>
               <InputGroup className={"mb-2 d-none d-lg-flex"}>
                 <InputGroup.Text>{t("search.worlds")}</InputGroup.Text>
@@ -166,6 +166,6 @@ function useRedirect() {
   const navigate = useNavigate()
 
   return useCallback((typeNew: string | null, searchNew: string | null) => {
-    navigate(formatRoute(SEARCH, {server: server, type: typeNew ?? type, search: searchNew ?? search}))
+    navigate(formatRoute(SEARCH, {server: server, type: typeNew ?? type, search: searchNew ?? search ?? ""}))
   }, [server, type, search, navigate])
 }

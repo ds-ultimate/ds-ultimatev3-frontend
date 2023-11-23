@@ -126,7 +126,6 @@
     "dsLink": "Odkaz na server",
     "ranking": "Statistika",
     "show": "Zvolit",
-    "tools": "Nástroje",
     "worlds": "Světy"
   },
   "showMoreWorlds": "Zobrazit více světů",
@@ -202,6 +201,7 @@
     "search": "Vyhledat",
     "searchLimited": "Zobrazí se pouze první položky {{limit}}, protože vyhledávání vrátilo příliš mnoho výsledků.",
     "searchResults": "Výsledky hledání",
+    "serverOverview": "",
     "village": "Vesnice",
     "worldOverview": "Přehled světů"
   },

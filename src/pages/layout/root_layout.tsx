@@ -10,23 +10,27 @@ import Matomo from "../../Matomo"
 import ErrorBoundaryConsented from "./ErrorPages/ErrorBoundaryConsented"
 import {useTranslation} from "react-i18next"
 import React, {useEffect} from "react"
+import styles from "./root_layout.module.scss"
+
 
 export default function RootLayout() {
   const {server, world} = useParams()
   return (
       <CustomThemeProvider>
-        <CookieConsent className={"rootLayout main-container"}>
+        <CookieConsent className={"d-flex " + styles.rootContainer}>
           <ErrorBoundaryConsented>
             <Matomo>
               <Navbar serverCode={server} worldName={world}/>
-              <LoadingScreen style={{flexGrow: 3}} darken big>
-                <main>
-                  <Container>
-                    <Outlet />
-                  </Container>
-                </main>
-              </LoadingScreen>
-              <Footer />
+              <div className={styles.mainContainer}>
+                <LoadingScreen style={{flexGrow: 3}} darken big>
+                  <main>
+                    <Container>
+                      <Outlet />
+                    </Container>
+                  </main>
+                </LoadingScreen>
+                <Footer />
+              </div>
             </Matomo>
           </ErrorBoundaryConsented>
           <LangWatcher />

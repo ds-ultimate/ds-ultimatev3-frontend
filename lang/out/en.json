@@ -707,10 +707,7 @@
         },
         "nav": {
             "toggle": "Toggle",
-            "disabled": {
-                "missingConfig": "This feature is not available for the selected world",
-                "noWorld": "In order to use this feature you must select a world"
-            }
+            "disabled": {}
         },
         "ingame": {},
         "old": {

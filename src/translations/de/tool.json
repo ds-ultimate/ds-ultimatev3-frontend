@@ -1,4 +1,8 @@
 {
+  "disabled": {
+    "missingConfig": "Dieses Feature ist bei der ausgewählten Welt nicht verfügbar.",
+    "noWorld": "Um dieses Feature nutzen zu können, muss eine Welt ausgewählt werden"
+  },
   "distCalc": {
     "ally": "Stamm",
     "days": "Tag(e)",
@@ -13,6 +17,7 @@
     "units": "Einheiten",
     "villageNotExist": "Dorf existiert nicht"
   },
+  "navGroupTitle": "Tools",
   "pointCalc": {
     "building": "Gebäude",
     "constructionTime": "Bauzeit",

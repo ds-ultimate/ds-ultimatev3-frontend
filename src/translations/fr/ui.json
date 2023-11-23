@@ -126,7 +126,6 @@
     "dsLink": "",
     "ranking": "",
     "show": "",
-    "tools": "",
     "worlds": ""
   },
   "showMoreWorlds": "",
@@ -202,6 +201,7 @@
     "search": "",
     "searchLimited": "",
     "searchResults": "",
+    "serverOverview": "",
     "village": "",
     "worldOverview": ""
   },

@@ -1,4 +1,8 @@
 {
+  "disabled": {
+    "missingConfig": "Tato funkce není pro vybraný svět k dispozici.",
+    "noWorld": "Pro použití této funkce musí být vybrán svět."
+  },
   "distCalc": {
     "ally": "Kmen",
     "days": "Den/dny",
@@ -13,6 +17,7 @@
     "units": "Jednotky",
     "villageNotExist": "Vesnice neexistuje"
   },
+  "navGroupTitle": "Nástroje",
   "pointCalc": {
     "building": "",
     "constructionTime": "",

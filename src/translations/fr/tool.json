@@ -1,4 +1,8 @@
 {
+  "disabled": {
+    "missingConfig": "",
+    "noWorld": ""
+  },
   "distCalc": {
     "ally": "",
     "days": "",
@@ -13,6 +17,7 @@
     "units": "",
     "villageNotExist": ""
   },
+  "navGroupTitle": "",
   "pointCalc": {
     "building": "",
     "constructionTime": "",

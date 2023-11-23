@@ -2,22 +2,6 @@ body {
   overflow: hidden;
 }
 
-.rootLayout {
-  -webkit-background-size: cover !important;
-  -moz-background-size: cover !important;
-  -o-background-size: cover !important;
-  background-size: cover !important;
-
-  height: 100vh;
-  overflow: auto;
-}
-
-.rootLayout>.navbar {
-  position: absolute;
-  width: 100vw;
-  z-index: 1000;
-}
-
 .flags {
   height: 1em;
   margin-right: 5px;
@@ -29,12 +13,6 @@ body {
   @extend .mb-5;
   @extend .pb-3;
   margin-top: 5rem;
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
 
 .footer-nav .nav-link {
@@ -74,18 +52,15 @@ table {
 }
 
 @include color-mode(light) {
-  .rootLayout {
-    background: url(./../img/background/background-light.jpg) no-repeat center center fixed;
-  }
-
-  $nav-foot-bg: rgb(237, 212, 146,0.95);
+  --navbar-text-color: rgba(var(--bs-link-color-rgb));
+  --navbar-bg-color: rgb(237, 212, 146,0.95);
+  --navbar-disabled-hover-text-color: var(--bs-gray-400);
   .nav-bg {
-    background: $nav-foot-bg;
-    border-bottom: 1px solid black;
+    background: var(--navbar-bg-color);
   }
 
   .footer-bg {
-    background: $nav-foot-bg;
+    background: var(--navbar-bg-color);
     border-top: 1px solid black;
   }
 
@@ -95,10 +70,9 @@ table {
 }
 
 @include color-mode(dark) {
-  .rootLayout {
-    background: url(./../img/background/background-dark.jpg) no-repeat center center fixed;
-  }
-
+  --navbar-text-color: rgba(var(--bs-link-color-rgb));
+  --navbar-bg-color: #212327;
+  --navbar-disabled-hover-text-color: var(--bs-gray-400);
   .nav-bg {
     @extend .dark-img-bg;
   }

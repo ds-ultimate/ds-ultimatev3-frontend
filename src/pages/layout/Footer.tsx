@@ -25,6 +25,7 @@ export default function Footer() {
           <small>{t("footer.cookie")}</small>
         </Nav.Link>
       </Nav.Item>
+      <NavItem><small className={"nav-link"}>-</small></NavItem>
       {data.map(d => <React.Fragment key={d[0]}>
         <Nav.Item>
           <Nav.Link as={Link} to={formatRoute(d[1], {})}>

@@ -1,0 +1,96 @@
+@import '../../customVariables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.navbarWrapper {
+  float: left;
+  min-height: 100vh;
+  transition: width .5s;
+  overflow: hidden;
+  z-index: 1040;
+  position: relative;
+}
+
+.navbarBrand {
+  font-size: 1.125rem;
+  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.navbarWrapper ul {
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.navbarWrapper ul>li {
+  list-style: none;
+  width: inherit;
+}
+
+.navbarWrapper span {
+  padding-left: 0.5em;
+}
+
+.navbarWrapper:not(.navbarWrapperExtended) span, .navbarWrapper:not(.navbarWrapperExtended) .navbarBrand {
+  display: none;
+}
+
+.navbarWrapperExtended span {
+  display: initial;
+}
+
+.navbarWrapperExtended .navbarBrand {
+  display: block;
+}
+
+.navbarLink {
+  display: inline-block;
+  padding: 1rem;
+  white-space: nowrap;
+  width: 100%;
+  background-color: transparent;
+  color: var(--navbar-text-color);
+  text-align: left;
+  appearance: none;
+  border: none;
+  user-select: auto;
+  transition: color,background-color 0.5s;
+}
+
+
+button.navbarLink .faIcon {
+  float: right;
+}
+
+.navbarLinkHover .navbarLink {
+  color: var(--navbar-bg-color);
+}
+
+.navbarLink:hover:not(.navbarLinkDisabled), .navbarLinkHover {
+  background-color: var(--navbar-text-color);
+  color: var(--navbar-bg-color);
+  transition: color,background-color 0.5s;
+}
+
+.navbarLinkHover .navbarLink:hover:not(.navbarLinkDisabled) {
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-text-color);
+  transition: color,background-color 0.5s;
+}
+
+.navbarLinkDisabled:hover {
+  color: var(--navbar-disabled-hover-text-color) !important;
+  transition: color,background-color 0.5s;
+}
+
+.navbarMinimizer {
+  position: absolute;
+  bottom: 0;
+}
