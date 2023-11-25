@@ -124,26 +124,39 @@ export function CustomTooltip({delayShow, delayHide, overlay, placement, childre
 }
 
 export function dateFormatYMD(date: Date) {
-  const d = date.getDate();
-  const m = date.getMonth() + 1; //Month from 0 to 11
-  const y = date.getFullYear();
-  return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
+  const { d, mon, y } = timeParameterFromDate(date)
+  return `${y}-${mon}-${d}`
 }
 
-export function dateFormatLocal_YMD(date: Date) {
-  const d = date.getDate();
-  const m = date.getMonth() + 1; //Month from 0 to 11
-  const y = date.getFullYear();
-  return '' + (d <= 9 ? '0' + d : d) + '.' + (m<=9 ? '0' + m : m) + '.' + y;
+export function dateFormatLocal_DMY(date: Date) {
+  const { d, mon, y } = timeParameterFromDate(date)
+  return `${d}.${mon}.${y}`
+}
+
+export function dateFormatLocal_DMY_HMS(date: Date) {
+  const { s, min, h, d, mon, y } = timeParameterFromDate(date)
+  return `${d}.${mon}.${y} ${h}:${min}:${s}`
 }
 
 export function dateFormatYMD_HMS(date: Date) {
+  const { s, min, h, d, mon, y } = timeParameterFromDate(date)
+  return `${y}-${mon}-${d} ${h}:${min}:${s}`
+}
+
+function timeParameterFromDate(date: Date) {
   const s = date.getSeconds();
   const min = date.getMinutes();
   const h = date.getHours();
   const d = date.getDate();
   const mon = date.getMonth() + 1; //Month from 0 to 11
   const y = date.getFullYear();
-  const hms = '' + (h <= 9 ? '0' + h : h)+ ':' + (min <= 9 ? '0' + min : min)+ ':' + (s <= 9 ? '0' + s : s)
-  return '' + y + '-' + (mon<=9 ? '0' + mon : mon) + '-' + (d <= 9 ? '0' + d : d) + ' ' + hms;
+
+  return {
+    y: y,
+    mon: (mon<=9 ? '0' + mon : mon),
+    d: (d<=9 ? '0' + d : d),
+    h: (h<=9 ? '0' + h : h),
+    min: (min<=9 ? '0' + min : min),
+    s: (s<=9 ? '0' + s : s),
+  }
 }

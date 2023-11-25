@@ -25,5 +25,35 @@
     "points": "Punkte",
     "population": "Bauernhofplätze",
     "title": "Punkterechner"
+  },
+  "tableGenerator": {
+    "additionalColumns": "Zusätzliche Spalten",
+    "ally": "Stamm wählen",
+    "casualPointRange": "120er-Bereich anzeigen",
+    "columns": "Spalten",
+    "maxSing": "Das Forum akzeptiert max. 1000 das Zeichen \"[\".\nDarum wurde die Ausgabe in mehrere Tabellen unterteilt",
+    "names": "Name",
+    "numberLines": "Zeilen nummerieren",
+    "player": "Spieler wählen",
+    "playerByAlly": "Alle Spieler eines Stamms",
+    "points": "Punkte anzeigen",
+    "settings": "Einstellungen",
+    "sorting": "Sortieren",
+    "sortingName": "nach Name",
+    "sortingPoints": "nach Punkten",
+    "table": {
+      "casualDown": "↓120↓",
+      "casualUp": "↑120↑",
+      "lineNr": "Nr.",
+      "player": "Spieler",
+      "points": "Punkte",
+      "sig": "Generiert mit {{link}}",
+      "village": "Dorf"
+    },
+    "title": "Tabellen Generator",
+    "type": "Typ",
+    "villageAndPlayerByAlly": "Alle Dörfer eines Stammes mit ihren Spielern",
+    "villageByAlly": "Alle Dörfer eines Stamms",
+    "villageByPlayer": "Alle Dörfer eines Spielers"
   }
 }

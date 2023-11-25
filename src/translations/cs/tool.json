@@ -25,5 +25,35 @@
     "points": "",
     "population": "",
     "title": "Bodová kalkulačka"
+  },
+  "tableGenerator": {
+    "additionalColumns": "Další sloupec",
+    "ally": "",
+    "casualPointRange": "Zobrazit rozsah 120 %",
+    "columns": "Sloupce",
+    "maxSing": "Fórum akceptuje max. 1000 znaků \"[\".\nProto byl výstup rozdělen do několika tabulek.",
+    "names": "Název",
+    "numberLines": "Číslování řádků",
+    "player": "",
+    "playerByAlly": "Všichni hráči kmene",
+    "points": "Ukázat body",
+    "settings": "",
+    "sorting": "",
+    "sortingName": "",
+    "sortingPoints": "",
+    "table": {
+      "casualDown": "",
+      "casualUp": "",
+      "lineNr": "",
+      "player": "",
+      "points": "",
+      "sig": "",
+      "village": ""
+    },
+    "title": "Generátor tabulky",
+    "type": "",
+    "villageAndPlayerByAlly": "Všechny vesnice kmene a jejich hráči",
+    "villageByAlly": "Všechny vesnice kmene",
+    "villageByPlayer": "Všechny vesnice hráče"
   }
 }

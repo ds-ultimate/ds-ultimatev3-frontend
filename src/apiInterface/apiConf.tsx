@@ -73,6 +73,7 @@ export const playerPlayerHistoryTable = apiRequestGenerator("tables/playerPlayer
 export const playerConquerTable = apiRequestGenerator("tables/playerConquer/{server}/{world}/{type}/{player}")
 export const playerAllyChangeTable = apiRequestGenerator("tables/playerAllyChange/{server}/{world}/{type}/{player}")
 export const villageConquerTable = apiRequestGenerator("tables/villageConquer/{server}/{world}/{type}/{village}")
+export const allyPlayerVillageTable = apiRequestGenerator("tables/allyPlayerVillageTable/{server}/{world}/{ally}")
 
 
 //Bootstrap-select

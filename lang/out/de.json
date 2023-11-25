@@ -169,7 +169,6 @@
             "player": "Spieler",
             "village": "Dorf"
         },
-        "titel": {},
         "label": {
             "points": "Punkte",
             "rank": "Rang",
@@ -301,7 +300,6 @@
         "user": "Es konnte leider kein Nutzer mit dieser E-Mail-Adresse gefunden werden."
     },
     "tool": {
-        "distCalc": {},
         "attackPlanner": {
             "title": "Angriffsplaner",
             "offensive": "Offensiv",
@@ -569,14 +567,6 @@
             "autoZoom": "Automatischer Zoom",
             "resetDefault": "Reset"
         },
-        "tableGenerator": {
-            "playerByAlly": "Alle Spieler eines Stamms",
-            "villageByPlayer": "Alle D\u00f6rfer eines Spielers",
-            "villageByAlly": "Alle D\u00f6rfer eines Stamms",
-            "title": "Tabellen Generator",
-            "maxSing": "Das Forum akzeptiert max. 1000 das Zeichen \"[\".<br>Darum wurde die Ausgabe in mehrere Tabellen unterteilt",
-            "villageAndPlayerByAlly": "Alle D\u00f6rfer eines Stammes mit ihren Spielern"
-        },
         "accMgrDB": {
             "title_show": "Ausbauvorlage ansehen",
             "title": "Ausbau-Vorlagen Datenbank",
@@ -670,13 +660,11 @@
                 "addFollow": "Discordbenachrichtigungen bei Adelungen"
             }
         },
-        "allyChanges": {},
         "conquer": {
             "highlight": {
                 "all": "Alle"
             }
         },
-        "world": {},
         "titel": {
             "settings": "Einstellungen"
         },
@@ -701,7 +689,6 @@
             "noAlly": "Stammeslos",
             "deleted": "Gel\u00f6scht"
         },
-        "news": {},
         "unit": {
             "spear": "Speertr\u00e4ger",
             "sword": "Schwertk\u00e4mpfer",
@@ -723,7 +710,6 @@
                 "noWorld": "Um dieses Feature nutzen zu k\u00f6nnen, muss eine Welt ausgew\u00e4hlt werden"
             }
         },
-        "ingame": {},
         "old": {
             "nodata": "Keine Daten vorhanden"
         },
@@ -763,22 +749,10 @@
             "map": "Gefolgte Karten",
             "attackplanner": "Gefolgte Angriffspl\u00e4ne"
         },
-        "buildings": {},
         "sorting": "Sortierung",
-        "columns": "Spalten",
-        "numberLines": "Zeilen nummerieren",
-        "showPoints": "Punkte anzeigen",
-        "additionalColumns": "Zus\u00e4tzliche Spalten",
         "selection": "Auswahl",
         "mistake": "Es gab einen Fehler.",
         "showLessWorlds": "weniger Welten anzeigen",
-        "showPointDiff": "120er-Bereich anzeigen",
-        "index": {},
-        "tabeltitel": {},
-        "village": {
-            "bonus": {}
-        },
-        "otherWorldsPlayerPopup": {},
         "errors": {
             "404": {
                 "widthTooSmall": "Die Breite des Bildes ist zu klein",

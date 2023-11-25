@@ -20,6 +20,11 @@ $replacements = [
     "error" => "ui.errors",
     "tool.distCalc.villageNotExist" => "ui.villageNotExist",
     "tool.disabled" => "ui.nav.disabled",
+    "tool.tableGenerator.additionalColumns" => "ui.additionalColumns",
+    "tool.tableGenerator.casualPointRange" => "ui.showPointDiff",
+    "tool.tableGenerator.columns" => "ui.columns",
+    "tool.tableGenerator.numberLines" => "ui.numberLines",
+    "tool.tableGenerator.points" => "ui.showPoints",
 ];
 
 $allow_errors = false;

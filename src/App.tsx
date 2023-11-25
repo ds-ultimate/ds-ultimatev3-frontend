@@ -33,6 +33,7 @@ import ErrorPage from "./pages/layout/ErrorPage"
 import SearchPage from "./pages/content/Search"
 import DistanceCalcPage from "./pages/tools/DistanceCalc"
 import PointCalcPage from "./pages/tools/PointCalc"
+import TableGeneratorPage from "./pages/tools/TableGenerator"
 
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
@@ -67,6 +68,7 @@ function App() {
 
               <Route path={ToolRouteHolder.DISTANCE_CALC} element={<DistanceCalcPage />}/>
               <Route path={ToolRouteHolder.POINT_CALC} element={<PointCalcPage />}/>
+              <Route path={ToolRouteHolder.TABLE_GENERATOR} element={<TableGeneratorPage />}/>
 
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>

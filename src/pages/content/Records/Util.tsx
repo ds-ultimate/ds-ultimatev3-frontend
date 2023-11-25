@@ -1,6 +1,6 @@
 import {worldType} from "../../../modelHelper/World";
 import React, {Key, ReactNode, useState} from "react";
-import {dateFormatLocal_YMD} from "../../../util/UtilFunctions";
+import {dateFormatLocal_DMY} from "../../../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import {Card, Col, Table} from "react-bootstrap";
 import styles from "./record.module.scss";
@@ -50,13 +50,13 @@ export function TopElement({val, date, bp}: {val: ReactNode, date: string, bp?: 
     return (
         <>
           {val}<br />
-          <span className={"small float-end"}>{t("topAt") + " "}{dateFormatLocal_YMD(new Date(date))}</span>
+          <span className={"small float-end"}>{t("topAt") + " "}{dateFormatLocal_DMY(new Date(date))}</span>
         </>
     )
   }
   return (
       <>
-        {val} ({t("topAt") + " "}{dateFormatLocal_YMD(new Date(date))})
+        {val} ({t("topAt") + " "}{dateFormatLocal_DMY(new Date(date))})
       </>
   )
 }

@@ -2,7 +2,7 @@ import {worldType} from "../../../modelHelper/World"
 import {useTranslation} from "react-i18next"
 import React from "react"
 import {formatRoute} from "../../../util/router"
-import {DISTANCE_CALC, POINT_CALC} from "../../tools/routes"
+import {DISTANCE_CALC, POINT_CALC, TABLE_GENERATOR} from "../../tools/routes"
 import {faStopwatch, faList, faToolbox} from "@fortawesome/free-solid-svg-icons"
 import {faFortAwesomeAlt} from "@fortawesome/free-brands-svg-icons"
 import {NavbarItem, NavbarItemDisabled, NavbarMenu} from "../Navbar"
@@ -47,14 +47,20 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
           to={formatRoute(POINT_CALC, {server: serverCode, world: worldName})}
           text={t("pointCalc.title")}
           icon={faFortAwesomeAlt} />)
-    }
-    /* //TODO add this/these tool(s)
-    if($worldArg->config != null && $worldArg->buildings != null) {
     } else {
-      $tools[] = self::navElementDisabled('tool.pointCalc.title', 'ui.nav.disabled.missingConfig');
+      toolEntries.push(<NavbarItemDisabled
+          key={"pntClc"}
+          text={t("pointCalc.title")}
+          tooltip={t("disabled.missingConfig")}
+          icon={faFortAwesomeAlt} />)
     }
-    $tools[] = self::navElement('tool.tableGenerator.title', 'tools.tableGenerator', routeArgs: $serverCodeName);
+    toolEntries.push(<NavbarItem
+        key={"tblGen"}
+        to={formatRoute(TABLE_GENERATOR, {server: serverCode, world: worldName})}
+        text={t("tableGenerator.title")}
+        icon={faList} />)
 
+    /* //TODO add this/these tool(s)
     if($worldArg->config != null && $worldArg->units != null) {
       $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index_world', routeArgs: $serverCodeName);
     } else {
@@ -82,8 +88,12 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
         text={t("pointCalc.title")}
         tooltip={t("disabled.noWorld")}
         icon={faFortAwesomeAlt} />)
+    toolEntries.push(<NavbarItemDisabled
+        key={"tblGen"}
+        text={t("tableGenerator.title")}
+        tooltip={t("disabled.noWorld")}
+        icon={faList} />)
     /* //TODO add this/these tool(s)
-    $tools[] = self::navElementDisabled('tool.tableGenerator.title', 'ui.nav.disabled.noWorld');
     $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index');
 
     $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.noWorld');

@@ -165,7 +165,6 @@
             "supBash": "Body podporovatele",
             "village": "Vesnice"
         },
-        "titel": {},
         "who": {
             "ally": "Kmen",
             "player": "Hr\u00e1\u010d",
@@ -458,7 +457,6 @@
             "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev.",
             "villageNotExist": "Vesnice neexistuje"
         },
-        "distCalc": {},
         "map": {
             "ally": "Ozna\u010dit kmen",
             "allySelectPlaceholder": "Vybrat kmen",
@@ -585,26 +583,13 @@
             "village": "Ozna\u010den\u00ed vesnice",
             "withoutTitle": "Tato mapa sv\u011bta nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto je v\u017edy pou\u017eita jako v\u00fdchoz\u00ed, kdy\u017e kliknete na \"Mapa sv\u011bta\". Chcete-li s n\u00ed vytvo\u0159it novou mapu sv\u011bta, je t\u0159eba j\u00ed p\u0159i\u0159adit n\u00e1zev.",
             "zoom": "Zv\u011bt\u0161en\u00ed"
-        },
-        "tableGenerator": {
-            "maxSing": "F\u00f3rum akceptuje max. 1000 znak\u016f \"[\".<br>Proto byl v\u00fdstup rozd\u011blen do n\u011bkolika tabulek.",
-            "playerByAlly": "V\u0161ichni hr\u00e1\u010di kmene",
-            "title": "Gener\u00e1tor tabulky",
-            "villageAndPlayerByAlly": "V\u0161echny vesnice kmene a jejich hr\u00e1\u010di",
-            "villageByAlly": "V\u0161echny vesnice kmene",
-            "villageByPlayer": "V\u0161echny vesnice hr\u00e1\u010de"
         }
     },
     "ui": {
-        "index": {},
-        "additionalColumns": "Dal\u0161\u00ed sloupec",
         "ally": {
             "deleted": "Odstran\u011bno",
             "noAlly": "Bez kmenu"
         },
-        "allyChanges": {},
-        "buildings": {},
-        "columns": "Sloupce",
         "conquer": {
             "highlight": {
                 "all": "V\u0161echno"
@@ -619,19 +604,14 @@
             "loadTime": "Doba na\u010d\u00edt\u00e1n\u00ed",
             "loadTimeUnit": "Sekunda"
         },
-        "ingame": {},
         "mistake": "Do\u0161lo k chyb\u011b.",
         "nav": {
-            "disabled": {},
             "toggle": "P\u0159epnut\u00ed"
         },
-        "news": {},
         "noTitle": "Bez n\u00e1zvu",
-        "numberLines": "\u010c\u00edslov\u00e1n\u00ed \u0159\u00e1dk\u016f",
         "old": {
             "nodata": "Nejsou k dispozici \u017e\u00e1dn\u00e9 \u00fadaje"
         },
-        "otherWorldsPlayerPopup": {},
         "own": {
             "animatedMap": "Vlastn\u00ed animovan\u00e9 mapy",
             "attackplanner": "Vlastn\u00ed pl\u00e1ny \u00fatoku",
@@ -673,10 +653,7 @@
             "title": "Server"
         },
         "showLessWorlds": "Zobrazit m\u00e9n\u011b sv\u011bt\u016f",
-        "showPointDiff": "Zobrazit rozsah 120 %",
-        "showPoints": "Uk\u00e1zat body",
         "sorting": "T\u0159\u00edd\u011bn\u00ed",
-        "tabeltitel": {},
         "table": {
             "bashStats": "Pora\u017een\u00fd protivn\u00edk",
             "supDeff": "Podpora"
@@ -703,8 +680,6 @@
             "spy": "\u0160peh",
             "sword": "\u0160erm\u00ed\u0159"
         },
-        "village": {},
-        "world": {},
         "errors": {
             "404": {
                 "toolNotAvail": {

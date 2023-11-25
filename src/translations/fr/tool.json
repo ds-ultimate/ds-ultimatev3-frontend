@@ -25,5 +25,35 @@
     "points": "",
     "population": "",
     "title": ""
+  },
+  "tableGenerator": {
+    "additionalColumns": "",
+    "ally": "",
+    "casualPointRange": "",
+    "columns": "",
+    "maxSing": "",
+    "names": "",
+    "numberLines": "",
+    "player": "",
+    "playerByAlly": "",
+    "points": "",
+    "settings": "",
+    "sorting": "",
+    "sortingName": "",
+    "sortingPoints": "",
+    "table": {
+      "casualDown": "",
+      "casualUp": "",
+      "lineNr": "",
+      "player": "",
+      "points": "",
+      "sig": "",
+      "village": ""
+    },
+    "title": "",
+    "type": "",
+    "villageAndPlayerByAlly": "",
+    "villageByAlly": "",
+    "villageByPlayer": ""
   }
 }

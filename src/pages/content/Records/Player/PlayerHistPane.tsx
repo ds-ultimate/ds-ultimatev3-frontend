@@ -1,7 +1,7 @@
 import {useTranslation} from "react-i18next";
 
 import {worldType} from "../../../../modelHelper/World";
-import {dateFormatLocal_YMD, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
+import {dateFormatLocal_DMY, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
 import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
@@ -42,7 +42,7 @@ export default function PlayerHistPane({player_id, worldData}: paramType) {
               saveAs={"playerHistory"}
               api={playerPlayerHistoryTable({server: worldData.server__code, world: worldData.name, player: (player_id + "")})}
               cells={[
-                (p) => dateFormatLocal_YMD(new Date(p.date)),
+                (p) => dateFormatLocal_DMY(new Date(p.date)),
                 (p) => <DecodeName name={p.cur.name} />,
                 (p) => <LinkPlayerAlly player={p.cur} world={worldData} /> ,
                 (p) => <ShowHistory name={t('table.rank')} o_dat={p.last?.rank} n_dat={p.cur.rank} invert />,

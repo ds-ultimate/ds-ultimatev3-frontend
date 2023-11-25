@@ -8,7 +8,7 @@ export default function ErrorBoundaryConsented({children}: {children: ReactNode 
   const active = useIsConsented("errorReports")
 
   return (
-      <ErrorBoundary fallbackRender={ErrorPage} onError={active?logError:undefined}>
+      <ErrorBoundary FallbackComponent={ErrorPage} onError={active?logError:undefined}>
         {children}
       </ErrorBoundary>
   )

@@ -17,9 +17,12 @@ export type villagePureType = {
   bonus_id: number,
 }
 
-export type villageType = villagePureType & {
+export type villagePlayerType = villagePureType & {
   playerLatest__name: string | null,
   playerLatest__ally_id: number | null,
+}
+
+export type villageType = villagePlayerType & {
   playerLatest__allyLatest__name: string | null,
   playerLatest__allyLatest__tag: string | null,
 }

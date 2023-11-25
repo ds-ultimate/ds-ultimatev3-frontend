@@ -2,7 +2,7 @@ import {useTranslation} from "react-i18next";
 
 import {allyType} from "../../../../modelHelper/Ally";
 import {worldType} from "../../../../modelHelper/World";
-import {dateFormatLocal_YMD, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
+import {dateFormatLocal_DMY, dateFormatYMD, DecodeName, ShowHistory} from "../../../../util/UtilFunctions";
 import React, {useMemo} from "react";
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder";
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase";
@@ -42,7 +42,7 @@ export default function AllyHistPane({ally_id, worldData}: paramType) {
               saveAs={"allyHistory"}
               api={allyAllyHistoryTable({server: worldData.server__code, world: worldData.name, ally: (ally_id + "")})}
               cells={[
-                (a) => dateFormatLocal_YMD(new Date(a.date)),
+                (a) => dateFormatLocal_DMY(new Date(a.date)),
                 (a) => <DecodeName name={a.cur.tag} />,
                 (a) => <ShowHistory name={t('table.rank')} o_dat={a.last?.rank} n_dat={a.cur.rank} invert />,
                 (a) => <ShowHistory name={t('table.members')} o_dat={a.last?.member_count} n_dat={a.cur.member_count} />,

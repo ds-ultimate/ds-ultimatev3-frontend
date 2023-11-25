@@ -177,8 +177,7 @@
             "rank": "Rank",
             "village": "Villages",
             "supBash": "Supporter points"
-        },
-        "titel": {}
+        }
     },
     "datatable": {
         "sInfoEmpty": "Showing 0 to 0 of 0 entries",
@@ -290,7 +289,6 @@
         "user": "We can't find a user with that e-mail address."
     },
     "tool": {
-        "distCalc": {},
         "attackPlanner": {
             "attack": "Attack",
             "conquest": "Conquest",
@@ -558,14 +556,6 @@
             "autoZoom": "automatic zoom",
             "resetDefault": "reset"
         },
-        "tableGenerator": {
-            "playerByAlly": "All players of a tribe",
-            "villageByAlly": "All villages of a tribe",
-            "villageByPlayer": "All villages of a player",
-            "title": "Tables generator",
-            "maxSing": "The forum accepts max. 1000 the sign \"[\".<br>The output was therefore divided into several tables",
-            "villageAndPlayerByAlly": "All villages of a tribe including the players"
-        },
         "accMgrDB": {
             "table": {
                 "creator": "Creator",
@@ -654,12 +644,10 @@
         }
     },
     "ui": {
-        "world": {},
         "table": {
             "bashStats": "Opponents defeated",
             "supDeff": "support"
         },
-        "allyChanges": {},
         "conquer": {
             "highlight": {
                 "all": "all"
@@ -690,7 +678,6 @@
             "noAlly": "without tribe",
             "deleted": "deleted"
         },
-        "news": {},
         "unit": {
             "archer": "Archer",
             "axe": "Axe",
@@ -706,10 +693,8 @@
             "sword": "Sword"
         },
         "nav": {
-            "toggle": "Toggle",
-            "disabled": {}
+            "toggle": "Toggle"
         },
-        "ingame": {},
         "old": {
             "nodata": "no data"
         },
@@ -749,22 +734,10 @@
             "attackplanner": "Follows attacklists",
             "map": "Follows maps"
         },
-        "buildings": {},
         "sorting": "Sorting",
-        "columns": "Columns",
-        "numberLines": "Number lines",
-        "showPoints": "Show points",
-        "additionalColumns": "Additional columns",
         "selection": "Selection",
         "mistake": "There was a mistake.",
         "showLessWorlds": "show less worlds",
-        "showPointDiff": "Show 120% range",
-        "index": {},
-        "tabeltitel": {},
-        "village": {
-            "bonus": {}
-        },
-        "otherWorldsPlayerPopup": {},
         "errors": {
             "404": {
                 "widthTooSmall": "The width of the image is too small",
