@@ -8,6 +8,7 @@ import {Card, Col, Form, Row} from "react-bootstrap"
 import BootstrapSelect from "../../util/bootstrapSelect"
 import {allySelect, playerSelect} from "../../apiInterface/apiConf"
 import {TableGeneratorOutput} from "./TableGenerator/TableGeneratorOutput"
+import LoadingScreen from "../layout/LoadingScreen"
 
 
 export type columnOptionType = {
@@ -114,14 +115,16 @@ export default function TableGeneratorPage() {
           </Card>
         </Col>
         <Col xs={12} md={6} className={"mt-2"}>
-          {worldData && <TableGeneratorOutput
-              worldData={worldData}
-              selectedType={selectedType}
-              sorting={sorting}
-              columns={columns}
-              emptyColumnCnt={emptyColumnCnt}
-              selectedBaseEntry={selectedBaseEntry}
-          />}
+          <LoadingScreen style={{height: "100%"}} darken>
+            {worldData && <TableGeneratorOutput
+                worldData={worldData}
+                selectedType={selectedType}
+                sorting={sorting}
+                columns={columns}
+                emptyColumnCnt={emptyColumnCnt}
+                selectedBaseEntry={selectedBaseEntry}
+            />}
+          </LoadingScreen>
         </Col>
       </Row>
   )
