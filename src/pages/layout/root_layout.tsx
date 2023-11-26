@@ -22,7 +22,7 @@ export default function RootLayout() {
             <Matomo>
               <Navbar serverCode={server} worldName={world}/>
               <div className={styles.mainContainer}>
-                <LoadingScreen style={{flexGrow: 3}} darken big>
+                <LoadingScreen darken big>
                   <main>
                     <Container>
                       <Outlet />

@@ -7,9 +7,11 @@
   float: left;
   min-height: 100vh;
   transition: width .5s;
-  overflow: hidden;
   z-index: 1040;
-  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden auto;
 }
 
 .navbarBrand {
@@ -18,7 +20,6 @@
   padding-top: 0.5rem;
   text-align: center;
   white-space: nowrap;
-  width: 100%;
 }
 
 .navbarWrapper ul {
@@ -31,7 +32,8 @@
 
 .navbarWrapper ul>li {
   list-style: none;
-  width: inherit;
+  display: flex;
+  flex-flow: column;
 }
 
 .navbarWrapper span {
@@ -51,10 +53,7 @@
 }
 
 .navbarLink {
-  display: inline-block;
   padding: 1rem;
-  white-space: nowrap;
-  width: 100%;
   background-color: transparent;
   color: var(--navbar-text-color);
   text-align: left;
@@ -64,9 +63,9 @@
   transition: color,background-color 0.5s;
 }
 
-
 button.navbarLink .faIcon {
   float: right;
+  margin-left: 0.625rem;
 }
 
 .navbarLinkHover .navbarLink {
@@ -90,7 +89,9 @@ button.navbarLink .faIcon {
   transition: color,background-color 0.5s;
 }
 
+.navbarWrapper>ul {
+  flex-grow: 1;
+}
+
 .navbarMinimizer {
-  position: absolute;
-  bottom: 0;
 }

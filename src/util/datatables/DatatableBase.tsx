@@ -227,8 +227,8 @@ export default function DatatableBase<T>({header, variant, defaultSort, saveAs, 
               </Col>}
               {topBarEnd}
             </Row>
-            <Row className={"mb-3" + (responsiveTable?" table-responsive":"")}>
-              <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""}>
+            <Row className={"mb-3"}>
+              <Table striped={striped === undefined?true:striped} hover className={responsiveTable?"nowrap":""} responsive={responsiveTable}>
                 {headerNode}
                 <tbody>
                 {coreElement}

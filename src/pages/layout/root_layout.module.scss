@@ -4,16 +4,15 @@
 @import '~bootstrap/scss/mixins';
 
 .mainContainer {
-  display: flex;
-  flex-grow: 3;
-  flex-direction: column;
+  flex: 1 1 min-content;
   height: 100vh;
+  overflow: hidden auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.mainContainer>.navbar {
-  position: absolute;
-  width: 100vw;
-  z-index: 1000;
+.mainContainer>div:first-child {
+  flex: 1 1 min-content;
 }
 
 .rootContainer {
@@ -23,7 +22,6 @@
   background-size: cover !important;
 
   height: 100vh;
-  overflow: auto;
 }
 
 @include color-mode(light) {

@@ -8,7 +8,6 @@ body {
 }
 
 .container {
-  flex-grow: 3;
   border-radius: 5px;
   @extend .mb-5;
   @extend .pb-3;
@@ -30,7 +29,7 @@ body {
 @include media-breakpoint-up(xl) {
   .container {
     max-width: inherit;
-    width: max(80%, calc(625px + 50%));
+    width: max(80%, min(calc(625px + 50%), 100%));
   }
 }
 
