@@ -13,12 +13,14 @@ import {TableGeneratorOutput} from "./TableGenerator/TableGeneratorOutput"
 export type columnOptionType = {
   lineNumbers: boolean,
   points: boolean,
+  villageCount: boolean,
   casualPointRange: boolean,
 }
 
 const columnOptionDefault: columnOptionType = {
   lineNumbers: false,
   points: false,
+  villageCount: false,
   casualPointRange: false,
 }
 
@@ -90,6 +92,8 @@ export default function TableGeneratorPage() {
                   />
                 </Form.Group>
                 <StateBasedCheck value={"points"} label={t("tableGenerator.points")} state={columns} setState={setColumns} />
+                <StateBasedCheck value={"villageCount"} label={t("tableGenerator.villageCount")}
+                                 state={columns} setState={setColumns} disabled={selectedType !== "playerByAlly"} />
                 <StateBasedCheck value={"casualPointRange"} label={t("tableGenerator.casualPointRange")}
                                  state={columns} setState={setColumns} disabled={selectedType !== "playerByAlly"}/>
               </FormGroup>

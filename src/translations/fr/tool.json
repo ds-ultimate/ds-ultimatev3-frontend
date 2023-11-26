@@ -48,12 +48,14 @@
       "player": "",
       "points": "",
       "sig": "",
-      "village": ""
+      "village": "",
+      "villageCount": ""
     },
     "title": "",
     "type": "",
     "villageAndPlayerByAlly": "",
     "villageByAlly": "",
-    "villageByPlayer": ""
+    "villageByPlayer": "",
+    "villageCount": ""
   }
 }

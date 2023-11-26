@@ -48,12 +48,14 @@
       "player": "",
       "points": "",
       "sig": "",
-      "village": ""
+      "village": "",
+      "villageCount": ""
     },
     "title": "Generátor tabulky",
     "type": "",
     "villageAndPlayerByAlly": "Všechny vesnice kmene a jejich hráči",
     "villageByAlly": "Všechny vesnice kmene",
-    "villageByPlayer": "Všechny vesnice hráče"
+    "villageByPlayer": "Všechny vesnice hráče",
+    "villageCount": ""
   }
 }

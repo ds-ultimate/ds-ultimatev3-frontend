@@ -48,12 +48,14 @@
       "player": "Spieler",
       "points": "Punkte",
       "sig": "Generiert mit {{link}}",
-      "village": "Dorf"
+      "village": "Dorf",
+      "villageCount": "Dörfer"
     },
     "title": "Tabellen Generator",
     "type": "Typ",
     "villageAndPlayerByAlly": "Alle Dörfer eines Stammes mit ihren Spielern",
     "villageByAlly": "Alle Dörfer eines Stamms",
-    "villageByPlayer": "Alle Dörfer eines Spielers"
+    "villageByPlayer": "Alle Dörfer eines Spielers",
+    "villageCount": "Dorfanzahl"
   }
 }

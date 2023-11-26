@@ -30,12 +30,12 @@ export function TableGeneratorOutput({worldData, selectedType, sorting, columns,
   const rawData = useRawData(selectedType, worldData, selectedBaseEntry)
   const [mappedData, mappedHeader] = useMemo(() => {
     if(rawData === undefined || selectedType === undefined) return [undefined, undefined]
-    let entries: undefined | Array<{columns: string[], name: string, points: number}> = undefined
+    let entries: undefined | Array<{columns: string[], name: string, points: number, villages?: number}> = undefined
     let mappedHeader: string[] | undefined = undefined
     if(selectedType === "playerByAlly") {
       //playerType --> Columns: NR, Player, Points, 120% down, 120% up, [additional]
       entries = (rawData as playerType[]).map(v =>
-          ({name: v.name, points: v.points, columns: [`[player]${v.name}[/player]`]}))
+          ({name: v.name, points: v.points, villages: v.village_count, columns: [`[player]${v.name}[/player]`]}))
       mappedHeader = [t("tableGenerator.table.player")]
     } else if(selectedType === "villageByPlayer") {
       //villagePureType --> Columns: NR, Village([coord]123|123[/coord]), Points, [additional]
@@ -62,7 +62,10 @@ export function TableGeneratorOutput({worldData, selectedType, sorting, columns,
     if(columns.points) {
       mappedHeader = [...mappedHeader, t("tableGenerator.table.points")]
     }
-    if(columns.casualPointRange) {
+    if(columns.villageCount && selectedType === "playerByAlly") {
+      mappedHeader = [...mappedHeader, t("tableGenerator.table.villageCount")]
+    }
+    if(columns.casualPointRange && selectedType === "playerByAlly") {
       mappedHeader = [...mappedHeader, t("tableGenerator.table.casualDown"), t("tableGenerator.table.casualUp")]
     }
     mappedHeader = [...mappedHeader, ...(Array(emptyColumnCnt))]
@@ -75,7 +78,10 @@ export function TableGeneratorOutput({worldData, selectedType, sorting, columns,
       if(columns.points) {
         cols = [...cols, nf.format(e.points)]
       }
-      if(columns.casualPointRange) {
+      if(columns.villageCount && selectedType === "playerByAlly") {
+        cols = [...cols, nf.format(e.villages ?? 0)]
+      }
+      if(columns.casualPointRange && selectedType === "playerByAlly") {
         cols = [...cols, nf.format(e.points / 1.2), nf.format(e.points * 1.2)]
       }
       cols = [...cols, ...(Array(emptyColumnCnt))]
