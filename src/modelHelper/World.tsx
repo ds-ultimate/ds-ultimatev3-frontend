@@ -35,13 +35,13 @@ export type worldType = cacheable & {
 export type worldExtendedType = cacheable & {
   server: string,
   world: string,
-  firstConquer: number,
-  config: worldConfigType,
-  buildings: worldBuildingType,
-  units: worldUnitType,
+  firstConquer: number | null,
+  config: worldConfigType | null,
+  buildings: worldBuildingType | null,
+  units: worldUnitType | null,
 }
 
-type worldBuildingType = Dict<{
+export type worldBuildingType = Dict<{
   max_level: number,
   min_level: number,
   wood: number | {},
@@ -56,7 +56,7 @@ type worldBuildingType = Dict<{
   build_time_factor: number | {},
 }>
 
-type worldUnitType = Dict<{
+export type worldUnitType = Dict<{
   build_time: number,
   pop: number,
   speed: number,

@@ -20,8 +20,8 @@ export default function VillageHistory({villageData, worldData}: paramType) {
   const [worldExtendErr, worldExtend] = useExtendedWorldData(worldData.server__code, worldData.name)
 
   const pointMap = useMemo(() => {
-    if(worldExtend === undefined) return {}
-    return getPointBuildingMap(worldExtend)
+    if(worldExtend === undefined || worldExtend.buildings === null) return {}
+    return getPointBuildingMap(worldExtend.buildings)
   }, [worldExtend])
 
   if(worldExtendErr) return <ErrorPage error={worldExtendErr} />

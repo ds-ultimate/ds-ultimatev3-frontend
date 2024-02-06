@@ -35,4 +35,5 @@ const DummyFunction = () => {
   t("404.playerNotFound")
   t("404.villageNotFound")
   t("404.unknownType")
+  t("404.worldNotSupported")
 }

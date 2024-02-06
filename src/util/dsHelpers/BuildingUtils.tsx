@@ -1,4 +1,4 @@
-import {worldExtendedType} from "../../modelHelper/World";
+import {worldBuildingType} from "../../modelHelper/World";
 import {NumDict} from "../customTypes";
 import {useTranslation} from "react-i18next";
 import {buildTimeFormulaType, worldConfigType} from "../../modelHelper/WorldConfig"
@@ -128,10 +128,10 @@ export const BUILD_TIME_FACTOR_2015 = [
   208.950582949914,
 ]
 
-export function getPointBuildingMap(world: worldExtendedType) {
+export function getPointBuildingMap(worldBuildings: worldBuildingType) {
   const pointBuildingMap: NumDict<Array<[string, number]>> = {}
 
-  Object.keys(world.buildings).forEach(name => {
+  Object.keys(worldBuildings).forEach(name => {
     const building = BUILDINGS.find(b => b.name === name)
     if(building === undefined) return
 

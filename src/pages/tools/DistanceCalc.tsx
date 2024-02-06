@@ -3,13 +3,15 @@ import React, {FormEvent, ClipboardEvent, useCallback, useEffect, useState} from
 import {useExtendedWorldData, useWorldData} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
 import ErrorPage from "../layout/ErrorPage";
-import {WorldDisplayName, worldDisplayNameRaw, worldExtendedType} from "../../modelHelper/World"
+import {WorldDisplayName, worldDisplayNameRaw, worldUnitType} from "../../modelHelper/World"
 import {Card, Col, FormControl, InputGroup, Row, Table} from "react-bootstrap"
 import {useVillageDataAllyXY} from "../../apiInterface/loaders/village"
 import {nf, rawDecodeName, truncate} from "../../util/UtilFunctions"
 import {villageContinent} from "../../modelHelper/Village"
 import LoadingScreen from "../layout/LoadingScreen"
 import {getUnitIcon} from "../../util/dsHelpers/Icon"
+import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
+import {worldConfigType} from "../../modelHelper/WorldConfig"
 
 
 export default function DistanceCalcPage() {
@@ -27,6 +29,18 @@ export default function DistanceCalcPage() {
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(worldExtendedErr) return <ErrorPage error={worldExtendedErr} />
+
+  let worldConf = worldDataExtended?.config
+  let worldUnit = worldDataExtended?.units
+  if(worldConf === null || worldUnit === null) {
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.worldNotSupported",
+      p: {},
+    }
+    return <ErrorPage error={errData} />
+  }
 
   return (
       <Row className="justify-content-center">
@@ -46,12 +60,12 @@ export default function DistanceCalcPage() {
             </h4>
           </Col>
         </Col>
-        <Calculator worldDataExtended={worldDataExtended} />
+        <Calculator worldConf={worldConf} worldUnit={worldUnit} />
       </Row>
   )
 }
 
-function Calculator({worldDataExtended}: {worldDataExtended: worldExtendedType | undefined}) {
+function Calculator({worldConf, worldUnit}: {worldConf?: worldConfigType, worldUnit?: worldUnitType}) {
   const [startPos, setStartPos] = useState<[number, number] | undefined>(undefined)
   const [targetPos, setTargetPos] = useState<[number, number] | undefined>(undefined)
 
@@ -66,7 +80,7 @@ function Calculator({worldDataExtended}: {worldDataExtended: worldExtendedType |
         </Col>
         <Col xs={12} lg={6} className={"mt-2"}>
           <Card>
-            <ResultCard startPos={startPos} targetPos={targetPos} worldDataExtended={worldDataExtended} />
+            <ResultCard startPos={startPos} targetPos={targetPos} worldConf={worldConf} worldUnit={worldUnit} />
           </Card>
         </Col>
       </>
@@ -175,15 +189,16 @@ function useVillageInput(text: string | null, onChange: VillageUpdateCB) {
 }
 
 type ResultParams = {
-  worldDataExtended: worldExtendedType | undefined,
+  worldConf?: worldConfigType,
+  worldUnit?: worldUnitType
   startPos: [number, number] | undefined,
   targetPos: [number, number] | undefined,
 }
-function ResultCard({worldDataExtended, startPos, targetPos}: ResultParams) {
+function ResultCard({worldConf, worldUnit, startPos, targetPos}: ResultParams) {
   const { t } = useTranslation("tool")
 
-  const isArcher = worldDataExtended === undefined || worldDataExtended.config.game.archer > 0
-  const isKnight = worldDataExtended === undefined || worldDataExtended.config.game.knight > 0
+  const isArcher = worldConf === undefined || worldConf.game.archer > 0
+  const isKnight = worldConf === undefined || worldConf.game.knight > 0
   let units = ["spear", "sword", "axe", isArcher?"archer":undefined, "spy", "light",
     isArcher?"marcher":undefined, "heavy", "ram", "catapult", isKnight?"knight":undefined, "snob"]
 
@@ -201,8 +216,8 @@ function ResultCard({worldDataExtended, startPos, targetPos}: ResultParams) {
               return undefined
             }
             let tdInner: React.ReactElement | string = "--:--:--"
-            if(worldDataExtended) {
-              const unitConf = worldDataExtended.units[unit]
+            if(worldUnit) {
+              const unitConf = worldUnit[unit]
               if(unitConf) {
                 let runTime = Math.round(unitConf.speed * 60)
                 if(startPos && targetPos) {

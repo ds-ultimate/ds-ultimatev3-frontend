@@ -145,7 +145,7 @@ export default function WorldConquerDailyPage() {
                   <DatePicker
                       selected={dateToShow}
                       onChange={(date) => date?setDateToShow(date):undefined}
-                      minDate={extendedWorldData?(new Date(extendedWorldData.firstConquer*1000)):new Date()}
+                      minDate={(extendedWorldData && extendedWorldData.firstConquer !== null)?(new Date(extendedWorldData.firstConquer*1000)):new Date()}
                       maxDate={today}
                       className={"form-control"}
                       dateFormat={datepickerLang.formatLong?.date()}

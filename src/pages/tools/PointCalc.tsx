@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {useExtendedWorldData, useWorldData} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
 import ErrorPage from "../layout/ErrorPage";
-import {WorldDisplayName, worldDisplayNameRaw, worldExtendedType} from "../../modelHelper/World"
+import {worldBuildingType, WorldDisplayName, worldDisplayNameRaw} from "../../modelHelper/World"
 import {Card, Col, Form, Row, Table} from "react-bootstrap"
 
 import styles from "./PointCalc.module.scss"
@@ -17,6 +17,8 @@ import {
 import {BuildingSize, getBuildingImage} from "../../util/dsHelpers/Icon"
 import {range} from "../../util/UtilFunctions"
 import {Dict} from "../../util/customTypes"
+import {worldConfigType} from "../../modelHelper/WorldConfig"
+import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
 
 
 export default function PointCalcPage() {
@@ -34,6 +36,18 @@ export default function PointCalcPage() {
 
   if(worldErr) return <ErrorPage error={worldErr} />
   if(worldExtendedErr) return <ErrorPage error={worldExtendedErr} />
+
+  let worldConf = worldDataExtended?.config
+  let worldBuild = worldDataExtended?.buildings
+  if(worldConf === null || worldBuild === null) {
+    const errData: FrontendError = {
+      isFrontend: true,
+      code: 404,
+      k: "404.worldNotSupported",
+      p: {},
+    }
+    return <ErrorPage error={errData} />
+  }
 
   return (
       <Row className="justify-content-center">
@@ -53,12 +67,12 @@ export default function PointCalcPage() {
             </h4>
           </Col>
         </Col>
-        <Calculator worldDataExtended={worldDataExtended} />
+        <Calculator worldConfig={worldConf} worldBuildings={worldBuild} />
       </Row>
   )
 }
 
-function Calculator({worldDataExtended}: {worldDataExtended: worldExtendedType | undefined}) {
+function Calculator({worldConfig, worldBuildings}: {worldConfig?: worldConfigType, worldBuildings?: worldBuildingType}) {
   const [buildingLevels, setBuildingLevels] = useState<Dict<number>>({})
   const { t } = useTranslation("tool")
   let gesFarm = 0, gesPoints = 0
@@ -78,13 +92,13 @@ function Calculator({worldDataExtended}: {worldDataExtended: worldExtendedType |
               </tr>
               </thead>
               <tbody>
-              {worldDataExtended?.buildings && Object.keys(worldDataExtended.buildings).map(bName => {
+              {worldBuildings && worldConfig && Object.keys(worldBuildings).map(bName => {
                 const data = getBuildingData(bName)
                 if(data?.max_level) {
                   const curLevel = buildingLevels[bName] ?? data.min_level
                   const points = getBuildingPoints(bName, curLevel)
                   const pop = bName !== "farm"?-getBuildingPop(bName, curLevel):getFarmSpace(curLevel)
-                  const buildTime = getBuildingBuildTime(bName, curLevel, buildingLevels["main"] ?? 1, worldDataExtended.config)
+                  const buildTime = getBuildingBuildTime(bName, curLevel, buildingLevels["main"] ?? 1, worldConfig)
                   gesPoints+= points
                   gesFarm+= pop
                   return (
