@@ -10,6 +10,7 @@ import UNIT_RAM from './ds_images/unit/ram.png'
 import UNIT_CATAPULT from './ds_images/unit/catapult.png'
 import UNIT_KNIGHT from './ds_images/unit/knight.png'
 import UNIT_SNOB from './ds_images/unit/snob.png'
+import UNIT_MILITIA from './ds_images/unit/militia.png'
 
 import BUILDING_SM_MAIN from './ds_images/buildings/small/main.png'
 import BUILDING_SM_BARRACKS from './ds_images/buildings/small/barracks.png'
@@ -322,6 +323,8 @@ export function getUnitIcon(name: string) {
       return UNIT_KNIGHT
     case "snob":
       return UNIT_SNOB
+    case "militia":
+      return UNIT_MILITIA
     default:
       return WB_REMOVE
   }

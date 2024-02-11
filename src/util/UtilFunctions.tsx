@@ -8,6 +8,7 @@ import {OverlayChildren} from "react-bootstrap/Overlay"
 
 export const nf = new Intl.NumberFormat("de-DE")
 
+export type SetStateType<T> = (val: T | ((old: T)=>T)) => void
 
 export function rawDecodeName(name: string) {
   return decodeURIComponent(name).replaceAll("+", " ")

@@ -56,7 +56,9 @@ export type worldBuildingType = Dict<{
   build_time_factor: number | {},
 }>
 
-export type worldUnitType = Dict<{
+export type worldUnitType = Dict<worldUnitSingeType>
+
+export type worldUnitSingeType = {
   build_time: number,
   pop: number,
   speed: number,
@@ -65,7 +67,7 @@ export type worldUnitType = Dict<{
   defense_cavalry: number,
   defense_archer: number,
   carry: number,
-}>
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DummyFunction = () => {
@@ -75,6 +77,20 @@ const DummyFunction = () => {
   t("world.casual")
   t("world.world")
   t("world.classic")
+
+  t("unit.spear")
+  t("unit.sword")
+  t("unit.axe")
+  t("unit.archer")
+  t("unit.spy")
+  t("unit.light")
+  t("unit.marcher")
+  t("unit.heavy")
+  t("unit.ram")
+  t("unit.catapult")
+  t("unit.knight")
+  t("unit.snob")
+  t("unit.militia")
 }
 
 export function WorldDisplayName({world}: {world: worldType}) {

@@ -72,6 +72,19 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
     } else {
       $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.missingConfig');
     }
+    if(currentWorld.hasConfig && currentWorld.hasUnits) {
+      toolEntries.push(<NavbarItem
+          key={"sim"}
+          to={formatRoute(SIMULATOR, {server: serverCode, world: worldName})}
+          text={t("simulator.title")}
+          icon={faHammer} />)
+    } else {
+      toolEntries.push(<NavbarItemDisabled
+          key={"sim"}
+          text={t("simulator.title")}
+          tooltip={t("disabled.missingConfig")}
+          icon={faHammer} />)
+    }
      */
   } else {
     toolEntries.push(<NavbarItemDisabled
@@ -97,6 +110,11 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
     $tools[] = self::navElement('tool.accMgrDB.title', 'tools.accMgrDB.index');
 
     $tools[] = self::navElementDisabled('tool.animHistMap.title', 'ui.nav.disabled.noWorld');
+    toolEntries.push(<NavbarItemDisabled
+        key={"sim"}
+        text={t("simulator.title")}
+        tooltip={t("disabled.noWorld")}
+        icon={faHammer} />)
      */
   }
 

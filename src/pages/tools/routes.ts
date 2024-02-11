@@ -7,3 +7,6 @@ export const POINT_CALC = '/:server/:world/tools/pointCalc'
 
 //Table generator
 export const TABLE_GENERATOR = '/:server/:world/tools/tableGenerator'
+
+//Table generator
+export const SIMULATOR = '/:server/:world/tools/simulator'

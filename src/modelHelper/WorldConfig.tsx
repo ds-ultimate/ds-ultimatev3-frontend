@@ -1,18 +1,18 @@
 
-enum moralEnum {
+export enum moralEnum {
   INACTIVE = 0,
   POINT_BASED = 1,
   TIME_BASED = 2,
   POINT_AND_TIME_BASED = 3,
 }
 
-enum killRankingType {
+export enum killRankingType {
   NONE = 0,
   OLD_SYSTEM = 1,
   NEW_SYSTEM = 2,
 }
 
-enum questType {
+export enum questType {
   NONE = 0,
   OLD_QUEST_SYSTEM = 4,
   TASK_SYSTEM = 5,
@@ -24,27 +24,27 @@ export enum buildTimeFormulaType {
   FORMULA_2015 = 2,
 }
 
-enum knightType {
+export enum knightType {
   DISABLED = 0,
   SINGLE_PALADIN = 1,
   SINGLE_PALADIN_WITH_ITEMS = 2,
   MULTI_SKILLED_PALADIN = 3,
 }
 
-enum techSystemType {
+export enum techSystemType {
   TECHS_10 = 0,
   TECHS_3 = 1,
   SIMPLE = 2,
 }
 
-enum haulType {
+export enum haulType {
   OFF = 0,
   ON = 1,
   LIMITED = 2,
   ON_WITH_SCAVENGING = 3, //old not used anymore will be instead ON + scavenging true
 }
 
-enum eventType {
+export enum eventType {
   NONE = 0,
   APRIL_FOOL_HATS = 5,
   CASTLE_ASSAULT = 10,
@@ -69,36 +69,36 @@ enum eventType {
   CAMP_CRASHING_CATAPULTS = 32,
 }
 
-enum snobCostFactoryType {
+export enum snobCostFactoryType {
   CONSTANT = 0,
   RISING_AFTER_4TH = 1,
   RISING_AFTER_2ND = 2,
 }
 
-enum allyOtherSupportType {
+export enum allyOtherSupportType {
   OFF = 0,
   SIMPLE = 1,
   OVER = 2,
 }
 
-enum allyOtherSupportWhenType {
+export enum allyOtherSupportWhenType {
   SENDING = 0,
   ARRIVAL = 1,
 }
 
-enum coordVillageDistanceType {
+export enum coordVillageDistanceType {
   NORMAL = 2,
   REDUCED = 3,
   INCREASED = 4,
 }
 
-enum nightBonusType {
+export enum nightBonusType {
   OFF = 0,
   ON_WORLD_BASED = 1,
   ON_PLAYER_BASED = 2,
 }
 
-enum winCheckType {
+export enum winCheckType {
   NONE = 0,
   PLAYER = 1,
   TRIBE = 2,
