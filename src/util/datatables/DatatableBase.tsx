@@ -1,4 +1,26 @@
-import React, {ChangeEvent, createContext, Key, MouseEvent, ReactNode, useCallback, useMemo} from "react";
+/* 
+Copyright (c) 2023 extremecrazycoder
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+import React, {ChangeEvent, createContext, Key, MouseEvent, ReactNode, useCallback, useMemo, useState} from "react";
 import DatatableCoreServerSide from "./DatatableCoreServerSide";
 import DatatableCoreClientSide from "./DatatableCoreClientSide";
 import Pagination from "./Pagination";
@@ -11,6 +33,8 @@ import DatatableHeaderBuilder from "./DatatableHeaderBuilder";
 import {useBreakpointIdx} from "../bootrapBreakpoints";
 import LoadingScreen from "../../pages/layout/LoadingScreen";
 import DatatableCoreData from "./DatatableCoreData";
+import {exportConverterType, ExportDataEvent, exporterType} from "./exporter/exporterBase";
+import {ExporterCSV} from "./exporter/exporterCSV";
 
 
 export enum SORTING_DIRECTION {
@@ -22,6 +46,10 @@ export enum DATATABLE_VARIANT {
   SERVER_SIDE,
   CLIENT_SIDE,
   DATA,
+}
+
+export const Exporters = {
+  "CSV": ExporterCSV,
 }
 
 type sort_type = string | number
@@ -53,6 +81,9 @@ export interface coreProps<T> extends internalCellProps<T> {
   limit: number,
   itemCntCallback: (totalCount: number, filteredCount: number)=> void,
   search?: string,
+  exportEvent: ExportDataEvent | undefined,
+  setExportEvent: (d: undefined) => void,
+  exportConverter?: exportConverterType<T>,
 }
 
 interface paramsType<T> extends Partial<apiProps>, externalCellProps<T> {
@@ -65,6 +96,9 @@ interface paramsType<T> extends Partial<apiProps>, externalCellProps<T> {
   responsiveTable?: boolean,
   striped?: boolean,
   searching?: boolean | ((data: T, search: string) => boolean),
+  exports?: Array<exporterType>,
+  exportConverter?: exportConverterType<T>,
+  exportFileName?: string,
   data?: T[],
 }
 
@@ -73,18 +107,19 @@ export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir:
 
 
 export default function DatatableBase<T>({header, variant, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
-                                           responsiveTable, striped, searching, ...unusedProps}: paramsType<T>) {
+                                           responsiveTable, striped, searching, exports, exportConverter,
+                                           exportFileName, ...unusedProps}: paramsType<T>) {
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
       useMixedState<persistentStateType, volatileStateType>("datatable." + saveAs,
           [{limit: 10, sort: (defaultSort)?[defaultSort]:[]}, {page: 0, totalCount: 1, filteredCount: 1}])
 
   const itemCntCallback = useCallback((totalCount: number, filteredCount: number) => {
-    setVolatile((prevState) => {return {...prevState, totalCount, filteredCount}})
+    setVolatile((prevState) => ({...prevState, totalCount, filteredCount}))
   }, [setVolatile])
 
   const changePage = useCallback((page: number) => {
-    setVolatile((prevState) => {return {...prevState, page}})
+    setVolatile((prevState) => ({...prevState, page}))
   }, [setVolatile])
 
   const sortingCallback = useCallback((key: sort_type, defaultDir: SORTING_DIRECTION, append: boolean) => {
@@ -155,48 +190,62 @@ export default function DatatableBase<T>({header, variant, defaultSort, saveAs, 
     page, visibleCells, invisibleCells, headerNames, itemCntCallback, limit, search, cellClasses, ...unusedProps
   }
 
+  const [exportEvent, setExportEvent] = useState<ExportDataEvent | undefined>(undefined)
+
   let coreElement: ReactNode = undefined
   if(variant === DATATABLE_VARIANT.SERVER_SIDE) {
     if(!api) {
       throw new Error("Api is undefined with type server side!")
     }
     coreElement = (
-        <DatatableCoreServerSide<T>
-            api={api}
-            api_params={api_params}
-            sort={sort as Array<[string, SORTING_DIRECTION]>}
-            {...coreProps}
-        />
+      <DatatableCoreServerSide<T>
+        api={api}
+        api_params={api_params}
+        sort={sort as Array<[string, SORTING_DIRECTION]>}
+        exportEvent={exportEvent}
+        setExportEvent={setExportEvent}
+        exportConverter={exportConverter}
+        {...coreProps}
+      />
     )
   } else if (variant === DATATABLE_VARIANT.CLIENT_SIDE) {
     if(!api) {
       throw new Error("Api is undefined with type client side!")
     }
     coreElement = (
-        <DatatableCoreClientSide<T>
-            api={api}
-            api_params={api_params}
-            sort={sort as Array<[number, SORTING_DIRECTION]>}
-            searchCB={(searching !== true && searching !== false)?searching:undefined}
-            sortCB={headerSortCB}
-            {...coreProps}
-        />
+      <DatatableCoreClientSide<T>
+        api={api}
+        api_params={api_params}
+        sort={sort as Array<[number, SORTING_DIRECTION]>}
+        searchCB={(searching !== true && searching !== false)?searching:undefined}
+        sortCB={headerSortCB}
+        exportEvent={exportEvent}
+        setExportEvent={setExportEvent}
+        exportConverter={exportConverter}
+        {...coreProps}
+      />
     )
   } else if(variant === DATATABLE_VARIANT.DATA) {
     if(!data) {
       throw new Error("Data is undefined with type data!")
     }
     coreElement = (
-        <DatatableCoreData<T>
-            data={data}
-            sort={sort as Array<[number, SORTING_DIRECTION]>}
-            searchCB={(searching !== true && searching !== false)?searching:undefined}
-            sortCB={headerSortCB}
-            {...coreProps}
-        />
+      <DatatableCoreData<T>
+        data={data}
+        sort={sort as Array<[number, SORTING_DIRECTION]>}
+        searchCB={(searching !== true && searching !== false)?searching:undefined}
+        sortCB={headerSortCB}
+        exportEvent={exportEvent}
+        setExportEvent={setExportEvent}
+        exportConverter={exportConverter}
+        {...coreProps}
+      />
     )
   }
 
+  if(exports !== undefined && exportConverter === undefined) {
+    throw Error("Converter needs to set if exports are activated")
+  }
 
   return (
       <div>
@@ -225,6 +274,14 @@ export default function DatatableBase<T>({header, variant, defaultSort, saveAs, 
                   />
                 </InputGroup>
               </Col>}
+              {exports && exports.map((ExportComponent, i) => {
+                if(exportFileName === undefined) {
+                  throw Error("Filename needs to set if exports are activated")
+                }
+                return (
+                  <ExportComponent key={i} exportHandler={setExportEvent} leftAuto={!searching} fileName={exportFileName} />
+                )
+              })}
               {topBarEnd}
             </Row>
             <Row className={"mb-3"}>

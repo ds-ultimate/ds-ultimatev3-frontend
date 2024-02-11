@@ -7,9 +7,10 @@ import ErrorPage from "../layout/ErrorPage"
 import {Card, Col, FormControl, InputGroup, Row, Table, Tooltip} from "react-bootstrap"
 import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
 import {getUnitIcon} from "../../util/dsHelpers/Icon"
-import {CustomTooltip, SetStateType} from "../../util/UtilFunctions"
+import {CustomTooltip} from "../../util/UtilFunctions"
 import {TroopArmyAmounts, UnitName} from "../../util/dsHelpers/TroopHelper"
 import simulate, {SimulatorTroopResult} from "../../util/dsHelpers/Simulation"
+import {StateUpdater} from "../../util/customTypes"
 
 
 export default function SimulatorPage() {
@@ -132,7 +133,7 @@ function UnitArmyInput({title, mappedUnits, state, setState, isAttacker}: {
   title: string | null,
   mappedUnits: Array<{unitName: string, unitConf: worldUnitSingeType}> | undefined,
   state: TroopArmyAmounts,
-  setState: SetStateType<TroopArmyAmounts>,
+  setState: StateUpdater<TroopArmyAmounts>,
   isAttacker?: boolean,
 }) {
   return (
@@ -150,7 +151,7 @@ function UnitArmyInput({title, mappedUnits, state, setState, isAttacker}: {
 function UnitInput({name, state, setState}: {
   name: string,
   state: TroopArmyAmounts,
-  setState: SetStateType<TroopArmyAmounts>
+  setState: StateUpdater<TroopArmyAmounts>
 }) {
   const valElm = state.find(([n,]) => n === name) ?? [name, 0]
   const val = valElm[1]
