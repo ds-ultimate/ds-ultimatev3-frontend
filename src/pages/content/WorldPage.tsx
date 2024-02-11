@@ -7,7 +7,7 @@ import {WorldDisplayName, worldDisplayNameRaw, worldType} from "../../modelHelpe
 import {nf, thousandsFormat} from "../../util/UtilFunctions";
 import {Card, Col, Row, Table} from "react-bootstrap";
 
-import styles from "./World.module.scss"
+import styles from "./WorldPage.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import {useWorldData} from "../../apiInterface/loaders/world"
 import {useEffect} from "react"

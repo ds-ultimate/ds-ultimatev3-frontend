@@ -1,7 +1,7 @@
 import React, {Key, useEffect} from "react";
 import {Col, Row} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
-import styles from "./Team.module.scss"
+import styles from "./TeamPage.module.scss"
 
 import bg_nehoz from "./team/background/system.jpg"
 import bg_mkich from "./team/background/dev.jpg"

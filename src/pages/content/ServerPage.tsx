@@ -9,7 +9,7 @@ import {WORLD, WORLD_ALLY_CUR, WORLD_PLAYER_CUR} from "../routes";
 import {nf} from "../../util/UtilFunctions";
 import {Button, Card, Col, Row, Table} from "react-bootstrap";
 
-import styles from "./Server.module.scss"
+import styles from "./ServerPage.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import {useServer} from "../../apiInterface/loaders/server"
 import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder"

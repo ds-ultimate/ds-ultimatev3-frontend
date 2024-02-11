@@ -1,7 +1,7 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import styles from "./Changelog.module.scss"
+import styles from "./ChangelogPage.module.scss"
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import {faClock} from "@fortawesome/free-solid-svg-icons";
 import {ChangelogIcon, changelogType} from "../../modelHelper/Changelog";

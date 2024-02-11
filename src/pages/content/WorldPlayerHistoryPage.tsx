@@ -7,7 +7,7 @@ import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../util/da
 import {worldPlayerHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import DatePicker from "react-datepicker"
-import {usePlayerDatatableHeader} from "./WorldPlayerCurrent";
+import {usePlayerDatatableHeader} from "./WorldPlayerCurrentPage";
 import {LinkPlayer, LinkPlayerAlly, playerPureType, playerType} from "../../modelHelper/Player";
 import {Card, Col, Row} from "react-bootstrap";
 import useDatepickerLanguage from "../../util/datepickerLanguage";

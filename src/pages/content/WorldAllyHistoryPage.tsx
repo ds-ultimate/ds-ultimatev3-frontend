@@ -8,7 +8,7 @@ import {worldAllyHistoryTable} from "../../apiInterface/apiConf";
 import {dateFormatYMD, ShowHistory} from "../../util/UtilFunctions";
 import {allyType, LinkAlly} from "../../modelHelper/Ally";
 import DatePicker from "react-datepicker"
-import {useAllyDatatableHeader} from "./WorldAllyCurrent";
+import {useAllyDatatableHeader} from "./WorldAllyCurrentPage";
 import StatsPage from "../layout/StatsPage";
 import {Col} from "react-bootstrap";
 import useDatepickerLanguage from "../../util/datepickerLanguage";

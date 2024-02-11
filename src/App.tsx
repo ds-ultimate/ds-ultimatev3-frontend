@@ -7,34 +7,34 @@ import * as ToolRouteHolder from "./pages/tools/routes";
 
 import "./bootstrap.scss"
 
-import IndexPage from "./pages/content/Index";
-import ServerPage from "./pages/content/Server";
-import WorldPage from "./pages/content/World";
-import WorldPlayerCurrentPage from "./pages/content/WorldPlayerCurrent";
-import WorldPlayerHistoryPage from "./pages/content/WorldPlayerHistory";
-import WorldAllyCurrentPage from "./pages/content/WorldAllyCurrent";
-import WorldAllyHistoryPage from "./pages/content/WorldAllyHistory";
-import WorldConquerPage from "./pages/content/WorldConquer";
-import WorldConquerDailyPage from "./pages/content/WorldConquerDaily";
-import AllyPage from "./pages/content/Records/Ally/Ally";
-import AllyConquerPage from "./pages/content/Records/Ally/AllyConquer";
-import AllyAllyChangePage from "./pages/content/Records/Ally/AllyAllyChange";
-import AllyBashRankingPage from "./pages/content/Records/Ally/AllyBashRanking";
-import PlayerPage from "./pages/content/Records/Player/Player";
-import PlayerConquerPage from "./pages/content/Records/Player/PlayerConquer";
-import PlayerAllyChangePage from "./pages/content/Records/Player/PlayerAllyChange";
-import VillagePage from "./pages/content/Records/Village/Village";
-import VillageConquerPage from "./pages/content/Records/Village/VillageConquer";
-import ChangelogPage from "./pages/content/Changelog";
+import IndexPage from "./pages/content/IndexPage";
+import ServerPage from "./pages/content/ServerPage";
+import WorldPage from "./pages/content/WorldPage";
+import WorldPlayerCurrentPage from "./pages/content/WorldPlayerCurrentPage";
+import WorldPlayerHistoryPage from "./pages/content/WorldPlayerHistoryPage";
+import WorldAllyCurrentPage from "./pages/content/WorldAllyCurrentPage";
+import WorldAllyHistoryPage from "./pages/content/WorldAllyHistoryPage";
+import WorldConquerPage from "./pages/content/WorldConquerPage";
+import WorldConquerDailyPage from "./pages/content/WorldConquerDailyPage";
+import AllyPage from "./pages/content/Records/Ally/AllyPage";
+import AllyConquerPage from "./pages/content/Records/Ally/AllyConquerPage";
+import AllyAllyChangePage from "./pages/content/Records/Ally/AllyAllyChangePage";
+import AllyBashRankingPage from "./pages/content/Records/Ally/AllyBashRankingPage";
+import PlayerPage from "./pages/content/Records/Player/PlayerPage";
+import PlayerConquerPage from "./pages/content/Records/Player/PlayerConquerPage";
+import PlayerAllyChangePage from "./pages/content/Records/Player/PlayerAllyChangePage";
+import VillagePage from "./pages/content/Records/Village/VillagePage";
+import VillageConquerPage from "./pages/content/Records/Village/VillageConquerPage";
+import ChangelogPage from "./pages/content/ChangelogPage";
 import LegalPage from "./pages/content/LegalPage";
-import TeamPage from "./pages/content/Team";
+import TeamPage from "./pages/content/TeamPage";
 import {ForcedLoadingScreen} from "./pages/layout/LoadingScreen";
 import ErrorPage from "./pages/layout/ErrorPage"
-import SearchPage from "./pages/content/Search"
-import DistanceCalcPage from "./pages/tools/DistanceCalc"
-import PointCalcPage from "./pages/tools/PointCalc"
-import TableGeneratorPage from "./pages/tools/TableGenerator"
-import SimulatorPage from "./pages/tools/Simulator"
+import SearchPage from "./pages/content/SearchPage"
+import DistanceCalcPage from "./pages/tools/DistanceCalcPage"
+import PointCalcPage from "./pages/tools/PointCalcPage"
+import TableGeneratorPage from "./pages/tools/TableGeneratorPage"
+import SimulatorPage from "./pages/tools/SimulatorPage"
 
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));

@@ -7,7 +7,7 @@ import {nf} from "../../../util/UtilFunctions"
 import axios from "axios"
 import {searchExtended, searchNormal} from "../../../apiInterface/apiConf"
 import {Card} from "react-bootstrap"
-import {SEARCH_LIMIT} from "../Search"
+import {SEARCH_LIMIT} from "../SearchPage"
 import ErrorPage from "../../layout/ErrorPage"
 import {
   LinkVillage,

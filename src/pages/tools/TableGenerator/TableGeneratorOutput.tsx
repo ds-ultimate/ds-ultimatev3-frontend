@@ -9,7 +9,7 @@ import {LoadingScreenContext} from "../../layout/LoadingScreen"
 import {useErrorBoundary} from "react-error-boundary"
 import {allyPlayerTable, allyPlayerVillageTable, playerVillageTable} from "../../../apiInterface/apiConf"
 import axios from "axios"
-import {columnOptionType} from "../TableGenerator"
+import {columnOptionType} from "../TableGeneratorPage"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCopy} from "@fortawesome/free-solid-svg-icons"
 

@@ -1,5 +1,4 @@
 import {WorldDisplayName, worldDisplayNameRaw, worldType} from "../../../modelHelper/World"
-import {allyTopType, LinkAllyTop} from "../../../modelHelper/Ally"
 import {useTranslation} from "react-i18next"
 import React, {useEffect, useMemo, useState} from "react"
 import DatatableHeaderBuilder from "../../../util/datatables/DatatableHeaderBuilder"
@@ -8,50 +7,49 @@ import {nf} from "../../../util/UtilFunctions"
 import axios from "axios"
 import {searchExtended, searchNormal} from "../../../apiInterface/apiConf"
 import {Card} from "react-bootstrap"
-import {SEARCH_LIMIT} from "../Search"
+import {SEARCH_LIMIT} from "../SearchPage"
+import {LinkPlayerTop, playerTopType} from "../../../modelHelper/Player"
 import ErrorPage from "../../layout/ErrorPage"
 import useTrackSearch from "../../../matomo/TrackSearch"
 
 
-type allySearchResult = {
+type playerSearchResult =  {
   world: worldType,
-  ally: allyTopType,
+  player: playerTopType,
 }
 
-export function useAllySearchDatatableHeader() {
+export function usePlayerSearchDatatableHeader() {
   const {t} = useTranslation("ui")
   return useMemo(() => {
-    return new DatatableHeaderBuilder<allySearchResult>()
+    return new DatatableHeaderBuilder<playerSearchResult>()
         .addMainRow(row => {
           row.addCell({title: t('table.world'),
             sortCB: ((data1, data2) => worldDisplayNameRaw(t, data1.world).localeCompare(worldDisplayNameRaw(t, data2.world)))})
-          row.addCell({title: t('table.name'), showAt: "md",
-            sortCB: ((data1, data2) => data1.ally.name.localeCompare(data2.ally.name))})
-          row.addCell({title: t('table.tag'),
-            sortCB: ((data1, data2) => data1.ally.tag.localeCompare(data2.ally.tag))})
+          row.addCell({title: t('table.name'),
+            sortCB: ((data1, data2) => data1.player.name.localeCompare(data2.player.name))})
           row.addCell({title: t('table.points'),
-            sortCB: ((data1, data2) => data1.ally.points_top - data2.ally.points_top)})
+            sortCB: ((data1, data2) => data1.player.points_top - data2.player.points_top)})
           row.addCell({title: t('table.villages'),
-            sortCB: ((data1, data2) => data1.ally.village_count_top - data2.ally.village_count_top)})
+            sortCB: ((data1, data2) => data1.player.village_count_top - data2.player.village_count_top)})
         })
   }, [t])
 }
 
 
-export function SearchAlly({server, search, searchActive, searchWorlds}: {server: string, search: string, searchActive: boolean, searchWorlds: number[]}) {
-  const header = useAllySearchDatatableHeader()
-  const [data, updateData] = useState<allySearchResult[]>([])
+export function SearchPlayer({server, search, searchActive, searchWorlds}: {server: string, search: string, searchActive: boolean, searchWorlds: number[]}) {
+  const header = usePlayerSearchDatatableHeader()
+  const [data, updateData] = useState<playerSearchResult[]>([])
   const [dataErr, setDataErr]  = useState<any>(undefined)
   const { t } = useTranslation("ui")
   const trackSearch = useTrackSearch()
 
   useEffect(() => {
     if(searchActive) {
-      axios.post(searchNormal({}),{type: "ally", server: server, search: search} )
+      axios.post(searchNormal({}),{type: "player", server: server, search: search} )
           .then((resp) => {
             updateData(resp.data)
+            trackSearch(search, "player", resp.data.length)
             setDataErr(undefined)
-            trackSearch(search, "ally", resp.data.length)
           })
           .catch((reason) => {
             setDataErr(reason)
@@ -61,10 +59,10 @@ export function SearchAlly({server, search, searchActive, searchWorlds}: {server
         updateData([])
         return
       }
-      axios.post(searchExtended({}),{type: "ally", search: search, worlds: searchWorlds} )
+      axios.post(searchExtended({}),{type: "player", search: search, worlds: searchWorlds} )
           .then((resp) => {
             updateData(resp.data)
-            trackSearch(search, "ally", resp.data.length)
+            trackSearch(search, "player", resp.data.length)
             setDataErr(undefined)
           })
           .catch((reason) => {
@@ -79,25 +77,24 @@ export function SearchAlly({server, search, searchActive, searchWorlds}: {server
       <>
         <Card.Title>{t("title.searchResults")}: {data.length}</Card.Title>
         {data.length >= SEARCH_LIMIT && t("title.searchLimited", {limit: SEARCH_LIMIT})}
-        <DatatableBase<allySearchResult>
+        <DatatableBase<playerSearchResult>
             data={data}
             header={header}
             variant={DATATABLE_VARIANT.DATA}
             saveAs={"searchAlly"}
             cells={[
-              (a) => <WorldDisplayName world={a.world} />,
-              (a) => <LinkAllyTop world={a.world} ally={a.ally} />,
-              (a) => <LinkAllyTop world={a.world} ally={a.ally} useTag />,
-              (a) => nf.format(a.ally.points_top),
-              (a) => nf.format(a.ally.village_count_top),
+              (p) => <WorldDisplayName world={p.world} />,
+              (p) => <LinkPlayerTop world={p.world} player={p.player} />,
+              (p) => nf.format(p.player.points_top),
+              (p) => nf.format(p.player.village_count_top),
             ]}
-            keyGen={a => a.world.name + "_" + a.ally.allyID}
-            searching={searchCBAllySearchRes}
-          />
+            keyGen={p => p.world.name + "_" + p.player.playerID}
+            searching={searchCBPlayerSearchRes}
+        />
       </>
   )
 }
 
-export function searchCBAllySearchRes(a: allySearchResult, search: string) {
-  return a.ally.name.includes(search) || a.ally.tag.includes(search)
+export function searchCBPlayerSearchRes(p: playerSearchResult, search: string) {
+  return p.player.name.includes(search)
 }

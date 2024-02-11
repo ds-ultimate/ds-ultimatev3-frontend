@@ -6,7 +6,7 @@ import {formatRoute} from "../../util/router";
 import {SERVER} from "../routes";
 import {Card, Carousel, Col, Row, Table} from "react-bootstrap";
 
-import styles from "./Index.module.scss"
+import styles from "./IndexPage.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import MatomoLink from "../../matomo/MatomoLink"
 import {useNews} from "../../apiInterface/loaders/news"
