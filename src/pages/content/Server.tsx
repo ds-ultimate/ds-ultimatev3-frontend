@@ -1,6 +1,6 @@
 import {Link, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {WorldDisplayName, WorldState, worldType} from "../../modelHelper/World";
+import {useCallback, useEffect, useMemo, useState} from "react";
+import {WorldDisplayName, worldDisplayNameRaw, WorldState, worldType} from "../../modelHelper/World";
 import {ServerFlag, serverType} from "../../modelHelper/Server";
 import {useWorldsOfServer} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next";
@@ -12,12 +12,20 @@ import {Button, Card, Col, Row, Table} from "react-bootstrap";
 import styles from "./Server.module.scss"
 import ErrorPage from "../layout/ErrorPage";
 import {useServer} from "../../apiInterface/loaders/server"
+import DatatableHeaderBuilder from "../../util/datatables/DatatableHeaderBuilder"
+import DatatableBase, {DATATABLE_VARIANT} from "../../util/datatables/DatatableBase"
 
 function WorldTypeSection({data, header, server, type}: {data: worldType[], header: string, server?: serverType, type: string}) {
   const { t } = useTranslation("ui")
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const activeData = data.filter(w => w.active)
-  const inactiveData = data.filter(w => !w.active)
+
+  const activeData = useMemo(() => {
+    return data.filter(w => w.active)
+  }, [data])
+
+  const inactiveData = useMemo(() => {
+    return data.filter(w => !w.active)
+  }, [data])
 
   return (
       <Col xs={12} lg={6} className={"mt-2"}>
@@ -40,7 +48,7 @@ function WorldTypeSection({data, header, server, type}: {data: worldType[], head
                 {isOpen &&
                   <div id={type + "-inactive-col"}>
                     <Card.Title as={"h2"}>{header + ' ' + t('archive')}:</Card.Title>
-                    <WorldTable data={inactiveData} server={server}/>
+                    <WorldTableDatatable data={inactiveData} server={server}/>
                   </div>
                 }
               </>
@@ -88,11 +96,78 @@ function WorldTable({data, server}: {data: worldType[], server?: serverType}) {
   )
 }
 
+function useWorldTableDatatableHeader() {
+  const { t } = useTranslation("ui")
+  return useMemo(() => {
+    return new DatatableHeaderBuilder<worldType>()
+        .addMainRow(row => {
+          row.addCell({sortDescDefault: true, title: t('table.world'),
+            sortCB: (data1, data2) => data1.name.localeCompare(data2.name)})
+          row.addCell({sortDescDefault: true, title: t('table.player'),
+            sortCB: (data1, data2) => data1.player_count - data2.player_count})
+          row.addCell({sortDescDefault: true, title: t('table.ally'),
+            sortCB: (data1, data2) => data1.ally_count - data2.ally_count})
+          row.addCell({sortDescDefault: true, title: t('table.village'),
+            sortCB: (data1, data2) => data1.village_count - data2.village_count})
+        })
+  }, [t])
+}
+
+function useFilterWorldsCallback() {
+  const { t } = useTranslation("ui")
+  return useCallback((w: worldType, search: string) => {
+    return w.name.includes(search) ||
+        worldDisplayNameRaw(t, w).includes(search)
+  }, [t])
+}
+
+function WorldTableDatatable({data, server}: {data: worldType[], server?: serverType}) {
+  const header = useWorldTableDatatableHeader()
+  const filterWorldsCallback = useFilterWorldsCallback()
+  return (
+      <DatatableBase<worldType>
+          data={data}
+          header={header}
+          cells={[
+            (w) => <>
+                {server && (<ServerFlag server={server} />)}
+                <Link to={formatRoute(WORLD, {server: w.server__code, world: w.name})}><WorldDisplayName world={w} /></Link>
+                <small className={"text-muted"}>({w.server__code + w.name})</small>
+                <WorldState world={w} />
+              </>,
+            (w) => <Link to={formatRoute(WORLD_PLAYER_CUR, {server: w.server__code, world: w.name})}>
+              {nf.format(w.player_count)}
+            </Link>,
+            (w) => <Link to={formatRoute(WORLD_ALLY_CUR, {server: w.server__code, world: w.name})}>
+              {nf.format(w.ally_count)}
+            </Link>,
+            (w) => nf.format(w.village_count),
+          ]}
+          cellClasses={[styles.serverTruncate, "", "", ""]}
+          keyGen={w => w.server__code + w.name}
+          variant={DATATABLE_VARIANT.DATA}
+          saveAs={'serverWorldOverview'}
+          responsiveTable
+          searching={filterWorldsCallback}
+      />
+  )
+}
+
 export default function ServerPage() {
   const {server} = useParams()
   const [serverErr, serverData] = useServer(server)
   const [serverWorldsErr, serverWorlds] = useWorldsOfServer(server)
   const { t } = useTranslation("ui")
+
+  const normalWorlds = useMemo(() => {
+    if(serverWorlds === undefined) return []
+    return serverWorlds.filter(w => w.sortType === "world").sort((w1, w2) => parseInt(w2.name) - parseInt(w1.name))
+  }, [serverWorlds])
+
+  const specialWorlds = useMemo(() => {
+    if(serverWorlds === undefined) return []
+    return serverWorlds.filter(w => w.sortType !== "world").sort((w1, w2) => w2.id - w1.id)
+  }, [serverWorlds])
 
   useEffect(() => {
     document.title = t("title.worldOverview")
@@ -109,13 +184,13 @@ export default function ServerPage() {
           </Col>
         </Col>
         <WorldTypeSection
-            data={(serverWorlds ?? []).filter(w => w.sortType === "world").sort((w1, w2) => parseInt(w2.name) - parseInt(w1.name))}
+            data={normalWorlds}
             header={t('table-title.normalWorlds')}
             server={serverData}
             type={"normal"}
         />
         <WorldTypeSection
-            data={(serverWorlds ?? []).filter(w => w.sortType !== "world").sort((w1, w2) => w2.id - w1.id)}
+            data={specialWorlds}
             header={t('table-title.specialWorlds')}
             server={serverData}
             type={"special"}
