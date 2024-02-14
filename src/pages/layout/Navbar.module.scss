@@ -4,14 +4,27 @@
 @import '~bootstrap/scss/mixins';
 
 .navbarWrapper {
-  float: left;
-  min-height: 100vh;
   transition: width .5s;
   z-index: 1040;
+  overflow: hidden auto;
   flex: 0 0 auto;
   display: flex;
   flex-flow: column;
-  overflow: hidden auto;
+  float: left;
+}
+
+.navbarWrapperDesktop {
+  min-height: 100vh;
+}
+
+.navbarWrapperMobile {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.navbarWrapperMobile.navbarWrapperExtended {
+  min-height: 100vh;
 }
 
 .navbarBrand {

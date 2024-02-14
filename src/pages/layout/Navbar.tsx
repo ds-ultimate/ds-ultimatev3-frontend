@@ -1,4 +1,4 @@
-import React, {createContext, Key, MouseEventHandler, useContext, useMemo, useState} from 'react';
+import React, {createContext, Key, MouseEventHandler, ReactNode, useContext, useMemo, useState} from 'react';
 
 import {WorldActiveMode, worldType} from "../../modelHelper/World";
 import {useTranslation} from "react-i18next";
@@ -24,6 +24,7 @@ import {ToolNavDropdown} from "./NavbarSections/ToolNavDropdown"
 import {NavThemeSelector} from "./NavbarSections/NavThemeSelector"
 import {NavLangSelector} from "./NavbarSections/NavLangSelector"
 import {CustomTooltip} from "../../util/UtilFunctions"
+import {useBreakpointDown} from "../../util/bootrapBreakpoints"
 
 
 const ExtendedSubMenuContext = createContext<[Key | undefined, (k: Key | undefined | ((old: Key | undefined) => Key | undefined)) => void]>([undefined, () => {}])
@@ -33,6 +34,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   const { t } = useTranslation("ui")
   const [extended, setExtended] = useState<boolean>(true)
   const [extendedSubMenu, setExtendedSubMenu] = useState<Key | undefined>(undefined)
+  const showMobileNav = useBreakpointDown("sm")
 
   const sortedWorlds = useMemo(() => {
     if(serverWorlds === undefined) {
@@ -55,30 +57,54 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   if(serverWorldsErr) return <ErrorPage error={serverWorldsErr} />
   //TODO: add login + user area
 
-  return (
-      <ExtendedSubMenuContext.Provider value={[extendedSubMenu, setExtendedSubMenu]}>
-        <div className={"nav-bg " + styles.navbarWrapper + ((extended)?(" " + styles.navbarWrapperExtended):"")}>
-          <Link to={formatRoute(INDEX)} className={styles.navbarBrand}>DS-Ultimate</Link>
-          <ul>
-            <NavbarItem to={formatRoute(INDEX, {})} text={t('title.serverOverview')} icon={faGlobe} />
-            {serverCode && <NavbarItem to={formatRoute(SERVER, {server: serverCode})} text={t('title.worldOverview')} icon={faServer} />}
-            <WorldNavDropdown serverCode={serverCode} sortedWorlds={sortedWorlds} />
-            <WorldRankingsNavDropdown serverCode={serverCode} worldName={worldName} />
-            <WorldConquerNavDropdown serverCode={serverCode} worldName={worldName} />
-            <ToolNavDropdown serverCode={serverCode} worldName={worldName} currentWorld={currentWorld} />
-            {serverCode && <NavbarItem to={formatRoute(SEARCH, {server: serverCode, type: "player", search: ""})} text={t('title.search')} icon={faMagnifyingGlass} />}
-            <NavThemeSelector />
-            <NavLangSelector />
-          </ul>
-          <button className={styles.navbarLink + " " + styles.navbarMinimizer} onClick={() => setExtended(prevState => !prevState)}>
-            <FontAwesomeIcon icon={extended?faChevronLeft:faChevronRight} className={styles.faIcon} />
-          </button>
-        </div>
-      </ExtendedSubMenuContext.Provider>
+  const mainNavElement = (
+      <>
+        <Link to={formatRoute(INDEX)} className={styles.navbarBrand}>DS-Ultimate</Link>
+        <ul>
+          <NavbarItem to={formatRoute(INDEX, {})} text={t('title.serverOverview')} icon={faGlobe}/>
+          {serverCode && <NavbarItem to={formatRoute(SERVER, {server: serverCode})}
+                                     text={t('title.worldOverview')} icon={faServer}/>}
+          <WorldNavDropdown serverCode={serverCode} sortedWorlds={sortedWorlds}/>
+          <WorldRankingsNavDropdown serverCode={serverCode} worldName={worldName}/>
+          <WorldConquerNavDropdown serverCode={serverCode} worldName={worldName}/>
+          <ToolNavDropdown serverCode={serverCode} worldName={worldName} currentWorld={currentWorld}/>
+          {serverCode && <NavbarItem to={formatRoute(SEARCH, {server: serverCode, type: "player", search: ""})}
+                                     text={t('title.search')} icon={faMagnifyingGlass}/>}
+          <NavThemeSelector/>
+          <NavLangSelector/>
+        </ul>
+      </>
   )
+
+  if(showMobileNav) {
+    return (
+        <ExtendedSubMenuContext.Provider value={[extendedSubMenu, setExtendedSubMenu]}>
+          <div className={"nav-bg " + styles.navbarWrapper + " " + styles.navbarWrapperMobile +
+              (extended?(" " + styles.navbarWrapperExtended):"")}>
+            <button className={styles.navbarLink + " " + styles.navbarMinimizer + (extended?" mb-2":"")}
+                    onClick={() => setExtended(prevState => !prevState)}>
+              <FontAwesomeIcon icon={extended ? faChevronLeft : faChevronRight} className={styles.faIcon}/>
+            </button>
+            {extended && mainNavElement}
+          </div>
+        </ExtendedSubMenuContext.Provider>
+    )
+  } else {
+    return (
+        <ExtendedSubMenuContext.Provider value={[extendedSubMenu, setExtendedSubMenu]}>
+          <div className={"nav-bg " + styles.navbarWrapper + " " + styles.navbarWrapperDesktop +
+              (extended?(" " + styles.navbarWrapperExtended):"")}>
+            {mainNavElement}
+            <button className={styles.navbarLink + " " + styles.navbarMinimizer} onClick={() => setExtended(prevState => !prevState)}>
+              <FontAwesomeIcon icon={extended?faChevronLeft:faChevronRight} className={styles.faIcon} />
+            </button>
+          </div>
+        </ExtendedSubMenuContext.Provider>
+    )
+  }
 }
 
-export function NavbarMenu({keyName, sub, title, icon}: {keyName: string, sub: JSX.Element[], title: string, icon: IconProp}) {
+export function NavbarMenu({keyName, sub, title, icon}: {keyName: string, sub: ReactNode[], title: string, icon: IconProp}) {
   const [extendedSubMenu, setExtendedSubMenu] = useContext(ExtendedSubMenuContext)
   const extended = extendedSubMenu === keyName
 
@@ -128,7 +154,7 @@ export function NavbarItemDisabled({text, tooltip, icon}: {text: string, tooltip
   )
 }
 
-export function NavbarButton({onClick, text, icon, iconElm}: {onClick: MouseEventHandler<HTMLButtonElement>, text: string, icon?: IconProp, iconElm?: JSX.Element}) {
+export function NavbarButton({onClick, text, icon, iconElm}: {onClick: MouseEventHandler<HTMLButtonElement>, text: string, icon?: IconProp, iconElm?: ReactNode}) {
   if(icon === undefined && iconElm === undefined) {
     throw Error("Icon or IconElm needs to be set")
   }
