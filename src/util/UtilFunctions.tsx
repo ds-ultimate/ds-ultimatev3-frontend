@@ -46,9 +46,10 @@ export function truncate(dat: string, n: number){
   return (dat.length > n) ? dat.substring(0, n-1) + '&hellip;' : dat;
 }
 
-export function range(min: number, max: number, stepSize?: number) {
+export function range(min: number, max: number, stepSize?: number, includeLast?: boolean) {
   const step = stepSize ?? 1
-  let result = [...Array((max - min) / step).keys()]
+  const toAdd = includeLast?1:0
+  let result = [...Array(toAdd + Math.round((max - min) / step)).keys()]
   return result.map(n => n * step + min)
 }
 
@@ -125,8 +126,8 @@ export function ShowHistory({name, o_dat, n_dat, invert, tsd_format}: {name: str
 
 export function CustomTooltip({delayShow, delayHide, overlay, placement, children}:
       {delayShow?: number, delayHide?: number, overlay: OverlayChildren, placement?: Placement, children: React.ReactElement}) {
-  const delS = delayShow ?? 200
-  const delH = delayHide ?? 400
+  const delS = delayShow ?? 0
+  const delH = delayHide ?? 0
   const place = placement ?? "top"
 
   return (

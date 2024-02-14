@@ -110,7 +110,7 @@ function Calculator({worldConfig, worldBuildings}: {worldConfig?: worldConfigTyp
                             res[bName] = +e.target.value
                             return res
                           })} value={curLevel}>
-                            {range(data.min_level, data.max_level+1).map(level => (
+                            {range(data.min_level, data.max_level, 1, true).map(level => (
                                 <option key={level} value={level}>{level}</option>
                             ))}
                           </Form.Select>

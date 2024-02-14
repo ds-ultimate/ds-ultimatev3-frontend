@@ -172,7 +172,7 @@ export function getBuildingBuildTime(name: string, level: number, mainLevel: num
     throw Error("Building is undefined " + name)
   }
   if(level === 0) return 0
-  return range(building.min_level, level+1).map(l => getBuildingBuildTimeSingle(name, l, mainLevel, worldConfig)).reduce((p, c) => p+c, 0)
+  return range(building.min_level, level, 1, true).map(l => getBuildingBuildTimeSingle(name, l, mainLevel, worldConfig)).reduce((p, c) => p+c, 0)
 }
 
 export function getBuildingBuildTimeSingle(name: string, level: number, mainLevel: number, worldConfig: worldConfigType) {
