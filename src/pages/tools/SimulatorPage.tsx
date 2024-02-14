@@ -1,14 +1,14 @@
 import {useParams} from "react-router-dom"
 import {useExtendedWorldData, useWorldData} from "../../apiInterface/loaders/world"
 import {useTranslation} from "react-i18next"
-import React, {ChangeEvent, useCallback, useEffect, useMemo, useState} from "react"
+import React, {useEffect, useMemo, useState} from "react"
 import {WorldDisplayName, worldDisplayNameRaw, worldUnitSingeType} from "../../modelHelper/World"
 import ErrorPage from "../layout/ErrorPage"
 import {Card, Col, FormControl, InputGroup, Row, Table, Tooltip} from "react-bootstrap"
 import {FrontendError} from "../layout/ErrorPages/ErrorTypes"
 import {getUnitIcon} from "../../util/dsHelpers/Icon"
 import {CustomTooltip} from "../../util/UtilFunctions"
-import {TroopArmyAmounts, UnitName} from "../../util/dsHelpers/TroopHelper"
+import {getAmountForUnit, setAmountForUnit, TroopArmyAmounts, UnitName} from "../../util/dsHelpers/TroopHelper"
 import simulate, {SimulatorTroopResult} from "../../util/dsHelpers/Simulation"
 import {StateUpdater} from "../../util/customTypes"
 
@@ -141,28 +141,14 @@ function UnitArmyInput({title, mappedUnits, state, setState, isAttacker}: {
         <td>{title}</td>
         {mappedUnits && mappedUnits.map(({unitName}) =>
             <td key={unitName}>
-              {(!isAttacker || unitName !== "militia") &&<UnitInput name={unitName} state={state} setState={setState}/>}
+              {(!isAttacker || unitName !== "militia") && <FormControl
+                  value={getAmountForUnit(state, unitName)}
+                  onChange={e => setAmountForUnit(setState, unitName, +e.target.value)}
+              />}
             </td>)
         }
       </tr>
   )
-}
-
-function UnitInput({name, state, setState}: {
-  name: string,
-  state: TroopArmyAmounts,
-  setState: StateUpdater<TroopArmyAmounts>
-}) {
-  const valElm = state.find(([n,]) => n === name) ?? [name, 0]
-  const val = valElm[1]
-
-  const update = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setState(old => {
-      return [...(old.filter(([n,]) => n !== name)), [name, +event.target.value]]
-    })
-  }, [setState, name])
-
-  return <FormControl value={val} onChange={update} />
 }
 
 function TroopResultTable({mappedUnits, troops, isAttacker}: {

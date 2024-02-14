@@ -1,5 +1,6 @@
 import {worldUnitSingeType, worldUnitType} from "../../modelHelper/World"
 import {useTranslation} from "react-i18next"
+import {StateUpdater} from "../customTypes"
 
 export type TroopAmount = [string, number]
 
@@ -32,6 +33,12 @@ export function getFarmUsage(troops: TroopArmyAmounts, worldUnit: worldUnitType)
 
 export function getAmountForUnit(troops: TroopArmyAmounts, unitName: string) {
   return (troops.find(([n,]) => n === unitName) ?? [unitName, 0])[1]
+}
+
+export function setAmountForUnit(setter: StateUpdater<TroopArmyAmounts>, unitName: string, value: number) {
+  setter(old => {
+    return [...(old.filter(([n,]) => n !== unitName)), [unitName, value]]
+  })
 }
 
 function troopSum(troops: TroopArmyAmounts, worldUnit: worldUnitType, sumOver: keyof worldUnitSingeType) {

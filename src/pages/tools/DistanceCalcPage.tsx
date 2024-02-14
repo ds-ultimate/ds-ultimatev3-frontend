@@ -195,6 +195,7 @@ type ResultParams = {
   targetPos: [number, number] | undefined,
 }
 function ResultCard({worldConf, worldUnit, startPos, targetPos}: ResultParams) {
+  const [ tUi ] = useTranslation("ui")
   const { t } = useTranslation("tool")
 
   const isArcher = worldConf === undefined || worldConf.game.archer > 0
@@ -227,7 +228,7 @@ function ResultCard({worldConf, worldUnit, startPos, targetPos}: ResultParams) {
               }
             }
             return (<tr key={unit}>
-              <td><img src={getUnitIcon(unit)} alt={unit} /></td>
+              <td><img src={getUnitIcon(unit)} alt={unit} /> {tUi("unit." + unit)}</td>
               <td>{tdInner}</td>
             </tr>)
           })}
