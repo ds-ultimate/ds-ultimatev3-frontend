@@ -11,6 +11,7 @@ import ErrorBoundaryConsented from "./ErrorPages/ErrorBoundaryConsented"
 import {useTranslation} from "react-i18next"
 import React, {useEffect} from "react"
 import styles from "./root_layout.module.scss"
+import ToastHandler from "./ToastHandler"
 
 
 export default function RootLayout() {
@@ -24,9 +25,11 @@ export default function RootLayout() {
               <div className={styles.mainContainer}>
                 <LoadingScreen darken big>
                   <main>
-                    <Container>
-                      <Outlet />
-                    </Container>
+                    <ToastHandler>
+                      <Container>
+                        <Outlet />
+                      </Container>
+                    </ToastHandler>
                   </main>
                 </LoadingScreen>
                 <Footer />
