@@ -13,7 +13,7 @@ return array (
   'October' => 'Říjen',
   'November' => 'Listopad',
   'December' => 'Prosinec',
-  'Monday' => 'Pondělí'
+  'Monday' => 'Pondělí',
   'Tuesday' => 'Úterý',
   'Wednesday' => 'Středa',
   'Thursday' => 'Čtvrtek',

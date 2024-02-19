@@ -9,10 +9,12 @@
     "generic": "This site could not be found",
     "noServer": "We couldn't find any data about the server '{{server}}'",
     "noWorld": "We couldn't find any data about the world '{{world}}'",
+    "noWorldId": "We couldn't find any data about the world with the id '{{id}}'",
     "playerNotFound": "The player with the id '{{player}}' could not be found at world '{{world}}'",
     "title": "Site not found",
     "unknownType": "Unknown type '{{type}}'",
-    "villageNotFound": "The village with the id '{{village}}' could not be found at world '{{world}}'"
+    "villageNotFound": "The village with the id '{{village}}' could not be found at world '{{world}}'",
+    "worldNotSupported": "This tools is not supported by the current world"
   },
   "500": {
     "generic": "An error occured. Please consider reporting this (together with steps to reproduce it) to the developers.",

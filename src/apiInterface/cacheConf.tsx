@@ -13,6 +13,8 @@ const CACHE_DURATION: Dict<number> = {
   "playerChart": 30 * 60,
   "villageBasic": 30 * 60,
   "villageAllyCached": 30 * 60,
+
+  "worldData": 2 * 60 * 60,
 }
 
 export function getCacheDuration(tblName: string) {

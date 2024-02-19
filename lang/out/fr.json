@@ -24,7 +24,7 @@
         "Weiter": "plus >>",
         "Zur\u00fcck": "<< dos"
     },
-    "global": {
+    "globalJSON": {
         "A fresh verification link has been sent to your email address.": "Un nouveau lien de v\u00e9rification a \u00e9t\u00e9 envoy\u00e9.",
         "All rights reserved.": "Tous droits r\u00e9serv\u00e9s.",
         "Before proceeding, please check your email for a verification link.": "Veuillez d'abord confirmer votre adresse e-mail.",

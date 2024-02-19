@@ -18,6 +18,7 @@ $replacements = [
     "error.403.title" => "ui.notAllowed",
     "error.403.generic" => "ui.notAllowedDesc",
     "error" => "ui.errors",
+    "datatable.export.csv" => "global.datatables.csv",
     "tool.distCalc.villageNotExist" => "ui.villageNotExist",
     "tool.disabled" => "ui.nav.disabled",
     "tool.tableGenerator.additionalColumns" => "ui.additionalColumns",
@@ -25,6 +26,89 @@ $replacements = [
     "tool.tableGenerator.columns" => "ui.columns",
     "tool.tableGenerator.numberLines" => "ui.numberLines",
     "tool.tableGenerator.points" => "ui.showPoints",
+    "tool.distCalc.unit" => "global.unit",
+    "tool.distCalc.units" => "global.units",
+    "tool.distCalc.ally" => "ui.chart.who.ally",
+    "tool.distCalc.points" => "ui.chart.titel.points",
+    "tool.commandPlanner.title" => "tool.commandPlanner.mainToolTitleAddManually",
+    "tool.commandPlanner" => "tool.attackPlanner",
+    "tool.attackPlanner.overview.building" => "tool.accMgrDB.building",
+    "tool.attackPlanner.overview.defensive" => "tool.attackPlanner.defensive",
+    "tool.attackPlanner.overview.offensive" => "tool.attackPlanner.offensive",
+    "tool.attackPlanner.overview.otherUnits" => "tool.attackPlanner.otherUnits",
+    "tool.attackPlanner.overview.iconsTitle" => "tool.attackPlanner.iconsTitle",
+    "tool.attackPlanner.overview.deleteAllConfirm" => "tool.attackPlanner.confirm.clear",
+    "tool.attackPlanner.overview.deleteAll" => "tool.attackPlanner.deleteAll",
+    "tool.attackPlanner.overview.deleteOutdated" => "tool.attackPlanner.deleteOutdated",
+    "tool.attackPlanner.overview.deleteSent" => "tool.attackPlanner.deleteSent",
+    "tool.attackPlanner.overview.import.exportBBDesc" => "tool.attackPlanner.exportBBDesc",
+    "tool.attackPlanner.overview.import.exportBB" => "tool.attackPlanner.exportBB",
+    "tool.attackPlanner.overview.import.exportIGMDesc" => "tool.attackPlanner.exportIGMDesc",
+    "tool.attackPlanner.overview.import.exportIGM" => "tool.attackPlanner.exportIGM",
+    "tool.attackPlanner.overview.import.exportWBDesc" => "tool.attackPlanner.exportWBDesc",
+    "tool.attackPlanner.overview.import.exportWB" => "tool.attackPlanner.exportWB",
+    "tool.attackPlanner.overview.import.importWBDesc" => "tool.attackPlanner.import_helper",
+    "tool.attackPlanner.overview.import.import" => "tool.attackPlanner.import",
+    "tool.attackPlanner.overview.import.templateBB_body" => "tool.attackPlanner.export.BB.default.body",
+    "tool.attackPlanner.overview.import.templateBB_row" => "tool.attackPlanner.export.BB.default.row",
+    "tool.attackPlanner.overview.import.templateIGM_body" => "tool.attackPlanner.export.IGM.default.body",
+    "tool.attackPlanner.overview.import.templateIGM_row" => "tool.attackPlanner.export.IGM.default.row",
+    "tool.attackPlanner.overview.link.editLinkHelp" => "tool.attackPlanner.editLink_helper",
+    "tool.attackPlanner.overview.link.editLink" => "tool.attackPlanner.editLink",
+    "tool.attackPlanner.overview.link.showLinkHelp" => "tool.attackPlanner.showLink_helper",
+    "tool.attackPlanner.overview.link.showLink" => "tool.attackPlanner.showLink",
+    "tool.attackPlanner.overview.noTitle" => "ui.noTitle",
+    "tool.attackPlanner.overview.prop.arrivalTime" => "tool.attackPlanner.arrivalTime",
+    "tool.attackPlanner.overview.prop.date" => "tool.attackPlanner.date",
+    "tool.attackPlanner.overview.prop.sendTime" => "tool.attackPlanner.sendTime",
+    "tool.attackPlanner.overview.prop.startVillage" => "tool.attackPlanner.startVillage",
+    "tool.attackPlanner.overview.prop.support_boost" => "tool.attackPlanner.type_support_boost",
+    "tool.attackPlanner.overview.prop.targetVillage" => "tool.attackPlanner.targetVillage",
+    "tool.attackPlanner.overview.prop.tribe_boost" => "tool.attackPlanner.type_tribe_boost",
+    "tool.attackPlanner.overview.prop.type" => "tool.attackPlanner.type",
+    "tool.attackPlanner.overview.prop.unit" => "global.unit",
+    "tool.attackPlanner.overview.save" => "global.save",
+    "tool.attackPlanner.overview.tabs.create" => "global.create",
+    "tool.attackPlanner.overview.tabs.import" => "tool.attackPlanner.importExport",
+    "tool.attackPlanner.overview.tabs.link" => "tool.attackPlanner.links",
+    "tool.attackPlanner.overview.tabs.multiedit" => "tool.attackPlanner.multiedit",
+    "tool.attackPlanner.overview.tabs.stats" => "tool.attackPlanner.statistics",
+    "tool.attackPlanner.overview.tabs.tips" => "tool.attackPlanner.tips",
+    "tool.attackPlanner.overview.title" => "tool.attackPlanner.title",
+    "tool.attackPlanner.overview.type" => "tool.attackPlanner",
+    "tool.copy" => "global.datatables.copy",
+    "ui.confirmation.cancel" => "user.confirm.destroy.cancel",
+    "ui.confirmation.ok" => "user.confirm.destroy.ok",
+    "tool.attackPlanner.import.successTitle" => "tool.attackPlanner.importWBSuccess",
+    "tool.attackPlanner.import.wbImportWrongData" => "tool.attackPlanner.wbImportWrongData",
+    "tool.attackPlanner.overview.create.createSuccessTitle" => "tool.attackPlanner.storeSuccessTitle",
+    "tool.attackPlanner.overview.create.createSuccessDesc" => "tool.attackPlanner.storeSuccess",
+    // add ui here because of error => ui.errors conversion above
+    "tool.attackPlanner.overview.create.ui.errorsCoordTitle" => "tool.attackPlanner.errorKoordTitle",
+    "tool.attackPlanner.overview.create.ui.errorsCoordSame" => "tool.attackPlanner.errorKoord",
+    "tool.attackPlanner.overview.create.ui.errorsStartCoord" => "tool.attackPlanner.villageNotExistStart",
+    "tool.attackPlanner.overview.create.ui.errorsTargetCoord" => "tool.attackPlanner.villageNotExistTarget",
+    "tool.attackPlanner.overview.import.failed" => "tool.attackPlanner.errorTitle",
+    "tool.attackPlanner.overview.import.successTitle" => "tool.attackPlanner.importWBSuccess",
+    "tool.attackPlanner.overview.import.wbImportWrongData" => "tool.attackPlanner.wbImportWrongData",
+    "tool.attackPlanner.overview.stats.attackStartVillage" => "tool.attackPlanner.attackStart_village",
+    "tool.attackPlanner.overview.stats.attackTargetVillage" => "tool.attackPlanner.attackTarget_village",
+    "tool.attackPlanner.overview.stats.attackTotal" => "tool.attackPlanner.attackTotal",
+    "tool.attackPlanner.overview.stats.generalTitle" => "ui.tabletitel.general",
+    "tool.total" => "global.total",
+];
+
+$duplicated = [
+    "tool.accMgrDB.building",
+    "ui.noTitle",
+    "global.create",
+    "global.save",
+    "global.total",
+    "global.unit",
+    "global.units",
+    "global.datatables.copy",
+    "ui.title.ally",
+    "ui.tabletitel.general",
 ];
 
 $allow_errors = false;
@@ -51,6 +135,8 @@ function doInputFile($fIn) {
     $dataIn = json_decode(file_get_contents($fIn));
     echo "Doing $langIn\n";
 
+    $writeBuffer = [];
+
     foreach($filesOut as $fOut) {
         $rawO = substr($fOut, strlen("../src/translations/"));
         $p = explode("/", $rawO);
@@ -59,18 +145,24 @@ function doInputFile($fIn) {
 
         if($langIn != $langOut) continue;
         $dataOut = json_decode(file_get_contents($fOut));
+        if($dataOut === NULL) {
+            echo "$fOut is NULL??";
+            die();
+        }
 
-        $allow_errors = $langIn == "fr" || $langIn == "cz";
         recursive_map_keys($dataIn, $dataOut, $ns);
+        $writeBuffer[] = [$fOut, json_encode($dataOut, JSON_PRETTY_PRINT)];
+    }
 
-        file_put_contents($fOut, json_encode($dataOut, JSON_PRETTY_PRINT));
+    foreach($writeBuffer as $wBuf) {
+        file_put_contents($wBuf[0], $wBuf[1]);
     }
 
     file_put_contents($fIn, json_encode($dataIn, JSON_PRETTY_PRINT));
 }
 
 function recursive_map_keys($dataIn, $dataOut, $curNs) {
-    global $replacements, $allow_errors;
+    global $replacements, $allow_errors, $duplicated;
     
     foreach(array_keys((array) $dataOut) as $key) {
         if(is_object($dataOut->$key)) {
@@ -93,11 +185,19 @@ function recursive_map_keys($dataIn, $dataOut, $curNs) {
                 $val = $val->$idx;
             }
             if($err) continue;
-            if(! check(isset($val->$inKey), "$inKey does not exist in $curNs", $val)) {
+            if(! check(isset($val->$inKey), "$inKey does not exist: $inNS (from $curNs.$key)", $val)) {
                 continue;
             }
+            if(gettype($val->$inKey) !== "string") {
+              var_dump($val->$inKey);
+              echo "CRITICAL tried to assign array\n$inNS (from $curNs.$key)\n";
+              die();
+            }
+
             $dataOut->$key = $val->$inKey;
-            unset($val->$inKey);
+            if(! in_array($inNS, $duplicated)) {
+                unset($val->$inKey);
+            }
         }
     }
 }

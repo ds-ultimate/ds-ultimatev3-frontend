@@ -1,106 +1,15 @@
-import {get_indexedDB, upgradeEvent} from "./IndexedDBInterface"
+import {upgradeEvent} from "./IndexedDBInterface"
 import {getCacheDuration} from "./cacheConf"
+import {cacheable, AbstractDatabase} from "./AbstractDatabase"
 
 
-export type cacheable = {
-  cached_at: number,
-}
-const MAIN_DATABASE_VERSION = 1
+const MAIN_DATABASE_VERSION = 2
 let mainDBCache: MainDatabase | undefined = undefined
 
-class MainDatabase {
-  db: IDBDatabase | undefined = undefined
-  listeners: Array<{then: (db: IDBDatabase) => void}> = []
+class MainDatabase extends AbstractDatabase {
   constructor() {
-    get_indexedDB("mainCache", MAIN_DATABASE_VERSION, upgradeDB)
-        .then(db => {
-          this.db = db
-          this.listeners.forEach(value => value.then(db))
-        })
-
+    super("mainCache", MAIN_DATABASE_VERSION, upgradeDB)
     removeOutdatedEntries(this)
-  }
-
-  scheduleCommand(command: (db: IDBDatabase) => void) {
-    if(this.db !== undefined) {
-      command(this.db)
-    } else {
-      this.listeners.push({then: command})
-    }
-  }
-
-  read<T>(tblName: string, key: IDBValidKey | IDBKeyRange, index?: string | undefined) {
-    return new Promise<T | undefined>((resolve, reject) => {
-      this.scheduleCommand(db => {
-        const tx = db.transaction(tblName, 'readonly')
-        const store = tx.objectStore(tblName)
-        let request: IDBRequest<any>
-        if(index === undefined) {
-          request = store.get(key)
-        } else {
-          const idx = store.index(index)
-          request = idx.get(key)
-        }
-        request.onsuccess = () => {
-          resolve(request.result)
-        }
-        request.onerror = () => {
-          reject(request.error)
-        }
-      })
-    })
-  }
-
-  write(tblName: string, data: any) {
-    const doWrite = (db: IDBDatabase) => {
-      const tx = db.transaction(tblName, 'readwrite')
-      const store = tx.objectStore(tblName)
-      store.put(data)
-      tx.commit()
-    }
-    this.scheduleCommand(doWrite)
-  }
-
-  readAll<T>(tblName: string, key?: IDBKeyRange, index?: string | undefined) {
-    return new Promise<Array<T> | undefined>((resolve, reject) => {
-      this.scheduleCommand(db => {
-        const tx = db.transaction(tblName, 'readonly')
-        const store = tx.objectStore(tblName)
-        let request: IDBRequest<any[]>
-        if(index === undefined) {
-          request = store.getAll(key)
-        } else {
-          const idx = store.index(index)
-          request = idx.getAll(key)
-        }
-        request.onsuccess = () => {
-          resolve(request.result)
-        }
-        request.onerror = () => {
-          reject(request.error)
-        }
-      })
-    })
-  }
-
-  writeAll(tblName: string, data: Array<any>) {
-    const doWrite = (db: IDBDatabase) => {
-      const tx = db.transaction(tblName, 'readwrite')
-      const store = tx.objectStore(tblName)
-      data.forEach(value => store.put(value))
-      tx.commit()
-    }
-    this.scheduleCommand(doWrite)
-  }
-
-  clearStore(tblName: string) {
-    const doClear = (db: IDBDatabase) => {
-      const tx = db.transaction(tblName, 'readwrite')
-      const store = tx.objectStore(tblName)
-      store.clear()
-      tx.commit()
-    }
-    this.scheduleCommand(doClear)
   }
 }
 
@@ -151,6 +60,9 @@ const upgradeDB: upgradeEvent = function() {
     const villageBasic = db.createObjectStore("villageAllyCached", {keyPath: ['villageID', 'world', 'server']})
     villageBasic.createIndex("x, y, world, server", ["x", "y", "world", "server"], {unique: true})
     villageBasic.createIndex("cached_at", "cached_at", {unique: false})
+  }
+  if(!db.objectStoreNames.contains("worldCacheInfo")) {
+    db.createObjectStore("worldCacheInfo", {keyPath: ['world_id', 'type']})
   }
 }
 

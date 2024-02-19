@@ -31,7 +31,7 @@ const reUnresolvedOptionalParamsRR4 = /(\/[^/]*\?)/g; // "/path/with/groups/cont
 const reTokens = /<(.*?)>/g;
 const reSlashTokens = /_!slash!_/g;
 
-function formatRoute(routePath: string, params?: Dict<string> | undefined, splat?: string[] | undefined) {
+export function formatRoute(routePath: string, params?: Dict<string> | undefined, splat?: string[] | undefined) {
   let tokens: Dict<string> = {};
 
   if (params) {
@@ -95,4 +95,4 @@ function formatRoute(routePath: string, params?: Dict<string> | undefined, splat
       .replace(/^$/, "/");
 }
 
-export {formatRoute}
+export const BASE_PATH = window.location.origin + process.env.PUBLIC_URL

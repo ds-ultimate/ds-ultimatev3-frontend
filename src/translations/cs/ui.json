@@ -38,6 +38,14 @@
       "village": "Vesnice"
     }
   },
+  "clipboard": {
+    "success": "",
+    "successDesc": ""
+  },
+  "confirmation": {
+    "cancel": "Ne",
+    "ok": "Ano"
+  },
   "conquer": {
     "all": "Dobytí",
     "allyOwn": "Interní / vlastní dobývání",
@@ -206,6 +214,21 @@
     "worldOverview": "Přehled světů"
   },
   "topAt": "v",
+  "unit": {
+    "archer": "Lučištník",
+    "axe": "Sekerník",
+    "catapult": "Katapult",
+    "heavy": "Těžká kavalerie",
+    "knight": "Paladin",
+    "light": "Lehká kavalérie",
+    "marcher": "Lučištník na koni",
+    "militia": "",
+    "ram": "Beranidlo",
+    "snob": "Šlechtic",
+    "spear": "Kopiník",
+    "spy": "Špeh",
+    "sword": "Šermíř"
+  },
   "village": {
     "bonus": {
       "allResources": "",

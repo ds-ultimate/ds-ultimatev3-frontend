@@ -7,7 +7,7 @@ import {worldConfigType} from "./WorldConfig";
 import {CustomTooltip} from "../util/UtilFunctions"
 import {Tooltip} from "react-bootstrap"
 import {TFunction} from "i18next"
-import {cacheable} from "../apiInterface/MainDatabase"
+import {cacheable} from "../apiInterface/AbstractDatabase"
 
 export enum WorldActiveMode {
   INACTIVE,

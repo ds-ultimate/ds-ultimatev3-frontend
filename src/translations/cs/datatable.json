@@ -1,4 +1,7 @@
 {
+  "export": {
+    "csv": ""
+  },
   "oPaginate_sNext": "Další",
   "oPaginate_sPrevious": "Předchozí",
   "sInfo": "Zobrazeno {{start}} z {{end}} z {{total}} celkových záznamů",

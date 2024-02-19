@@ -25,8 +25,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown, faCaretUp, faEquals} from "@fortawesome/free-solid-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Placement} from "react-bootstrap/types";
-import React from "react"
+import React, {useCallback} from "react"
 import {OverlayChildren} from "react-bootstrap/Overlay"
+import {useCreateToast} from "../pages/layout/ToastHandler"
+import {useTranslation} from "react-i18next"
 
 export const nf = new Intl.NumberFormat("de-DE")
 
@@ -145,6 +147,23 @@ export function CustomTooltip({delayShow, delayHide, overlay, placement, childre
   )
 }
 
+export async function copyIntoClipboard(text: string) {
+  if ('clipboard' in navigator) {
+    return await navigator.clipboard.writeText(text);
+  } else {
+    return document.execCommand('copy', true, text);
+  }
+}
+
+export function useCopyWithToast() {
+  const { t } = useTranslation("ui")
+  const createToast = useCreateToast()
+  return useCallback(async (text: string) => {
+    await copyIntoClipboard(text)
+    createToast(t("clipboard.success"), t("clipboard.successDesc"))
+  }, [t, createToast])
+}
+
 export function dateFormatYMD(date: Date) {
   const { d, mon, y } = timeParameterFromDate(date)
   return `${y}-${mon}-${d}`
@@ -165,6 +184,11 @@ export function dateFormatYMD_HMS(date: Date) {
   return `${y}-${mon}-${d} ${h}:${min}:${s}`
 }
 
+export function dateFormatHMS(date: Date) {
+  const { s, min, h } = timeParameterFromDate(date)
+  return `${h}:${min}:${s}`
+}
+
 function timeParameterFromDate(date: Date) {
   const s = date.getSeconds();
   const min = date.getMinutes();
@@ -181,4 +205,10 @@ function timeParameterFromDate(date: Date) {
     min: (min<=9 ? '0' + min : min),
     s: (s<=9 ? '0' + s : s),
   }
+}
+
+export function delay(ms: number) {
+  return new Promise(
+      resolve => setTimeout(resolve, ms)
+  )
 }

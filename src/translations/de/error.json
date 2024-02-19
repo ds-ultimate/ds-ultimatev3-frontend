@@ -9,10 +9,12 @@
     "generic": "Diese Seite konnte nicht gefunden werden",
     "noServer": "Keine Daten über den Server '{{server}}' vorhanden.",
     "noWorld": "Keine Daten über die Welt '{{world}}' vorhanden.",
+    "noWorldId": "Keine Daten über die Welt mit der ID '{{id}}' vorhanden.",
     "playerNotFound": "Der Spieler mit der id '{{player}}' konnte auf Welt '{{world}}' nicht gefunden werden",
     "title": "Seite nicht gefunden",
     "unknownType": "Unbekannter typ '{{type}}'",
-    "villageNotFound": "Das Dorf mit der id '{{village}}' konnte auf Welt '{{world}}' nicht gefunden werden"
+    "villageNotFound": "Das Dorf mit der id '{{village}}' konnte auf Welt '{{world}}' nicht gefunden werden",
+    "worldNotSupported": "Dieses Tool wird von der aktuellen Welt nicht unterstützt"
   },
   "500": {
     "generic": "Es ist ein Fehler aufgetreten. Bitte erwägen sie diesen (zusammen mit Schritten zur Reproduktion) den Entwicklern zu melden.",

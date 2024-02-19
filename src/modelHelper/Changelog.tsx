@@ -3,7 +3,7 @@ import React from "react";
 import {faBug} from "@fortawesome/free-solid-svg-icons/faBug";
 import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
 import {faCode} from "@fortawesome/free-solid-svg-icons/faCode";
-import {cacheable} from "../apiInterface/MainDatabase"
+import {cacheable} from "../apiInterface/AbstractDatabase"
 
 export type changelogType = cacheable & {
   id: number,

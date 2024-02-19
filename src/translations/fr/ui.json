@@ -38,6 +38,14 @@
       "village": "villages"
     }
   },
+  "clipboard": {
+    "success": "",
+    "successDesc": ""
+  },
+  "confirmation": {
+    "cancel": "",
+    "ok": ""
+  },
   "conquer": {
     "all": "",
     "allyOwn": "",
@@ -206,6 +214,21 @@
     "worldOverview": ""
   },
   "topAt": "",
+  "unit": {
+    "archer": "",
+    "axe": "",
+    "catapult": "",
+    "heavy": "",
+    "knight": "",
+    "light": "",
+    "marcher": "",
+    "militia": "",
+    "ram": "",
+    "snob": "",
+    "spear": "",
+    "spy": "",
+    "sword": ""
+  },
   "village": {
     "bonus": {
       "allResources": "",

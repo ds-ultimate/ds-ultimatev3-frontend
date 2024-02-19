@@ -30,6 +30,7 @@ const DummyFunction = () => {
   //tell translation interface that we need these
   t("404.noServer")
   t("404.noWorld")
+  t("404.noWorldId")
   t("404.allyNotFound")
   t("404.allyDisbanded")
   t("404.playerNotFound")

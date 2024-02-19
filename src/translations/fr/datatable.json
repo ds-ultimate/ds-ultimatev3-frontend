@@ -1,4 +1,7 @@
 {
+  "export": {
+    "csv": ""
+  },
   "oPaginate_sNext": "",
   "oPaginate_sPrevious": "",
   "sInfo": "",

@@ -37,7 +37,11 @@ export function getAmountForUnit(troops: TroopArmyAmounts, unitName: string) {
 
 export function setAmountForUnit(setter: StateUpdater<TroopArmyAmounts>, unitName: string, value: number) {
   setter(old => {
-    return [...(old.filter(([n,]) => n !== unitName)), [unitName, value]]
+    if(value > 0) {
+      return [...(old.filter(([n,]) => n !== unitName)), [unitName, value]]
+    } else {
+      return old.filter(([n,]) => n !== unitName)
+    }
   })
 }
 
@@ -47,6 +51,24 @@ function troopSum(troops: TroopArmyAmounts, worldUnit: worldUnitType, sumOver: k
     const curAtt = (tmp !== undefined?tmp[sumOver]:undefined) ?? 0
     return previousValue + curAtt * curAmount
   }, 0)
+}
+
+export function exportTroopArmyAmount(troops: TroopArmyAmounts) {
+  return troops.reduce((prev, cur) => prev + (prev.length>0?"/":"") + exportTroopAmount(cur), "")
+}
+
+export function exportTroopAmount(troop: TroopAmount) {
+  return troop[0] + "=" + btoa(""+troop[1])
+}
+
+export function parseTroopArmyAmount(data: string): TroopArmyAmounts {
+  if(data === "") {
+    return []
+  }
+  return data.split("/").map(value => {
+    const [uName, cnt] = value.split("=")
+    return [uName, +atob(cnt)]
+  })
 }
 
 export function isInfantry(troop: TroopAmount) {

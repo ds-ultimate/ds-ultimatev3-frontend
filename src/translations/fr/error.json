@@ -9,10 +9,12 @@
     "generic": "",
     "noServer": "",
     "noWorld": "",
+    "noWorldId": "",
     "playerNotFound": "",
     "title": "",
     "unknownType": "",
-    "villageNotFound": ""
+    "villageNotFound": "",
+    "worldNotSupported": ""
   },
   "500": {
     "generic": "",

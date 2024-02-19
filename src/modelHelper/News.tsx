@@ -1,4 +1,4 @@
-import {cacheable} from "../apiInterface/MainDatabase"
+import {cacheable} from "../apiInterface/AbstractDatabase"
 
 type newsType = cacheable & {
   id: number,

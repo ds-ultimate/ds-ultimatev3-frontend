@@ -38,6 +38,14 @@
       "village": "Villages"
     }
   },
+  "clipboard": {
+    "success": "Copied",
+    "successDesc": "The text has been copied successfully into the clipboard"
+  },
+  "confirmation": {
+    "cancel": "Abbort",
+    "ok": "Yes"
+  },
   "conquer": {
     "all": "Conquers",
     "allyOwn": "Internal / Own-Conquers",
@@ -206,6 +214,21 @@
     "worldOverview": "World overview"
   },
   "topAt": "at",
+  "unit": {
+    "archer": "Archer",
+    "axe": "Axe",
+    "catapult": "Catapult",
+    "heavy": "Heavy Cavalry",
+    "knight": "Paladin",
+    "light": "Light Cavalry",
+    "marcher": "Mounted Archer",
+    "militia": "Milita",
+    "ram": "Ram",
+    "snob": "Nobleman",
+    "spear": "Spear",
+    "spy": "Scout",
+    "sword": "Sword"
+  },
   "village": {
     "bonus": {
       "allResources": "{{amount}} for each resource type",

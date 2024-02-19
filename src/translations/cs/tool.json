@@ -1,4 +1,125 @@
 {
+  "commandPlanner": {
+    "button": {
+      "attack": "Útok",
+      "attack_desc": "",
+      "manual": "",
+      "manual_desc": "",
+      "support": "Podpora",
+      "support_desc": ""
+    },
+    "overview": {
+      "building": "Budova",
+      "create": {
+        "createSuccessDesc": "Útok byl úspěšně vytvořen",
+        "createSuccessTitle": "Úspěšně",
+        "deleteSuccessTitle": "",
+        "emptySuccessDesc": "",
+        "emptySuccessTitle": "",
+        "errorCoordSame": "Výchozí vesnice a cílová nesmí být stejná",
+        "errorCoordTitle": "Souřadnice vesnice",
+        "errorStartCoord": "",
+        "errorTargetCoord": "",
+        "outdatedSuccessDesc": "",
+        "sentSuccessDesc": ""
+      },
+      "defensive": "Obrana",
+      "deleteAll": "Smazat celý plán",
+      "deleteAllConfirm": "Všechny útoky budou smazány",
+      "deleteOutdated": "Odebrat neaktuální útoky",
+      "deleteSent": "",
+      "iconsTitle": "",
+      "import": {
+        "exportBB": "Exportovat fórum",
+        "exportBBDesc": "Export pro fórum",
+        "exportIGM": "Export IGM",
+        "exportIGMDesc": "Export pro IGM bez obrázků",
+        "exportWB": "Export DSWorkbench",
+        "exportWBDesc": "Export pro DSWorkbench",
+        "failed": "",
+        "import": "importovat",
+        "importWB": "",
+        "importWBDesc": "Importovat útoky z Workbench",
+        "successTitle": "",
+        "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Plán útoků:[/b]\nPočet útoků: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[/**]\n%ROW%\n[/table]\n\n[size=8]Vytvořeno v %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
+        "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",
+        "templateIGM_body": "[b]%TITLE%[/b]\n\n%ROW%\n\nCreated at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url]",
+        "templateIGM_row": "%TYPE% by [b]%ATTACKER%[/b] from %SOURCE% with %UNIT% at [b]%DEFENDER%[/b]  on %TARGET% starts on [color=#ff0e0e]%SEND%[/color] and arrives on [color=#2eb92e]%ARRIVE%[/color] (%PLACE%)",
+        "wbImportSuccess_one": "",
+        "wbImportSuccess_few": "",
+        "wbImportSuccess_many": "",
+        "wbImportSuccess_other": "",
+        "wbImportWrongData": ""
+      },
+      "link": {
+        "editLink": "Sdílet k editaci",
+        "editLinkHelp": "Každý, kdo má tento odkaz, může upravovat plánovač útoků. Buďte opatrní!",
+        "showLink": "Sdílet plán útoku",
+        "showLinkHelp": "Pomocí tohoto odkazu lze plán útoku zobrazit, ale nelze jej upravovat."
+      },
+      "noTitle": "Bez názvu",
+      "offensive": "Útok",
+      "otherUnits": "",
+      "prop": {
+        "arrivalTime": "Čas dopadu",
+        "date": "Datum",
+        "sendTime": "Čas odeslání",
+        "startVillage": "Startovní vesnice",
+        "support_boost": "",
+        "targetVillage": "Cilová vesnice",
+        "tribe_boost": "",
+        "type": "Typ",
+        "unit": "Jednotka"
+      },
+      "save": "",
+      "stats": {
+        "attackStartVillage": "Útočící vesnice",
+        "attackTargetVillage": "Cílové vesnice",
+        "attackTotal": "Útoky celkem",
+        "generalTitle": "Obecné"
+      },
+      "tabs": {
+        "create": "",
+        "import": "Importovat/Exportovat",
+        "link": "Odkaz pro sdílení",
+        "multiedit": "Vícenásobná úprava",
+        "stats": "Statistika",
+        "tips": "Tipy"
+      },
+      "title": "Plánovač útoků",
+      "type": {
+        "attack": "",
+        "conquest": "Dobývání",
+        "fake": "Fake",
+        "fakeSupport": "Fake podpora",
+        "fastSupport": "Rychlá podpora",
+        "icons": {
+          "ballBlue": "",
+          "ballGreen": "",
+          "ballGrey": "",
+          "ballRed": "",
+          "ballYellow": "",
+          "devArcher": "",
+          "devCav": "",
+          "moveIn": "",
+          "moveOut": "",
+          "wbAdd": "",
+          "wbAlly": "",
+          "wbCheckbox": "",
+          "wbDie": "",
+          "wbEye": "",
+          "wbEyeForbidden": "",
+          "wbRemove": "",
+          "wbWarning": ""
+        },
+        "standSupport": "Dlouhodobá podpora",
+        "support": "",
+        "wallbreaker": "Bourání opevnění"
+      }
+    },
+    "title": ""
+  },
+  "copy": "",
   "disabled": {
     "missingConfig": "Tato funkce není pro vybraný svět k dispozici.",
     "noWorld": "Pro použití této funkce musí být vybrán svět."
@@ -25,6 +146,19 @@
     "points": "",
     "population": "",
     "title": "Bodová kalkulačka"
+  },
+  "simulator": {
+    "attacker": "",
+    "before": "",
+    "defender": "",
+    "loss": "",
+    "luck": "",
+    "morale": "",
+    "result": "",
+    "settings": "",
+    "survivors": "",
+    "title": "",
+    "wall": ""
   },
   "tableGenerator": {
     "additionalColumns": "Další sloupec",
@@ -57,5 +191,6 @@
     "villageByAlly": "Všechny vesnice kmene",
     "villageByPlayer": "Všechny vesnice hráče",
     "villageCount": ""
-  }
+  },
+  "total": ""
 }

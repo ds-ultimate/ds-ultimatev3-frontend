@@ -2,7 +2,7 @@ import {worldType} from "../../../modelHelper/World"
 import {useTranslation} from "react-i18next"
 import React, {useContext, useEffect, useMemo, useState} from "react"
 import {playerType} from "../../../modelHelper/Player"
-import {villagePlayerType, villagePureType} from "../../../modelHelper/Village"
+import {villageCoordinateBB, villagePlayerType, villagePureType} from "../../../modelHelper/Village"
 import {dateFormatLocal_DMY_HMS, nf} from "../../../util/UtilFunctions"
 import {Button, Card, Form, InputGroup} from "react-bootstrap"
 import {LoadingScreenContext} from "../../layout/LoadingScreen"
@@ -40,18 +40,18 @@ export function TableGeneratorOutput({worldData, selectedType, sorting, columns,
     } else if(selectedType === "villageByPlayer") {
       //villagePureType --> Columns: NR, Village([coord]123|123[/coord]), Points, [additional]
       entries = (rawData as villagePureType[]).map(v =>
-          ({name: v.name, points: v.points, columns: [`[coord]${v.x}|${v.y}[/coord]`]}))
+          ({name: v.name, points: v.points, columns: [villageCoordinateBB(v)]}))
       mappedHeader = [t("tableGenerator.table.village")]
     } else if(selectedType === "villageByAlly") {
       //villagePlayerType --> Columns: NR, Village([coord]123|123[/coord]), Points, [additional]
       entries = (rawData as villagePlayerType[]).map(v =>
-          ({name: v.name, points: v.points, columns: [`[coord]${v.x}|${v.y}[/coord]`]}))
+          ({name: v.name, points: v.points, columns: [villageCoordinateBB(v)]}))
       mappedHeader = [t("tableGenerator.table.village")]
     } else if(selectedType === "villageAndPlayerByAlly") {
       //villagePlayerType --> Columns: NR, Player, Village([coord]123|123[/coord]), Points, [additional]
       entries = (rawData as villagePlayerType[]).map(v =>
           ({name: v.playerLatest__name??"", points: v.points, columns: [
-              `[player]${v.playerLatest__name}[/player]`, `[coord]${v.x}|${v.y}[/coord]`]}))
+              `[player]${v.playerLatest__name}[/player]`, villageCoordinateBB(v)]}))
       mappedHeader = [t("tableGenerator.table.village"), t("tableGenerator.table.player")]
     }
 

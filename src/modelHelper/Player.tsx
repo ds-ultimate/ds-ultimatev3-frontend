@@ -5,7 +5,7 @@ import {ALLY_INFO, PLAYER_INFO} from "../pages/routes";
 import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import {chartDataType} from "../util/CustomChart";
-import {cacheable} from "../apiInterface/MainDatabase"
+import {cacheable} from "../apiInterface/AbstractDatabase"
 
 
 export type playerPureType = {

@@ -33,6 +33,7 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
   const [serverWorldsErr, serverWorlds] = useWorldsOfServer(serverCode)
   const { t } = useTranslation("ui")
   const [extended, setExtended] = useState<boolean>(true)
+  const [mobileExtended, setMobileExtended] = useState<boolean>(false)
   const [extendedSubMenu, setExtendedSubMenu] = useState<Key | undefined>(undefined)
   const showMobileNav = useBreakpointDown("sm")
 
@@ -80,12 +81,12 @@ export default function Navbar({serverCode, worldName}: {serverCode?: string, wo
     return (
         <ExtendedSubMenuContext.Provider value={[extendedSubMenu, setExtendedSubMenu]}>
           <div className={"nav-bg " + styles.navbarWrapper + " " + styles.navbarWrapperMobile +
-              (extended?(" " + styles.navbarWrapperExtended):"")}>
-            <button className={styles.navbarLink + " " + styles.navbarMinimizer + (extended?" mb-2":"")}
-                    onClick={() => setExtended(prevState => !prevState)}>
-              <FontAwesomeIcon icon={extended ? faChevronLeft : faChevronRight} className={styles.faIcon}/>
+              (mobileExtended?(" " + styles.navbarWrapperExtended):"")}>
+            <button className={styles.navbarLink + " " + styles.navbarMinimizer + (mobileExtended?" mb-2":"")}
+                    onClick={() => setMobileExtended(prevState => !prevState)}>
+              <FontAwesomeIcon icon={mobileExtended ? faChevronLeft : faChevronRight} className={styles.faIcon}/>
             </button>
-            {extended && mainNavElement}
+            {mobileExtended && mainNavElement}
           </div>
         </ExtendedSubMenuContext.Provider>
     )

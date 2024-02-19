@@ -60,6 +60,23 @@ export function useWorldData(server: string | undefined, world: string | undefin
       "world", "worldData", downloadCB, findCB, error, dbKey, "world, server")
 }
 
+export function useWorldDataById(world_id: number) {
+  const dbKey = world_id
+  const apiParams = useMemo(() => ({}), [])
+  const downloadCB = useArrayDataloaderCallback<worldType>(apiParams, "getWorlds", getWorlds)
+  const findCB = useCallback(
+      (w: worldType) => w.id === world_id,
+      [world_id])
+  const error: FrontendError = useMemo(() => ({
+    isFrontend: true,
+    code: 404,
+    k: "404.noWorldId",
+    p: {id: ""+world_id}
+  }), [world_id])
+  return useOneOfArrayCachedData<worldType>(
+      "world", "worldData", downloadCB, findCB, error, dbKey)
+}
+
 export function useExtendedWorldData(server: string | undefined, world: string | undefined) {
   const [params, dbKey, cacheKey] =
       useMemo(() => {

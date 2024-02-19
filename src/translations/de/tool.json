@@ -1,4 +1,123 @@
 {
+  "commandPlanner": {
+    "button": {
+      "attack": "Angriffsplaner",
+      "attack_desc": "Der Angriffsplaner erlaubt es dir, Angriffe in großen Mengen zu erstellen. Dabei bietet er die Möglichkeit, Abschick- und Ankunftzeiten nach deinen Wünschen zu gestalten. Bitte beachte aber auch: Der automatische Angriffsplaner ist NICHT dafür geeignet, die perfekten Angriffspläne inklusive Adelungen zu erstellen. Für die Planung von Adelungen verwende bitte den manuellen Angriffsplaner.",
+      "manual": "händischer Befehlsplaner",
+      "manual_desc": "Der händischer Befehlsplaner erlaubt es dir einzeln befehle zu Planen. Dies ist z.B. praktisch für die Planung gezielter Adelungen.",
+      "support": "Verteidigungsplaner",
+      "support_desc": "Der Verteidigungsplaner erlaubt es dir, Unterstützungen wieder auf einen bestimmten Stand zu bringen. Dafür ist es notwendig, dass du deine Truppen aus dem Spiel importiert hast. Während der Auffüllung wird versucht, ausgeählte Dörfer mit freien Defensivtruppen zu befüllen, bis sie wieder einen bestimmten Truppenbestand aufweisen."
+    },
+    "overview": {
+      "building": "Gebäude",
+      "create": {
+        "createSuccessDesc": "Angriff wurde erfolgreich erstellt",
+        "createSuccessTitle": "Erfolgreich",
+        "deleteSuccessTitle": "Löschen erfolgreich",
+        "emptySuccessDesc": "Der Angriffsplan wurde erfolgreich geleert",
+        "emptySuccessTitle": "Leeren erfolgreich",
+        "errorCoordSame": "Start- und Zieldorf dürfen nicht gleich sein",
+        "errorCoordTitle": "Dorf Koordinaten",
+        "errorStartCoord": "Das Herkunftsdorf existiert nicht",
+        "errorTargetCoord": "Das Zieldorf existiert nicht",
+        "outdatedSuccessDesc": "Die abgelaufen Angriffe wurden erfolgreich gelöscht",
+        "sentSuccessDesc": "Die gesendeten Angriffe wurden erfolgreich gelöscht"
+      },
+      "defensive": "Defensiv",
+      "deleteAll": "Angriffsplan leeren",
+      "deleteAllConfirm": "Es werden ALLE Angriffe gelöscht",
+      "deleteOutdated": "abgelaufene Angriffe löschen",
+      "deleteSent": "abgeschickte Angriffe löschen",
+      "iconsTitle": "Icons",
+      "import": {
+        "exportBB": "Export Forum",
+        "exportBBDesc": "Export für das Forum als Tabelle und mit Bilder",
+        "exportIGM": "Export IGM",
+        "exportIGMDesc": "Export für eine Ingame-Nachricht. Da IGM's keine Tabellen und Bilder anzeigen können, wird reiner Text ausgegeben.",
+        "exportWB": "Export DSWorkbench",
+        "exportWBDesc": "Export für DSWorkbench",
+        "failed": "Fehler",
+        "import": "Import",
+        "importWB": "Import DSWorkbench",
+        "importWBDesc": "Importiere Angriffe aus deiner Workbench",
+        "successTitle": "Import erfolgreich",
+        "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Angriffsplan[/b]\nAnzahl der Angriffe: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Art[||]Einheit[||]Herkunft[||]Ziel[||]Abschickzeit[||]Versammlungsplatz[/**]\n%ROW%\n[/table]\n\n[size=8]Erstellt am %CREATE_AT% mit [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
+        "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",
+        "templateIGM_body": "[b]%TITLE%[/b]\n\n%ROW%\n\nErstellt am %CREATE_AT% mit [url=%CREATE_WITHL%]%CREATE_WITH%[/url]",
+        "templateIGM_row": "%TYPE% von [b]%ATTACKER%[/b] aus %SOURCE% mit %UNIT% auf [b]%DEFENDER%[/b]  in %TARGET% startet am [color=#ff0e0e]%SEND%[/color] und kommt am [color=#2eb92e]%ARRIVE%[/color] an (%PLACE%)",
+        "wbImportSuccess_one": "Der Angriff wurde erfolgreich importiert",
+        "wbImportSuccess_other": "{{count}} Angriffe erfolgreich importiert",
+        "wbImportWrongData": "Fehlerhafte Input Daten gefunden. Eventuell falsches Format?"
+      },
+      "link": {
+        "editLink": "Editierungs Link",
+        "editLinkHelp": "Jeder, der diesen Link hat, kann den Angriffsplan editieren. Sei daher vorsichtig und gib den Link nur Leuten, denen du vertraust!",
+        "showLink": "Ansehen Link",
+        "showLinkHelp": "Mit diesem Link, kann der Angriffsplan angesehen werden, allerdings nicht editiert werden."
+      },
+      "noTitle": "Kein Titel",
+      "offensive": "Offensiv",
+      "otherUnits": "Andere Einheiten",
+      "prop": {
+        "arrivalTime": "Ankunftszeit",
+        "date": "Datum",
+        "sendTime": "Abschickzeit",
+        "startVillage": "Startdorf",
+        "support_boost": "Unterstützungsboost",
+        "targetVillage": "Zieldorf",
+        "tribe_boost": "Freundschaftsskill",
+        "type": "Typ",
+        "unit": "Einheit"
+      },
+      "save": "Speichern",
+      "stats": {
+        "attackStartVillage": "Angreifende Dörfer",
+        "attackTargetVillage": "Ziel Dörfer",
+        "attackTotal": "Angriffe Total",
+        "generalTitle": "Allgemein"
+      },
+      "tabs": {
+        "create": "Erstellen",
+        "import": "Import/Export",
+        "link": "Links zum Teilen",
+        "multiedit": "Massenbearbeitung",
+        "stats": "Statistik",
+        "tips": "Tipps"
+      },
+      "title": "Angriffsplaner",
+      "type": {
+        "attack": "Offensiv",
+        "conquest": "Eroberung",
+        "fake": "Fake",
+        "fakeSupport": "Fake Unterstützung",
+        "fastSupport": "Schnelle Unterstützung",
+        "icons": {
+          "ballBlue": "Blauer Punkt",
+          "ballGreen": "Grüner Punkt",
+          "ballGrey": "Grauer Punkt",
+          "ballRed": "Roter Punkt",
+          "ballYellow": "Gelber Punkt",
+          "devArcher": "Verteidigung gegen Bogenschützen",
+          "devCav": "Verteidigung gegen Kavalerie",
+          "moveIn": "Grüner Pfeil nach Links",
+          "moveOut": "Roter Pfeil nach rechts",
+          "wbAdd": "Hinzufügen",
+          "wbAlly": "Verteidigung gegen Infanterie",
+          "wbCheckbox": "Ausgewählte Checkbox",
+          "wbDie": "Würfel",
+          "wbEye": "Auge",
+          "wbEyeForbidden": "Durchgestrichenes Auge",
+          "wbRemove": "rotes x",
+          "wbWarning": "Achtung"
+        },
+        "standSupport": "Stand Unterstützung",
+        "support": "Unterstützung",
+        "wallbreaker": "Wallbrecher"
+      }
+    },
+    "title": "Befehlsplaner"
+  },
+  "copy": "Kopieren",
   "disabled": {
     "missingConfig": "Dieses Feature ist bei der ausgewählten Welt nicht verfügbar.",
     "noWorld": "Um dieses Feature nutzen zu können, muss eine Welt ausgewählt werden"
@@ -25,6 +144,19 @@
     "points": "Punkte",
     "population": "Bauernhofplätze",
     "title": "Punkterechner"
+  },
+  "simulator": {
+    "attacker": "Angreifer",
+    "before": "vorher",
+    "defender": "Verteidiger",
+    "loss": "Verlust",
+    "luck": "Glück",
+    "morale": "Moral",
+    "result": "Ergebnis",
+    "settings": "Einstellungen",
+    "survivors": "Überlebende",
+    "title": "Simulator",
+    "wall": "Wall"
   },
   "tableGenerator": {
     "additionalColumns": "Zusätzliche Spalten",
@@ -57,5 +189,6 @@
     "villageByAlly": "Alle Dörfer eines Stamms",
     "villageByPlayer": "Alle Dörfer eines Spielers",
     "villageCount": "Dorfanzahl"
-  }
+  },
+  "total": "Total"
 }

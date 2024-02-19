@@ -1,4 +1,124 @@
 {
+  "commandPlanner": {
+    "button": {
+      "attack": "",
+      "attack_desc": "",
+      "manual": "",
+      "manual_desc": "",
+      "support": "",
+      "support_desc": ""
+    },
+    "overview": {
+      "building": "",
+      "create": {
+        "createSuccessDesc": "",
+        "createSuccessTitle": "",
+        "deleteSuccessTitle": "",
+        "emptySuccessDesc": "",
+        "emptySuccessTitle": "",
+        "errorCoordSame": "",
+        "errorCoordTitle": "",
+        "errorStartCoord": "",
+        "errorTargetCoord": "",
+        "outdatedSuccessDesc": "",
+        "sentSuccessDesc": ""
+      },
+      "defensive": "",
+      "deleteAll": "",
+      "deleteAllConfirm": "",
+      "deleteOutdated": "",
+      "deleteSent": "",
+      "iconsTitle": "",
+      "import": {
+        "exportBB": "",
+        "exportBBDesc": "",
+        "exportIGM": "",
+        "exportIGMDesc": "",
+        "exportWB": "",
+        "exportWBDesc": "",
+        "failed": "",
+        "import": "",
+        "importWB": "",
+        "importWBDesc": "",
+        "successTitle": "",
+        "templateBB_body": "",
+        "templateBB_row": "",
+        "templateIGM_body": "",
+        "templateIGM_row": "",
+        "wbImportSuccess_one": "",
+        "wbImportSuccess_many": "",
+        "wbImportSuccess_other": "",
+        "wbImportWrongData": ""
+      },
+      "link": {
+        "editLink": "",
+        "editLinkHelp": "",
+        "showLink": "",
+        "showLinkHelp": ""
+      },
+      "noTitle": "",
+      "offensive": "",
+      "otherUnits": "",
+      "prop": {
+        "arrivalTime": "",
+        "date": "",
+        "sendTime": "",
+        "startVillage": "",
+        "support_boost": "",
+        "targetVillage": "",
+        "tribe_boost": "",
+        "type": "",
+        "unit": ""
+      },
+      "save": "",
+      "stats": {
+        "attackStartVillage": "",
+        "attackTargetVillage": "",
+        "attackTotal": "",
+        "generalTitle": ""
+      },
+      "tabs": {
+        "create": "",
+        "import": "",
+        "link": "",
+        "multiedit": "",
+        "stats": "",
+        "tips": ""
+      },
+      "title": "",
+      "type": {
+        "attack": "",
+        "conquest": "",
+        "fake": "",
+        "fakeSupport": "",
+        "fastSupport": "",
+        "icons": {
+          "ballBlue": "",
+          "ballGreen": "",
+          "ballGrey": "",
+          "ballRed": "",
+          "ballYellow": "",
+          "devArcher": "",
+          "devCav": "",
+          "moveIn": "",
+          "moveOut": "",
+          "wbAdd": "",
+          "wbAlly": "",
+          "wbCheckbox": "",
+          "wbDie": "",
+          "wbEye": "",
+          "wbEyeForbidden": "",
+          "wbRemove": "",
+          "wbWarning": ""
+        },
+        "standSupport": "",
+        "support": "",
+        "wallbreaker": ""
+      }
+    },
+    "title": ""
+  },
+  "copy": "",
   "disabled": {
     "missingConfig": "",
     "noWorld": ""
@@ -25,6 +145,19 @@
     "points": "",
     "population": "",
     "title": ""
+  },
+  "simulator": {
+    "attacker": "",
+    "before": "",
+    "defender": "",
+    "loss": "",
+    "luck": "",
+    "morale": "",
+    "result": "",
+    "settings": "",
+    "survivors": "",
+    "title": "",
+    "wall": ""
   },
   "tableGenerator": {
     "additionalColumns": "",
@@ -57,5 +190,6 @@
     "villageByAlly": "",
     "villageByPlayer": "",
     "villageCount": ""
-  }
+  },
+  "total": ""
 }

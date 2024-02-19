@@ -7,7 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^1.2.3",
+    "axios": "^1.6.7",
     "i18next": "^22.4.9",
     "i18next-parser": "^8.3.0",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -25,7 +25,8 @@
     "chart.js": "^4.2.1",
     "react-chartjs-2": "^5.2.0",
     "chartjs-adapter-date-fns": "^3.0.0",
-    "react-error-boundary": "^4.0.10"
+    "react-error-boundary": "^4.0.10",
+    "react-confirm": "^0.3.0-7"
   },
   "devDependencies": {
     "source-map-explorer": "^2.5.3",
@@ -68,5 +69,5 @@
     "glob-parent": "^5.1.2"
   },
 
-  "homepage": "https://beta.ds-ultimate.de"
+  "homepage": "https://beta.ds-ultimate.de/"
 }

@@ -38,6 +38,14 @@
       "village": "Dörfer"
     }
   },
+  "clipboard": {
+    "success": "Kopiert",
+    "successDesc": "Der Text wurde erfolgreich in die Zwischenablage kopiert."
+  },
+  "confirmation": {
+    "cancel": "Nein",
+    "ok": "Ja"
+  },
   "conquer": {
     "all": "Adelungen",
     "allyOwn": "Interne / Eigen-Adelungen",
@@ -206,6 +214,21 @@
     "worldOverview": "Weltenübersicht"
   },
   "topAt": "am",
+  "unit": {
+    "archer": "Bogenschütze",
+    "axe": "Axtkämpfer",
+    "catapult": "Katapult",
+    "heavy": "Schwere Kavallerie",
+    "knight": "Paladin",
+    "light": "Leiche Kavallerie",
+    "marcher": "Berittener Bogenschütze",
+    "militia": "Miliz",
+    "ram": "Rammbock",
+    "snob": "Adelsgeschlecht",
+    "spear": "Speerträger",
+    "spy": "Späher",
+    "sword": "Schwertkämpfer"
+  },
   "village": {
     "bonus": {
       "allResources": "{{amount}} auf alle Rohstoffe",

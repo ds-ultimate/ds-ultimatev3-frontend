@@ -35,6 +35,8 @@ import DistanceCalcPage from "./pages/tools/DistanceCalcPage"
 import PointCalcPage from "./pages/tools/PointCalcPage"
 import TableGeneratorPage from "./pages/tools/TableGeneratorPage"
 import SimulatorPage from "./pages/tools/SimulatorPage"
+import CommandPlannerPage from "./pages/tools/CommandPlannerPage"
+import CommandOverviewPage from "./pages/tools/CommandPlanner/CommandOverviewPage"
 
 /*
 const IndexPage = lazy(() => import("./pages/content/Index"));
@@ -42,7 +44,7 @@ const IndexPage = lazy(() => import("./pages/content/Index"));
 
 function App() {
   return (
-      <BrowserRouter basename={process.env.REACT_APP_BASE_DIR}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Suspense fallback={<ForcedLoadingScreen />}>
           <Routes>
             <Route path={'/'} element={<RootLayout />}>
@@ -71,6 +73,8 @@ function App() {
               <Route path={ToolRouteHolder.POINT_CALC} element={<PointCalcPage />}/>
               <Route path={ToolRouteHolder.TABLE_GENERATOR} element={<TableGeneratorPage />}/>
               <Route path={ToolRouteHolder.SIMULATOR} element={<SimulatorPage />}/>
+              <Route path={ToolRouteHolder.COMMAND_PLANNER} element={<CommandPlannerPage />}/>
+              <Route path={ToolRouteHolder.COMMAND_PLANNER_OVERVIEW} element={<CommandOverviewPage />}/>
 
               <Route path={RouteHolder.CHANGELOG_PAGE} element={<ChangelogPage />}/>
               <Route path={RouteHolder.LEGAL_PAGE} element={<LegalPage />}/>

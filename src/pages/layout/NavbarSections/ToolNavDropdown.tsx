@@ -2,8 +2,8 @@ import {worldType} from "../../../modelHelper/World"
 import {useTranslation} from "react-i18next"
 import React from "react"
 import {formatRoute} from "../../../util/router"
-import {DISTANCE_CALC, POINT_CALC, TABLE_GENERATOR} from "../../tools/routes"
-import {faStopwatch, faList, faToolbox} from "@fortawesome/free-solid-svg-icons"
+import {COMMAND_PLANNER, DISTANCE_CALC, POINT_CALC, TABLE_GENERATOR} from "../../tools/routes"
+import {faStopwatch, faList, faToolbox, faBomb} from "@fortawesome/free-solid-svg-icons"
 import {faFortAwesomeAlt} from "@fortawesome/free-brands-svg-icons"
 import {NavbarItem, NavbarItemDisabled, NavbarMenu} from "../Navbar"
 
@@ -25,19 +25,24 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
           to={formatRoute(DISTANCE_CALC, {server: serverCode, world: worldName})}
           text={t("distCalc.title")}
           icon={faStopwatch} />)
+      toolEntries.push(<NavbarItem
+          key={"comPln"}
+          to={formatRoute(COMMAND_PLANNER, {server: serverCode, world: worldName})}
+          text={t("commandPlanner.title")}
+          icon={faBomb} />)
     } else {
       toolEntries.push(<NavbarItemDisabled
           key={"dstClc"}
           text={t("distCalc.title")}
           tooltip={t("disabled.missingConfig")}
           icon={faStopwatch} />)
+      toolEntries.push(<NavbarItemDisabled
+          key={"comPln"}
+          text={t("commandPlanner.title")}
+          tooltip={t("disabled.missingConfig")}
+          icon={faBomb} />)
     }
     /* //TODO add this/these tool(s)
-    if($worldArg->config != null && $worldArg->units != null) {
-      $tools[] = self::navElement('tool.attackPlanner.title', 'tools.attackPlannerNew', routeArgs: $serverCodeName, nofollow: true);
-    } else {
-      $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.missingConfig');
-    }
     $tools[] = self::navElement('tool.map.title', 'tools.mapNew', routeArgs: $serverCodeName, nofollow: true);
     */
 
@@ -92,8 +97,12 @@ export function ToolNavDropdown({serverCode, worldName, currentWorld}: {serverCo
         text={t("distCalc.title")}
         tooltip={t("disabled.noWorld")}
         icon={faStopwatch} />)
+    toolEntries.push(<NavbarItemDisabled
+        key={"comPln"}
+        text={t("commandPlanner.title")}
+        tooltip={t("disabled.noWorld")}
+        icon={faBomb} />)
     /* //TODO add this/these tool(s)
-    $tools[] = self::navElementDisabled('tool.attackPlanner.title', 'ui.nav.disabled.noWorld');
     $tools[] = self::navElementDisabled('tool.map.title', 'ui.nav.disabled.noWorld');
      */
     toolEntries.push(<NavbarItemDisabled

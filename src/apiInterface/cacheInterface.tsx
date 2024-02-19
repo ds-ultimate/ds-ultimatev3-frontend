@@ -1,8 +1,9 @@
 import {useCallback} from "react"
 import {getCacheDuration} from "./cacheConf"
 import {usePromisedData} from "./loadContent"
-import {cacheable, getMainDatabase} from "./MainDatabase"
+import {getMainDatabase} from "./MainDatabase"
 import {FrontendError} from "../pages/layout/ErrorPages/ErrorTypes"
+import {cacheable} from "./AbstractDatabase"
 
 
 export function useCachedData<T extends cacheable>(

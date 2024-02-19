@@ -16,7 +16,7 @@ foreach($files as $f) {
         $encoded = file_get_contents($f);
         $data = json_decode($encoded);
         $lang = substr($raw, 0, strrpos($raw, "."));
-        $ns = "global";
+        $ns = "globalJSON";
     } else {
         die("unknown ext $ext\n");
     }

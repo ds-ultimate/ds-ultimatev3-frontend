@@ -3,9 +3,11 @@ import {worldType} from "./World";
 import {Link} from "react-router-dom";
 import {formatRoute} from "../util/router";
 import {PLAYER_INFO, VILLAGE_INFO} from "../pages/routes";
-import {DecodeName} from "../util/UtilFunctions";
+import {DecodeName, rawDecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
-import {cacheable} from "../apiInterface/MainDatabase"
+import {cacheable} from "../apiInterface/AbstractDatabase"
+import {useCallback} from "react"
+import {getPlayerInfoId} from "../apiInterface/worldDataAPI"
 
 export type villagePureType = {
   villageID: number,
@@ -45,6 +47,21 @@ export type villageBasicDataType = cacheable & {
 
 export function villageCoordinates(vil: villagePureType) {
   return `${vil.x}|${vil.y}`
+}
+
+export function villageCoordinateBB(vil: villagePureType) {
+  return `[coord]${vil.x}|${vil.y}[/coord]`
+}
+
+export function useVillageOwnerBB() {
+  const { t } = useTranslation()
+  return useCallback(async (world: worldType, vil: villagePureType | undefined) => {
+    if(vil === undefined) return t("player.deleted")
+    if(vil.owner === 0) return t("player.barbarian")
+    const playerData = await getPlayerInfoId(world, vil.owner)
+    if(playerData === undefined) return t("player.deleted")
+    return "[player]" + rawDecodeName(playerData.name) + "[/player]"
+  }, [t])
 }
 
 export function villageContinent(vil: villagePureType) {

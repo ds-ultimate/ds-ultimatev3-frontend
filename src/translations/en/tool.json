@@ -1,4 +1,123 @@
 {
+  "commandPlanner": {
+    "button": {
+      "attack": "attackplanner",
+      "attack_desc": "The attackplanner allows planning of huge amounts of attacks. Send and Arrivaltimes can be configured based on your needs. But please be aware, that the automatic attackplanner might not yield perfect results, thus you should only use it if you need to plan a lot of attacks.",
+      "manual": "manual commandplanner",
+      "manual_desc": "The manual commandplanner is suitable for planning small scale attacks. Each attack need to be created manually.",
+      "support": "supportplanner",
+      "support_desc": "The supportplanner allows planning commands for the refilling of supports. It is necessary to import your current Troops prior to using this tool. During calculation the tool will try to refill the selected villages until they reach a given amount of troops."
+    },
+    "overview": {
+      "building": "Building",
+      "create": {
+        "createSuccessDesc": "Attack was successfully created",
+        "createSuccessTitle": "Successful",
+        "deleteSuccessTitle": "Deletion successful",
+        "emptySuccessDesc": "The attackplan has been cleared successfully",
+        "emptySuccessTitle": "Clear successful",
+        "errorCoordSame": "Start- and Targetvillage must not be the same",
+        "errorCoordTitle": "Village coordinates",
+        "errorStartCoord": "The start village doesn't exist",
+        "errorTargetCoord": "The target village doesn't exist",
+        "outdatedSuccessDesc": "The outdated attacks have been successfully deleted",
+        "sentSuccessDesc": "The sent attacks have been successfully deleted"
+      },
+      "defensive": "Defensive",
+      "deleteAll": "delete all attacks",
+      "deleteAllConfirm": "all attacks will be deleted",
+      "deleteOutdated": "delete expired attacks",
+      "deleteSent": "delete already sent attacks",
+      "iconsTitle": "Icons",
+      "import": {
+        "exportBB": "Export Forum",
+        "exportBBDesc": "Export for the Forum",
+        "exportIGM": "Export IGM",
+        "exportIGMDesc": "Export for IGM without Images",
+        "exportWB": "Export DSWorkbench",
+        "exportWBDesc": "Export for DSWorkbench",
+        "failed": "Error",
+        "import": "Import",
+        "importWB": "Import DSWorkbench",
+        "importWBDesc": "Import attacks from your Workbench",
+        "successTitle": "Import successful",
+        "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Attackplan[/b]\nAttackcount: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[/**]\n%ROW%\n[/table]\n\n[size=8]Created at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
+        "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",
+        "templateIGM_body": "[b]%TITLE%[/b]\n\n%ROW%\n\nCreated at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url]",
+        "templateIGM_row": "%TYPE% by [b]%ATTACKER%[/b] from %SOURCE% with %UNIT% at [b]%DEFENDER%[/b]  on %TARGET% starts on [color=#ff0e0e]%SEND%[/color] and arrives on [color=#2eb92e]%ARRIVE%[/color] (%PLACE%)",
+        "wbImportSuccess_one": "The command has been imported successfully",
+        "wbImportSuccess_other": "{{count}} commands have been imported",
+        "wbImportWrongData": "Incorrect input data found. Maybe wrong format?"
+      },
+      "link": {
+        "editLink": "Edit Link",
+        "editLinkHelp": "Everybody with this link can edit the Attakplanner. Be careful!",
+        "showLink": "View Link",
+        "showLinkHelp": "This Links gives only show access to the attack planner"
+      },
+      "noTitle": "No title",
+      "offensive": "Offensive",
+      "otherUnits": "other units",
+      "prop": {
+        "arrivalTime": "Arrival time",
+        "date": "Date",
+        "sendTime": "Send time",
+        "startVillage": "Start village",
+        "support_boost": "support boost",
+        "targetVillage": "Target village",
+        "tribe_boost": "friendship skill",
+        "type": "Type",
+        "unit": "Unit"
+      },
+      "save": "Save",
+      "stats": {
+        "attackStartVillage": "Attacking villages",
+        "attackTargetVillage": "Target villages",
+        "attackTotal": "Attacks Total",
+        "generalTitle": "General"
+      },
+      "tabs": {
+        "create": "Create",
+        "import": "Import/Export",
+        "link": "Links for sharing",
+        "multiedit": "Multiedit",
+        "stats": "Statistics",
+        "tips": "Tips"
+      },
+      "title": "attack planner",
+      "type": {
+        "attack": "Attack",
+        "conquest": "Conquest",
+        "fake": "Fake",
+        "fakeSupport": "Fake Support",
+        "fastSupport": "Fast Support",
+        "icons": {
+          "ballBlue": "blue dot",
+          "ballGreen": "green dot",
+          "ballGrey": "grey dot",
+          "ballRed": "red dot",
+          "ballYellow": "yellow dot",
+          "devArcher": "defense against archer",
+          "devCav": "defense against cavalry",
+          "moveIn": "green arrow left",
+          "moveOut": "red arrow right",
+          "wbAdd": "add",
+          "wbAlly": "defense against infantry",
+          "wbCheckbox": "checked checkbox",
+          "wbDie": "dice",
+          "wbEye": "eye",
+          "wbEyeForbidden": "crossed out eye",
+          "wbRemove": "red x",
+          "wbWarning": "warning"
+        },
+        "standSupport": "Long-term Support (LTS)",
+        "support": "Support",
+        "wallbreaker": "Wallbreaker"
+      }
+    },
+    "title": "Commandplanner"
+  },
+  "copy": "Copy",
   "disabled": {
     "missingConfig": "This feature is not available for the selected world",
     "noWorld": "In order to use this feature you must select a world"
@@ -25,6 +144,19 @@
     "points": "Points",
     "population": "Population",
     "title": "Points Calculator"
+  },
+  "simulator": {
+    "attacker": "Attacker",
+    "before": "previous",
+    "defender": "Defender",
+    "loss": "loss",
+    "luck": "luck",
+    "morale": "morale",
+    "result": "Result",
+    "settings": "Settings",
+    "survivors": "survivors",
+    "title": "Simulator",
+    "wall": "wall"
   },
   "tableGenerator": {
     "additionalColumns": "Additional columns",
@@ -57,5 +189,6 @@
     "villageByAlly": "All villages of a tribe",
     "villageByPlayer": "All villages of a player",
     "villageCount": "Amount of villages"
-  }
+  },
+  "total": "Total"
 }

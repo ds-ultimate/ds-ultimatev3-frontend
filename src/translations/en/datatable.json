@@ -1,4 +1,7 @@
 {
+  "export": {
+    "csv": "CSV"
+  },
   "oPaginate_sNext": "Next",
   "oPaginate_sPrevious": "Previous",
   "sInfo": "Showing {{start}} to {{end}} of {{total}} entries",
