@@ -96,6 +96,11 @@ $replacements = [
     "tool.attackPlanner.overview.stats.attackTotal" => "tool.attackPlanner.attackTotal",
     "tool.attackPlanner.overview.stats.generalTitle" => "ui.tabletitel.general",
     "tool.total" => "global.total",
+    "tool.attackPlanner.overview.table.attacker" => "tool.attackPlanner.attacker",
+    "tool.attackPlanner.overview.table.countdown" => "tool.attackPlanner.countdown",
+    "tool.attackPlanner.overview.table.defender" => "tool.attackPlanner.defender",
+    "tool.attackPlanner.overview.table.villageNotExist" => "tool.attackPlanner.villageNotExist",
+    "tool.attackPlanner.overview.warnSending" => "tool.attackPlanner.warnSending",
 ];
 
 $duplicated = [

@@ -507,10 +507,7 @@
         "attackPlanner": {
             "type_helper": "Attacktype",
             "startVillage_helper": "Coordinates of the starting village",
-            "attacker": "Attacker",
-            "countdown": "Countdown",
             "date_helper": "Arrival day of the attack",
-            "defender": "Defender",
             "export": {
                 "BB": {
                     "default": {}
@@ -541,7 +538,6 @@
             "updateSuccess": "The processing was carried out successfully",
             "attackCount": "No attacks were selected for editing",
             "attackCountTitle": "Attack selection",
-            "warnSending": "Using the Send-Troops button is done on your own risk. If you encounter any problems please tell the DS-Ultimate team (via Discord or Report Problem)",
             "confirm": {
                 "massDelete": "The selected attacks will be deleted"
             },
@@ -562,7 +558,6 @@
             "arrivetimeToLate": "The arrivetime is to far in the future",
             "sendtimeToSoon": "The sendtime is prior to 1970",
             "sendtimeToLate": "The sendtime is to far in the future",
-            "villageNotExist": "The village doesn\\'t exist",
             "importWBSuccessTitle": "Workbench data has been imported successfully",
             "icons": {}
         },

@@ -99,6 +99,7 @@ interface paramsType<T> extends Partial<apiProps>, externalCellProps<T> {
   exports?: Array<exporterType>,
   exportConverter?: exportConverterType<T>,
   exportFileName?: string,
+  limits?: number[],
   data?: T[],
 }
 
@@ -108,7 +109,7 @@ export const DatatableContext = createContext<{setSortBy?: (key: sort_type, dir:
 
 export default function DatatableBase<T>({header, variant, defaultSort, saveAs, topBarMiddle, topBarEnd, cellClasses,
                                            responsiveTable, striped, searching, exports, exportConverter,
-                                           exportFileName, ...unusedProps}: paramsType<T>) {
+                                           exportFileName, limits, ...unusedProps}: paramsType<T>) {
   const { t } = useTranslation("datatable")
   const [[{limit, sort}, {page, totalCount, filteredCount, search}], setConfig, setPersistent, setVolatile] =
       useMixedState<persistentStateType, volatileStateType>("datatable." + saveAs,
@@ -243,6 +244,8 @@ export default function DatatableBase<T>({header, variant, defaultSort, saveAs, 
     )
   }
 
+  const possibleLimits = limits ?? [10, 25, 50, 100]
+
   if(exports !== undefined && exportConverter === undefined) {
     throw Error("Converter needs to set if exports are activated")
   }
@@ -256,7 +259,7 @@ export default function DatatableBase<T>({header, variant, defaultSort, saveAs, 
                 <InputGroup>
                   {lengthMenu_pre && <InputGroup.Text>{lengthMenu_pre}</InputGroup.Text>}
                   <Form.Select onChange={limitSelectCallback} defaultValue={limit}>
-                    {[10, 25, 50, 100].map(l => (
+                    {possibleLimits.map(l => (
                         <option key={l}>{l}</option>
                     ))}
                   </Form.Select>

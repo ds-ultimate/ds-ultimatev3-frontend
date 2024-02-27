@@ -331,12 +331,9 @@
         "attackPlanner": {
             "attackCount": "K \u00faprav\u011b nebyly vybr\u00e1ny \u017e\u00e1dn\u00e9 \u00fatoky",
             "attackCountTitle": "V\u00fdb\u011br \u00fatoku",
-            "attacker": "\u00dato\u010dn\u00edk",
             "audioTiming": "Alarm se spust\u00ed %S% p\u0159ed vypr\u0161en\u00edm \u010dasova\u010de.",
             "confirm": {},
-            "countdown": "Odpo\u010d\u00edt\u00e1v\u00e1n\u00ed",
             "date_helper": "Den p\u0159\u00edchodu \u00fatoku",
-            "defender": "Obr\u00e1nce",
             "destroyError": "Pl\u00e1n \u00fatoku nebylo mo\u017en\u00e9 vymazat. Pokud se domn\u00edv\u00e1te, \u017ee se jedn\u00e1 o chybu, kontaktujte pros\u00edm t\u00fdm (pomoc\u00ed Discordu nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed probl\u00e9mu v doln\u00ed \u010d\u00e1sti str\u00e1nky).",
             "destroySuccess": "\u00dato\u010dn\u00fd pl\u00e1n \u00fasp\u011b\u0161n\u011b odstran\u011bn",
             "errorKoordEmpty": "V\u00fdchoz\u00ed vesnice a c\u00edlov\u00e1 nesm\u00ed b\u00fdt pr\u00e1zdn\u00e1",
@@ -368,9 +365,7 @@
             "updateSuccessTitle": "\u00dasp\u011b\u0161n\u011b",
             "uvMode": "Z\u00e1stup dovolen\u00e9",
             "uvModeDesc": "Adresy URL jsou generov\u00e1ny vhodn\u011b pro nahrazen\u00ed dovolen\u00e9.",
-            "warnSending": "Tla\u010d\u00edtko odeslat pou\u017e\u00edv\u00e1te na vlastn\u00ed nebezpe\u010d\u00ed. Pokud naraz\u00edte na n\u011bjak\u00e9 probl\u00e9my, kontaktujte pros\u00edm t\u00fdm DS-Ultimate (bu\u010f na Discordu, nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed chyb).",
-            "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev.",
-            "villageNotExist": "Vesnice neexistuje"
+            "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev."
         },
         "distCalc": {},
         "map": {

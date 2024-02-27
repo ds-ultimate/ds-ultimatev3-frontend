@@ -76,6 +76,12 @@
         "attackTotal": "Angriffe Total",
         "generalTitle": "Allgemein"
       },
+      "table": {
+        "attacker": "Angreifer",
+        "countdown": "Restzeit",
+        "defender": "Verteidiger",
+        "villageNotExist": "Das Dorf existiert nicht"
+      },
       "tabs": {
         "create": "Erstellen",
         "import": "Import/Export",
@@ -113,7 +119,8 @@
         "standSupport": "Stand Unterstützung",
         "support": "Unterstützung",
         "wallbreaker": "Wallbrecher"
-      }
+      },
+      "warnSending": "Die Benutzung des Abschickknopfes geschieht auf eigene Gefahr. Sollten Probleme auftreten, wende dich bitte an das DS-Ultimate Team (entweder im Discord oder via Fehler melden)"
     },
     "title": "Befehlsplaner"
   },

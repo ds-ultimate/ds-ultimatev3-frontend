@@ -78,6 +78,12 @@
         "attackTotal": "Útoky celkem",
         "generalTitle": "Obecné"
       },
+      "table": {
+        "attacker": "Útočník",
+        "countdown": "Odpočítávání",
+        "defender": "Obránce",
+        "villageNotExist": "Vesnice neexistuje"
+      },
       "tabs": {
         "create": "",
         "import": "Importovat/Exportovat",
@@ -115,7 +121,8 @@
         "standSupport": "Dlouhodobá podpora",
         "support": "",
         "wallbreaker": "Bourání opevnění"
-      }
+      },
+      "warnSending": "Tlačítko odeslat používáte na vlastní nebezpečí. Pokud narazíte na nějaké problémy, kontaktujte prosím tým DS-Ultimate (buď na Discordu, nebo prostřednictvím nahlášení chyb)."
     },
     "title": ""
   },

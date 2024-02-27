@@ -523,9 +523,6 @@
             "time": "Zeit",
             "time_helper": "Ankunftszeit des Angriffes",
             "unit_helper": "langsamste Einheit",
-            "attacker": "Angreifer",
-            "defender": "Verteidiger",
-            "countdown": "Restzeit",
             "export": {
                 "BB": {
                     "default": {}
@@ -552,7 +549,6 @@
             "multieditSuccess": "Alle Angriffe wurden erfolgreich bearbeitet",
             "attackCountTitle": "Angriff Auswahl",
             "attackCount": "Es wurden keine Angriffe f\u00fcr die Bearbeitung ausgew\u00e4hlt",
-            "warnSending": "Die Benutzung des Abschickknopfes geschieht auf eigene Gefahr. Sollten Probleme auftreten, wende dich bitte an das DS-Ultimate Team (entweder im Discord oder via Fehler melden)",
             "confirm": {
                 "massDelete": "Die ausgew\u00e4hlten Angriffe werden gel\u00f6scht"
             },
@@ -573,7 +569,6 @@
             "sendtimeToLate": "Die Abschickzeit liegt zu weit in der Zukunft",
             "arrivetimeToSoon": "Die Ankunftszeit liegt vor 1970",
             "importWBSuccessTitle": "Daten von Workbench erfolgreich importiert",
-            "villageNotExist": "Das Dorf existiert nicht",
             "arrivetimeToLate": "Die Ankunftszeit liegt zu weit in der Zukunft",
             "icons": {}
         },

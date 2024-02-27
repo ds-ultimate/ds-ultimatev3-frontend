@@ -19,7 +19,13 @@ import CommandLinkTab from "./CommandOverviewPageTabs/CommandLinkTab"
 import CommandImportTab from "./CommandOverviewPageTabs/CommandImportTab"
 import {usePerformInitialImport} from "../../../modelHelper/Tool/CommandListAPIHelper"
 import CommandStatsTab from "./CommandOverviewPageTabs/CommandStatsTab"
+import {CommandTable} from "./CommandOverviewPageTabs/CommandTable"
 
+
+export enum CommandPlannerMode {
+  VIEW,
+  EDIT,
+}
 
 export default function CommandOverviewPage() {
   const {server, world} = useParams()
@@ -99,6 +105,7 @@ function CommandOverviewMain({worldData, worldConf, worldUnit}: {worldData?: wor
     uvMode: false,
     items: [],
   })
+  const modeEnum = mode === "edit"?CommandPlannerMode.EDIT:CommandPlannerMode.VIEW
 
   const performImport = usePerformInitialImport()
   const [initialLoadingDone, setInitialLoadingDone] = useState<boolean>(false)
@@ -148,6 +155,12 @@ function CommandOverviewMain({worldData, worldConf, worldUnit}: {worldData?: wor
               ]} />
             </Card.Body>
           </Card>
+        </Col>
+        <Col xs={12} className={"mt-2"}>
+          <Card className={"mb-2 p-3 d-print-none"}>
+            <b>{t("commandPlanner.overview.warnSending")}</b>
+          </Card>
+          {worldData && <CommandTable world={worldData} list={list} updateList={updateList} mode={modeEnum} />}
         </Col>
       </>
   )

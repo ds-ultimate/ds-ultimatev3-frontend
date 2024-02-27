@@ -77,6 +77,12 @@
         "attackTotal": "",
         "generalTitle": ""
       },
+      "table": {
+        "attacker": "",
+        "countdown": "",
+        "defender": "",
+        "villageNotExist": ""
+      },
       "tabs": {
         "create": "",
         "import": "",
@@ -114,7 +120,8 @@
         "standSupport": "",
         "support": "",
         "wallbreaker": ""
-      }
+      },
+      "warnSending": ""
     },
     "title": ""
   },

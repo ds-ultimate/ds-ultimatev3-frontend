@@ -204,8 +204,22 @@ export function getVillageInfoId(world: worldType, id: number) {
       [id])
 }
 
+export function useAllVillages(world: worldType) {
+  const downloadCB = useCallback(() => downloadVillageData(world), [world])
+
+  return useArrayCachedWorldData<villagePureType>(
+      world, "village", "villageWorldData", downloadCB, null)
+}
+
 export function getPlayerInfoId(world: worldType, id: number) {
   return getOneOfArrayCachedWorldData<playerPureType>(
       world, "player", () => downloadPlayerData(world),
       [id])
+}
+
+export function useAllPlayers(world: worldType) {
+  const downloadCB = useCallback(() => downloadPlayerData(world), [world])
+
+  return useArrayCachedWorldData<playerPureType>(
+      world, "player", "playerWorldData", downloadCB, null)
 }
