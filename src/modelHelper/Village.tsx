@@ -7,7 +7,7 @@ import {DecodeName, rawDecodeName} from "../util/UtilFunctions";
 import {chartDataType} from "../util/CustomChart";
 import {cacheable} from "../apiInterface/AbstractDatabase"
 import {useCallback} from "react"
-import {getPlayerInfoId} from "../apiInterface/worldDataAPI"
+import {playerPureType} from "./Player"
 
 export type villagePureType = {
   villageID: number,
@@ -55,10 +55,10 @@ export function villageCoordinateBB(vil: villagePureType) {
 
 export function useVillageOwnerBB() {
   const { t } = useTranslation()
-  return useCallback(async (world: worldType, vil: villagePureType | undefined) => {
+  return useCallback((playerDict: Map<number, playerPureType>, vil: villagePureType | undefined) => {
     if(vil === undefined) return t("player.deleted")
     if(vil.owner === 0) return t("player.barbarian")
-    const playerData = await getPlayerInfoId(world, vil.owner)
+    const playerData = playerDict.get(vil.owner)
     if(playerData === undefined) return t("player.deleted")
     return "[player]" + rawDecodeName(playerData.name) + "[/player]"
   }, [t])

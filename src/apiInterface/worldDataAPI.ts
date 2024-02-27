@@ -1,7 +1,7 @@
 import {worldType} from "../modelHelper/World"
 import axios, {AxiosResponse} from "axios"
 import {villagePureType} from "../modelHelper/Village"
-import {getOneOfArrayCachedWorldData, useArrayCachedWorldData} from "./cacheInterfaceWorld"
+import {getArrayCachedWorldData, getOneOfArrayCachedWorldData, useArrayCachedWorldData} from "./cacheInterfaceWorld"
 import {playerPureType} from "../modelHelper/Player"
 import {allyType} from "../modelHelper/Ally"
 import {useCallback} from "react"
@@ -208,6 +208,11 @@ export function useAllVillages(world: worldType) {
       world, "village", "villageWorldData", downloadCB, null)
 }
 
+export function getAllVillages(world: worldType) {
+  return getArrayCachedWorldData<villagePureType>(
+      world, "village", () => downloadVillageData(world), null)
+}
+
 export function getPlayerInfoId(world: worldType, id: number) {
   return getOneOfArrayCachedWorldData<playerPureType>(
       world, "player", () => downloadPlayerData(world),
@@ -219,4 +224,9 @@ export function useAllPlayers(world: worldType) {
 
   return useArrayCachedWorldData<playerPureType>(
       world, "player", "playerWorldData", downloadCB, null)
+}
+
+export function getAllPlayers(world: worldType) {
+  return getArrayCachedWorldData<playerPureType>(
+      world, "player", () => downloadPlayerData(world), null)
 }

@@ -16,8 +16,11 @@ import {
 import {exportTroopArmyAmount, parseTroopArmyAmount} from "../../../../util/dsHelpers/TroopHelper"
 import ReactBootstrapAccordion from "../../../../util/ReactBootstrapAccordion"
 import {get_icon} from "../../../../util/dsHelpers/Icon"
-import {useVillageOwnerBB, villageCoordinateBB} from "../../../../modelHelper/Village"
-import {getVillageInfoId} from "../../../../apiInterface/worldDataAPI"
+import {useVillageOwnerBB, villageCoordinateBB, villagePureType} from "../../../../modelHelper/Village"
+import {
+  getAllPlayers,
+  getAllVillages,
+} from "../../../../apiInterface/worldDataAPI"
 import {worldType, worldUnitType} from "../../../../modelHelper/World"
 import {BASE_PATH, formatRoute} from "../../../../util/router"
 import {INDEX} from "../../../routes"
@@ -25,6 +28,7 @@ import LoadingScreen, {LoadingScreenContext} from "../../../layout/LoadingScreen
 import {useCreateToast} from "../../../layout/ToastHandler"
 import {StateUpdater} from "../../../../util/customTypes"
 import {usePerformImport} from "../../../../modelHelper/Tool/CommandListAPIHelper"
+import {playerPureType} from "../../../../modelHelper/Player"
 
 
 export default function CommandImportTab({world, worldUnit, list, updateList}: {world: worldType,
@@ -80,6 +84,20 @@ function ExportElementInternal({dataCb, description}: {dataCb: () => string | Pr
         }).catch(err => console.log(err))
   }, [dataCb, setLoading])
 
+  const forceExport = useCallback(() => {
+    new Promise(async resolve => {
+      setLoading(true, "export")
+      for(let i = 0; i < 10; i++) {
+        const startTime = new Date().getTime()
+        await dataCb()
+        const endTime = new Date().getTime()
+        console.log("export took", endTime-startTime)
+      }
+      setLoading(false, "export")
+      resolve(true)
+    })
+  }, [dataCb, setLoading])
+
   return (
       <>
         <LoadingScreen darken>
@@ -87,6 +105,7 @@ function ExportElementInternal({dataCb, description}: {dataCb: () => string | Pr
           <div className={"mt-2"}>
             <Button variant={"primary"} onClick={() => copyWithToast(data)}>{t("copy")}</Button>
             <span className={"ms-2"}>{description}</span>
+            <Button onClick={forceExport}>FORCE</Button>
           </div>
         </LoadingScreen>
       </>
@@ -95,17 +114,33 @@ function ExportElementInternal({dataCb, description}: {dataCb: () => string | Pr
 
 function useTemplatedExporter() {
   const { t } = useTranslation("tool")
-  const typeIdToName = useTypeIDToName()
   const villageOwnerBB = useVillageOwnerBB()
+  const typeIdToName = useTypeIDToName()
+  const allVillagesDict = useCallback(async (world: worldType) => {
+    const result: Map<number, villagePureType> = new Map()
+    const allVillages = await getAllVillages(world)
+    allVillages.forEach(v => result.set(v.villageID, v))
+    return result
+  }, [])
+
+  const allPlayersDict = useCallback(async (world: worldType) => {
+    const result: Map<number, playerPureType> = new Map()
+    const allPlayers = await getAllPlayers(world)
+    if(allPlayers === undefined) return result
+    allPlayers.forEach(p => result.set(p.playerID, p))
+    return result
+  }, [])
 
   return useCallback(async (world: worldType, list: CommandList, bodyTemplate: string, rowTemplate: string) => {
     const worldURL = world.url + "/game.php?"
+    const vilDict = await allVillagesDict(world)
+    const playerDict = await allPlayersDict(world)
 
     let allRows = ""
     for(let idx = 0; idx < list.items.length; idx++) {
       const item = list.items[idx]
-      const start_village = await getVillageInfoId(world, item.startVillageId)
-      const target_village = await getVillageInfoId(world, item.targetVillageId)
+      const start_village = vilDict.get(item.startVillageId)
+      const target_village = vilDict.get(item.targetVillageId)
       const startDate = new Date(item.sendTimestamp)
       const arrDate = new Date(item.arriveTimestamp)
       const uvURL = (list.uvMode?`t=${start_village?.owner}&`:"")
@@ -118,8 +153,8 @@ function useTemplatedExporter() {
           .replaceAll("%UNIT%", "[unit]" + commandPlannerUnitName[item.unit] + "[/unit]")
           .replaceAll("%SOURCE%", (start_village !== undefined?villageCoordinateBB(start_village):'???'))
           .replaceAll("%TARGET%", (target_village !== undefined?villageCoordinateBB(target_village):'???'))
-          .replaceAll("%ATTACKER%", await villageOwnerBB(world, start_village))
-          .replaceAll("%DEFENDER%", await villageOwnerBB(world, target_village))
+          .replaceAll("%ATTACKER%", villageOwnerBB(playerDict, start_village))
+          .replaceAll("%DEFENDER%", villageOwnerBB(playerDict, target_village))
           .replaceAll("%SEND%", dateFormatYMD_HMS(startDate) + ":" + startDate.getMilliseconds())
           .replaceAll("%ARRIVE%", dateFormatYMD_HMS(arrDate) + ":" + arrDate.getMilliseconds())
           //type id 37 equals place -> easy way to access that translation
@@ -134,7 +169,7 @@ function useTemplatedExporter() {
         .replaceAll("%CREATE_AT%", dateFormatLocal_DMY_HMS(new Date()))
         .replaceAll("%CREATE_WITHL%", BASE_PATH + formatRoute(INDEX, {}))
         .replaceAll("%CREATE_WITH%", "DS-Ultimate")
-  }, [t, typeIdToName, villageOwnerBB])
+  }, [t, typeIdToName, allVillagesDict, allPlayersDict, villageOwnerBB])
 }
 
 function wbExporter(list: CommandList) {

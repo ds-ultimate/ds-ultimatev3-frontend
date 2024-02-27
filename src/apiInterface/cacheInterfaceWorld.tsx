@@ -76,19 +76,26 @@ export function useArrayCachedWorldData<T>(
     world: worldType, tblName: string, loadId: string,
     loadExternalCB: () => Promise<Array<T>>,
     key?: IDBKeyRange | null, index?: string | undefined) {
-  const db = getWorldDatabase(world)
   const prom = useCallback(() => {
-    if(key === undefined) {
-      return new Promise<Array<T>>((resolve, reject) => reject(undefined))
-    }
-    return new Promise<Array<T>>(async (resolve, reject) => {
-      await ensureCacheValid(world, tblName, loadExternalCB)
-      db.readAll<T>(tblName, key===null?undefined:key, index)
-          .then(value => resolve(value))
-          .catch(reason => reject(reason))
-    })
-  }, [db, world, tblName, key, index, loadExternalCB])
+    return getArrayCachedWorldData(world, tblName, loadExternalCB, key, index)
+  }, [world, tblName, key, index, loadExternalCB])
   return usePromisedData(prom, loadId)
+}
+
+export function getArrayCachedWorldData<T>(
+    world: worldType, tblName: string,
+    loadExternalCB: () => Promise<Array<T>>,
+    key?: IDBKeyRange | null, index?: string | undefined) {
+  if(key === undefined) {
+    return new Promise<T[]>((_, reject) => reject(undefined))
+  }
+  const db = getWorldDatabase(world)
+  return new Promise<T[]>(async (resolve, reject) => {
+    await ensureCacheValid(world, tblName, loadExternalCB)
+    db.readAll<T>(tblName, key===null?undefined:key, index)
+        .then(value => resolve(value))
+        .catch(reason => reject(reason))
+  })
 }
 
 
