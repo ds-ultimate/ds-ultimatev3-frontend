@@ -5,7 +5,6 @@ import {cacheable} from "./AbstractDatabase"
 import {getWorldDatabase} from "./WorldDataDB"
 import {worldType} from "../modelHelper/World"
 import {getMainDatabase} from "./MainDatabase"
-import {Dict} from "../util/customTypes"
 
 
 type worldCacheInfo = cacheable & {
@@ -93,12 +92,12 @@ export function useArrayCachedWorldData<T>(
 }
 
 
-const externalLoaderCache: Dict<{age: number, prom: PromiseDistributer<boolean>}> = {}
+const externalLoaderCache: Map<string, {age: number, prom: PromiseDistributer<boolean>}> = new Map()
 
 export async function ensureCacheValid<T>(world: worldType, tblName: string, loadExternalCB: () => Promise<T[]>) {
   const curTime = (new Date()).getTime()
   const mainDB = getMainDatabase()
-  let externalLoader = externalLoaderCache[world.server__code + "_" + world.name + "_" + tblName]
+  let externalLoader = externalLoaderCache.get(world.server__code + "_" + world.name + "_" + tblName)
   if(externalLoader !== undefined && curTime - externalLoader.age < 60) {
     return externalLoader.prom.getPromise()
   }
@@ -122,7 +121,7 @@ export async function ensureCacheValid<T>(world: worldType, tblName: string, loa
     age: curTime,
     prom: new PromiseDistributer<boolean>(promise)
   }
-  externalLoaderCache[world.server__code + "_" + world.name + "_" + tblName] = externalLoader
+  externalLoaderCache.set(world.server__code + "_" + world.name + "_" + tblName, externalLoader)
   return externalLoader.prom.getPromise()
 
 }

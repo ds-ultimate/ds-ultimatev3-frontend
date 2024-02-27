@@ -1,7 +1,6 @@
-import {Dict} from "../util/customTypes"
 
 export type upgradeEvent = ((this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any) | null
-const interfaceCache: Dict<IndexedDBInterface> = {}
+const interfaceCache: Map<string, IndexedDBInterface> = new Map()
 class IndexedDBInterface {
   listeners: Array<{then: (data: IDBDatabase) => void, catch: (error: any) => void}> = []
   request: IDBOpenDBRequest
@@ -45,11 +44,11 @@ class IndexedDBInterface {
 
 
 export function get_indexedDB(name: string, version: number, onUpdate: upgradeEvent) {
-  let dbInterface = interfaceCache[name]
+  let dbInterface = interfaceCache.get(name)
   if(dbInterface !== undefined) {
     return dbInterface.getPromise()
   }
   dbInterface = new IndexedDBInterface(name, version, onUpdate)
-  interfaceCache[name] = dbInterface
+  interfaceCache.set(name, dbInterface)
   return dbInterface.getPromise()
 }

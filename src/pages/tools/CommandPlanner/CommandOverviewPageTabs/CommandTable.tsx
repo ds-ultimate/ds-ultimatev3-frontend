@@ -7,7 +7,7 @@ import {
 import {useTranslation} from "react-i18next"
 import {Card, Tooltip} from "react-bootstrap"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase"
-import {NumDict, StateUpdater} from "../../../../util/customTypes"
+import {StateUpdater} from "../../../../util/customTypes"
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder"
 import React, {useCallback, useEffect, useMemo, useState} from "react"
 import {useAllPlayers, useAllVillages} from "../../../../apiInterface/worldDataAPI"
@@ -23,17 +23,17 @@ import {get_icon, getUnitIcon} from "../../../../util/dsHelpers/Icon"
 export function CommandTable({world, list, updateList, mode}: {world: worldType, list: CommandList, updateList: StateUpdater<CommandList>, mode: CommandPlannerMode}) {
   const [allVillageErr, allVillages] = useAllVillages(world)
   const allVillagesDict = useMemo(() => {
-    const result: NumDict<villagePureType> = {}
+    const result: Map<number, villagePureType> = new Map()
     if(allVillages === undefined) return result
-    allVillages.forEach(v => result[v.villageID] = v)
+    allVillages.forEach(v => result.set(v.villageID, v))
     return result
   }, [allVillages])
 
   const [allPlayerErr, allPlayers] = useAllPlayers(world)
   const allPlayersDict = useMemo(() => {
-    const result: NumDict<playerPureType> = {}
+    const result: Map<number, playerPureType> = new Map()
     if(allPlayers === undefined) return result
-    allPlayers.forEach(p => result[p.playerID] = p)
+    allPlayers.forEach(p => result.set(p.playerID, p))
     return result
   }, [allPlayers])
 
@@ -82,7 +82,7 @@ export function CommandTable({world, list, updateList, mode}: {world: worldType,
   )
 }
 
-function useCommandListHeader(allVillages: NumDict<villagePureType>, mode: CommandPlannerMode) {
+function useCommandListHeader(allVillages: Map<number, villagePureType>, mode: CommandPlannerMode) {
   const { t } = useTranslation("tool")
   return useMemo(() => {
     return new DatatableHeaderBuilder<CommandListItem>()
@@ -92,16 +92,16 @@ function useCommandListHeader(allVillages: NumDict<villagePureType>, mode: Comma
             sortCB: (data1, data2) => data1.startVillageId - data2.startVillageId})
           row.addCell({title: t('commandPlanner.overview.table.attacker'),
             sortCB: (data1, data2) => {
-              const owner1 = allVillages[data1.startVillageId]?.owner ?? -1
-              const owner2 = allVillages[data2.startVillageId]?.owner ?? -1
+              const owner1 = allVillages.get(data1.startVillageId)?.owner ?? -1
+              const owner2 = allVillages.get(data2.startVillageId)?.owner ?? -1
               return owner1 - owner2
             }})
           row.addCell({title: t('commandPlanner.overview.prop.targetVillage'),
             sortCB: (data1, data2) => data1.targetVillageId - data2.targetVillageId})
           row.addCell({title: t('commandPlanner.overview.table.defender'),
             sortCB: (data1, data2) => {
-              const owner1 = allVillages[data1.targetVillageId]?.owner ?? -1
-              const owner2 = allVillages[data2.targetVillageId]?.owner ?? -1
+              const owner1 = allVillages.get(data1.targetVillageId)?.owner ?? -1
+              const owner2 = allVillages.get(data2.targetVillageId)?.owner ?? -1
               return owner1 - owner2
             }})
           row.addCell({title: t('commandPlanner.overview.prop.unit'),
@@ -123,11 +123,11 @@ function useCommandListHeader(allVillages: NumDict<villagePureType>, mode: Comma
   }, [t, mode, allVillages])
 }
 
-function useVillageLink(world: worldType, allVillageDict: NumDict<villagePureType>) {
+function useVillageLink(world: worldType, allVillageDict: Map<number, villagePureType>) {
   const { t } = useTranslation("tool")
 
   return useCallback(({id}: {id: number}) => {
-    const village = allVillageDict[id]
+    const village = allVillageDict.get(id)
     if(village === undefined) {
       return <>{t("commandPlanner.overview.table.villageNotExist")}</>
     }
@@ -135,14 +135,14 @@ function useVillageLink(world: worldType, allVillageDict: NumDict<villagePureTyp
   }, [t, world, allVillageDict])
 }
 
-function useVillagePlayerLink(world: worldType, allVillageDict: NumDict<villagePureType>, allPlayerDict: NumDict<playerPureType>) {
+function useVillagePlayerLink(world: worldType, allVillageDict: Map<number, villagePureType>, allPlayerDict: Map<number, playerPureType>) {
   return useCallback(({id}: {id: number}) => {
-    const village = allVillageDict[id]
+    const village = allVillageDict.get(id)
     if(village === undefined) {
       // village deleted -> owner -1 will show deleted
       return <LinkPlayerGeneric world={world} owner={-1} owner_name={null} />
     }
-    const player = allPlayerDict[village.owner]
+    const player = allPlayerDict.get(village.owner)
     if(player === undefined) {
       // player deleted or barbarian -> owner 0 will show barb everything else will show deleted
       return <LinkPlayerGeneric world={world} owner={village.owner} owner_name={null} />

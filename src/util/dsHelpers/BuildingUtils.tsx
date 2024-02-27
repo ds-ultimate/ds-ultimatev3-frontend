@@ -1,5 +1,4 @@
 import {worldBuildingType} from "../../modelHelper/World";
-import {NumDict} from "../customTypes";
 import {useTranslation} from "react-i18next";
 import {buildTimeFormulaType, worldConfigType} from "../../modelHelper/WorldConfig"
 import {range} from "../UtilFunctions"
@@ -129,21 +128,21 @@ export const BUILD_TIME_FACTOR_2015 = [
 ]
 
 export function getPointBuildingMap(worldBuildings: worldBuildingType) {
-  const pointBuildingMap: NumDict<Array<[string, number]>> = {}
+  const pointBuildingMap: Map<number, Array<[string, number]>> = new Map()
 
-  Object.keys(worldBuildings).forEach(name => {
+  for(let name in worldBuildings) {
     const building = BUILDINGS.find(b => b.name === name)
-    if(building === undefined) return
+    if(building === undefined) continue
 
     for(let i = Math.max(building.min_level, 1); i <= building.max_level; i++) {
       const points = Math.round(building.point * Math.pow(building.point_factor, i-1))
       const pointsLast = i>1?Math.round(building.point * Math.pow(building.point_factor, i-2)):0
       const pointDiff = points - pointsLast
-      const tmp = pointBuildingMap[pointDiff] ?? []
+      const tmp = pointBuildingMap.get(pointDiff) ?? []
       tmp.push([name, i])
-      pointBuildingMap[pointDiff] = tmp
+      pointBuildingMap.set(pointDiff, tmp)
     }
-  })
+  }
 
   return pointBuildingMap
 }

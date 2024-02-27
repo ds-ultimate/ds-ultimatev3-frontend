@@ -23,8 +23,8 @@ export default function CommandStatsTab({list}: {list: CommandList}) {
         <Col xs={12} md={6} lg={4} className={"mb-4"}>
           <h3>{t("commandPlanner.overview.stats.generalTitle")}</h3>
           {t("commandPlanner.overview.stats.attackTotal")}: <b>{nf.format(list.items.length)}</b><br />
-          {t("commandPlanner.overview.stats.attackStartVillage")}: <b>{nf.format(startVillages.length)}</b><br />
-          {t("commandPlanner.overview.stats.attackTargetVillage")}: <b>{nf.format(targetVillages.length)}</b><br />
+          {t("commandPlanner.overview.stats.attackStartVillage")}: <b>{nf.format(startVillages.size)}</b><br />
+          {t("commandPlanner.overview.stats.attackTargetVillage")}: <b>{nf.format(targetVillages.size)}</b><br />
         </Col>
         <Col xs={1} className={"d-none d-lg-block"}></Col>
         <Col xs={6} md={3} lg={2}>
@@ -49,12 +49,7 @@ export default function CommandStatsTab({list}: {list: CommandList}) {
 }
 
 function unique(data: number[]) {
-  return data.reduce((prev, cur) => {
-    if(!prev.includes(cur)) {
-      prev.push(cur)
-    }
-    return prev
-  }, [] as number[])
+  return data.reduce((prev, cur) => prev.add(cur), new Set<number>())
 }
 
 function countGrouped(data: number[]) {

@@ -20,7 +20,7 @@ export default function VillageHistory({villageData, worldData}: paramType) {
   const [worldExtendErr, worldExtend] = useExtendedWorldData(worldData.server__code, worldData.name)
 
   const pointMap = useMemo(() => {
-    if(worldExtend === undefined || worldExtend.buildings === null) return {}
+    if(worldExtend === undefined || worldExtend.buildings === null) return new Map<number, [string, number][]>()
     return getPointBuildingMap(worldExtend.buildings)
   }, [worldExtend])
 
@@ -35,7 +35,7 @@ export default function VillageHistory({villageData, worldData}: paramType) {
       points: dat[1],
       diff: diff,
       d_time: (d2 === null)?null:(d1-d2)/1000,
-      possible: (diff !== null)?pointMap[diff]:null,
+      possible: (diff !== null)?pointMap.get(diff):null,
     }
   })
   hist.reverse()

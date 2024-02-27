@@ -36,7 +36,7 @@ export function formatRoute(routePath: string, params?: Dict<string> | undefined
 
   if (params) {
     for (const paramName in params) {
-      const paramValue = params[paramName];
+      const paramValue = params[paramName]
       if (paramValue !== undefined) {
         // Roughly resolve all named placeholders.
         // Cases:
@@ -46,31 +46,31 @@ export function formatRoute(routePath: string, params?: Dict<string> | undefined
         // - "/path(/:param/):another_param"
         // - "/path/:param(/:another_param)"
         // - "/path(/:param/:another_param)"
-        const paramRegex = new RegExp('(/|\\(|\\)|^):' + paramName + '(/|\\)|\\(|$)');
+        const paramRegex = new RegExp('(/|\\(|\\)|^):' + paramName + '(/|\\)|\\(|$)')
         routePath = routePath.replace(paramRegex, (match, g1, g2) => {
-          tokens[paramName] = encodeURIComponent(paramValue);
-          return `${g1}<${paramName}>${g2}`;
-        });
-        const paramRegexRR4 = new RegExp('(.*):' + paramName + '\\?(.*)');
+          tokens[paramName] = encodeURIComponent(paramValue)
+          return `${g1}<${paramName}>${g2}`
+        })
+        const paramRegexRR4 = new RegExp('(.*):' + paramName + '\\?(.*)')
         routePath = routePath.replace(paramRegexRR4, (match, g1, g2) => {
-          tokens[paramName] = encodeURIComponent(paramValue);
-          return `${g1}<${paramName}>${g2}`;
-        });
+          tokens[paramName] = encodeURIComponent(paramValue)
+          return `${g1}<${paramName}>${g2}`
+        })
       }
 
       if (splat) { // special param name in RR, used for "*" and "**" placeholders
-        let i = 0;
+        let i = 0
         routePath = routePath.replace(reSplatParams, (match) => {
-          const val = splat[i++];
+          const val = splat[i++]
           if (val == null) {
-            return "";
+            return ""
           } else {
-            const tokenName = `splat${i}`;
+            const tokenName = `splat${i}`
             tokens[tokenName] = match === "*"
                 ? encodeURIComponent(val)
                 // don't escape slashes for double star, as "**" considered greedy by RR spec
-                : encodeURIComponent(val.toString().replace(/\//g, "_!slash!_")).replace(reSlashTokens, "/");
-            return `<${tokenName}>`;
+                : encodeURIComponent(val.toString().replace(/\//g, "_!slash!_")).replace(reSlashTokens, "/")
+            return `<${tokenName}>`
           }
         });
       } else {

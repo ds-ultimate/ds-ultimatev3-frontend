@@ -50,11 +50,11 @@ export default function DatatableCoreData<T>({data, page, limit, itemCntCallback
     const sorted = filtered.slice()
     if(sort.length > 0 && sortCB) {
       sorted.sort((a, b) => {
-        for(let i = 0; i < sort.length; i++) {
-          const sCallback = sortCB[sort[i][0]]
+        for(let sPart of sort) {
+          const sCallback = sortCB[sPart[0]]
           if(sCallback) {
             let res = sCallback(a, b)
-            if(sort[i][1] === SORTING_DIRECTION.DESC) {
+            if(sPart[1] === SORTING_DIRECTION.DESC) {
               res *= -1
             }
             if(res !== 0) {

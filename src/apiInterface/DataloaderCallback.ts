@@ -5,7 +5,7 @@ import {Dict} from "../util/customTypes"
 import {DataloaderArray} from "./dataloaderArray"
 
 
-const dataloaderCache: Dict<Dataloader<any>> = {}
+const dataloaderCache: Map<string, Dataloader<any>> = new Map()
 
 /**
  * Provides a callback that will provide a Dataloader with the given options
@@ -21,18 +21,18 @@ export function useDataloaderCallback<T>(p: (Partial<T> & Dict<string>) | undefi
       return new Promise((resolve, reject) => reject(undefined))
     }
 
-    let loader = dataloaderCache[cacheKey]
+    let loader = dataloaderCache.get(cacheKey)
     if(loader !== undefined) {
       return loader.getPromise()
     }
 
     loader = new Dataloader<T>(route({...p, ...routeParams}), p)
-    dataloaderCache[cacheKey] = loader
+    dataloaderCache.set(cacheKey, loader)
     return loader.getPromise()
   }, [cacheKey, p, route, routeParams])
 }
 
-const dataloaderArrayCache: Dict<DataloaderArray<any>> = {}
+const dataloaderArrayCache: Map<string, DataloaderArray<any>> = new Map()
 export function useArrayDataloaderCallback<T>(p: (Partial<T> & Dict<string>) | undefined,
                                          cacheKey: string, route: routeGenerator): () => Promise<T[]> {
   return useCallback((): Promise<T[]> => {
@@ -40,13 +40,13 @@ export function useArrayDataloaderCallback<T>(p: (Partial<T> & Dict<string>) | u
       return new Promise((resolve, reject) => reject(undefined))
     }
 
-    let loader = dataloaderArrayCache[cacheKey]
+    let loader = dataloaderArrayCache.get(cacheKey)
     if(loader !== undefined) {
       return loader.getPromise()
     }
 
     loader = new DataloaderArray<T>(route(p), p)
-    dataloaderArrayCache[cacheKey] = loader
+    dataloaderArrayCache.set(cacheKey, loader)
     return loader.getPromise()
   }, [cacheKey, p, route])
 }

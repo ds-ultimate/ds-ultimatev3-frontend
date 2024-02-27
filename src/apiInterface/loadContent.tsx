@@ -4,7 +4,6 @@ import {allyType} from "../modelHelper/Ally";
 import {useCallback, useContext, useEffect, useState} from "react";
 import {LoadingScreenContext} from "../pages/layout/LoadingScreen";
 import {Dataloader} from "./dataloader"
-import {Dict} from "../util/customTypes"
 
 
 export function usePromisedData<T>(promise: () => Promise<T>, loadId: string) : [any, T | undefined] {
@@ -41,20 +40,20 @@ function useDefaultedPromisedData<T>(promise: () => Promise<T | undefined>, datD
 
 type worldOverviewType = {player: playerType[], ally: allyType[]}
 const WORLD_OVERVIEW_DEFAULT: worldOverviewType = {player: [], ally: []}
-const worldOverviewCache: Dict<Dataloader<worldOverviewType>> =  {}
+const worldOverviewCache: Map<string, Dataloader<worldOverviewType>> =  new Map()
 export function useWorldOverview(server: string | undefined, world: string | undefined) {
   const prom = useCallback(() => {
     if(server === undefined || world === undefined) {
       return new Promise<worldOverviewType>((resolve, reject) => reject(undefined))
     }
 
-    let loader = worldOverviewCache[server + "_" + world]
+    let loader = worldOverviewCache.get(server + "_" + world)
     if(loader !== undefined) {
       return loader.getPromise()
     }
 
     loader = new Dataloader<worldOverviewType>(worldOverview({server, world}), {})
-    worldOverviewCache[server + "_" + world] = loader
+    worldOverviewCache.set(server + "_" + world, loader)
     return loader.getPromise()
   }, [server, world])
   return useDefaultedPromisedData(prom, WORLD_OVERVIEW_DEFAULT, "worldOverviewPage")

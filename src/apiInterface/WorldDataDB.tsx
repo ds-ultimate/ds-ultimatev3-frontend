@@ -1,11 +1,10 @@
 import {upgradeEvent} from "./IndexedDBInterface"
-import {Dict} from "../util/customTypes"
 import {worldType} from "../modelHelper/World"
 import {AbstractDatabase} from "./AbstractDatabase"
 
 
 const WORLD_DATA_VERSION = 1
-let worldDBCache: Dict<WorldDatabase> = {}
+let worldDBCache: Map<string, WorldDatabase> = new Map()
 
 export class WorldDatabase extends AbstractDatabase {
   constructor(world: worldType) {
@@ -39,10 +38,10 @@ const upgradeDB: upgradeEvent = function() {
 }
 
 export function getWorldDatabase(world: worldType) {
-  let worldDB = worldDBCache[world.server__code + world.name]
+  let worldDB = worldDBCache.get(world.server__code + world.name)
   if(worldDB === undefined) {
     worldDB = new WorldDatabase(world)
-    worldDBCache[world.server__code + world.name] = worldDB
+    worldDBCache.set(world.server__code + world.name, worldDB)
   }
   return worldDB
 }

@@ -1,10 +1,10 @@
 import {worldType} from "../modelHelper/World"
-import {Dict, NumDict} from "../util/customTypes"
 import axios, {AxiosResponse} from "axios"
 import {villagePureType} from "../modelHelper/Village"
-import {getOneOfArrayCachedWorldData} from "./cacheInterfaceWorld"
+import {getOneOfArrayCachedWorldData, useArrayCachedWorldData} from "./cacheInterfaceWorld"
 import {playerPureType} from "../modelHelper/Player"
 import {allyType} from "../modelHelper/Ally"
+import {useCallback} from "react"
 
 
 /**
@@ -49,14 +49,14 @@ class TmpDataloader<T> {
 }
 
 
-const villageDataloaderCache: Dict<TmpDataloader<string>> = {}
+const villageDataloaderCache: Map<string, TmpDataloader<string>> = new Map()
 async function downloadVillageData(world: worldType) {
   const cacheKey = world.server__code + "_" + world.name
 
-  let loader = villageDataloaderCache[cacheKey]
+  let loader = villageDataloaderCache.get(cacheKey)
   if (loader === undefined) {
     loader = new TmpDataloader<string>("/temp/village.txt")
-    villageDataloaderCache[cacheKey] = loader
+    villageDataloaderCache.set(cacheKey, loader)
   }
 
   const dat = await loader.getPromise()
@@ -72,17 +72,17 @@ async function downloadVillageData(world: worldType) {
 }
 
 
-const playerDataloaderCache: Dict<{
+const playerDataloaderCache: Map<string, {
   player: TmpDataloader<string>,
   bashOff: TmpDataloader<string>,
   bashDef: TmpDataloader<string>,
   bashSup: TmpDataloader<string>,
   bashAll: TmpDataloader<string>,
-}> = {}
+}> = new Map()
 async function downloadPlayerData(world: worldType) {
   const cacheKey = world.server__code + "_" + world.name
 
-  let loader = playerDataloaderCache[cacheKey]
+  let loader = playerDataloaderCache.get(cacheKey)
   if (loader === undefined) {
     loader = {
       player: new TmpDataloader<string>("/temp/player.txt"),
@@ -92,16 +92,16 @@ async function downloadPlayerData(world: worldType) {
       bashAll: new TmpDataloader<string>("/temp/kill_all.txt"),
     }
 
-    playerDataloaderCache[cacheKey] = loader
+    playerDataloaderCache.set(cacheKey, loader)
   }
 
   const convertBash = (dat: string) => {
-    let mapped: NumDict<{rank: number, points: number}> = {}
+    let mapped: Map<number, {rank: number, points: number}> = new Map()
     dat.split("\n").forEach(entry => {
       const splitDat = entry.split(",")
       if(splitDat.length < 3) return undefined
       const [rank, id, points] = splitDat
-      mapped[+id] = {rank: +rank, points: +points}
+      mapped.set(+id, {rank: +rank, points: +points})
     })
     return mapped
   }
@@ -119,30 +119,30 @@ async function downloadPlayerData(world: worldType) {
     const playerID = +id
     const player: playerPureType = {
       playerID, name, ally_id: +ally_id, village_count: +villages, points: +points, rank: +rank,
-      offBash: playerOff[playerID]?.points as number,
-      offBashRank: playerOff[playerID]?.rank as number,
-      defBash: bashDef[playerID]?.points as number,
-      defBashRank: bashDef[playerID]?.rank as number,
-      supBash: bashSup[playerID]?.points as number,
-      supBashRank: bashSup[playerID]?.rank as number,
-      gesBash: bashAll[playerID]?.points as number,
-      gesBashRank: bashAll[playerID]?.rank as number,
+      offBash: playerOff.get(playerID)?.points as number,
+      offBashRank: playerOff.get(playerID)?.rank as number,
+      defBash: bashDef.get(playerID)?.points as number,
+      defBashRank: bashDef.get(playerID)?.rank as number,
+      supBash: bashSup.get(playerID)?.points as number,
+      supBashRank: bashSup.get(playerID)?.rank as number,
+      gesBash: bashAll.get(playerID)?.points as number,
+      gesBashRank: bashAll.get(playerID)?.rank as number,
     }
     return player
   }).filter(v => v !== undefined) as playerPureType[]
 }
 
 
-const allyDataloaderCache: Dict<{
+const allyDataloaderCache: Map<string, {
   ally: TmpDataloader<string>,
   bashOff: TmpDataloader<string>,
   bashDef: TmpDataloader<string>,
   bashAll: TmpDataloader<string>,
-}> = {}
+}> = new Map()
 async function downloadAllyData(world: worldType) {
   const cacheKey = world.server__code + "_" + world.name
 
-  let loader = allyDataloaderCache[cacheKey]
+  let loader = allyDataloaderCache.get(cacheKey)
   if (loader === undefined) {
     loader = {
       ally: new TmpDataloader<string>("/temp/ally.txt"),
@@ -151,16 +151,16 @@ async function downloadAllyData(world: worldType) {
       bashAll: new TmpDataloader<string>("/temp/kill_all_tribe.txt"),
     }
 
-    allyDataloaderCache[cacheKey] = loader
+    allyDataloaderCache.set(cacheKey, loader)
   }
 
   const convertBash = (dat: string) => {
-    let mapped: NumDict<{rank: number, points: number}> = {}
+    let mapped: Map<number, {rank: number, points: number}> = new Map()
     dat.split("\n").forEach(entry => {
       const splitDat = entry.split(",")
       if(splitDat.length < 3) return undefined
       const [rank, id, points] = splitDat
-      mapped[+id] = {rank: +rank, points: +points}
+      mapped.set(+id, {rank: +rank, points: +points})
     })
     return mapped
   }
@@ -173,23 +173,20 @@ async function downloadAllyData(world: worldType) {
   return allyDat.split("\n").map(entry => {
     const splitDat = entry.split(",")
     if(splitDat.length < 8) return undefined
-    const [id, name, tag, members, villages, points, all_points, rank] = splitDat
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [id, name, tag, members, villages, _points, all_points, rank] = splitDat
     const allyID = +id
     const ally: allyType = {
       allyID, name, tag, member_count: +members, village_count: +villages, points: +all_points, rank: +rank,
-      offBash: allyOff[allyID]?.points as number,
-      offBashRank: allyOff[allyID]?.rank as number,
-      defBash: allyDef[allyID]?.points as number,
-      defBashRank: allyDef[allyID]?.rank as number,
-      gesBash: allyAll[allyID]?.points as number,
-      gesBashRank: allyAll[allyID]?.rank as number,
+      offBash: allyOff.get(allyID)?.points as number,
+      offBashRank: allyOff.get(allyID)?.rank as number,
+      defBash: allyDef.get(allyID)?.points as number,
+      defBashRank: allyDef.get(allyID)?.rank as number,
+      gesBash: allyAll.get(allyID)?.points as number,
+      gesBashRank: allyAll.get(allyID)?.rank as number,
     }
     return ally
   }).filter(v => v !== undefined) as allyType[]
-}
-
-export function downloadWorldData(world: worldType) {
-
 }
 
 export function getVillageInfoXY(world: worldType, x: number, y: number) {
