@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next"
 import React, {useContext, useEffect, useMemo, useState} from "react"
 import {playerType} from "../../../modelHelper/Player"
 import {villageCoordinateBB, villagePlayerType, villagePureType} from "../../../modelHelper/Village"
-import {dateFormatLocal_DMY_HMS, nf} from "../../../util/UtilFunctions"
+import {dateFormatLocal_DMY_HMS, nf, useCopyWithToast} from "../../../util/UtilFunctions"
 import {Button, Card, Form, InputGroup} from "react-bootstrap"
 import {LoadingScreenContext} from "../../layout/LoadingScreen"
 import {useErrorBoundary} from "react-error-boundary"
@@ -27,6 +27,8 @@ const MAX_BRACKETS = 1000
 
 export function TableGeneratorOutput({worldData, selectedType, sorting, columns, emptyColumnCnt, selectedBaseEntry}: outputTypes) {
   const { t } = useTranslation("tool")
+  const copyWithToast = useCopyWithToast()
+
   const rawData = useRawData(selectedType, worldData, selectedBaseEntry)
   const [mappedData, mappedHeader] = useMemo(() => {
     if(rawData === undefined || selectedType === undefined) return [undefined, undefined]
@@ -141,7 +143,7 @@ export function TableGeneratorOutput({worldData, selectedType, sorting, columns,
                 {result.map((res, idx) => (
                     <InputGroup className={"mt-2"} key={idx}>
                       <Form.Control value={res} readOnly />
-                      <Button onClick={() => navigator.clipboard.writeText(res)}><FontAwesomeIcon icon={faCopy} /></Button>
+                      <Button onClick={() => copyWithToast(res)}><FontAwesomeIcon icon={faCopy} /></Button>
                     </InputGroup>
                 ))}
               </>

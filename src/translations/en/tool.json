@@ -40,6 +40,7 @@
         "import": "Import",
         "importWB": "Import DSWorkbench",
         "importWBDesc": "Import attacks from your Workbench",
+        "maxBracket": "The Game supports a maximum of {{amount}} brackets. Thus the output has been splitted into multiple posts",
         "successTitle": "Import successful",
         "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Attackplan[/b]\nAttackcount: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[/**]\n%ROW%\n[/table]\n\n[size=8]Created at %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
         "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",

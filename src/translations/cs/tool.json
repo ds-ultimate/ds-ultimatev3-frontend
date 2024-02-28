@@ -40,6 +40,7 @@
         "import": "importovat",
         "importWB": "",
         "importWBDesc": "Importovat útoky z Workbench",
+        "maxBracket": "",
         "successTitle": "",
         "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Plán útoků:[/b]\nPočet útoků: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Typ[||]Unit[||]Start[||]Target[||]Send time[||]Place[/**]\n%ROW%\n[/table]\n\n[size=8]Vytvořeno v %CREATE_AT% with [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
         "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",

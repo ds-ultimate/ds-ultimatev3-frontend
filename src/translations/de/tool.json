@@ -40,6 +40,7 @@
         "import": "Import",
         "importWB": "Import DSWorkbench",
         "importWBDesc": "Importiere Angriffe aus deiner Workbench",
+        "maxBracket": "Das Spiel unterstützt maximal {{amount}} Klammern. Daher wurde der Export aufgeteilt.",
         "successTitle": "Import erfolgreich",
         "templateBB_body": "[u][size=12][b]%TITLE%[/b][/size][/u]\n\n[b]Angriffsplan[/b]\nAnzahl der Angriffe: %ELEMENT_COUNT%\n[table]\n[**]ID[||]Art[||]Einheit[||]Herkunft[||]Ziel[||]Abschickzeit[||]Versammlungsplatz[/**]\n%ROW%\n[/table]\n\n[size=8]Erstellt am %CREATE_AT% mit [url=%CREATE_WITHL%]%CREATE_WITH%[/url][/size]",
         "templateBB_row": "[*]%ELEMENT_ID%[|]%TYPE_IMG%[|]%UNIT%[|]%SOURCE%[|]%TARGET%[|]%SEND%[|]%PLACE%[/*]",

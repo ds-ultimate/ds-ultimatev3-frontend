@@ -6,7 +6,7 @@ import {
   useTypeIDToName
 } from "../../../../modelHelper/Tool/CommandList"
 import {useTranslation} from "react-i18next"
-import {Button, FormControl, Row} from "react-bootstrap"
+import {Button, Form, FormControl, InputGroup, Row} from "react-bootstrap"
 import React, {useCallback, useContext, useEffect, useMemo, useState} from "react"
 import {
   dateFormatLocal_DMY_HMS,
@@ -29,7 +29,11 @@ import {useCreateToast} from "../../../layout/ToastHandler"
 import {StateUpdater} from "../../../../util/customTypes"
 import {usePerformImport} from "../../../../modelHelper/Tool/CommandListAPIHelper"
 import {playerPureType} from "../../../../modelHelper/Player"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faCopy} from "@fortawesome/free-solid-svg-icons"
 
+
+const EXPORT_MAX_BRACKETS = 1000
 
 export default function CommandImportTab({world, worldUnit, list, updateList}: {world: worldType,
     worldUnit: worldUnitType, list: CommandList, updateList: StateUpdater<CommandList>}) {
@@ -61,7 +65,7 @@ export default function CommandImportTab({world, worldUnit, list, updateList}: {
   )
 }
 
-function ExportElement({dataCb, description}: {dataCb: () => string | Promise<string>, description: string | null}) {
+function ExportElement({dataCb, description}: {dataCb: () => string[] | Promise<string[]>, description: string | null}) {
   return (
       <LoadingScreen darken>
         <ExportElementInternal dataCb={dataCb} description={description} />
@@ -69,47 +73,51 @@ function ExportElement({dataCb, description}: {dataCb: () => string | Promise<st
   )
 }
 
-function ExportElementInternal({dataCb, description}: {dataCb: () => string | Promise<string>, description: string | null}) {
-  const { t } = useTranslation("tool")
-  const [data, updateData] = useState<string>("")
-  const copyWithToast = useCopyWithToast()
+function ExportElementInternal({dataCb, description}: {dataCb: () => string[] | Promise<string[]>, description: string | null}) {
+  const [data, updateData] = useState<string[]>([""])
   const setLoading = useContext(LoadingScreenContext)
+  const { t } = useTranslation("tool")
 
   useEffect(() => {
     setLoading(true, "export")
-    new Promise<string>(resolve => resolve(dataCb()))
+    new Promise<string[]>(resolve => resolve(dataCb()))
         .then(d => {
           setLoading(false, "export")
           updateData(d)
         }).catch(err => console.log(err))
   }, [dataCb, setLoading])
 
-  const forceExport = useCallback(() => {
-    new Promise(async resolve => {
-      setLoading(true, "export")
-      for(let i = 0; i < 10; i++) {
-        const startTime = new Date().getTime()
-        await dataCb()
-        const endTime = new Date().getTime()
-        console.log("export took", endTime-startTime)
-      }
-      setLoading(false, "export")
-      resolve(true)
-    })
-  }, [dataCb, setLoading])
-
   return (
       <>
-        <LoadingScreen darken>
-          <FormControl as={"textarea"} disabled style={{height: "250px"}} value={data} />
-          <div className={"mt-2"}>
-            <Button variant={"primary"} onClick={() => copyWithToast(data)}>{t("copy")}</Button>
-            <span className={"ms-2"}>{description}</span>
-            <Button onClick={forceExport}>FORCE</Button>
-          </div>
-        </LoadingScreen>
+        {description}<br />
+        {data.length > 1 && t("commandPlanner.overview.import.maxBracket", {amount: EXPORT_MAX_BRACKETS})}
+        {data.map((d, idx) => <ShowElement d={d} desc={description} key={idx} isSingle={data.length === 1}/>)}
       </>
   )
+}
+
+function ShowElement({d, desc, isSingle}: {d: string, desc: string | null, isSingle: boolean}) {
+  const { t } = useTranslation("tool")
+  const copyWithToast = useCopyWithToast()
+
+  if(isSingle) {
+    return (
+        <div className={"mb-3"}>
+          <FormControl as={"textarea"} disabled style={{height: "250px"}} value={d} />
+          <div className={"mt-2"}>
+            <Button variant={"primary"} onClick={() => copyWithToast(d)}>{t("copy")}</Button>
+            <span className={"ms-2"}>{desc}</span>
+          </div>
+        </div>
+    )
+  } else {
+    return (
+        <InputGroup className={"mt-2"}>
+          <Form.Control value={d} readOnly />
+          <Button onClick={() => copyWithToast(d)}><FontAwesomeIcon icon={faCopy} /></Button>
+        </InputGroup>
+    )
+  }
 }
 
 function useTemplatedExporter() {
@@ -136,6 +144,16 @@ function useTemplatedExporter() {
     const vilDict = await allVillagesDict(world)
     const playerDict = await allPlayersDict(world)
 
+    const bodyNoRow = bodyTemplate
+        .replaceAll("%TITLE%", (list.title!==null?list.title:t("commandPlanner.overview.noTitle")))
+        .replaceAll("%ELEMENT_COUNT%", ""+list.items.length)
+        .replaceAll("%CREATE_AT%", dateFormatLocal_DMY_HMS(new Date()))
+        .replaceAll("%CREATE_WITHL%", BASE_PATH + formatRoute(INDEX, {}))
+        .replaceAll("%CREATE_WITH%", "DS-Ultimate")
+    const bodyBrackets = bracketCounter(bodyNoRow)
+
+    let sumBrackets = bodyBrackets
+    const resultArray: string[] = []
     let allRows = ""
     for(let idx = 0; idx < list.items.length; idx++) {
       const item = list.items[idx]
@@ -159,21 +177,24 @@ function useTemplatedExporter() {
           .replaceAll("%ARRIVE%", dateFormatYMD_HMS(arrDate) + ":" + arrDate.getMilliseconds())
           //type id 37 equals place -> easy way to access that translation
           .replaceAll("%PLACE%", "[url=\"" + placeURL + "\"]" + typeIdToName(37) + "[/url]")
+      const rowBrackets = bracketCounter(rowTemplate)
+      if(sumBrackets+rowBrackets > EXPORT_MAX_BRACKETS) {
+        resultArray.push(bodyNoRow.replaceAll("%ROW%", allRows))
+        allRows = ""
+        sumBrackets = bodyBrackets
+      }
       allRows += result
+      sumBrackets+= rowBrackets
     }
+    resultArray.push(bodyNoRow.replaceAll("%ROW%", allRows))
 
-    return bodyTemplate
-        .replaceAll("%TITLE%", (list.title!==null?list.title:t("commandPlanner.overview.noTitle")))
-        .replaceAll("%ELEMENT_COUNT%", ""+list.items.length)
-        .replaceAll("%ROW%", allRows)
-        .replaceAll("%CREATE_AT%", dateFormatLocal_DMY_HMS(new Date()))
-        .replaceAll("%CREATE_WITHL%", BASE_PATH + formatRoute(INDEX, {}))
-        .replaceAll("%CREATE_WITH%", "DS-Ultimate")
+    return resultArray
   }, [t, typeIdToName, allVillagesDict, allPlayersDict, villageOwnerBB])
 }
 
 function wbExporter(list: CommandList) {
-  return list.items.reduce((prev, cur) => prev + exportSingleWB(cur) + "\n", "")
+  const res = list.items.reduce((prev, cur) => prev + exportSingleWB(cur) + "\n", "")
+  return [res]
 }
 
 function exportSingleWB(item: CommandListItem) {
@@ -232,4 +253,12 @@ function ImportWBElement({world, worldUnit, list, updateList}: {world: worldType
         </div>
       </>
   )
+}
+
+function bracketCounter(data: string) {
+  let cnt = 0
+  for(let i = 0; i < data.length; i++) {
+    if(data.charAt(i) === "[") cnt++
+  }
+  return cnt
 }
