@@ -101,6 +101,11 @@ $replacements = [
     "tool.attackPlanner.overview.table.defender" => "tool.attackPlanner.defender",
     "tool.attackPlanner.overview.table.villageNotExist" => "tool.attackPlanner.villageNotExist",
     "tool.attackPlanner.overview.warnSending" => "tool.attackPlanner.warnSending",
+    "tool.attackPlanner.overview.sounds" => "sound.attPlanner",
+    "tool.attackPlanner.overview.table.uvMode" => "tool.attackPlanner.uvMode",
+    "tool.attackPlanner.overview.table.uvModeDesc" => "tool.attackPlanner.uvModeDesc",
+    "tool.attackPlanner.overview.withoutTitle" => "tool.attackPlanner.withoutTitle",
+    "tool.attackPlanner.overview.table.settings.audioTiming" => "tool.attackPlanner.audioTiming",
 ];
 
 $duplicated = [

@@ -1,7 +1,7 @@
 //idea from https://github.com/react-bootstrap/react-bootstrap/issues/6530#issuecomment-1385471731
 
 import * as React from "react";
-import {createContext, MetaHTMLAttributes, useContext, useEffect, useReducer} from "react";
+import {createContext, MetaHTMLAttributes, useCallback, useContext, useEffect, useReducer} from "react";
 
 /** @enum {string} */
 export const THEME = {
@@ -92,7 +92,7 @@ export function useToggleTheme() {
 
 export function useGetCurrentTheme() {
   const [theme, ] = useContext(ThemeContext)
-  return () => {
+  return useCallback(() => {
     return theme
-  }
+  }, [theme])
 }

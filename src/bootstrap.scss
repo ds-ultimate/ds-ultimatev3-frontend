@@ -6,6 +6,7 @@
 @include color-mode(light) {
   --custom-body-bg: rgba(192, 192, 192, 0.835);
   --custom-card-bg: rgba(207, 207, 207, 0.6);
+  --custom-modal-bg: rgba(207, 207, 207);
   --custom-dropdown-bg: rgb(207, 207, 207);
   --custom-input-bg: white;
   --custom-striped-bg: rgba(0, 0, 0, 0.05);
@@ -15,6 +16,7 @@
 @include color-mode(dark) {
   --custom-body-bg: #191d21;
   --custom-card-bg: rgba(53, 53, 53, 0.5);
+  --custom-modal-bg: rgba(53, 53, 53);
   --custom-dropdown-bg: #2d2d2d;
   --custom-input-bg: var(--custom-body-bg);
   --custom-striped-bg: rgba(255, 255, 255, 0.05);

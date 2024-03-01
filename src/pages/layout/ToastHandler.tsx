@@ -64,7 +64,7 @@ export default function ToastHandler({children}: {children: ReactNode | ReactNod
       <>
         <ToastCreateContext.Provider value={createToast}>
           {children}
-          <ToastContainer position={"top-end"} className={"me-3 mt-5"}>
+          <ToastContainer position={"top-end"} className={"me-3 mt-4"} style={{position: "fixed"}}>
             {toastList.map(([id, data]) => <Fragment key={id}>{data}</Fragment>)}
           </ToastContainer>
         </ToastCreateContext.Provider>

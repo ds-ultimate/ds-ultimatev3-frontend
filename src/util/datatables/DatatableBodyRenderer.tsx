@@ -37,9 +37,7 @@ interface rowProps<T> extends Omit<internalCellProps<T>, "keyGen"> {
 export default  function DatatableBodyRender<T>({data, keyGen, ...cellProps}: bodyProps<T>) {
   return (
       <>
-        {data?.map(d => {
-          return <DatatableRowRender key={keyGen(d)} d={d} {...cellProps}/>
-        })}
+        {data?.map(d => <DatatableRowRender key={keyGen(d)} d={d} {...cellProps}/>)}
       </>
   )
 }

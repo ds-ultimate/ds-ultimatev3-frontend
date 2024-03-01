@@ -331,7 +331,6 @@
         "attackPlanner": {
             "attackCount": "K \u00faprav\u011b nebyly vybr\u00e1ny \u017e\u00e1dn\u00e9 \u00fatoky",
             "attackCountTitle": "V\u00fdb\u011br \u00fatoku",
-            "audioTiming": "Alarm se spust\u00ed %S% p\u0159ed vypr\u0161en\u00edm \u010dasova\u010de.",
             "confirm": {},
             "date_helper": "Den p\u0159\u00edchodu \u00fatoku",
             "destroyError": "Pl\u00e1n \u00fatoku nebylo mo\u017en\u00e9 vymazat. Pokud se domn\u00edv\u00e1te, \u017ee se jedn\u00e1 o chybu, kontaktujte pros\u00edm t\u00fdm (pomoc\u00ed Discordu nebo prost\u0159ednictv\u00edm nahl\u00e1\u0161en\u00ed probl\u00e9mu v doln\u00ed \u010d\u00e1sti str\u00e1nky).",
@@ -362,10 +361,7 @@
             "updateError": "\u00dapravy nebylo mo\u017en\u00e9 prov\u00e9st",
             "updateErrorTitle": "Chyba",
             "updateSuccess": "Zpracov\u00e1n\u00ed prob\u011bhlo \u00fasp\u011b\u0161n\u011b.",
-            "updateSuccessTitle": "\u00dasp\u011b\u0161n\u011b",
-            "uvMode": "Z\u00e1stup dovolen\u00e9",
-            "uvModeDesc": "Adresy URL jsou generov\u00e1ny vhodn\u011b pro nahrazen\u00ed dovolen\u00e9.",
-            "withoutTitle": "Tento pl\u00e1nova\u010d \u00fatoku nem\u00e1 \u017e\u00e1dn\u00fd n\u00e1zev, a proto se pou\u017e\u00edv\u00e1 p\u0159i stisknut\u00ed tla\u010d\u00edtka \"attack planner\". Chcete-li vytvo\u0159it nov\u00fd pl\u00e1nova\u010d \u00fatoku, mus\u00edte d\u00e1t tomuto pl\u00e1nova\u010di n\u00e1zev."
+            "updateSuccessTitle": "\u00dasp\u011b\u0161n\u011b"
         },
         "distCalc": {},
         "map": {

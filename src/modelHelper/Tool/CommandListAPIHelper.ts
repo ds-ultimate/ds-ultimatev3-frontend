@@ -127,6 +127,25 @@ export function useRemoveSent() {
   }, [remove])
 }
 
+export function useSetUVMode() {
+  const setLoading = useContext(LoadingScreenContext)
+
+  return useCallback((list: CommandList, updateList: StateUpdater<CommandList>, newState: boolean) => {
+    return new Promise(resolve => {
+      updateList(() => {
+        setLoading(true, "commandUVMode")
+        // TODO actually save the commands here
+        fakeAPI()
+            .then(() => {
+              setLoading(false, "commandUVMode")
+              resolve(true)
+            })
+        return {...list, uvMode: newState}
+      })
+    })
+  }, [setLoading])
+}
+
 let curId = 0
 function idGenerator() {
   return curId++

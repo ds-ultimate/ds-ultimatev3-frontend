@@ -73,6 +73,32 @@
         "unit": "Jednotka"
       },
       "save": "",
+      "sounds": {
+        "ahem": "",
+        "alarm_beep": "",
+        "baseball": "",
+        "bicycle": "",
+        "blip": "",
+        "bloop": "",
+        "blurp": "",
+        "boing_poing": "",
+        "boing_spring": "",
+        "boing1": "",
+        "boing2": "",
+        "boing3": "",
+        "buzzer_rd": "",
+        "buzzer1": "",
+        "buzzer2": "",
+        "cannon": "",
+        "car_horn": "",
+        "honk_honk": "",
+        "honk1": "",
+        "honk2": "",
+        "siren": "",
+        "timer": "",
+        "truck_horn": "",
+        "warning_horn": ""
+      },
       "stats": {
         "attackStartVillage": "Útočící vesnice",
         "attackTargetVillage": "Cílové vesnice",
@@ -83,6 +109,23 @@
         "attacker": "Útočník",
         "countdown": "Odpočítávání",
         "defender": "Obránce",
+        "notificationExport": "",
+        "notificationItWorks": "",
+        "settings": {
+          "audioTiming": "Alarm se spustí %S% před vypršením časovače.",
+          "audioTitle": "",
+          "audioType": "",
+          "audioVolume": "",
+          "notification": "",
+          "notificationDisabled": "",
+          "notificationEnabled": "",
+          "notificationPermission": "",
+          "notificationTest": "",
+          "title": ""
+        },
+        "uvMode": "Zástup dovolené",
+        "uvModeDesc": "Adresy URL jsou generovány vhodně pro nahrazení dovolené.",
+        "uvUpdateSuccessDesc": "",
         "villageNotExist": "Vesnice neexistuje"
       },
       "tabs": {
@@ -123,7 +166,8 @@
         "support": "",
         "wallbreaker": "Bourání opevnění"
       },
-      "warnSending": "Tlačítko odeslat používáte na vlastní nebezpečí. Pokud narazíte na nějaké problémy, kontaktujte prosím tým DS-Ultimate (buď na Discordu, nebo prostřednictvím nahlášení chyb)."
+      "warnSending": "Tlačítko odeslat používáte na vlastní nebezpečí. Pokud narazíte na nějaké problémy, kontaktujte prosím tým DS-Ultimate (buď na Discordu, nebo prostřednictvím nahlášení chyb).",
+      "withoutTitle": "Tento plánovač útoku nemá žádný název, a proto se používá při stisknutí tlačítka \"attack planner\". Chcete-li vytvořit nový plánovač útoku, musíte dát tomuto plánovači název."
     },
     "title": ""
   },

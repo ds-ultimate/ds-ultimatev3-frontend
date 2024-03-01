@@ -1,26 +1,56 @@
 import {
   CommandList,
   CommandListItem,
-  commandPlannerUnitName,
+  CommandListSound,
+  commandPlannerUnitName, getCommandListSoundAsset, useCommandListSoundTranslations,
   useTypeIDToName
 } from "../../../../modelHelper/Tool/CommandList"
 import {useTranslation} from "react-i18next"
-import {Card, Tooltip} from "react-bootstrap"
+import {Button, Card, Col, Form, InputGroup, Modal, Tooltip} from "react-bootstrap"
 import DatatableBase, {DATATABLE_VARIANT, SORTING_DIRECTION} from "../../../../util/datatables/DatatableBase"
 import {StateUpdater} from "../../../../util/customTypes"
 import DatatableHeaderBuilder from "../../../../util/datatables/DatatableHeaderBuilder"
-import React, {useCallback, useEffect, useMemo, useState} from "react"
+import React, {ChangeEvent, useCallback, useEffect, useMemo, useReducer, useState} from "react"
 import {useAllPlayers, useAllVillages} from "../../../../apiInterface/worldDataAPI"
 import {worldType} from "../../../../modelHelper/World"
-import {LinkVillage, villagePureType} from "../../../../modelHelper/Village"
+import {villageCoordinates, villagePureType} from "../../../../modelHelper/Village"
 import {CommandPlannerMode} from "../CommandOverviewPage"
-import {LinkPlayerGeneric, playerPureType} from "../../../../modelHelper/Player"
+import {LinkPlayerGeneric, playerPureType, useSpecialPlayerTranslations} from "../../../../modelHelper/Player"
 import ErrorPage from "../../../layout/ErrorPage"
-import {CustomTooltip, dateFormatLocal_DMY_HMS} from "../../../../util/UtilFunctions"
+import {CustomTooltip, dateFormatLocal_DMY_HMS, DecodeName, rawDecodeName} from "../../../../util/UtilFunctions"
 import {get_icon, getUnitIcon} from "../../../../util/dsHelpers/Icon"
+import {useSetUVMode} from "../../../../modelHelper/Tool/CommandListAPIHelper"
+import {useCreateToast} from "../../../layout/ToastHandler"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faGear, faPlay, faVolumeMute, faVolumeUp} from "@fortawesome/free-solid-svg-icons"
+import usePersistentState from "../../../../util/persitentState"
+import BSModal from "../../../../util/BSModal"
+import {useTemplatedRowExporter} from "./CommandImportTab"
+import {Link} from "react-router-dom"
+import {formatRoute} from "../../../../util/router"
+import {VILLAGE_INFO} from "../../../routes"
 
+
+type SettingsType = {
+  audioDelay: number,
+  audioType: CommandListSound,
+  audioVolume: number,
+  audioMuted: boolean,
+  sendNotifications: boolean
+}
+
+const defaultSettings: SettingsType = {
+  audioDelay: 60,
+  audioType: CommandListSound.SIREN,
+  audioVolume: 0.2,
+  audioMuted: false,
+  sendNotifications: false,
+}
 
 export function CommandTable({world, list, updateList, mode}: {world: worldType, list: CommandList, updateList: StateUpdater<CommandList>, mode: CommandPlannerMode}) {
+  const [settings, setSettings] = usePersistentState<SettingsType>("commandPlanner.overview.table.settings", defaultSettings)
+  const { t } = useTranslation("tool")
+
   const [allVillageErr, allVillages] = useAllVillages(world)
   const allVillagesDict = useMemo(() => {
     const result: Map<number, villagePureType> = new Map()
@@ -41,6 +71,39 @@ export function CommandTable({world, list, updateList, mode}: {world: worldType,
   const VillageLink = useVillageLink(world, allVillagesDict)
   const PlayerLink = useVillagePlayerLink(world, allVillagesDict, allPlayersDict)
   const typeIdToName = useTypeIDToName()
+  const searchCommandList = useSearchCBCommandListItem(allPlayersDict, allVillagesDict)
+
+  const [[audioElm, audioType], setAudio] = useState<[HTMLAudioElement | undefined, number]>([undefined, -1])
+
+  useEffect(() => {
+    if(audioType !== settings.audioType) {
+      setAudio([new Audio(getCommandListSoundAsset(settings.audioType)), settings.audioType])
+    }
+  }, [audioType, settings.audioType])
+
+  useEffect(() => {
+    if(audioElm) {
+      audioElm.volume = settings.audioVolume
+    }
+  }, [audioElm, settings.audioVolume]);
+
+  const exporter = useTemplatedRowExporter()
+
+  const playSound = useCallback((item?: CommandListItem, sendNotification?: boolean, playSound?: boolean) => {
+    if((sendNotification === true || sendNotification === undefined) && settings.sendNotifications) {
+      if(item === undefined) {
+        new Notification(t("commandPlanner.overview.table.notificationItWorks"))
+      } else {
+        exporter(world, item, t("commandPlanner.overview.table.notificationExport"), allVillagesDict, allPlayersDict, false, 0)
+            .then(text => {
+              new Notification(text)
+            })
+      }
+    }
+    if((playSound === true || playSound === undefined) && audioElm) {
+      audioElm.play()
+    }
+  }, [settings, audioElm, t, allVillagesDict, allPlayersDict, exporter, world])
 
   if(allVillageErr) return <ErrorPage error={allVillageErr} />
   if(allPlayerErr) return <ErrorPage error={allPlayerErr} />
@@ -62,19 +125,21 @@ export function CommandTable({world, list, updateList, mode}: {world: worldType,
                 (c) => <TooltipIcon src={get_icon(c.type)} tooltip={typeIdToName(c.type)} />,
                 (c) => dateFormatLocal_DMY_HMS(new Date(c.sendTimestamp)),
                 (c) => dateFormatLocal_DMY_HMS(new Date(c.arriveTimestamp)),
-                (c) => <TimeDiff date={c.sendTimestamp} />,
+                (c) => <TimeDiff date={c.sendTimestamp} playSound={playSound} item={c} soundDelay={settings.audioDelay} />,
                 () => "info",
                 () => "action",
                 () => "delete",
               ]}
               keyGen={data => data.id}
-              //searching={searchCBCommandListItem}
+              searching={searchCommandList}
               data={list.items}
               defaultSort={[7, SORTING_DIRECTION.ASC]}
               responsiveTable
               striped
-              //topBarMiddle={<CommandTableAlarmConfig />}
-              //topBarEnd={<CommandTableUVConfig />}
+              topBarEnd={<>
+                <CommandTableUVConfig list={list} updateList={updateList} />
+                <CommandTableSettings cur={settings} upd={setSettings} playSound={playSound} />
+              </>}
               limits={[10, 20, 50, 100, 1000]}
           />
         </Card.Body>
@@ -131,7 +196,11 @@ function useVillageLink(world: worldType, allVillageDict: Map<number, villagePur
     if(village === undefined) {
       return <>{t("commandPlanner.overview.table.villageNotExist")}</>
     }
-    return <LinkVillage village={village} world={world} />
+    return (
+        <Link to={formatRoute(VILLAGE_INFO, {server: world.server__code, world: world.name, village: (village.villageID + "")})}>
+          [{villageCoordinates(village)}] <DecodeName name={village.name} />
+        </Link>
+    )
   }, [t, world, allVillageDict])
 }
 
@@ -158,18 +227,188 @@ function TooltipIcon({src, tooltip}: {src: string, tooltip: string | undefined})
   </CustomTooltip>
 }
 
-function TimeDiff({date}: {date: number}) {
+function TimeDiff({date, playSound, item, soundDelay}: {date: number,
+    playSound: (item?:CommandListItem, notify?: boolean, sound?: boolean) => void, item: CommandListItem, soundDelay: number}) {
   const [timeLeft, setTimeLeft] = useState<number>(date - (new Date()).getTime());
+  const [soundPlayed, setSoundPlayed] = useState<boolean>(date - (new Date()).getTime() < soundDelay * 1000)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    //only start counting if there is some time left on the countdown
+    if(date - (new Date()).getTime() < 0) {
+      return
+    }
+
+    const timer = setInterval(() => {
       const diff = date - (new Date()).getTime()
+      if(diff < soundDelay * 1000 && !soundPlayed) {
+        setSoundPlayed(true)
+        playSound(item, true, true)
+      }
       if(diff < 0) {
-        clearTimeout(timer)
+        clearInterval(timer)
       }
       setTimeLeft(diff);
     }, 1000);
-  });
 
-  return <>{Math.round(timeLeft / 1000)}</>
+    return () => clearInterval(timer)
+  }, [date, soundPlayed, setSoundPlayed, setTimeLeft, playSound, item, soundDelay]);
+
+  const reducedTimeLeft = Math.round(Math.max(timeLeft, 0) / 1000)
+  const s = reducedTimeLeft % 60
+  const minutesLeft = ((reducedTimeLeft - s)/60)
+  const m = minutesLeft % 60
+  const hoursLeft = ((minutesLeft - m)/60)
+  const h = hoursLeft % 24
+  const d = (hoursLeft - h) / 24
+
+  return <>{d>0?d+":":""}{h<10?"0"+h:h}:{m<10?"0"+m:m}:{s<10?"0"+s:s}</>
+}
+
+function CommandTableUVConfig({list, updateList}: {list: CommandList, updateList: StateUpdater<CommandList>}) {
+  const { t } = useTranslation("tool")
+  const setUVMode = useSetUVMode()
+  const createToast = useCreateToast()
+
+  const toggleUVMode = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setUVMode(list, updateList, event.target.checked)
+        .then(() => {
+          createToast(t("commandPlanner.overview.create.createSuccessTitle"), t("commandPlanner.overview.table.uvUpdateSuccessDesc"))
+        })
+
+  }, [list, updateList, setUVMode, createToast, t])
+  return (
+      <Col xs={"auto"}>
+        <CustomTooltip overlay={<Tooltip>{t("commandPlanner.overview.table.uvModeDesc")}</Tooltip>}>
+          <div className={"h-100 d-flex flex-column justify-content-center "}>
+            <Form.Check id="command-check-uv" checked={list.uvMode} onChange={toggleUVMode}
+                        label={t("commandPlanner.overview.table.uvMode")}/>
+          </div>
+        </CustomTooltip>
+      </Col>
+  )
+}
+
+function CommandTableSettings({cur, upd, playSound}: {
+  cur: SettingsType,
+  upd: StateUpdater<SettingsType>,
+  playSound: (item?:CommandListItem, notify?: boolean, sound?: boolean) => void
+}) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
+
+  const [open, setOpen] = useState<boolean>(false)
+  const { t } = useTranslation("tool")
+  const soundTranslations = useCommandListSoundTranslations()
+  const [tmpSoundDelay, setTmpSoundDelay] = useState<number>(cur.audioDelay)
+
+  useEffect(() => {
+    setTmpSoundDelay(cur.audioDelay)
+  }, [cur.audioDelay]);
+
+  const eventForceSound = useCallback(() => {
+    playSound(undefined, false)
+  }, [playSound])
+
+  const requestPermissions = useCallback(() => {
+    Notification.requestPermission().then(() => {
+      forceUpdate()
+    })
+  }, [forceUpdate])
+
+  const notificationsSupported = "Notification" in window
+  const notificationsAllowed = notificationsSupported && Notification.permission === "granted"
+
+  const changeNotificationState = useCallback((newVal: boolean) => {
+    upd(old => ({...old, sendNotifications: newVal}))
+  }, [upd])
+
+  const onHide = useCallback(() => {
+    upd(old => ({...old, audioDelay: tmpSoundDelay}))
+    setOpen(false)
+  }, [upd, tmpSoundDelay, setOpen])
+
+  return (
+      <Col xs={"auto"}>
+        <Button onClick={() => setOpen(true)}><FontAwesomeIcon icon={faGear} /></Button>
+        <BSModal show={open} onHide={onHide} centered size={"xl"}>
+          <Modal.Header closeButton>
+            <Modal.Title>{t("commandPlanner.overview.table.settings.title")}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <InputGroup className={"mb-3"}>
+              <InputGroup.Text>{(t("commandPlanner.overview.table.settings.audioTiming") ?? "").replaceAll("%S%", "" + tmpSoundDelay)}</InputGroup.Text>
+              <InputGroup.Text className={"flex-grow-1"}>
+                <Form.Range value={tmpSoundDelay} min={0} max={300} onChange={e => setTmpSoundDelay(+e.target.value)}/>
+              </InputGroup.Text>
+            </InputGroup>
+            <InputGroup className={"mb-3"}>
+              <InputGroup.Text>{t("commandPlanner.overview.table.settings.audioType")}</InputGroup.Text>
+              <Form.Select className={"bootstrap-select-custom"} onChange={e => upd(old => ({...old, audioType: +e.target.value}))} value={cur.audioType}>
+                {soundTranslations.map(([sound, trans]) => (
+                    <option key={sound} value={sound}>{trans}</option>
+                ))
+                }
+              </Form.Select>
+              <Button onClick={eventForceSound}><FontAwesomeIcon icon={faPlay} /></Button>
+            </InputGroup>
+            <InputGroup className={"mb-3"}>
+              <InputGroup.Text>{t("commandPlanner.overview.table.settings.audioVolume")}</InputGroup.Text>
+              <InputGroup.Text>{Math.round(cur.audioVolume*100)} %</InputGroup.Text>
+              <InputGroup.Text className={"flex-grow-1"}>
+                <Form.Range value={cur.audioVolume} min={0} max={1} step={0.01} onChange={e => upd(old => ({...old, audioVolume: +e.target.value}))}/>
+              </InputGroup.Text>
+              <Button onClick={() => upd(old => ({...old, audioMuted: !old.audioMuted}))}><FontAwesomeIcon icon={cur.audioMuted?faVolumeMute:faVolumeUp} /></Button>
+            </InputGroup>
+            <InputGroup className={"mb-3"}>
+              <InputGroup.Text>{t("commandPlanner.overview.table.settings.notification")}</InputGroup.Text>
+              <Button onClick={requestPermissions} disabled={!notificationsSupported || notificationsAllowed}>
+                {t("commandPlanner.overview.table.settings.notificationPermission")}
+              </Button>
+              <InputGroup.Radio checked={!cur.sendNotifications} id={"command-table-notifications-disabled"}
+                                disabled={!notificationsAllowed} onChange={e => changeNotificationState(!e.target.checked)} />
+              <InputGroup.Text as={"label"} htmlFor={"command-table-notifications-disabled"}>
+                {t("commandPlanner.overview.table.settings.notificationDisabled")}
+              </InputGroup.Text>
+              <InputGroup.Radio checked={cur.sendNotifications} id={"command-table-notifications-enabled"}
+                                disabled={!notificationsAllowed} onChange={e => changeNotificationState(e.target.checked)} />
+              <InputGroup.Text as={"label"} htmlFor={"command-table-notifications-enabled"}>
+                {t("commandPlanner.overview.table.settings.notificationEnabled")}
+              </InputGroup.Text>
+              <Button onClick={() => playSound(undefined, true,  false)} disabled={!notificationsAllowed}>
+                {t("commandPlanner.overview.table.settings.notificationTest")}
+              </Button>
+            </InputGroup>
+          </Modal.Body>
+        </BSModal>
+      </Col>
+  )
+}
+
+function useSearchCBCommandListItem(playerDict: Map<number, playerPureType>, vilDict: Map<number, villagePureType>) {
+  const { t } = useTranslation("tool")
+  const [playerBarbarian, playerDeleted] = useSpecialPlayerTranslations()
+
+  const findInner = useCallback((vilId: number, search: string) => {
+    const vil = vilDict.get(vilId)
+    if(vil === undefined) {
+      return playerDeleted.includes(search) || t("commandPlanner.overview.table.villageNotExist").includes(search)
+    }
+    if(vil.name.includes(search)) return true
+    if(villageCoordinates(vil).includes(search)) return true
+
+    if(vil.owner === 0) {
+      return playerBarbarian.includes(search)
+    }
+
+    const player = playerDict.get(vil.owner)
+    if(player === undefined) {
+      return playerDeleted.includes(search)
+    }
+
+    return rawDecodeName(player.name).includes(search)
+  }, [t, playerDict, vilDict, playerBarbarian, playerDeleted])
+
+  return useCallback((d: CommandListItem, search: string) => {
+    return findInner(d.startVillageId, search) || findInner(d.targetVillageId, search)
+  }, [findInner])
 }

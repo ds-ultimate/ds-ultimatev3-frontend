@@ -71,6 +71,32 @@
         "unit": "Unit"
       },
       "save": "Save",
+      "sounds": {
+        "ahem": "ahem",
+        "alarm_beep": "alarm beep",
+        "baseball": "baseball",
+        "bicycle": "bicycle",
+        "blip": "blip",
+        "bloop": "bloop",
+        "blurp": "blurp",
+        "boing_poing": "boing 3",
+        "boing_spring": "boing 4",
+        "boing1": "boing 1",
+        "boing2": "boing 2",
+        "boing3": "boing 5",
+        "buzzer_rd": "buzzer 2",
+        "buzzer1": "buzzer 1",
+        "buzzer2": "buzzer 3",
+        "cannon": "cannon",
+        "car_horn": "car horn 1",
+        "honk_honk": "car horn 2",
+        "honk1": "honk 1",
+        "honk2": "honk 2",
+        "siren": "siren",
+        "timer": "timer",
+        "truck_horn": "truck horn",
+        "warning_horn": "warning horn"
+      },
       "stats": {
         "attackStartVillage": "Attacking villages",
         "attackTargetVillage": "Target villages",
@@ -81,6 +107,23 @@
         "attacker": "Attacker",
         "countdown": "Countdown",
         "defender": "Defender",
+        "notificationExport": "DS-Ultimate: %TYPE% needs to be sent from %SOURCE% using %UNIT% to %DEFENDER% at %TARGET%",
+        "notificationItWorks": "DS-Ultimate: If you can read this than the notifications are working",
+        "settings": {
+          "audioTiming": "The alarm starts %S% s before the timer decays.",
+          "audioTitle": "Alarm",
+          "audioType": "Alarm signal",
+          "audioVolume": "Volume",
+          "notification": "Notification",
+          "notificationDisabled": "disabled",
+          "notificationEnabled": "enabled",
+          "notificationPermission": "give permission",
+          "notificationTest": "test",
+          "title": "Settings"
+        },
+        "uvMode": "Sitter-Mode",
+        "uvModeDesc": "The Send-Troops URL will be genereated in the way it is needed for a sitter account",
+        "uvUpdateSuccessDesc": "The sitter mode has been saved successfully",
         "villageNotExist": "The village doesn\\'t exist"
       },
       "tabs": {
@@ -121,7 +164,8 @@
         "support": "Support",
         "wallbreaker": "Wallbreaker"
       },
-      "warnSending": "Using the Send-Troops button is done on your own risk. If you encounter any problems please tell the DS-Ultimate team (via Discord or Report Problem)"
+      "warnSending": "Using the Send-Troops button is done on your own risk. If you encounter any problems please tell the DS-Ultimate team (via Discord or Report Problem)",
+      "withoutTitle": "This attack planner has no title and is therefor used when pressing \"attack planner\". In order to create a new attack planner you need to give this one a title"
     },
     "title": "Commandplanner"
   },

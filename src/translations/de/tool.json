@@ -71,6 +71,32 @@
         "unit": "Einheit"
       },
       "save": "Speichern",
+      "sounds": {
+        "ahem": "Ähm",
+        "alarm_beep": "Wecker",
+        "baseball": "Baseball",
+        "bicycle": "Fahrrad-Klingel",
+        "blip": "Blip",
+        "bloop": "Bloop",
+        "blurp": "Blurp",
+        "boing_poing": "Boing 3",
+        "boing_spring": "Boing 4",
+        "boing1": "Boing 1",
+        "boing2": "Boing 2",
+        "boing3": "Boing 5",
+        "buzzer_rd": "Buzzer 2",
+        "buzzer1": "Buzzer 1",
+        "buzzer2": "Buzzer 3",
+        "cannon": "Kanone",
+        "car_horn": "Hupe 1",
+        "honk_honk": "Hupe 2",
+        "honk1": "Signalhorn 1",
+        "honk2": "Signalhorn 2",
+        "siren": "Alarm",
+        "timer": "Timer",
+        "truck_horn": "LKW-Hupe",
+        "warning_horn": "Warn-Hupe"
+      },
       "stats": {
         "attackStartVillage": "Angreifende Dörfer",
         "attackTargetVillage": "Ziel Dörfer",
@@ -81,6 +107,23 @@
         "attacker": "Angreifer",
         "countdown": "Restzeit",
         "defender": "Verteidiger",
+        "notificationExport": "DS-Ultimate: %TYPE% muss aus %SOURCE% mit %UNIT% auf %DEFENDER% in %TARGET% abgeschickt werden!",
+        "notificationItWorks": "DS-Ultimate: Wenn du dies lesen kannst dann funktionieren die Benachrichtigungen",
+        "settings": {
+          "audioTiming": "Der Alarm startet %S% s vor ablauf des Timers.",
+          "audioTitle": "Alarm",
+          "audioType": "Alarmton",
+          "audioVolume": "Lautstärke",
+          "notification": "Benachrichtigung",
+          "notificationDisabled": "ausgeschalten",
+          "notificationEnabled": "eingeschalten",
+          "notificationPermission": "Berechtigung gewähren",
+          "notificationTest": "Testen",
+          "title": "Einstellungen"
+        },
+        "uvMode": "UV-Modus",
+        "uvModeDesc": "Die URLs werden passend für Urlaubsvertretungen generiert",
+        "uvUpdateSuccessDesc": "Der UV-Modus wurde erfolgreich gespeichert",
         "villageNotExist": "Das Dorf existiert nicht"
       },
       "tabs": {
@@ -121,7 +164,8 @@
         "support": "Unterstützung",
         "wallbreaker": "Wallbrecher"
       },
-      "warnSending": "Die Benutzung des Abschickknopfes geschieht auf eigene Gefahr. Sollten Probleme auftreten, wende dich bitte an das DS-Ultimate Team (entweder im Discord oder via Fehler melden)"
+      "warnSending": "Die Benutzung des Abschickknopfes geschieht auf eigene Gefahr. Sollten Probleme auftreten, wende dich bitte an das DS-Ultimate Team (entweder im Discord oder via Fehler melden)",
+      "withoutTitle": "Dieser Angriffsplaner hat keinen Titel und wird daher immer standardmäßig beim Klick auf \"Angriffsplaner\" benutzt. Um damit einen neuen Angriffsplaner zu erstellen, muss ein Titel vergeben werden."
     },
     "title": "Befehlsplaner"
   },

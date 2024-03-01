@@ -6,6 +6,7 @@ import {DecodeName} from "../util/UtilFunctions";
 import {useTranslation} from "react-i18next";
 import {chartDataType} from "../util/CustomChart";
 import {cacheable} from "../apiInterface/AbstractDatabase"
+import {useMemo} from "react"
 
 
 export type playerPureType = {
@@ -139,4 +140,9 @@ export function LinkPlayerGeneric({owner, owner_name, world}: {owner: number, ow
         <DecodeName name={owner_name} />
       </Link>
   )
+}
+
+export function useSpecialPlayerTranslations(): [string, string] {
+  const { t } = useTranslation("ui")
+  return useMemo(() => ([t("player.barbarian"), t("player.deleted")]), [t])
 }

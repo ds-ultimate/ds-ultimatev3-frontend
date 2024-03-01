@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next"
-import {useCallback} from "react"
+import {useCallback, useMemo} from "react"
 import {TroopArmyAmounts} from "../../util/dsHelpers/TroopHelper"
 import {worldType, worldUnitType} from "../World"
 import {villagePureType} from "../Village"
@@ -154,4 +154,90 @@ export function calculateDistance(startVillage: villagePureType, targetVillage: 
   const xDiff = startVillage.x - targetVillage.x
   const yDiff = startVillage.y - targetVillage.y
   return Math.sqrt(xDiff*xDiff + yDiff*yDiff)
+}
+
+
+
+export enum CommandListSound {
+  SIREN,
+  AHEM,
+  ALARM_BEEP,
+  BASEBALL,
+  BICYCLE,
+  BLIRP,
+  BLOOP,
+  BLURP,
+  BOING1,
+  BOING2,
+  BOING_POING,
+  BOING_SPRING,
+  BOING3,
+  BUZZER1,
+  BUZZER_RD,
+  BUZZER2,
+  CANNON,
+  CAR_HORN,
+  HONK1,
+  HONK2,
+  HONK_HONK,
+  TIMER,
+  TRUCK_HORN,
+  WARNING_HORN,
+}
+
+export function useCommandListSoundTranslations() {
+  const { t } = useTranslation("tool")
+  return useMemo(():Array<[CommandListSound, string]> => [
+    [CommandListSound.SIREN, t("commandPlanner.overview.sounds.siren")],
+    [CommandListSound.AHEM, t("commandPlanner.overview.sounds.ahem")],
+    [CommandListSound.ALARM_BEEP, t("commandPlanner.overview.sounds.alarm_beep")],
+    [CommandListSound.BASEBALL, t("commandPlanner.overview.sounds.baseball")],
+    [CommandListSound.BICYCLE, t("commandPlanner.overview.sounds.bicycle")],
+    [CommandListSound.BLIRP, t("commandPlanner.overview.sounds.blip")],
+    [CommandListSound.BLOOP, t("commandPlanner.overview.sounds.bloop")],
+    [CommandListSound.BLURP, t("commandPlanner.overview.sounds.blurp")],
+    [CommandListSound.BOING1, t("commandPlanner.overview.sounds.boing1")],
+    [CommandListSound.BOING2, t("commandPlanner.overview.sounds.boing2")],
+    [CommandListSound.BOING_POING, t("commandPlanner.overview.sounds.boing_poing")],
+    [CommandListSound.BOING_SPRING, t("commandPlanner.overview.sounds.boing_spring")],
+    [CommandListSound.BOING3, t("commandPlanner.overview.sounds.boing3")],
+    [CommandListSound.BUZZER1, t("commandPlanner.overview.sounds.buzzer1")],
+    [CommandListSound.BUZZER_RD, t("commandPlanner.overview.sounds.buzzer_rd")],
+    [CommandListSound.BUZZER2, t("commandPlanner.overview.sounds.buzzer2")],
+    [CommandListSound.CANNON, t("commandPlanner.overview.sounds.cannon")],
+    [CommandListSound.CAR_HORN, t("commandPlanner.overview.sounds.car_horn")],
+    [CommandListSound.HONK1, t("commandPlanner.overview.sounds.honk1")],
+    [CommandListSound.HONK2, t("commandPlanner.overview.sounds.honk2")],
+    [CommandListSound.HONK_HONK, t("commandPlanner.overview.sounds.honk_honk")],
+    [CommandListSound.TIMER, t("commandPlanner.overview.sounds.timer")],
+    [CommandListSound.TRUCK_HORN, t("commandPlanner.overview.sounds.truck_horn")],
+    [CommandListSound.WARNING_HORN, t("commandPlanner.overview.sounds.warning_horn")],
+  ], [t])
+}
+
+export function getCommandListSoundAsset(sound: CommandListSound) {
+  if(sound === CommandListSound.SIREN) return "/sounds/attackplanner/420661__kinoton__alarm-siren-fast-oscillations.mp3"
+  if(sound === CommandListSound.AHEM) return "/sounds/attackplanner/ahem_x.mp3"
+  if(sound === CommandListSound.ALARM_BEEP) return "/sounds/attackplanner/alarm_beep.mp3"
+  if(sound === CommandListSound.BASEBALL) return "/sounds/attackplanner/baseball_hit.mp3"
+  if(sound === CommandListSound.BICYCLE) return "/sounds/attackplanner/bicycle_bell.mp3"
+  if(sound === CommandListSound.BLIRP) return "/sounds/attackplanner/blip.mp3"
+  if(sound === CommandListSound.BLOOP) return "/sounds/attackplanner/bloop_x.mp3"
+  if(sound === CommandListSound.BLURP) return "/sounds/attackplanner/blurp_x.mp3"
+  if(sound === CommandListSound.BOING1) return "/sounds/attackplanner/boing2.mp3"
+  if(sound === CommandListSound.BOING2) return "/sounds/attackplanner/boing3.mp3"
+  if(sound === CommandListSound.BOING_POING) return "/sounds/attackplanner/boing_poing.mp3"
+  if(sound === CommandListSound.BOING_SPRING) return "/sounds/attackplanner/boing_spring.mp3"
+  if(sound === CommandListSound.BOING3) return "/sounds/attackplanner/boing_x.mp3"
+  if(sound === CommandListSound.BUZZER1) return "/sounds/attackplanner/buzzer3_x.mp3"
+  if(sound === CommandListSound.BUZZER_RD) return "/sounds/attackplanner/buzzer_rd.mp3"
+  if(sound === CommandListSound.BUZZER2) return "/sounds/attackplanner/buzzer_x.mp3"
+  if(sound === CommandListSound.CANNON) return "/sounds/attackplanner/cannon_x.mp3"
+  if(sound === CommandListSound.CAR_HORN) return "/sounds/attackplanner/car_horn_x.mp3"
+  if(sound === CommandListSound.HONK1) return "/sounds/attackplanner/honk_x.mp3"
+  if(sound === CommandListSound.HONK2) return "/sounds/attackplanner/honk2_x.mp3"
+  if(sound === CommandListSound.HONK_HONK) return "/sounds/attackplanner/honk_honk_x.mp3"
+  if(sound === CommandListSound.TIMER) return "/sounds/attackplanner/timer.mp3"
+  if(sound === CommandListSound.TRUCK_HORN) return "/sounds/attackplanner/truck_horn.mp3"
+  if(sound === CommandListSound.WARNING_HORN) return "/sounds/attackplanner/warning_horn.mp3"
 }

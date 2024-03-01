@@ -2,25 +2,19 @@ import {
   calculateSendTime,
   CommandList,
   CommandListItem,
-  commandPlannerUnitName, NewCommandListItem,
+  commandPlannerUnitName,
+  NewCommandListItem,
   useTypeIDToName
 } from "../../../../modelHelper/Tool/CommandList"
 import {useTranslation} from "react-i18next"
 import {Button, Form, FormControl, InputGroup, Row} from "react-bootstrap"
 import React, {useCallback, useContext, useEffect, useMemo, useState} from "react"
-import {
-  dateFormatLocal_DMY_HMS,
-  dateFormatYMD_HMS,
-  useCopyWithToast
-} from "../../../../util/UtilFunctions"
+import {dateFormatLocal_DMY_HMS, dateFormatYMD_HMS, useCopyWithToast} from "../../../../util/UtilFunctions"
 import {exportTroopArmyAmount, parseTroopArmyAmount} from "../../../../util/dsHelpers/TroopHelper"
 import ReactBootstrapAccordion from "../../../../util/ReactBootstrapAccordion"
 import {get_icon} from "../../../../util/dsHelpers/Icon"
 import {useVillageOwnerBB, villageCoordinateBB, villagePureType} from "../../../../modelHelper/Village"
-import {
-  getAllPlayers,
-  getAllVillages,
-} from "../../../../apiInterface/worldDataAPI"
+import {getAllPlayers, getAllVillages,} from "../../../../apiInterface/worldDataAPI"
 import {worldType, worldUnitType} from "../../../../modelHelper/World"
 import {BASE_PATH, formatRoute} from "../../../../util/router"
 import {INDEX} from "../../../routes"
@@ -120,10 +114,8 @@ function ShowElement({d, desc, isSingle}: {d: string, desc: string | null, isSin
   }
 }
 
-function useTemplatedExporter() {
+export function useTemplatedExporter() {
   const { t } = useTranslation("tool")
-  const villageOwnerBB = useVillageOwnerBB()
-  const typeIdToName = useTypeIDToName()
   const allVillagesDict = useCallback(async (world: worldType) => {
     const result: Map<number, villagePureType> = new Map()
     const allVillages = await getAllVillages(world)
@@ -139,8 +131,9 @@ function useTemplatedExporter() {
     return result
   }, [])
 
+  const rowExporter = useTemplatedRowExporter()
+
   return useCallback(async (world: worldType, list: CommandList, bodyTemplate: string, rowTemplate: string) => {
-    const worldURL = world.url + "/game.php?"
     const vilDict = await allVillagesDict(world)
     const playerDict = await allPlayersDict(world)
 
@@ -156,28 +149,8 @@ function useTemplatedExporter() {
     const resultArray: string[] = []
     let allRows = ""
     for(let idx = 0; idx < list.items.length; idx++) {
-      const item = list.items[idx]
-      const start_village = vilDict.get(item.startVillageId)
-      const target_village = vilDict.get(item.targetVillageId)
-      const startDate = new Date(item.sendTimestamp)
-      const arrDate = new Date(item.arriveTimestamp)
-      const uvURL = (list.uvMode?`t=${start_village?.owner}&`:"")
-      const troopUrl = item.troops.map(([uName, cnt]) => `&${uName}=${cnt}`).reduce((prev, cur) => prev+cur, "")
-      const placeURL = worldURL + uvURL + `village=${item.startVillageId}&screen=place&target=${item.targetVillageId}` + troopUrl
-      const result = rowTemplate
-          .replaceAll("%ELEMENT_ID%", ""+(idx+1))
-          .replaceAll("%TYPE%", typeIdToName(item.type) ?? "")
-          .replaceAll("%TYPE_IMG%", "[img]" + get_icon(item.type) + "[/img]")
-          .replaceAll("%UNIT%", "[unit]" + commandPlannerUnitName[item.unit] + "[/unit]")
-          .replaceAll("%SOURCE%", (start_village !== undefined?villageCoordinateBB(start_village):'???'))
-          .replaceAll("%TARGET%", (target_village !== undefined?villageCoordinateBB(target_village):'???'))
-          .replaceAll("%ATTACKER%", villageOwnerBB(playerDict, start_village))
-          .replaceAll("%DEFENDER%", villageOwnerBB(playerDict, target_village))
-          .replaceAll("%SEND%", dateFormatYMD_HMS(startDate) + ":" + startDate.getMilliseconds())
-          .replaceAll("%ARRIVE%", dateFormatYMD_HMS(arrDate) + ":" + arrDate.getMilliseconds())
-          //type id 37 equals place -> easy way to access that translation
-          .replaceAll("%PLACE%", "[url=\"" + placeURL + "\"]" + typeIdToName(37) + "[/url]")
-      const rowBrackets = bracketCounter(rowTemplate)
+      const result = await rowExporter(world, list.items[idx], rowTemplate, vilDict, playerDict, list.uvMode, idx)
+      const rowBrackets = bracketCounter(result)
       if(sumBrackets+rowBrackets > EXPORT_MAX_BRACKETS) {
         resultArray.push(bodyNoRow.replaceAll("%ROW%", allRows))
         allRows = ""
@@ -189,7 +162,38 @@ function useTemplatedExporter() {
     resultArray.push(bodyNoRow.replaceAll("%ROW%", allRows))
 
     return resultArray
-  }, [t, typeIdToName, allVillagesDict, allPlayersDict, villageOwnerBB])
+  }, [t, allVillagesDict, allPlayersDict, rowExporter])
+}
+
+export function useTemplatedRowExporter() {
+  const villageOwnerBB = useVillageOwnerBB()
+  const typeIdToName = useTypeIDToName()
+
+  return useCallback(async (world: worldType, item: CommandListItem, rowTemplate: string, vilDict: Map<number, villagePureType>,
+                            playerDict: Map<number, playerPureType>, isUVMode: boolean, itemIdx: number) => {
+    const worldURL = world.url + "/game.php?"
+
+    const start_village = vilDict.get(item.startVillageId)
+    const target_village = vilDict.get(item.targetVillageId)
+    const startDate = new Date(item.sendTimestamp)
+    const arrDate = new Date(item.arriveTimestamp)
+    const uvURL = (isUVMode?`t=${start_village?.owner}&`:"")
+    const troopUrl = item.troops.map(([uName, cnt]) => `&${uName}=${cnt}`).reduce((prev, cur) => prev+cur, "")
+    const placeURL = worldURL + uvURL + `village=${item.startVillageId}&screen=place&target=${item.targetVillageId}` + troopUrl
+    return rowTemplate
+        .replaceAll("%ELEMENT_ID%", "" + (itemIdx + 1))
+        .replaceAll("%TYPE%", typeIdToName(item.type) ?? "")
+        .replaceAll("%TYPE_IMG%", "[img]" + get_icon(item.type) + "[/img]")
+        .replaceAll("%UNIT%", "[unit]" + commandPlannerUnitName[item.unit] + "[/unit]")
+        .replaceAll("%SOURCE%", (start_village !== undefined ? villageCoordinateBB(start_village) : '???'))
+        .replaceAll("%TARGET%", (target_village !== undefined ? villageCoordinateBB(target_village) : '???'))
+        .replaceAll("%ATTACKER%", villageOwnerBB(playerDict, start_village))
+        .replaceAll("%DEFENDER%", villageOwnerBB(playerDict, target_village))
+        .replaceAll("%SEND%", dateFormatYMD_HMS(startDate) + ":" + startDate.getMilliseconds())
+        .replaceAll("%ARRIVE%", dateFormatYMD_HMS(arrDate) + ":" + arrDate.getMilliseconds())
+        //type id 37 equals place -> easy way to access that translation
+        .replaceAll("%PLACE%", "[url=\"" + placeURL + "\"]" + typeIdToName(37) + "[/url]")
+  }, [typeIdToName, villageOwnerBB])
 }
 
 function wbExporter(list: CommandList) {

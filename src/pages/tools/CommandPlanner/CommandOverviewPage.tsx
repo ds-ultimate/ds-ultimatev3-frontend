@@ -136,7 +136,10 @@ function CommandOverviewMain({worldData, worldConf, worldUnit}: {worldData?: wor
 
   return (
       <>
-        <Col xs={12} className={"mt-2"}>
+      {modeEnum === CommandPlannerMode.EDIT && <Col xs={12} className={"mt-2 d-print-none"}>
+          {list.title === null && <Card className={"mb-2 p-3"}>
+            {t("commandPlanner.overview.withoutTitle")}
+          </Card>}
           <Card>
             <Card.Body>
               <ReactBootstrapTabs defaultKey={"create"} items={[
@@ -155,7 +158,7 @@ function CommandOverviewMain({worldData, worldConf, worldUnit}: {worldData?: wor
               ]} />
             </Card.Body>
           </Card>
-        </Col>
+        </Col>}
         <Col xs={12} className={"mt-2"}>
           <Card className={"mb-2 p-3 d-print-none"}>
             <b>{t("commandPlanner.overview.warnSending")}</b>
